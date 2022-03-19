@@ -107,42 +107,56 @@ public class Player : Node2D
 
         this.clawsBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_4 - strength/VBoxContainer2/VBoxContainer/clawsBtn");
         this.clawsBtn.Connect("pressed", this, "upgradeClaws");
+        this.clawsLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_4 - strength/VBoxContainer2/VBoxContainer/clawsLabel");
+
 
         this.jawsBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_4 - strength/VBoxContainer3/VBoxContainer/jawsBtn");
         this.jawsBtn.Connect("pressed", this, "upgradeJaws");
+        this.jawsLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_4 - strength/VBoxContainer3/VBoxContainer/jawsLabel");
 
 
         // body 
         this.armorBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_3 - body/VBoxContainer/VBoxContainer/armorBtn");
         this.armorBtn.Connect("pressed", this, "upgradeArmor");
+        this.armorLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_3 - body/VBoxContainer/VBoxContainer/armorLabel");
+
 
         this.bootBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_3 - body/VBoxContainer2/VBoxContainer/bootBtn");
         this.bootBtn.Connect("pressed", this, "upgradeBoot");
+        this.bootLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_3 - body/VBoxContainer2/VBoxContainer/bootLabel");
+
 
         this.wisdomBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_3 - body/VBoxContainer3/VBoxContainer/wisdomBtn");
         this.wisdomBtn.Connect("pressed", this, "upgradeWisdom");
+        this.wisdomLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_3 - body/VBoxContainer3/VBoxContainer/wisdomLabel");
 
 
         // weapons
         this.swordBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_2 - weapons/VBoxContainer/VBoxContainer/swordBtn");
         this.swordBtn.Connect("pressed", this, "upgradeSword");
+        this.swordLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_2 - weapons/VBoxContainer/VBoxContainer/swordLabel");
 
         this.daggerBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_2 - weapons/VBoxContainer2/VBoxContainer/daggerBtn");
         this.daggerBtn.Connect("pressed", this, "upgradeDagger");
+        this.daggerLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_2 - weapons/VBoxContainer2/VBoxContainer/daggerLabel");
 
         this.bowArrowBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_2 - weapons/VBoxContainer3/VBoxContainer/bowBtn");
         this.bowArrowBtn.Connect("pressed", this, "upgradeBowArrowBtn");
+        this.bowArrowLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_2 - weapons/VBoxContainer3/VBoxContainer/bowLabel");
 
 
         // passives
         this.nightBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_1 - passives/VBoxContainer/VBoxContainer/moonBtn");
         this.nightBtn.Connect("pressed", this, "upgradeNight");
+        this.nightLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_1 - passives/VBoxContainer/VBoxContainer/moonLabel");
 
         this.leavesBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_1 - passives/VBoxContainer2/VBoxContainer/leavesBtn");
         this.leavesBtn.Connect("pressed", this, "upgradeLeaves");
+        this.leavesLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_1 - passives/VBoxContainer2/VBoxContainer/leavesLabel");
 
         this.vampireBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_1 - passives/VBoxContainer3/VBoxContainer/prayingBtn");
         this.vampireBtn.Connect("pressed", this, "upgradeVampire");
+        this.vampireLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_1 - passives/VBoxContainer3/VBoxContainer/prayingLabel");
 
     }
 
@@ -152,6 +166,7 @@ public class Player : Node2D
         if (punchSkill < 3)
         {
             punchSkill++;
+            this.punchLabel.Text = "Punch - Level " + punchSkill;
         }
 
         switch (punchSkill)
@@ -171,6 +186,7 @@ public class Player : Node2D
         if (clawSkill < 5)
         {
             clawSkill++;
+            this.clawsLabel.Text = "Claws - Level " + clawSkill;
         }
 
 
@@ -198,6 +214,7 @@ public class Player : Node2D
         if (jawsSkill < 5)
         {
             jawsSkill++;
+            this.jawsLabel.Text = "Jaws - Level " + jawsSkill;
 
         }
 
@@ -226,6 +243,7 @@ public class Player : Node2D
         if (armorSkill < 4)
         {
             armorSkill++;
+            this.armorLabel.Text = "Armor - Level " + armorSkill;
 
         }
 
@@ -249,6 +267,7 @@ public class Player : Node2D
         if (bootSkill < 4)
         {
             bootSkill++;
+            this.bootLabel.Text = "Boot - Level " + bootSkill;
 
         }
 
@@ -272,6 +291,7 @@ public class Player : Node2D
         if (wisdomSkill < 5)
         {
             wisdomSkill++;
+            this.wisdomLabel.Text = "Wisdom - Level " + wisdomSkill;
 
         }
 
@@ -299,6 +319,7 @@ public class Player : Node2D
         if (swordSkill < 4)
         {
             swordSkill++;
+            this.swordLabel.Text = "Sword - Level " + swordSkill;
         }
 
         switch (swordSkill)
@@ -323,6 +344,7 @@ public class Player : Node2D
         if (daggerSkill < 4)
         {
             daggerSkill++;
+            this.daggerLabel.Text = "Dagger - Level " + daggerSkill;
 
         }
 
@@ -347,6 +369,7 @@ public class Player : Node2D
         if (bowArrowSkill < 4)
         {
             bowArrowSkill++;
+            this.bowArrowLabel.Text = "Bow- Level " + bowArrowSkill;
 
         }
 
@@ -371,6 +394,7 @@ public class Player : Node2D
         if (nightSkill < 4)
         {
             nightSkill++;
+            this.nightLabel.Text = "Night - Level " + nightSkill;
 
         }
 
@@ -396,6 +420,7 @@ public class Player : Node2D
         if (leavesSkill < 3)
         {
             leavesSkill++;
+            this.leavesLabel.Text = "Leaves - Level " + leavesSkill;
 
         }
 
@@ -417,6 +442,7 @@ public class Player : Node2D
         if (vampireSkill < 4)
         {
             vampireSkill++;
+            this.vampireLabel.Text = "Vampire - Level " + vampireSkill;
 
         }
 

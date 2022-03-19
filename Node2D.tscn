@@ -26,8 +26,8 @@ __meta__ = {
 }
 
 [node name="Background" type="TextureRect" parent="Menu"]
-margin_right = 1024.0
-margin_bottom = 599.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 texture = ExtResource( 2 )
 expand = true
 __meta__ = {
@@ -35,8 +35,13 @@ __meta__ = {
 }
 
 [node name="Vertical Container" type="VBoxContainer" parent="Menu"]
-margin_right = 1023.0
-margin_bottom = 598.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 2.0
+margin_bottom = 6.0
+rect_min_size = Vector2( 1025, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -45,6 +50,7 @@ __meta__ = {
 margin_right = 1025.0
 margin_bottom = 148.35
 rect_min_size = Vector2( 0, 148.35 )
+alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_4 - strength"]
 margin_right = 341.0
@@ -162,6 +168,7 @@ margin_top = 152.0
 margin_right = 1025.0
 margin_bottom = 300.35
 rect_min_size = Vector2( 0, 148.35 )
+alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_3 - body"]
 margin_right = 341.0
