@@ -1,0 +1,239 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Store/BuyButton.cs" type="Script" id=1]
+[ext_resource path="res://Store/Store.cs" type="Script" id=2]
+[ext_resource path="res://ReturnToMenu.cs" type="Script" id=3]
+[ext_resource path="res://assets/KiriFont.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://fonts/Roboto-Bold.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/long_button_off.png" type="Texture" id=6]
+[ext_resource path="res://assets/Bronze Helmet.png" type="Texture" id=7]
+[ext_resource path="res://assets/Mini_exit.png" type="Texture" id=8]
+[ext_resource path="res://assets/Dual Sword.png" type="Texture" id=9]
+[ext_resource path="res://assets/long_button_on.png" type="Texture" id=10]
+[ext_resource path="res://assets/Book.png" type="Texture" id=11]
+[ext_resource path="res://assets/Mini_exit_t.png" type="Texture" id=12]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 28
+font_data = ExtResource( 5 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.654902, 0.537255, 0.537255, 1 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=3]
+
+[sub_resource type="StyleBoxFlat" id=4]
+
+[sub_resource type="Theme" id=5]
+TabContainer/styles/panel = SubResource( 2 )
+TabContainer/styles/tab_bg = SubResource( 3 )
+TabContainer/styles/tab_fg = SubResource( 4 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 34.0
+margin_right = -10.0
+margin_bottom = -10.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.305882, 0.192157, 0.164706, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Header" type="Label" parent="."]
+margin_top = 45.0
+margin_right = 1023.0
+margin_bottom = 138.0
+custom_fonts/font = SubResource( 1 )
+text = "STORE"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Money" type="Label" parent="."]
+margin_top = 5.0
+margin_right = 341.0
+margin_bottom = 61.0
+custom_fonts/font = SubResource( 7 )
+text = "Currency: 2000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 94.0
+theme = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Items" type="Tabs" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 34.0
+margin_right = -10.0
+margin_bottom = -10.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Items"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 21.0
+margin_top = 19.0
+margin_right = -22.0
+margin_bottom = -30.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="control" type="Node2D" parent="TabContainer/Items/RichTextLabel"]
+
+[node name="Panel1" type="Panel" parent="TabContainer/Items/RichTextLabel/control"]
+margin_right = 310.0
+margin_bottom = 416.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Holder" type="Sprite" parent="TabContainer/Items/RichTextLabel/control/Panel1"]
+position = Vector2( 154, 163 )
+scale = Vector2( 1.11328, 0.765625 )
+texture = ExtResource( 7 )
+
+[node name="TextureButton" type="TextureButton" parent="TabContainer/Items/RichTextLabel/control/Panel1"]
+margin_left = 9.0
+margin_top = 290.0
+margin_right = 300.0
+margin_bottom = 370.0
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 6 )
+texture_disabled = ExtResource( 6 )
+expand = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+slot = 1
+
+[node name="Label" type="Label" parent="TabContainer/Items/RichTextLabel/control/Panel1"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -148.5
+margin_right = 148.5
+margin_bottom = 41.0
+align = 1
+
+[node name="Panel2" type="Panel" parent="TabContainer/Items/RichTextLabel/control"]
+margin_left = 330.0
+margin_top = 1.0
+margin_right = 640.0
+margin_bottom = 417.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Holder" type="Sprite" parent="TabContainer/Items/RichTextLabel/control/Panel2"]
+position = Vector2( 154, 167 )
+scale = Vector2( 3.4375, 3.19531 )
+texture = ExtResource( 9 )
+
+[node name="TextureButton" type="TextureButton" parent="TabContainer/Items/RichTextLabel/control/Panel2"]
+margin_left = 9.0
+margin_top = 290.0
+margin_right = 300.0
+margin_bottom = 370.0
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 6 )
+texture_disabled = ExtResource( 6 )
+expand = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+slot = 2
+
+[node name="Label" type="Label" parent="TabContainer/Items/RichTextLabel/control/Panel2"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -148.5
+margin_right = 148.5
+margin_bottom = 41.0
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel3" type="Panel" parent="TabContainer/Items/RichTextLabel/control"]
+margin_left = 649.0
+margin_top = -1.0
+margin_right = 959.0
+margin_bottom = 415.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Holder" type="Sprite" parent="TabContainer/Items/RichTextLabel/control/Panel3"]
+position = Vector2( 153, 169 )
+scale = Vector2( 0.949219, 0.917969 )
+texture = ExtResource( 11 )
+
+[node name="TextureButton" type="TextureButton" parent="TabContainer/Items/RichTextLabel/control/Panel3"]
+margin_left = 9.0
+margin_top = 290.0
+margin_right = 300.0
+margin_bottom = 370.0
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 6 )
+texture_disabled = ExtResource( 6 )
+expand = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+slot = 3
+
+[node name="Label" type="Label" parent="TabContainer/Items/RichTextLabel/control/Panel3"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -148.5
+margin_right = 148.5
+margin_bottom = 41.0
+align = 1
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 915.0
+margin_top = 19.0
+margin_right = 988.0
+margin_bottom = 88.0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 12 )
+expand = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,0 +1,179 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/skill_bar.png" type="Texture" id=1]
+[ext_resource path="res://Inventory/Inventory.cs" type="Script" id=2]
+[ext_resource path="res://assets/Background_purple.png" type="Texture" id=3]
+[ext_resource path="res://assets/Red_vert_panel.png" type="Texture" id=4]
+[ext_resource path="res://assets/Mini_exit_t.png" type="Texture" id=5]
+[ext_resource path="res://assets/Bronze Helmet.png" type="Texture" id=6]
+[ext_resource path="res://Inventory/EquiptmentSlot.cs" type="Script" id=7]
+[ext_resource path="res://ReturnToMenu.cs" type="Script" id=8]
+[ext_resource path="res://assets/Mini_exit.png" type="Texture" id=9]
+
+[node name="Inventory" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="NinePatchRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 50
+custom_constants/margin_top = 50
+custom_constants/margin_left = 50
+custom_constants/margin_bottom = 50
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WholeContainer" type="HBoxContainer" parent="Background/MarginContainer"]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 974.0
+margin_bottom = 550.0
+
+[node name="WholeEquip" type="VBoxContainer" parent="Background/MarginContainer/WholeContainer"]
+margin_right = 400.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 400, 0 )
+custom_constants/separation = 20
+
+[node name="EquipHeader" type="HBoxContainer" parent="Background/MarginContainer/WholeContainer/WholeEquip"]
+margin_right = 400.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipHeader"]
+margin_right = 400.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+texture = ExtResource( 3 )
+expand = true
+
+[node name="EquipElements" type="HBoxContainer" parent="Background/MarginContainer/WholeContainer/WholeEquip"]
+margin_top = 100.0
+margin_right = 400.0
+margin_bottom = 500.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="EquipBars" type="VBoxContainer" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements"]
+margin_right = 100.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 100, 0 )
+
+[node name="Helmet" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars"]
+margin_right = 100.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 90, 90 )
+size_flags_horizontal = 3
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars/Helmet"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+texture = ExtResource( 6 )
+expand = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Character" type="HBoxContainer" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements"]
+margin_left = 104.0
+margin_right = 396.0
+margin_bottom = 400.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character"]
+margin_right = 292.0
+margin_bottom = 400.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EquipBars2" type="VBoxContainer" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements"]
+margin_left = 400.0
+margin_right = 400.0
+margin_bottom = 400.0
+
+[node name="WholeInventory" type="VBoxContainer" parent="Background/MarginContainer/WholeContainer"]
+margin_left = 404.0
+margin_right = 924.0
+margin_bottom = 500.0
+size_flags_horizontal = 3
+custom_constants/separation = 20
+
+[node name="InventoryHeader" type="HBoxContainer" parent="Background/MarginContainer/WholeContainer/WholeInventory"]
+margin_right = 520.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeInventory/InventoryHeader"]
+margin_right = 436.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+texture = ExtResource( 3 )
+expand = true
+
+[node name="Control" type="Control" parent="Background/MarginContainer/WholeContainer/WholeInventory/InventoryHeader"]
+margin_left = 440.0
+margin_right = 520.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+
+[node name="TextureButton" type="TextureButton" parent="Background/MarginContainer/WholeContainer/WholeInventory/InventoryHeader/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 5 )
+expand = true
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InventoryElements" type="ScrollContainer" parent="Background/MarginContainer/WholeContainer/WholeInventory"]
+margin_top = 100.0
+margin_right = 520.0
+margin_bottom = 500.0
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="Background/MarginContainer/WholeContainer/WholeInventory/InventoryElements"]
+margin_right = 520.0
+margin_bottom = 400.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 4

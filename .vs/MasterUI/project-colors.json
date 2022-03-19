@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "cdc6f64a-bebe-49ab-b5cd-1d34477646cc": {
+      "ProjectGuid": "cdc6f64a-bebe-49ab-b5cd-1d34477646cc",
+      "DisplayName": "MasterUI",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
