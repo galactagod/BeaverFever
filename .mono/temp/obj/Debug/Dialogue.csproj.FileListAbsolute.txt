@@ -1,0 +1,9 @@
+C:\Users\cbeck\Documents\Godot Projects\Dialogue\.mono\temp\bin\Debug\Dialogue.dll
+C:\Users\cbeck\Documents\Godot Projects\Dialogue\.mono\temp\bin\Debug\Dialogue.pdb
+C:\Users\cbeck\Documents\Godot Projects\Dialogue\.mono\temp\obj\Debug\Dialogue.csproj.AssemblyReference.cache
+C:\Users\cbeck\Documents\Godot Projects\Dialogue\.mono\temp\obj\Debug\Dialogue.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\cbeck\Documents\Godot Projects\Dialogue\.mono\temp\obj\Debug\Dialogue.AssemblyInfoInputs.cache
+C:\Users\cbeck\Documents\Godot Projects\Dialogue\.mono\temp\obj\Debug\Dialogue.AssemblyInfo.cs
+C:\Users\cbeck\Documents\Godot Projects\Dialogue\.mono\temp\obj\Debug\Dialogue.csproj.CoreCompileInputs.cache
+C:\Users\cbeck\Documents\Godot Projects\Dialogue\.mono\temp\obj\Debug\Dialogue.dll
+C:\Users\cbeck\Documents\Godot Projects\Dialogue\.mono\temp\obj\Debug\Dialogue.pdb

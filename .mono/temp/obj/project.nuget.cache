@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "1AffItqX0m28q2mDTa8wdU0cGxt6MKMvn7rZDb8Q7egLmMN4e3llq2BpQXnKxQ09r1/cERuxDI0syye02KPb2A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\cbeck\\Documents\\Godot Projects\\Dialogue\\Dialogue.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\cbeck\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.2\\microsoft.netframework.referenceassemblies.1.0.2.nupkg.sha512",
+    "C:\\Users\\cbeck\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net472\\1.0.2\\microsoft.netframework.referenceassemblies.net472.1.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}
