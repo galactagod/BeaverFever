@@ -41,6 +41,17 @@ public class SaveQuitButton : TextureButton
             temp.Add("equippable", item.equippable.ToString());
             temp.Add("equippedSlot", item.equippedSlot);
             temp.Add("inventorySlot", item.inventorySlot.ToString());
+            //Adding item effects
+            Godot.Collections.Array itemEffects = new Godot.Collections.Array();
+            for(int i = 0; i < item.whichStat.Count;i++)
+            {
+                Godot.Collections.Dictionary anotherTemp = new Godot.Collections.Dictionary();
+                anotherTemp.Add("stat", item.whichStat[i].ToString());
+                anotherTemp.Add("operator", item.operatorOnStat[i].ToString());
+                anotherTemp.Add("amount", item.amountOnStat[i].ToString());
+                itemEffects.Add(anotherTemp);
+            }
+            temp.Add("itemEffects", itemEffects);
             inventory.Add(temp);
         }
         jsonToWrite.Add("inventory", inventory);

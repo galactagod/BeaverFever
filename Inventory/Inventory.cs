@@ -33,6 +33,7 @@ public class Inventory : Control
             invSlotNew.Name = "InventorySlot" + item.inventorySlot.ToString();
             invSlotNew.GetNode("Icon").Set("texture", item.texture);
             invSlotNew.GetNode("Icon").Set("slot", item.inventorySlot);
+            invSlotNew.GetNode("Icon").Set("hint_tooltip", playerData.getStatLine(item));
             gridContainer.AddChild(invSlotNew);
         }
 
@@ -42,8 +43,8 @@ public class Inventory : Control
             helmetNode.Set("texture", temp.texture);
         }
         else
-        {
-            helmetNode.Set("texture", null);
+        { 
+            helmetNode.Set("texture", (Texture)GD.Load("res://assets/helmet background.png"));
         }
     }
 

@@ -17,12 +17,15 @@ public class EquiptmentSlot : TextureRect
     }
     public override object GetDragData(Vector2 position)
     {
-        if(Texture == null)
+        
+        String nameOfSlot = GetParent().Name;
+
+        if (!playerData.equipment.TryGetValue(nameOfSlot, out var data))
         {
             return null;
         }
-        String nameOfSlot = GetParent().Name;
-        Console.WriteLine(playerData.equipment.TryGetValue(nameOfSlot, out var data));
+
+
         var returnedData = new PlayerData.test(data, "Equiptment");
 
         // Handling UI aspect of the drag
@@ -74,6 +77,7 @@ public class EquiptmentSlot : TextureRect
         //Changing texture
         Texture = actualData.texture;
         Set("scale", actualData.scale);
+        Set("hint_tooltip", playerData.getStatLine(actualData));
 
         //Replacing it in the dictionary
         playerData.equipment.Remove(nameOfSlot);

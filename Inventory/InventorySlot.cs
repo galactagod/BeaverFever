@@ -71,9 +71,10 @@ public class InventorySlot : TextureRect
             //Swapping textures
             var nodeToSwapWith = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeInventory/InventoryElements/GridContainer/InventorySlot" + actualData.inventorySlot + "/Icon");
             nodeToSwapWith.Set("texture", Texture);
+            nodeToSwapWith.Set("hint_tooltip", Get("hint_tooltip"));
 
             Texture = actualData.texture;
-
+            Set("hint_tooltip", playerData.getStatLine(actualData));
             //Swapping actual Data
 
             var current = playerData.inv[slot];
@@ -104,7 +105,7 @@ public class InventorySlot : TextureRect
             playerData.equipment.Remove(actualData.equippedSlot);
             //make node have null texture
             var nodeToEmpty = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars/" + actualData.equippedSlot + "/Icon");
-            nodeToEmpty.Set("texture", null);
+            nodeToEmpty.Set("texture", (Texture)GD.Load("res://assets/helmet background.png"));
             actualData.equippedSlot = null;
             playerData.inv[actualData.inventorySlot] = actualData;
 

@@ -28,6 +28,11 @@ public class PlayerData : Node
         public bool equippable;
         public string equippedSlot;
         public int inventorySlot;
+
+        public List<string> whichStat = new List<string>();
+        public List<Char> operatorOnStat = new List<Char>();
+        public List<int> amountOnStat = new List<int>();
+
     }
 
     public class test : Godot.Object
@@ -41,6 +46,10 @@ public class PlayerData : Node
         public int inventorySlot;
         public string comingFrom;
 
+        public List<string> whichStat = new List<string>();
+        public List<Char> operatorOnStat = new List<Char>();
+        public List<int> amountOnStat = new List<int>();
+
         public test(item another, string comingFrom)
         {
             name = another.name;
@@ -50,6 +59,9 @@ public class PlayerData : Node
             equiptable = another.equippable;
             equiptedSlot = another.equippedSlot;
             inventorySlot = another.inventorySlot;
+            whichStat = another.whichStat;
+            amountOnStat = another.amountOnStat;
+            operatorOnStat = another.operatorOnStat;
             this.comingFrom = comingFrom;
         }
 
@@ -63,6 +75,9 @@ public class PlayerData : Node
             temp.equippable = equiptable;
             temp.equippedSlot = equiptedSlot;
             temp.inventorySlot = inventorySlot;
+            temp.whichStat = whichStat;
+            temp.amountOnStat = amountOnStat;
+            temp.operatorOnStat = operatorOnStat;
             return temp;
         }
     }
@@ -75,6 +90,16 @@ public class PlayerData : Node
     //The equipment that the user has on
     public Dictionary<string, item> equipment { get; set; }
 
+    public string getStatLine(item temp)
+    {
+        string statLine = "";
+        for (int i = 0; i < temp.amountOnStat.Count; i++)
+        {
+            statLine = statLine + temp.whichStat[i] + " " + temp.operatorOnStat[i].ToString() + " " + temp.amountOnStat[i].ToString() + "\n";
+        }
+        return statLine;
+    }
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -82,12 +107,39 @@ public class PlayerData : Node
         //add a statement to actually write the file in if its not there
         string filepath = "user://playerStatsFile.json";
         Godot.File files = new Godot.File();
-        files.Open(filepath, Godot.File.ModeFlags.ReadWrite);
-        Console.WriteLine(files.GetError().ToString());
-        string text = files.GetAsText();
-        var jsonFile = JSON.Parse(text).Result;
-        var ParsedData = jsonFile as Godot.Collections.Dictionary;
-        files.Close();
+        Godot.Collections.Dictionary ParsedData = new Godot.Collections.Dictionary();
+        if(files.FileExists(filepath))
+        {
+            files.Open(filepath, Godot.File.ModeFlags.ReadWrite);
+            Console.WriteLine(files.GetError().ToString());
+            string text = files.GetAsText();
+            var jsonFile = JSON.Parse(text).Result;
+            ParsedData = jsonFile as Godot.Collections.Dictionary;
+            files.Close();
+        }
+        else
+        {
+            files.Open(filepath, Godot.File.ModeFlags.WriteRead);
+
+            Godot.Collections.Dictionary jsonToWrite = new Godot.Collections.Dictionary();
+            jsonToWrite.Add("Attack", "0");
+            jsonToWrite.Add("Defense", "0");
+            jsonToWrite.Add("SpAttack", "0");
+            jsonToWrite.Add("SpDefense", "0");
+            jsonToWrite.Add("Stamina", "0");
+            jsonToWrite.Add("Health", "0");
+            jsonToWrite.Add("StatPoints", "0");
+            jsonToWrite.Add("Wallet", "0");
+            Godot.Collections.Array inventory = new Godot.Collections.Array();
+            jsonToWrite.Add("inventory", inventory);
+            files.StoreString(JSON.Print(jsonToWrite, "\t"));
+            string text = files.GetAsText();
+            var jsonFile = JSON.Parse(text).Result;
+            ParsedData = jsonFile as Godot.Collections.Dictionary;
+
+            files.Close();
+        }
+        
 
 
 
@@ -114,6 +166,12 @@ public class PlayerData : Node
             temp.equippable = Boolean.Parse((string)item["equippable"]);
             temp.equippedSlot = (string)item["equippedSlot"];
             temp.inventorySlot = Int32.Parse((string)item["inventorySlot"]);
+            foreach(Godot.Collections.Dictionary statEffect in (Godot.Collections.Array)item["itemEffects"])
+            {
+                temp.whichStat.Add((string)statEffect["stat"]);
+                temp.operatorOnStat.Add(Char.Parse((string)statEffect["operator"]));
+                temp.amountOnStat.Add(Int32.Parse((string)statEffect["amount"]));
+            }
             inv.Add(temp);
         }
 
@@ -152,6 +210,9 @@ public class PlayerData : Node
         slime.texture = (Texture)GD.Load(assetRoute + "Slime.png");
         slime.scale.x = 1;
         slime.scale.y = 1;
+        slime.amountOnStat.Add(5);
+        slime.whichStat.Add("Health");
+        slime.operatorOnStat.Add('+');
 
         
 
