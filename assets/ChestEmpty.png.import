@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ring_background.png-310a597519c4492604446405108cfe44.stex"
+path="res://.import/ChestEmpty.png-50df6075ff0feb3134ef09f2d1e0f083.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ring_background.png"
-dest_files=[ "res://.import/ring_background.png-310a597519c4492604446405108cfe44.stex" ]
+source_file="res://assets/ChestEmpty.png"
+dest_files=[ "res://.import/ChestEmpty.png-50df6075ff0feb3134ef09f2d1e0f083.stex" ]
 
 [params]
 

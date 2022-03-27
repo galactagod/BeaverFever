@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/boots_background.png-28a1c625941c0d1cba12d00d1d660962.stex"
+path="res://.import/Icon1.png-6f14293b252ac460bce95886bd5bf0ef.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/boots_background.png"
-dest_files=[ "res://.import/boots_background.png-28a1c625941c0d1cba12d00d1d660962.stex" ]
+source_file="res://assets/Icon1.png"
+dest_files=[ "res://.import/Icon1.png-6f14293b252ac460bce95886bd5bf0ef.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/helmet background.png-8058e05692ac1d9b8030012f4f483405.stex"
+path="res://.import/NecklaceEmpty.png-2ff250c545aaae1707444f3842e5e120.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/helmet background.png"
-dest_files=[ "res://.import/helmet background.png-8058e05692ac1d9b8030012f4f483405.stex" ]
+source_file="res://assets/NecklaceEmpty.png"
+dest_files=[ "res://.import/NecklaceEmpty.png-2ff250c545aaae1707444f3842e5e120.stex" ]
 
 [params]
 

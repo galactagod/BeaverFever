@@ -14,7 +14,6 @@ public class SaveQuitButton : TextureButton
         string filepath = "user://playerStatsFile.json";
         Godot.File files = new Godot.File();
         files.Open(filepath, Godot.File.ModeFlags.ReadWrite);
-        Console.WriteLine(files.GetError().ToString());
         string text = files.GetAsText();
 
 
@@ -41,20 +40,28 @@ public class SaveQuitButton : TextureButton
             temp.Add("equippable", item.equippable.ToString());
             temp.Add("equippedSlot", item.equippedSlot);
             temp.Add("inventorySlot", item.inventorySlot.ToString());
+            temp.Add("ableToBeEquippedSlot", item.ableToBeEquippedSlot);
             //Adding item effects
             Godot.Collections.Array itemEffects = new Godot.Collections.Array();
             for(int i = 0; i < item.whichStat.Count;i++)
             {
                 Godot.Collections.Dictionary anotherTemp = new Godot.Collections.Dictionary();
-                anotherTemp.Add("stat", item.whichStat[i].ToString());
-                anotherTemp.Add("operator", item.operatorOnStat[i].ToString());
-                anotherTemp.Add("amount", item.amountOnStat[i].ToString());
+                anotherTemp.Add("stat", item.whichStat[i]);
+                anotherTemp.Add("operator", item.operatorOnStat[i]);
+                anotherTemp.Add("amount", item.amountOnStat[i]);
                 itemEffects.Add(anotherTemp);
             }
             temp.Add("itemEffects", itemEffects);
+            
             inventory.Add(temp);
         }
         jsonToWrite.Add("inventory", inventory);
+        Godot.Collections.Array itemsAvaliable = new Godot.Collections.Array();
+        foreach (var name in playerData.itemsInStore)
+        {
+            itemsAvaliable.Add(name);
+        }
+        jsonToWrite.Add("itemsAvaliable", itemsAvaliable);
 
 
 

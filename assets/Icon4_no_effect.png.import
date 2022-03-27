@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pants_background.png-8a463b50068d6f792bcf8133af81d387.stex"
+path="res://.import/Icon4_no_effect.png-d4278a73ad1645dac65e438d03968b86.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pants_background.png"
-dest_files=[ "res://.import/pants_background.png-8a463b50068d6f792bcf8133af81d387.stex" ]
+source_file="res://assets/Icon4_no_effect.png"
+dest_files=[ "res://.import/Icon4_no_effect.png-d4278a73ad1645dac65e438d03968b86.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/neck_background.png-b78ac37929a8b2db4f7ec9e38601a551.stex"
+path="res://.import/Talisman2Empty.png-2f8f0c13d69c037179a1cdc993637a97.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/neck_background.png"
-dest_files=[ "res://.import/neck_background.png-b78ac37929a8b2db4f7ec9e38601a551.stex" ]
+source_file="res://assets/Talisman2Empty.png"
+dest_files=[ "res://.import/Talisman2Empty.png-2f8f0c13d69c037179a1cdc993637a97.stex" ]
 
 [params]
 

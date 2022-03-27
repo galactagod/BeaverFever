@@ -17,13 +17,6 @@ public class InventorySlot : TextureRect
     {
        var data = playerData.inv[slot];
        var returnedData = new PlayerData.test(data, "Inventory");
-       if (data.name == null)
-       {
-            Console.WriteLine("hi");
-       }
-        Console.WriteLine(data.name);
-        var pear = GetParent();
-        Console.WriteLine(pear.Name);
 
         // Handling UI aspect of the drag
         var dragTexture = new TextureRect();
@@ -86,30 +79,50 @@ public class InventorySlot : TextureRect
             playerData.inv[slot] = incoming;
             playerData.inv[actualData.inventorySlot] = current;
 
-            int counter = 0;
-            foreach(var item in playerData.inv)
-            {
-                Console.WriteLine(counter);
-                Console.WriteLine(item.name);
-                Console.WriteLine(item.inventorySlot);
-                counter++;
 
+            //refreshing the inventory values of the swapped values so the equipment pages knows where they are in the inventory
+            if(current.equippedSlot != null)
+            {
+                playerData.equipment.Remove(current.equippedSlot);
+                playerData.equipment.Add(current.equippedSlot, current);
             }
+
+            if(incoming.equippedSlot != null)
+            {
+                playerData.equipment.Remove(incoming.equippedSlot);
+                playerData.equipment.Add(incoming.equippedSlot, incoming);
+            }
+            
         }
 
 
 
         //if coming from equipment, clear the equipment from the slot
-        if(comingFrom == "Equiptment")
+        if(comingFrom == "EquipBars" || comingFrom == "EquipBars3")
         {
             playerData.equipment.Remove(actualData.equippedSlot);
+            //here we need to undo the stat changes from the item we had equipped
+            playerData.EquipChangesStatFilter(actualData, true);
+
             //make node have null texture
-            var nodeToEmpty = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars/" + actualData.equippedSlot + "/Icon");
-            nodeToEmpty.Set("texture", (Texture)GD.Load("res://assets/helmet background.png"));
+            var nodeToEmpty = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/" + comingFrom + "/" + actualData.equippedSlot + "/Icon");
+            nodeToEmpty.Set("texture", (Texture)GD.Load("res://assets/" + actualData.equippedSlot + "Empty" + ".png"));
             actualData.equippedSlot = null;
             playerData.inv[actualData.inventorySlot] = actualData;
 
-            Console.WriteLine(playerData.inv[actualData.inventorySlot].equippedSlot == null);
+            // Changing label text
+            var attackLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/AttackLabel");
+            attackLabelAfterEquips.Set("text", "Attack: " + playerData.attackFinal.ToString());
+            var defenseLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/DefenseLabel");
+            defenseLabelAfterEquips.Set("text", "Defense: " + playerData.defenseFinal.ToString());
+            var spAttackLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/SpAttackLabel");
+            spAttackLabelAfterEquips.Set("text", "SpAttack: " + playerData.spAttackFinal);
+            var spDefenseLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/SpDefenseLabel");
+            spDefenseLabelAfterEquips.Set("text", "SpDefense: " + playerData.spDefenseFinal);
+            var staminaLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/StaminaLabel");
+            staminaLabelAfterEquips.Set("text", "Stamina: " + playerData.staminaFinal);
+            var healthLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/HealthLabel");
+            healthLabelAfterEquips.Set("text", "Health: " + playerData.healthFinal.ToString());
         }
     }
 

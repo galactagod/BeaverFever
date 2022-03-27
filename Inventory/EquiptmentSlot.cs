@@ -25,8 +25,13 @@ public class EquiptmentSlot : TextureRect
             return null;
         }
 
-
-        var returnedData = new PlayerData.test(data, "Equiptment");
+        string comingFrom = "EquipBars3";
+        if(nameOfSlot == "Helmet"|| nameOfSlot == "Chest" || nameOfSlot == "Legs" || nameOfSlot == "Boots")
+        {
+            comingFrom = "EquipBars";
+        }
+          
+        var returnedData = new PlayerData.test(data, comingFrom);
 
         // Handling UI aspect of the drag
         var dragTexture = new TextureRect();
@@ -57,6 +62,33 @@ public class EquiptmentSlot : TextureRect
 
         //Getting the slot we are dropping it into
         String nameOfSlot = GetParent().Name;
+        //Getting the data and converting it as needed
+        var asTest = (PlayerData.test)data;
+        string comingFrom = asTest.comingFrom;
+        var actualData = asTest.makeItem();
+        asTest.Free();
+
+
+        String compareSlot = nameOfSlot;
+        if (compareSlot == "Talisman1" || compareSlot == "Talisman2")
+        {
+            compareSlot = "Talisman";
+        }
+
+        if (compareSlot != actualData.ableToBeEquippedSlot)
+        {
+            return;
+        }
+
+        if (comingFrom == "EquipBars3" || comingFrom == "EquipBars")
+        {
+            return;
+        }
+
+        if(actualData.equippedSlot != null)
+        {
+            return;
+        }
 
         //handling if there is something already equipted
         PlayerData.item apple;
@@ -65,12 +97,14 @@ public class EquiptmentSlot : TextureRect
             //if its there, we gotta go to its inventory and unequipt it
             apple.equippedSlot = null;
             playerData.inv[apple.inventorySlot] = apple;
+
+            //here we need to undo the equip stat changes of the item we have equipped
+            playerData.EquipChangesStatFilter(apple, true);
         }
 
+        
+
         //Changing inventory of inserted to make it equipted
-        var asTest = (PlayerData.test)data;
-        var actualData = asTest.makeItem();
-        asTest.Free();
         actualData.equippedSlot = nameOfSlot;
         playerData.inv[actualData.inventorySlot] = actualData;
 
@@ -84,15 +118,20 @@ public class EquiptmentSlot : TextureRect
         playerData.equipment.Add(nameOfSlot, actualData);
 
 
-        //making sure it saved
-        var ban = new PlayerData.item();
-        playerData.equipment.TryGetValue(nameOfSlot, out ban);
-        Console.WriteLine(ban.name);
-        Console.WriteLine(ban.inventorySlot);
-        Console.WriteLine(ban.equippedSlot);
-
-        Console.WriteLine(playerData.inv[ban.inventorySlot].name);
-
+        //here we need to do the equip stat changes of the new item we have equipped
+        playerData.EquipChangesStatFilter(actualData, false);
+        var attackLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/AttackLabel");
+        attackLabelAfterEquips.Set("text", "Attack: " + playerData.attackFinal.ToString());
+        var defenseLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/DefenseLabel");
+        defenseLabelAfterEquips.Set("text", "Defense: " + playerData.defenseFinal.ToString());
+        var spAttackLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/SpAttackLabel");
+        spAttackLabelAfterEquips.Set("text", "SpAttack: " + playerData.spAttackFinal);
+        var spDefenseLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/SpDefenseLabel");
+        spDefenseLabelAfterEquips.Set("text", "SpDefense: " + playerData.spDefenseFinal);
+        var staminaLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/StaminaLabel");
+        staminaLabelAfterEquips.Set("text", "Stamina: " + playerData.staminaFinal);
+        var healthLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/HealthLabel");
+        healthLabelAfterEquips.Set("text", "Health: " + playerData.healthFinal.ToString());
 
     }
 
@@ -106,13 +145,6 @@ public class EquiptmentSlot : TextureRect
 
     public override bool CanDropData(Vector2 position, object data)
     {
-        //var asTest = (Global.test)data;
-        //var comingFrom = asTest.comingFrom;
-        //asTest.Free();
-        //if(comingFrom == "Equiptment")
-        //{
-        //    return false;
-        //}
         return true;
     }
 }

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/chest_background.png-873fed55196fb4b512a282168c1ab89a.stex"
+path="res://.import/LegsEmpty.png-3bac4cfa3d13f19cd009a024607368e8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/chest_background.png"
-dest_files=[ "res://.import/chest_background.png-873fed55196fb4b512a282168c1ab89a.stex" ]
+source_file="res://assets/LegsEmpty.png"
+dest_files=[ "res://.import/LegsEmpty.png-3bac4cfa3d13f19cd009a024607368e8.stex" ]
 
 [params]
 
