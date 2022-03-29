@@ -1,0 +1,435 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/skill_bar.png" type="Texture" id=1]
+[ext_resource path="res://Inventory/Inventory.cs" type="Script" id=2]
+[ext_resource path="res://assets/Background_purple.png" type="Texture" id=3]
+[ext_resource path="res://assets/Red_vert_panel.png" type="Texture" id=4]
+[ext_resource path="res://assets/Mini_exit_t.png" type="Texture" id=5]
+[ext_resource path="res://Inventory/EquiptmentSlot.cs" type="Script" id=7]
+[ext_resource path="res://ReturnToMenu.cs" type="Script" id=8]
+[ext_resource path="res://assets/Mini_exit.png" type="Texture" id=9]
+[ext_resource path="res://fonts/Roboto-Bold.ttf" type="DynamicFontData" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+size = 49
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 43
+font_data = ExtResource( 10 )
+
+[node name="Inventory" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="NinePatchRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 50
+custom_constants/margin_top = 50
+custom_constants/margin_left = 50
+custom_constants/margin_bottom = 50
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WholeContainer" type="HBoxContainer" parent="Background/MarginContainer"]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 974.0
+margin_bottom = 550.0
+
+[node name="WholeEquip" type="VBoxContainer" parent="Background/MarginContainer/WholeContainer"]
+margin_right = 400.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 400, 0 )
+custom_constants/separation = 20
+
+[node name="EquipHeader" type="HBoxContainer" parent="Background/MarginContainer/WholeContainer/WholeEquip"]
+margin_right = 400.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipHeader"]
+margin_right = 400.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+texture = ExtResource( 3 )
+expand = true
+
+[node name="Label" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipHeader/TextureRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -118.0
+margin_top = -29.0
+margin_right = 118.0
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 1 )
+text = "Equipment"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EquipElements" type="HBoxContainer" parent="Background/MarginContainer/WholeContainer/WholeEquip"]
+margin_top = 100.0
+margin_right = 400.0
+margin_bottom = 500.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="EquipBars" type="VBoxContainer" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements"]
+margin_right = 100.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 100, 0 )
+custom_constants/separation = 10
+
+[node name="Helmet" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars"]
+margin_right = 100.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 90, 90 )
+size_flags_horizontal = 3
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars/Helmet"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+expand = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Chest" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars"]
+margin_top = 100.0
+margin_right = 100.0
+margin_bottom = 190.0
+rect_min_size = Vector2( 90, 90 )
+size_flags_horizontal = 3
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars/Chest"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+expand = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Legs" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars"]
+margin_top = 200.0
+margin_right = 100.0
+margin_bottom = 290.0
+rect_min_size = Vector2( 90, 90 )
+size_flags_horizontal = 3
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars/Legs"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+expand = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Boots" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars"]
+margin_top = 300.0
+margin_right = 100.0
+margin_bottom = 390.0
+rect_min_size = Vector2( 90, 90 )
+size_flags_horizontal = 3
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars/Boots"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+expand = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Character" type="HBoxContainer" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements"]
+margin_left = 104.0
+margin_right = 296.0
+margin_bottom = 400.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character"]
+margin_right = 192.0
+margin_bottom = 400.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer"]
+margin_right = 192.0
+margin_bottom = 157.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HeaderLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
+margin_right = 192.0
+margin_bottom = 19.0
+custom_fonts/font = SubResource( 3 )
+text = "Stats After Equips"
+
+[node name="AttackLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
+margin_top = 23.0
+margin_right = 192.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 3 )
+text = "Attack: "
+
+[node name="DefenseLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
+margin_top = 46.0
+margin_right = 192.0
+margin_bottom = 65.0
+custom_fonts/font = SubResource( 3 )
+text = "Defense: "
+
+[node name="SpAttackLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
+margin_top = 69.0
+margin_right = 192.0
+margin_bottom = 88.0
+custom_fonts/font = SubResource( 3 )
+text = "SpAttack:"
+
+[node name="SpDefenseLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
+margin_top = 92.0
+margin_right = 192.0
+margin_bottom = 111.0
+custom_fonts/font = SubResource( 3 )
+text = "SpDefense: "
+
+[node name="StaminaLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
+margin_top = 115.0
+margin_right = 192.0
+margin_bottom = 134.0
+custom_fonts/font = SubResource( 3 )
+text = "Stamina: "
+
+[node name="HealthLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
+margin_top = 138.0
+margin_right = 192.0
+margin_bottom = 157.0
+custom_fonts/font = SubResource( 3 )
+text = "Health: "
+
+[node name="EquipBars3" type="VBoxContainer" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements"]
+margin_left = 300.0
+margin_right = 400.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 100, 0 )
+custom_constants/separation = 10
+
+[node name="Necklace" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3"]
+margin_right = 100.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 90, 90 )
+size_flags_horizontal = 3
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3/Necklace"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+expand = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Weapon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3"]
+margin_top = 100.0
+margin_right = 100.0
+margin_bottom = 190.0
+rect_min_size = Vector2( 90, 90 )
+size_flags_horizontal = 3
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3/Weapon"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+expand = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Talisman1" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3"]
+margin_top = 200.0
+margin_right = 100.0
+margin_bottom = 290.0
+rect_min_size = Vector2( 90, 90 )
+size_flags_horizontal = 3
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3/Talisman1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+expand = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Talisman2" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3"]
+margin_top = 300.0
+margin_right = 100.0
+margin_bottom = 390.0
+rect_min_size = Vector2( 90, 90 )
+size_flags_horizontal = 3
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3/Talisman2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+expand = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WholeInventory" type="VBoxContainer" parent="Background/MarginContainer/WholeContainer"]
+margin_left = 404.0
+margin_right = 924.0
+margin_bottom = 500.0
+size_flags_horizontal = 3
+custom_constants/separation = 20
+
+[node name="InventoryHeader" type="HBoxContainer" parent="Background/MarginContainer/WholeContainer/WholeInventory"]
+margin_right = 520.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeInventory/InventoryHeader"]
+margin_right = 436.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+texture = ExtResource( 3 )
+expand = true
+
+[node name="Label" type="Label" parent="Background/MarginContainer/WholeContainer/WholeInventory/InventoryHeader/TextureRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -91.5
+margin_top = -25.5
+margin_right = 91.5
+margin_bottom = 25.5
+custom_fonts/font = SubResource( 2 )
+text = "Inventory"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="Background/MarginContainer/WholeContainer/WholeInventory/InventoryHeader"]
+margin_left = 440.0
+margin_right = 520.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+
+[node name="TextureButton" type="TextureButton" parent="Background/MarginContainer/WholeContainer/WholeInventory/InventoryHeader/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 5 )
+expand = true
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InventoryElements" type="ScrollContainer" parent="Background/MarginContainer/WholeContainer/WholeInventory"]
+margin_top = 100.0
+margin_right = 520.0
+margin_bottom = 500.0
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="Background/MarginContainer/WholeContainer/WholeInventory/InventoryElements"]
+margin_right = 520.0
+margin_bottom = 400.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 4

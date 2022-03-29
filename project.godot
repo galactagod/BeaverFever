@@ -9,13 +9,14 @@
 config_version=4
 
 [application]
-
 config/name="Beaver Fever"
 run/main_scene="res://src/Levels/LevelTemplate.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
+
+PlayerData="*res://PlayerData.cs"
 PlayerStats="*res://src/Autoloads/PlayerStats.cs"
 GameControl="*res://src/Autoloads/GameControl.cs"
 
@@ -91,6 +92,7 @@ key_6={
 3d_physics/layer_2="Enemies"
 2d_physics/layer_3="World"
 3d_physics/layer_3="World"
+
 
 [physics]
 
