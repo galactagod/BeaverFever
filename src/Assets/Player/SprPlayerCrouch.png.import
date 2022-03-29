@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex"
+path="res://.import/SprPlayerCrouch.png-4615e4c5c713e40166208a41c9ca2824.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon.png"
-dest_files=[ "res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex" ]
+source_file="res://src/Assets/Player/SprPlayerCrouch.png"
+dest_files=[ "res://.import/SprPlayerCrouch.png-4615e4c5c713e40166208a41c9ca2824.stex" ]
 
 [params]
 
