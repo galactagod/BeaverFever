@@ -18,7 +18,7 @@ public class StatMenuButton : TextureButton
 
     public override void _Pressed()
     {
-        GetTree().ChangeScene("res://" + toOpen + ".tscn");
+        GetTree().ChangeScene(toOpen);
     }
 
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,8 +1,8 @@
 [gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://Store/BuyButton.cs" type="Script" id=1]
-[ext_resource path="res://Store/Store.cs" type="Script" id=2]
-[ext_resource path="res://ReturnToMenu.cs" type="Script" id=3]
+[ext_resource path="res://src/Ui/Store/BuyButton.cs" type="Script" id=1]
+[ext_resource path="res://src/Ui/Store/Store.cs" type="Script" id=2]
+[ext_resource path="res://src/Ui/MainMenu/ReturnToMenu.cs" type="Script" id=3]
 [ext_resource path="res://assets/KiriFont.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://fonts/Roboto-Bold.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://assets/long_button_off.png" type="Texture" id=6]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/long_button_on.png" type="Texture" id=10]
 [ext_resource path="res://assets/Book.png" type="Texture" id=11]
 [ext_resource path="res://assets/Mini_exit_t.png" type="Texture" id=12]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
