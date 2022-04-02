@@ -1,0 +1,13 @@
+<Project Sdk="Godot.NET.Sdk/3.3.0">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <RootNamespace>BeaverFever</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="src\Enemy\**" />
+    <EmbeddedResource Remove="src\Enemy\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\GeneralScripts\" />
+  </ItemGroup>
+</Project>
