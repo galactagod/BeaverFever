@@ -73,7 +73,7 @@ texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 3 )
 expand = true
 script = ExtResource( 2 )
-toOpen = "Inventory/Inventory"
+toOpen = "res://src/Ui/Inventory/Inventory.tscn"
 
 [node name="Label" type="Label" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer/InventoryButton"]
 anchor_left = 0.5
@@ -100,7 +100,7 @@ texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 3 )
 expand = true
 script = ExtResource( 2 )
-toOpen = "Store/Store"
+toOpen = "res://src/Ui/Store/Store.tscn"
 
 [node name="Label" type="Label" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer/StoreButton"]
 anchor_left = 0.5

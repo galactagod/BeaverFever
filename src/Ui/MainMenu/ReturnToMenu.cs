@@ -16,7 +16,7 @@ public class ReturnToMenu : TextureButton
 
     public override void _Pressed()
     {
-        GetTree().ChangeScene("res://MasterUI.tscn");
+        GetTree().ChangeScene("res://src/Ui/MainMenu/MasterUI.tscn");
     }
 
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.

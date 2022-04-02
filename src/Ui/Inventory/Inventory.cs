@@ -24,7 +24,7 @@ public class Inventory : Control
 
     public void InitializeUI()
     {
-        var templateInvSlot = GD.Load<PackedScene>("res://Inventory/InventorySlot.tscn");
+        var templateInvSlot = GD.Load<PackedScene>("res://src/Ui/Inventory/InventorySlot.tscn");
 
         var gridContainer = GetNode("Background/MarginContainer/WholeContainer/WholeInventory/InventoryElements/GridContainer");
         //Creating some test items and holding them here
