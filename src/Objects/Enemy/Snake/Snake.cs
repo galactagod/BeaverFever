@@ -1,10 +1,11 @@
 using Godot;
 using System;
 
-public class GrayWolf : EnemyMovementAct
+public class Snake : EnemyMovementAct
 {
     private int _timer = 0;
-  
+
+
     public override void _Ready()
     {
         base._Ready();

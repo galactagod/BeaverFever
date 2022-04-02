@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\plasm\\Programs\\Godot Projects\\BOXING GAME\\Boxing Game.csproj",
-      "projectName": "Boxing Game",
-      "projectPath": "C:\\Users\\plasm\\Programs\\Godot Projects\\BOXING GAME\\Boxing Game.csproj",
+      "projectUniqueName": "C:\\Users\\plasm\\Programs\\Godot Projects\\Beaver Fever\\Beaver Fever.csproj",
+      "projectName": "Beaver Fever",
+      "projectPath": "C:\\Users\\plasm\\Programs\\Godot Projects\\Beaver Fever\\Beaver Fever.csproj",
       "packagesPath": "C:\\Users\\plasm\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\plasm\\Programs\\Godot Projects\\Beaver Fever\\.mono\\temp\\obj\\",
       "projectStyle": "PackageReference",

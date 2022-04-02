@@ -10,7 +10,6 @@
 [ext_resource path="res://assets/Mini_exit.png" type="Texture" id=9]
 [ext_resource path="res://fonts/Roboto-Bold.ttf" type="DynamicFontData" id=10]
 
-
 [sub_resource type="DynamicFont" id=1]
 size = 49
 font_data = ExtResource( 10 )
