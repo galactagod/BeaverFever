@@ -70,9 +70,9 @@ public class EquiptmentSlot : TextureRect
 
 
         String compareSlot = nameOfSlot;
-        if (compareSlot == "Talisman1" || compareSlot == "Talisman2")
+        if (compareSlot == "Skill1" || compareSlot == "Skill2" || compareSlot == "Skill3" || compareSlot == "Skill4")
         {
-            compareSlot = "Talisman";
+            compareSlot = "Skill";
         }
 
         if (compareSlot != actualData.ableToBeEquippedSlot)
@@ -91,12 +91,16 @@ public class EquiptmentSlot : TextureRect
         }
 
         //handling if there is something already equipted
+        
         PlayerData.item apple;
         if(playerData.equipment.TryGetValue(nameOfSlot, out apple))
         {
             //if its there, we gotta go to its inventory and unequipt it
             apple.equippedSlot = null;
-            playerData.inv[apple.inventorySlot] = apple;
+            if (compareSlot != "Skill")
+                playerData.inv[apple.inventorySlot] = apple;
+            else
+                playerData.skills[apple.inventorySlot] = apple;
 
             //here we need to undo the equip stat changes of the item we have equipped
             playerData.EquipChangesStatFilter(apple, true);
@@ -106,7 +110,10 @@ public class EquiptmentSlot : TextureRect
 
         //Changing inventory of inserted to make it equipted
         actualData.equippedSlot = nameOfSlot;
-        playerData.inv[actualData.inventorySlot] = actualData;
+        if (compareSlot != "Skill")
+            playerData.inv[actualData.inventorySlot] = actualData;
+        else
+            playerData.skills[actualData.inventorySlot] = actualData;
 
         //Changing texture
         Texture = actualData.texture;

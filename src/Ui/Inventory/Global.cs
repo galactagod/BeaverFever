@@ -17,7 +17,8 @@ public static class Global
         whichStat = new List<string> {"Health"},
         operatorOnStat = new List<string> {"+"},
         equippable = true,
-        ableToBeEquippedSlot = "Helmet"
+        ableToBeEquippedSlot = "Helmet",
+        type = "item"
         },
         new PlayerData.item {
         name = "Dual Sword",
@@ -28,7 +29,8 @@ public static class Global
         whichStat = new List<string> {"Attack"},
         operatorOnStat = new List<string> {"+"},
         equippable = true,
-        ableToBeEquippedSlot = "Weapon"
+        ableToBeEquippedSlot = "Weapon",
+        type = "item"
         },
         new PlayerData.item {
         name = "Book",
@@ -39,7 +41,8 @@ public static class Global
         whichStat = new List<string> {"SpAttack"},
         operatorOnStat = new List<string> {"+"},
         equippable = true,
-        ableToBeEquippedSlot = "Talisman"
+        ableToBeEquippedSlot = "Skill",
+        type = "skill"
         },
         new PlayerData.item {
         name = "Slime",
@@ -50,10 +53,21 @@ public static class Global
         whichStat = new List<string> {"SpDefense"},
         operatorOnStat = new List<string> {"+"},
         equippable = true,
-        ableToBeEquippedSlot = "Talisman"
+        ableToBeEquippedSlot = "Talisman",
+        type="item"
+        },
+        new PlayerData.item {
+        name = "Bronze Helmet",
+        price = 500,
+        texture = (Texture) GD.Load(assetRoute + "Bronze Helmet.png"),
+        scale = new Vector2(1,1),
+        amountOnStat = new List<string> {"4"},
+        whichStat = new List<string> {"Health"},
+        operatorOnStat = new List<string> {"+"},
+        equippable = true,
+        ableToBeEquippedSlot = "Helmet",
+        type = "skill"
         }
-
-
 
     };
 }
