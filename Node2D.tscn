@@ -1,0 +1,507 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Player.cs" type="Script" id=1]
+[ext_resource path="res://assets/backgrounds/background.jpg" type="Texture" id=2]
+[ext_resource path="res://assets/skills/weapons/dagger/Dagger 1 Mod 1.png" type="Texture" id=3]
+[ext_resource path="res://assets/skills/passives/praying/Praying Mod 1.png" type="Texture" id=4]
+[ext_resource path="res://assets/skills/body/boots/Boots 1 Mod 1.png" type="Texture" id=5]
+[ext_resource path="res://assets/skills/passives/leaves/Leafs 1 Original.png" type="Texture" id=6]
+[ext_resource path="res://assets/skills/body/armor/Body 3 Original.png" type="Texture" id=7]
+[ext_resource path="res://assets/skills/body/wisdom/Book 1 Mod 1.png" type="Texture" id=8]
+[ext_resource path="res://assets/skills/weapons/sword/Blade Mod 1.png" type="Texture" id=9]
+[ext_resource path="res://assets/skills/strength/claws/Rip Mod 1.png" type="Texture" id=10]
+[ext_resource path="res://assets/skills/strength/teeth/Sharp Mod 1.png" type="Texture" id=11]
+[ext_resource path="res://assets/skills/weapons/bow and arrow/Bow Mod 1.png" type="Texture" id=12]
+[ext_resource path="res://assets/skills/passives/night/Moon Mod 1.png" type="Texture" id=13]
+[ext_resource path="res://assets/skills/strength/punch/Attack Mod 1.png" type="Texture" id=14]
+
+[node name="Skill Tree" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Menu" type="Control" parent="."]
+margin_right = 1023.0
+margin_bottom = 598.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="Menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Vertical Container" type="VBoxContainer" parent="Menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 2.0
+margin_bottom = 6.0
+rect_min_size = Vector2( 1025, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tier_4 - strength" type="HBoxContainer" parent="Menu/Vertical Container"]
+margin_right = 1025.0
+margin_bottom = 148.35
+rect_min_size = Vector2( 0, 148.35 )
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_4 - strength"]
+margin_right = 341.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 341, 0 )
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer"]
+margin_top = 20.0
+margin_right = 341.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 100, 100 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PunchBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer/VBoxContainer"]
+margin_right = 341.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+rect_pivot_offset = Vector2( 1535, 547 )
+hint_tooltip = "Improve Punching ability"
+texture_normal = ExtResource( 14 )
+expand = true
+stretch_mode = 3
+
+[node name="punchLabel" type="Label" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer/VBoxContainer"]
+margin_top = 68.0
+margin_right = 341.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 100, 40 )
+text = "Punch
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Menu/Vertical Container/Tier_4 - strength"]
+margin_left = 345.0
+margin_right = 686.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 341, 0 )
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer2"]
+margin_top = 20.0
+margin_right = 341.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 100, 100 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="clawsBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer2/VBoxContainer"]
+margin_right = 341.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 10 )
+expand = true
+stretch_mode = 3
+
+[node name="clawsLabel" type="Label" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer2/VBoxContainer"]
+margin_top = 68.0
+margin_right = 341.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 100, 40 )
+text = "Claws
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Menu/Vertical Container/Tier_4 - strength"]
+margin_left = 690.0
+margin_right = 1025.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 335, 0 )
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer3"]
+margin_top = 20.0
+margin_right = 335.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 100, 100 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="jawsBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer3/VBoxContainer"]
+margin_right = 335.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 11 )
+expand = true
+stretch_mode = 3
+
+[node name="jawsLabel" type="Label" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer3/VBoxContainer"]
+margin_top = 68.0
+margin_right = 335.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 100, 40 )
+text = "Jaws"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tier_3 - body" type="HBoxContainer" parent="Menu/Vertical Container"]
+margin_top = 152.0
+margin_right = 1025.0
+margin_bottom = 300.35
+rect_min_size = Vector2( 0, 148.35 )
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_3 - body"]
+margin_right = 341.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 341, 0 )
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer"]
+margin_top = 20.0
+margin_right = 341.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 100, 100 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="armorBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer/VBoxContainer"]
+margin_right = 341.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 7 )
+expand = true
+stretch_mode = 3
+
+[node name="armorLabel" type="Label" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer/VBoxContainer"]
+margin_top = 68.0
+margin_right = 341.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 100, 40 )
+text = "Armor"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Menu/Vertical Container/Tier_3 - body"]
+margin_left = 345.0
+margin_right = 686.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 341, 0 )
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer2"]
+margin_top = 20.0
+margin_right = 341.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 100, 100 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bootBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer2/VBoxContainer"]
+margin_right = 341.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 5 )
+expand = true
+stretch_mode = 3
+
+[node name="bootLabel" type="Label" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer2/VBoxContainer"]
+margin_top = 68.0
+margin_right = 341.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 100, 40 )
+text = "Boots"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Menu/Vertical Container/Tier_3 - body"]
+margin_left = 690.0
+margin_right = 1025.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 335, 0 )
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer3"]
+margin_top = 20.0
+margin_right = 335.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 100, 100 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="wisdomBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer3/VBoxContainer"]
+margin_right = 335.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 8 )
+expand = true
+stretch_mode = 3
+
+[node name="wisdomLabel" type="Label" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer3/VBoxContainer"]
+margin_top = 68.0
+margin_right = 335.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 100, 40 )
+text = "Wisdom"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tier_2 - weapons" type="HBoxContainer" parent="Menu/Vertical Container"]
+margin_top = 304.0
+margin_right = 1025.0
+margin_bottom = 452.35
+rect_min_size = Vector2( 0, 148.35 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_2 - weapons"]
+margin_right = 341.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 341, 0 )
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_2 - weapons/VBoxContainer"]
+margin_top = 20.0
+margin_right = 341.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 100, 100 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="swordBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_2 - weapons/VBoxContainer/VBoxContainer"]
+margin_right = 341.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 9 )
+expand = true
+stretch_mode = 3
+
+[node name="swordLabel" type="Label" parent="Menu/Vertical Container/Tier_2 - weapons/VBoxContainer/VBoxContainer"]
+margin_top = 68.0
+margin_right = 341.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 100, 40 )
+text = "Sword
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Menu/Vertical Container/Tier_2 - weapons"]
+margin_left = 345.0
+margin_right = 686.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 341, 0 )
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_2 - weapons/VBoxContainer2"]
+margin_top = 20.0
+margin_right = 341.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 100, 100 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="daggerBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_2 - weapons/VBoxContainer2/VBoxContainer"]
+margin_right = 341.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 3 )
+expand = true
+stretch_mode = 3
+
+[node name="daggerLabel" type="Label" parent="Menu/Vertical Container/Tier_2 - weapons/VBoxContainer2/VBoxContainer"]
+margin_top = 68.0
+margin_right = 341.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 100, 40 )
+text = "Dagger"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Menu/Vertical Container/Tier_2 - weapons"]
+margin_left = 690.0
+margin_right = 1025.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 335, 0 )
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_2 - weapons/VBoxContainer3"]
+margin_top = 20.0
+margin_right = 335.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 100, 100 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bowBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_2 - weapons/VBoxContainer3/VBoxContainer"]
+margin_right = 335.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 12 )
+expand = true
+stretch_mode = 3
+
+[node name="bowLabel" type="Label" parent="Menu/Vertical Container/Tier_2 - weapons/VBoxContainer3/VBoxContainer"]
+margin_top = 68.0
+margin_right = 335.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 100, 40 )
+text = "Bow"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tier_1 - passives" type="HBoxContainer" parent="Menu/Vertical Container"]
+margin_top = 456.0
+margin_right = 1025.0
+margin_bottom = 604.35
+rect_min_size = Vector2( 0, 148.35 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_1 - passives"]
+margin_right = 341.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 341, 0 )
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_1 - passives/VBoxContainer"]
+margin_top = 20.0
+margin_right = 341.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 100, 100 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="moonBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_1 - passives/VBoxContainer/VBoxContainer"]
+margin_right = 341.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 13 )
+expand = true
+stretch_mode = 3
+
+[node name="moonLabel" type="Label" parent="Menu/Vertical Container/Tier_1 - passives/VBoxContainer/VBoxContainer"]
+margin_top = 68.0
+margin_right = 341.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 100, 40 )
+text = "Night
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Menu/Vertical Container/Tier_1 - passives"]
+margin_left = 345.0
+margin_right = 686.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 341, 0 )
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_1 - passives/VBoxContainer2"]
+margin_top = 20.0
+margin_right = 341.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 100, 100 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="leavesBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_1 - passives/VBoxContainer2/VBoxContainer"]
+margin_right = 341.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 6 )
+expand = true
+stretch_mode = 3
+
+[node name="leavesLabel" type="Label" parent="Menu/Vertical Container/Tier_1 - passives/VBoxContainer2/VBoxContainer"]
+margin_top = 68.0
+margin_right = 341.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 100, 40 )
+text = "Leaves"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Menu/Vertical Container/Tier_1 - passives"]
+margin_left = 690.0
+margin_right = 1025.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 335, 0 )
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_1 - passives/VBoxContainer3"]
+margin_top = 20.0
+margin_right = 335.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 100, 100 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="prayingBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_1 - passives/VBoxContainer3/VBoxContainer"]
+margin_right = 335.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 4 )
+expand = true
+stretch_mode = 3
+
+[node name="prayingLabel" type="Label" parent="Menu/Vertical Container/Tier_1 - passives/VBoxContainer3/VBoxContainer"]
+margin_top = 68.0
+margin_right = 335.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 100, 40 )
+text = "Vampire
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

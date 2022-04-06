@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex"
+path="res://.import/Boots 1 Mod 6.png-0b236c0a4aa70e4204332fbe60591c8f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon.png"
-dest_files=[ "res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex" ]
+source_file="res://assets/skills/body/boots/Boots 1 Mod 6.png"
+dest_files=[ "res://.import/Boots 1 Mod 6.png-0b236c0a4aa70e4204332fbe60591c8f.stex" ]
 
 [params]
 
@@ -20,9 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-
-flags/filter=false
-
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
