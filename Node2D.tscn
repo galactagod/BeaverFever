@@ -1,19 +1,22 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Player.cs" type="Script" id=1]
 [ext_resource path="res://assets/backgrounds/background.jpg" type="Texture" id=2]
-[ext_resource path="res://assets/skills/weapons/dagger/Dagger 1 Mod 1.png" type="Texture" id=3]
-[ext_resource path="res://assets/skills/passives/praying/Praying Mod 1.png" type="Texture" id=4]
+[ext_resource path="res://fonts/ARIALBD.TTF" type="DynamicFontData" id=3]
+[ext_resource path="res://fonts/ARIAL.TTF" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/skills/body/boots/Boots 1 Mod 1.png" type="Texture" id=5]
-[ext_resource path="res://assets/skills/passives/leaves/Leafs 1 Original.png" type="Texture" id=6]
 [ext_resource path="res://assets/skills/body/armor/Body 3 Original.png" type="Texture" id=7]
-[ext_resource path="res://assets/skills/body/wisdom/Book 1 Mod 1.png" type="Texture" id=8]
-[ext_resource path="res://assets/skills/weapons/sword/Blade Mod 1.png" type="Texture" id=9]
 [ext_resource path="res://assets/skills/strength/claws/Rip Mod 1.png" type="Texture" id=10]
 [ext_resource path="res://assets/skills/strength/teeth/Sharp Mod 1.png" type="Texture" id=11]
-[ext_resource path="res://assets/skills/weapons/bow and arrow/Bow Mod 1.png" type="Texture" id=12]
-[ext_resource path="res://assets/skills/passives/night/Moon Mod 1.png" type="Texture" id=13]
 [ext_resource path="res://assets/skills/strength/punch/Attack Mod 1.png" type="Texture" id=14]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+use_mipmaps = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 4 )
 
 [node name="Skill Tree" type="Node2D"]
 script = ExtResource( 1 )
@@ -46,21 +49,87 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Tier_4 - strength" type="HBoxContainer" parent="Menu/Vertical Container"]
-margin_right = 1025.0
+[node name="Skill Points" type="HBoxContainer" parent="Menu/Vertical Container"]
+margin_right = 1123.0
 margin_bottom = 148.35
 rect_min_size = Vector2( 0, 148.35 )
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_4 - strength"]
-margin_right = 341.0
+[node name="VBoxContainer2" type="VBoxContainer" parent="Menu/Vertical Container/Skill Points"]
+margin_left = 391.0
+margin_right = 732.0
 margin_bottom = 148.0
 rect_min_size = Vector2( 341, 0 )
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Skill Points/VBoxContainer2"]
 margin_top = 20.0
 margin_right = 341.0
+margin_bottom = 127.0
+rect_min_size = Vector2( 100, 100 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Menu/Vertical Container/Skill Points/VBoxContainer2/VBoxContainer"]
+rect_min_size = Vector2( 100, 40 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "120"
+
+[node name="skillsLabel2" type="Label" parent="Menu/Vertical Container/Skill Points/VBoxContainer2/VBoxContainer"]
+margin_top = 44.0
+margin_right = 341.0
+margin_bottom = 107.0
+rect_min_size = Vector2( 100, 40 )
+custom_fonts/font = SubResource( 2 )
+text = "SKILL POINTS
+
+"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tier_4 - strength" type="HBoxContainer" parent="Menu/Vertical Container"]
+margin_top = 152.0
+margin_right = 1123.0
+margin_bottom = 300.35
+rect_min_size = Vector2( 0, 148.35 )
+alignment = 1
+
+[node name="Category" type="VBoxContainer" parent="Menu/Vertical Container/Tier_4 - strength"]
+margin_right = 100.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 100, 100 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="offenseLabel" type="Label" parent="Menu/Vertical Container/Tier_4 - strength/Category"]
+margin_left = -100.0
+margin_top = 46.0
+margin_bottom = 86.0
+rect_min_size = Vector2( 100, 40 )
+text = "Offense
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_4 - strength"]
+margin_left = 104.0
+margin_right = 439.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 335, 0 )
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer"]
+margin_top = 20.0
+margin_right = 335.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 100, 100 )
 alignment = 1
@@ -69,7 +138,7 @@ __meta__ = {
 }
 
 [node name="PunchBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer/VBoxContainer"]
-margin_right = 341.0
+margin_right = 335.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
 rect_pivot_offset = Vector2( 1535, 547 )
@@ -80,7 +149,7 @@ stretch_mode = 3
 
 [node name="punchLabel" type="Label" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer/VBoxContainer"]
 margin_top = 68.0
-margin_right = 341.0
+margin_right = 335.0
 margin_bottom = 108.0
 rect_min_size = Vector2( 100, 40 )
 text = "Punch
@@ -91,8 +160,8 @@ __meta__ = {
 }
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Menu/Vertical Container/Tier_4 - strength"]
-margin_left = 345.0
-margin_right = 686.0
+margin_left = 443.0
+margin_right = 784.0
 margin_bottom = 148.0
 rect_min_size = Vector2( 341, 0 )
 alignment = 1
@@ -128,8 +197,8 @@ __meta__ = {
 }
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="Menu/Vertical Container/Tier_4 - strength"]
-margin_left = 690.0
-margin_right = 1025.0
+margin_left = 788.0
+margin_right = 1123.0
 margin_bottom = 148.0
 rect_min_size = Vector2( 335, 0 )
 alignment = 1
@@ -164,14 +233,35 @@ __meta__ = {
 }
 
 [node name="Tier_3 - body" type="HBoxContainer" parent="Menu/Vertical Container"]
-margin_top = 152.0
-margin_right = 1025.0
-margin_bottom = 300.35
+margin_top = 304.0
+margin_right = 1123.0
+margin_bottom = 452.35
 rect_min_size = Vector2( 0, 148.35 )
 alignment = 1
 
+[node name="VBoxContainer3" type="VBoxContainer" parent="Menu/Vertical Container/Tier_3 - body"]
+margin_left = 166.0
+margin_right = 266.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 100, 100 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="armorLabel" type="Label" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer3"]
+margin_right = 100.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 40 )
+text = "Armor"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_3 - body"]
-margin_right = 341.0
+margin_left = 270.0
+margin_right = 611.0
 margin_bottom = 148.0
 rect_min_size = Vector2( 341, 0 )
 alignment = 1
@@ -206,8 +296,8 @@ __meta__ = {
 }
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Menu/Vertical Container/Tier_3 - body"]
-margin_left = 345.0
-margin_right = 686.0
+margin_left = 615.0
+margin_right = 956.0
 margin_bottom = 148.0
 rect_min_size = Vector2( 341, 0 )
 alignment = 1
@@ -236,271 +326,6 @@ margin_right = 341.0
 margin_bottom = 108.0
 rect_min_size = Vector2( 100, 40 )
 text = "Boots"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="Menu/Vertical Container/Tier_3 - body"]
-margin_left = 690.0
-margin_right = 1025.0
-margin_bottom = 148.0
-rect_min_size = Vector2( 335, 0 )
-alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer3"]
-margin_top = 20.0
-margin_right = 335.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 100, 100 )
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="wisdomBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer3/VBoxContainer"]
-margin_right = 335.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 64, 64 )
-texture_normal = ExtResource( 8 )
-expand = true
-stretch_mode = 3
-
-[node name="wisdomLabel" type="Label" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer3/VBoxContainer"]
-margin_top = 68.0
-margin_right = 335.0
-margin_bottom = 108.0
-rect_min_size = Vector2( 100, 40 )
-text = "Wisdom"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Tier_2 - weapons" type="HBoxContainer" parent="Menu/Vertical Container"]
-margin_top = 304.0
-margin_right = 1025.0
-margin_bottom = 452.35
-rect_min_size = Vector2( 0, 148.35 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_2 - weapons"]
-margin_right = 341.0
-margin_bottom = 148.0
-rect_min_size = Vector2( 341, 0 )
-alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_2 - weapons/VBoxContainer"]
-margin_top = 20.0
-margin_right = 341.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 100, 100 )
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="swordBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_2 - weapons/VBoxContainer/VBoxContainer"]
-margin_right = 341.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 64, 64 )
-texture_normal = ExtResource( 9 )
-expand = true
-stretch_mode = 3
-
-[node name="swordLabel" type="Label" parent="Menu/Vertical Container/Tier_2 - weapons/VBoxContainer/VBoxContainer"]
-margin_top = 68.0
-margin_right = 341.0
-margin_bottom = 108.0
-rect_min_size = Vector2( 100, 40 )
-text = "Sword
-"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="Menu/Vertical Container/Tier_2 - weapons"]
-margin_left = 345.0
-margin_right = 686.0
-margin_bottom = 148.0
-rect_min_size = Vector2( 341, 0 )
-alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_2 - weapons/VBoxContainer2"]
-margin_top = 20.0
-margin_right = 341.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 100, 100 )
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="daggerBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_2 - weapons/VBoxContainer2/VBoxContainer"]
-margin_right = 341.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 64, 64 )
-texture_normal = ExtResource( 3 )
-expand = true
-stretch_mode = 3
-
-[node name="daggerLabel" type="Label" parent="Menu/Vertical Container/Tier_2 - weapons/VBoxContainer2/VBoxContainer"]
-margin_top = 68.0
-margin_right = 341.0
-margin_bottom = 108.0
-rect_min_size = Vector2( 100, 40 )
-text = "Dagger"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="Menu/Vertical Container/Tier_2 - weapons"]
-margin_left = 690.0
-margin_right = 1025.0
-margin_bottom = 148.0
-rect_min_size = Vector2( 335, 0 )
-alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_2 - weapons/VBoxContainer3"]
-margin_top = 20.0
-margin_right = 335.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 100, 100 )
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="bowBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_2 - weapons/VBoxContainer3/VBoxContainer"]
-margin_right = 335.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 64, 64 )
-texture_normal = ExtResource( 12 )
-expand = true
-stretch_mode = 3
-
-[node name="bowLabel" type="Label" parent="Menu/Vertical Container/Tier_2 - weapons/VBoxContainer3/VBoxContainer"]
-margin_top = 68.0
-margin_right = 335.0
-margin_bottom = 108.0
-rect_min_size = Vector2( 100, 40 )
-text = "Bow"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Tier_1 - passives" type="HBoxContainer" parent="Menu/Vertical Container"]
-margin_top = 456.0
-margin_right = 1025.0
-margin_bottom = 604.35
-rect_min_size = Vector2( 0, 148.35 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_1 - passives"]
-margin_right = 341.0
-margin_bottom = 148.0
-rect_min_size = Vector2( 341, 0 )
-alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_1 - passives/VBoxContainer"]
-margin_top = 20.0
-margin_right = 341.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 100, 100 )
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="moonBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_1 - passives/VBoxContainer/VBoxContainer"]
-margin_right = 341.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 64, 64 )
-texture_normal = ExtResource( 13 )
-expand = true
-stretch_mode = 3
-
-[node name="moonLabel" type="Label" parent="Menu/Vertical Container/Tier_1 - passives/VBoxContainer/VBoxContainer"]
-margin_top = 68.0
-margin_right = 341.0
-margin_bottom = 108.0
-rect_min_size = Vector2( 100, 40 )
-text = "Night
-"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="Menu/Vertical Container/Tier_1 - passives"]
-margin_left = 345.0
-margin_right = 686.0
-margin_bottom = 148.0
-rect_min_size = Vector2( 341, 0 )
-alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_1 - passives/VBoxContainer2"]
-margin_top = 20.0
-margin_right = 341.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 100, 100 )
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="leavesBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_1 - passives/VBoxContainer2/VBoxContainer"]
-margin_right = 341.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 64, 64 )
-texture_normal = ExtResource( 6 )
-expand = true
-stretch_mode = 3
-
-[node name="leavesLabel" type="Label" parent="Menu/Vertical Container/Tier_1 - passives/VBoxContainer2/VBoxContainer"]
-margin_top = 68.0
-margin_right = 341.0
-margin_bottom = 108.0
-rect_min_size = Vector2( 100, 40 )
-text = "Leaves"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="Menu/Vertical Container/Tier_1 - passives"]
-margin_left = 690.0
-margin_right = 1025.0
-margin_bottom = 148.0
-rect_min_size = Vector2( 335, 0 )
-alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_1 - passives/VBoxContainer3"]
-margin_top = 20.0
-margin_right = 335.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 100, 100 )
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="prayingBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_1 - passives/VBoxContainer3/VBoxContainer"]
-margin_right = 335.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 64, 64 )
-texture_normal = ExtResource( 4 )
-expand = true
-stretch_mode = 3
-
-[node name="prayingLabel" type="Label" parent="Menu/Vertical Container/Tier_1 - passives/VBoxContainer3/VBoxContainer"]
-margin_top = 68.0
-margin_right = 335.0
-margin_bottom = 108.0
-rect_min_size = Vector2( 100, 40 )
-text = "Vampire
-"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false

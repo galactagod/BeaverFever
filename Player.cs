@@ -22,10 +22,6 @@ public class Player : Node2D
     int wisdomSkill;
 
 
-    // Weapon 
-    int swordSkill;
-    int daggerSkill;
-    int bowArrowSkill;
 
 
     // Passive 
@@ -50,10 +46,7 @@ public class Player : Node2D
     TextureButton wisdomBtn;
 
 
-    // Weapon Buttons
-    TextureButton swordBtn;
-    TextureButton daggerBtn;
-    TextureButton bowArrowBtn;
+
 
     // Passive Buttons
     TextureButton nightBtn;
@@ -78,10 +71,7 @@ public class Player : Node2D
     Label wisdomLabel;
 
 
-    // Weapon Labels
-    Label swordLabel;
-    Label daggerLabel;
-    Label bowArrowLabel;
+
 
     // Passive Labels
     Label nightLabel;
@@ -131,20 +121,7 @@ public class Player : Node2D
         this.wisdomLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_3 - body/VBoxContainer3/VBoxContainer/wisdomLabel");
 
 
-        // weapons
-        this.swordBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_2 - weapons/VBoxContainer/VBoxContainer/swordBtn");
-        this.swordBtn.Connect("pressed", this, "upgradeSword");
-        this.swordLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_2 - weapons/VBoxContainer/VBoxContainer/swordLabel");
-
-        this.daggerBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_2 - weapons/VBoxContainer2/VBoxContainer/daggerBtn");
-        this.daggerBtn.Connect("pressed", this, "upgradeDagger");
-        this.daggerLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_2 - weapons/VBoxContainer2/VBoxContainer/daggerLabel");
-
-        this.bowArrowBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_2 - weapons/VBoxContainer3/VBoxContainer/bowBtn");
-        this.bowArrowBtn.Connect("pressed", this, "upgradeBowArrowBtn");
-        this.bowArrowLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_2 - weapons/VBoxContainer3/VBoxContainer/bowLabel");
-
-
+ 
         // passives
         this.nightBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_1 - passives/VBoxContainer/VBoxContainer/moonBtn");
         this.nightBtn.Connect("pressed", this, "upgradeNight");
@@ -314,79 +291,8 @@ public class Player : Node2D
     }
 
 
-    void upgradeSword()
-    {
-        if (swordSkill < 4)
-        {
-            swordSkill++;
-            this.swordLabel.Text = "Sword - Level " + swordSkill;
-        }
-
-        switch (swordSkill)
-        {
-            case 1:
-                changeBtnTexture("res://assets/skills/weapons/sword/Blade Mod 2.png", this.swordBtn);
-                break;
-
-            case 2:
-                changeBtnTexture("res://assets/skills/weapons/sword/Blade Mod 3.png", this.swordBtn);
-                break;
-            case 3:
-                changeBtnTexture("res://assets/skills/weapons/sword/Blade Mod 4.png", this.swordBtn);
-                break;
-        }
-    }
 
 
-
-    void upgradeDagger()
-    {
-        if (daggerSkill < 4)
-        {
-            daggerSkill++;
-            this.daggerLabel.Text = "Dagger - Level " + daggerSkill;
-
-        }
-
-        switch (daggerSkill)
-        {
-            case 1:
-                changeBtnTexture("res://assets/skills/weapons/dagger/Dagger 1 Mod 2.png", this.daggerBtn);
-                break;
-
-            case 2:
-                changeBtnTexture("res://assets/skills/weapons/dagger/Dagger 1 Mod 3.png", this.daggerBtn);
-                break;
-            case 3:
-                changeBtnTexture("res://assets/skills/weapons/dagger/Dagger 1 Mod 4.png", this.daggerBtn);
-                break;
-        }
-    }
-
-
-    void upgradeBowArrowBtn()
-    {
-        if (bowArrowSkill < 4)
-        {
-            bowArrowSkill++;
-            this.bowArrowLabel.Text = "Bow- Level " + bowArrowSkill;
-
-        }
-
-        switch (bowArrowSkill)
-        {
-            case 1:
-                changeBtnTexture("res://assets/skills/weapons/bow and arrow/Bow Mod 2.png", this.bowArrowBtn);
-                break;
-
-            case 2:
-                changeBtnTexture("res://assets/skills/weapons/bow and arrow/Bow Mod 3.png", this.bowArrowBtn);
-                break;
-            case 3:
-                changeBtnTexture("res://assets/skills/weapons/bow and arrow/Bow Mod 4.png", this.bowArrowBtn);
-                break;
-        }
-    }
 
 
     void upgradeNight()
