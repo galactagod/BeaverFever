@@ -4,7 +4,6 @@ using System;
 public class GrayWolf : EnemyMovementAct
 {
     private int _timer = 0;
-    
   
     public override void _Ready()
     {
