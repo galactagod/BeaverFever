@@ -1,22 +1,22 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Player.cs" type="Script" id=1]
-[ext_resource path="res://assets/backgrounds/background.jpg" type="Texture" id=2]
-[ext_resource path="res://fonts/ARIALBD.TTF" type="DynamicFontData" id=3]
-[ext_resource path="res://fonts/ARIAL.TTF" type="DynamicFontData" id=4]
-[ext_resource path="res://assets/skills/body/boots/Boots 1 Mod 1.png" type="Texture" id=5]
-[ext_resource path="res://assets/skills/body/armor/Body 3 Original.png" type="Texture" id=7]
-[ext_resource path="res://assets/skills/strength/claws/Rip Mod 1.png" type="Texture" id=10]
-[ext_resource path="res://assets/skills/strength/teeth/Sharp Mod 1.png" type="Texture" id=11]
-[ext_resource path="res://assets/skills/strength/punch/Attack Mod 1.png" type="Texture" id=14]
+[ext_resource path="res://assets/skills/body/armor/Body 3 Original.png" type="Texture" id=2]
+[ext_resource path="res://assets/skills/strength/teeth/Sharp Mod 1.png" type="Texture" id=3]
+[ext_resource path="res://assets/skills/strength/punch/Attack Mod 1.png" type="Texture" id=4]
+[ext_resource path="res://assets/backgrounds/background.jpg" type="Texture" id=5]
+[ext_resource path="res://assets/skills/body/boots/Boots 1 Mod 1.png" type="Texture" id=6]
+[ext_resource path="res://assets/skills/strength/claws/Rip Mod 1.png" type="Texture" id=7]
+[ext_resource path="res://fonts/ARIALBD.TTF" type="DynamicFontData" id=8]
+[ext_resource path="res://fonts/ARIAL.TTF" type="DynamicFontData" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
 use_mipmaps = true
-font_data = ExtResource( 3 )
+font_data = ExtResource( 8 )
 
 [sub_resource type="DynamicFont" id=2]
-font_data = ExtResource( 4 )
+font_data = ExtResource( 9 )
 
 [node name="Skill Tree" type="Node2D"]
 script = ExtResource( 1 )
@@ -31,7 +31,7 @@ __meta__ = {
 [node name="Background" type="TextureRect" parent="Menu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 2 )
+texture = ExtResource( 5 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -42,7 +42,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 2.0
 margin_bottom = 6.0
-rect_min_size = Vector2( 1025, 0 )
+rect_min_size = Vector2( 1008, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -62,25 +62,18 @@ margin_bottom = 148.0
 rect_min_size = Vector2( 341, 0 )
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Skill Points/VBoxContainer2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Menu/Vertical Container/Skill Points/VBoxContainer2"]
 margin_top = 20.0
 margin_right = 341.0
-margin_bottom = 127.0
-rect_min_size = Vector2( 100, 100 )
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Menu/Vertical Container/Skill Points/VBoxContainer2/VBoxContainer"]
-rect_min_size = Vector2( 100, 40 )
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 40 )
 custom_fonts/normal_font = SubResource( 1 )
 text = "120"
 
-[node name="skillsLabel2" type="Label" parent="Menu/Vertical Container/Skill Points/VBoxContainer2/VBoxContainer"]
-margin_top = 44.0
+[node name="skillsLabel2" type="Label" parent="Menu/Vertical Container/Skill Points/VBoxContainer2"]
+margin_top = 64.0
 margin_right = 341.0
-margin_bottom = 107.0
+margin_bottom = 127.0
 rect_min_size = Vector2( 100, 40 )
 custom_fonts/font = SubResource( 2 )
 text = "SKILL POINTS
@@ -109,9 +102,9 @@ __meta__ = {
 }
 
 [node name="offenseLabel" type="Label" parent="Menu/Vertical Container/Tier_4 - strength/Category"]
-margin_left = -100.0
-margin_top = 46.0
-margin_bottom = 86.0
+margin_top = 54.0
+margin_right = 100.0
+margin_bottom = 94.0
 rect_min_size = Vector2( 100, 40 )
 text = "Offense
 "
@@ -143,7 +136,7 @@ margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
 rect_pivot_offset = Vector2( 1535, 547 )
 hint_tooltip = "Improve Punching ability"
-texture_normal = ExtResource( 14 )
+texture_normal = ExtResource( 4 )
 expand = true
 stretch_mode = 3
 
@@ -180,7 +173,7 @@ __meta__ = {
 margin_right = 341.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
-texture_normal = ExtResource( 10 )
+texture_normal = ExtResource( 7 )
 expand = true
 stretch_mode = 3
 
@@ -217,7 +210,7 @@ __meta__ = {
 margin_right = 335.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
-texture_normal = ExtResource( 11 )
+texture_normal = ExtResource( 3 )
 expand = true
 stretch_mode = 3
 
@@ -250,8 +243,9 @@ __meta__ = {
 }
 
 [node name="armorLabel" type="Label" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer3"]
+margin_top = 54.0
 margin_right = 100.0
-margin_bottom = 40.0
+margin_bottom = 94.0
 rect_min_size = Vector2( 100, 40 )
 text = "Armor"
 align = 1
@@ -280,7 +274,7 @@ __meta__ = {
 margin_right = 341.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
-texture_normal = ExtResource( 7 )
+texture_normal = ExtResource( 2 )
 expand = true
 stretch_mode = 3
 
@@ -316,7 +310,7 @@ __meta__ = {
 margin_right = 341.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
-texture_normal = ExtResource( 5 )
+texture_normal = ExtResource( 6 )
 expand = true
 stretch_mode = 3
 

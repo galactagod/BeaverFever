@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Galacta God\\Documents\\Stud\\Uni\\Current Semester\\AI For Game Programming\\Games\\Games.csproj",
+      "projectUniqueName": "C:\\Users\\Galacta God\\Documents\\Stud\\Uni\\Current Semester\\AI For Game Programming\\Repo\\BeaverFever\\Games.csproj",
       "projectName": "Games",
-      "projectPath": "C:\\Users\\Galacta God\\Documents\\Stud\\Uni\\Current Semester\\AI For Game Programming\\Games\\Games.csproj",
+      "projectPath": "C:\\Users\\Galacta God\\Documents\\Stud\\Uni\\Current Semester\\AI For Game Programming\\Repo\\BeaverFever\\Games.csproj",
       "packagesPath": "C:\\Users\\Galacta God\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Galacta God\\Documents\\Stud\\Uni\\Current Semester\\AI For Game Programming\\Games\\.mono\\temp\\obj\\",
+      "outputPath": "C:\\Users\\Galacta God\\Documents\\Stud\\Uni\\Current Semester\\AI For Game Programming\\Repo\\BeaverFever\\.mono\\temp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Galacta God\\AppData\\Roaming\\NuGet\\NuGet.Config",

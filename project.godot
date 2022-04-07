@@ -11,12 +11,8 @@ config_version=4
 [application]
 
 config/name="Games"
-run/main_scene="res://Node2D.tscn"
+run/main_scene="res://SkillTree.tscn"
 config/icon="res://icon.png"
-
-[mono]
-
-debugger_agent/wait_for_debugger=true
 
 [physics]
 
