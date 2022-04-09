@@ -14,11 +14,15 @@ public class EnemyAttackA : EnemyBaseStateMachine
         if (owner.IsStomped)
         {
             owner.IsStomped = false;
-            stateMachine.TransitionToState(owner.enemyHurt);
+            if (owner.Health - owner.NdObjPlayer.CurDmg <= 0)
+                stateMachine.TransitionToState(owner.enemyDeath);
+            else
+                stateMachine.TransitionToState(owner.enemyHurt);
             return;
         }
+
         // apply damage based on frames and attack range
-        if (owner.NdSprEnemy.Frame >= 3 && owner.NdSprEnemy.Frame <= 7 && owner.EnemyAttack() && !owner.NdObjPlayer.IsDamaged)
+        if (owner.NdSprEnemy.Frame >= owner.AtkFrm[0] && owner.NdSprEnemy.Frame <= owner.AtkFrm[1] && owner.EnemyAttack() && !owner.NdObjPlayer.IsDamaged)
         {
             owner.NdObjPlayer.IsDamaged = true;
         }

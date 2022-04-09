@@ -10,7 +10,11 @@ public class GrayWolf : EnemyMovementAct
         base._Ready();
 
         // modify member vars
+        _enemyType = "GrayWolf";
+        _health = 20;
+        _maxHealth = 20;
         _speed.x = 100.0f;
+        _atkFrm = new int[]{3, 7};
 
         // start state
         stateMachine = new EnemyStateMachineManager(this, enemyIdle);

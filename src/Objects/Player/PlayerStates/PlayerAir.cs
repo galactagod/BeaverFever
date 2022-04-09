@@ -15,15 +15,13 @@ public class PlayerAir : PlayerBaseStateMachine
         {
             owner.SprAnimation("Jump");
             owner.StompJump = false;
-
         }
     }
 
     public override void OnStateUpdate(IPlayerStateMachine stateMachine, ObjPlayer owner)
     {
-        
         owner.BaseMovementControl();
-        if (owner.IsDamaged)
+        if (owner.IsDamaged && owner.DamagedTimer == 0)
         {
             stateMachine.TransitionToState(owner.playerHurt);
             return;
@@ -53,5 +51,6 @@ public class PlayerAir : PlayerBaseStateMachine
     public override void OnStateExit(IPlayerStateMachine stateMachine, ObjPlayer owner)
     {
         owner.IsInAir = false;
+        owner.IsAnimationOver = false;
     }
 }

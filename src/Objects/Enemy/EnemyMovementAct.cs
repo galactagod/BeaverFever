@@ -10,14 +10,19 @@ public class EnemyMovementAct : KinematicBody2D
     [Export] public Vector2 _speed = new Vector2(300, 400);
     [Export] public float _gravity = 2000;
 
+    protected float _health;
+    protected float _maxHealth;
     protected Vector2 _velocity = new Vector2(0, 0);
     protected Vector2 _direction = new Vector2(0, 0);
     protected Vector2 _detectionRadius = new Vector2(200, 50);
     protected Vector2 _attackRadius = new Vector2(55, 50);
     protected Vector2 _startPos;
+    protected int[] _atkFrm;
     protected bool _isAnimationOver = false;
     protected bool _isStomped = false;
+    protected bool _isDead = false;
     protected float _collBasePositionX;
+    protected string _enemyType;
     protected readonly Random _rnd = new Random();
 
     // node reference
@@ -41,11 +46,15 @@ public class EnemyMovementAct : KinematicBody2D
     public EnemyWander enemyWander = new EnemyWander();
 
     // getters and setters
+    public float Health { get { return _health; } set { _health = value; } }
+    public float MaxHealth { get { return _maxHealth; } set { _maxHealth = value; } }
     public Vector2 Velocity { get { return _velocity; } set { _velocity = value; } }
     public Vector2 Direction { get { return _direction; } set { _direction = value; } }
     public Vector2 Speed { get { return _speed; } set { _speed = value; } }
+    public int[] AtkFrm { get { return _atkFrm; } set { _atkFrm = value; } }
     public bool IsAnimationOver { get { return _isAnimationOver; } set { _isAnimationOver = value; } }
     public bool IsStomped { get { return _isStomped; } set { _isStomped = value; } }
+    public bool IsDead { get { return _isDead; } set { _isDead = value; } }
     public PlayerStats NdPlayerStats { get { return _ndPlayerStats; } set { _ndPlayerStats = value; } }
     public ObjPlayer NdObjPlayer { get { return _ndObjPlayer; } set { _ndObjPlayer = value; } }
     public AnimationPlayer NdAnimEnemy { get { return _ndAnimEnemy; } set { _ndAnimEnemy = value; } }
@@ -96,12 +105,12 @@ public class EnemyMovementAct : KinematicBody2D
         {
             case -1:
                 _ndSprEnemy.FlipH = false;
-                _ndCollBaseEnemy.Position = new Vector2(-_collBasePositionX, _ndCollBaseEnemy.Position.y);
+                //_ndCollBaseEnemy.Position = new Vector2(-_collBasePositionX, _ndCollBaseEnemy.Position.y);
                 break;
 
             case 1:
                 _ndSprEnemy.FlipH = true;
-                _ndCollBaseEnemy.Position = new Vector2(_collBasePositionX, _ndCollBaseEnemy.Position.y);
+                //_ndCollBaseEnemy.Position = new Vector2(_collBasePositionX, _ndCollBaseEnemy.Position.y);
                 break;
         }
 
@@ -198,6 +207,15 @@ public class EnemyMovementAct : KinematicBody2D
         // damage calculation
         _isStomped = true;
         // if dead then queue_free()
+    }
+
+    public void ChangeHealth(float health)
+    {
+        _health = health;
+
+        // clamp stats
+        _health = Mathf.Clamp(_health, 0, _maxHealth);
+        GD.Print(_enemyType +"'s Health = " + _health);
     }
 
 }

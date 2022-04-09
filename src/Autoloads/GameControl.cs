@@ -6,11 +6,14 @@ public class GameControl : Node
 {
 
     private PlayerStats _ndPlayerStats;
-
+    
 
     public override void _Ready()
     {
         _ndPlayerStats = GetNode<PlayerStats>("/root/PlayerStats");
+
+        // OS.CenterWindow();
+        OS.WindowMaximized = true;
     }
 
     public override void _Process(float delta)

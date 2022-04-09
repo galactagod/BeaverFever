@@ -238,8 +238,5 @@ position = Vector2( 544, -49 )
 
 [node name="PlayerUi" parent="." instance=ExtResource( 4 )]
 
-[node name="GrayWolf2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1217, 137 )
-
 [node name="Snake" parent="." instance=ExtResource( 7 )]
-position = Vector2( 679, -35 )
+position = Vector2( 1156, 28 )

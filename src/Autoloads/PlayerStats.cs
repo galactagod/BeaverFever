@@ -13,6 +13,7 @@ public class PlayerStats : Node
     public delegate void HealthEventHandler(int health);
     public event HealthEventHandler HealthChange, MaxHealthChange, ExtraHealthChange;
     //public event HealthEventHandler<PlayerStats> HealthChange;
+    
 
     public int Health { get { return _health; } set { _health = value; } }
     public int MaxHealth { get { return _maxHealth; } set { _maxHealth = value; } }

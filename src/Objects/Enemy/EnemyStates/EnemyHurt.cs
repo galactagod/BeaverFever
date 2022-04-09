@@ -6,6 +6,7 @@ public class EnemyHurt : EnemyBaseStateMachine
     public override void OnStateEnter(IEnemyStateMachine stateMachine, EnemyMovementAct owner)
     {
         owner.SprAnimation("Hurt");
+        owner.ChangeHealth(owner.Health - owner.NdObjPlayer.CurDmg);
     }
 
     public override void OnStateUpdate(IEnemyStateMachine stateMachine, EnemyMovementAct owner)

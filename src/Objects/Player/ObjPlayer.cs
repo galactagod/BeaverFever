@@ -4,14 +4,18 @@ using System;
 public class ObjPlayer : BaseMovementAct
 {
     // member vars
+    private float _curdmg = 2;
     private bool _isInAir = false;
     private float collBasePositionX;
     private float collStompPositionX;
     private bool _isDamaged = false;
+    private int _damagedTimer = 0;
     private bool _isAnimationOver = false;
-    private float _stompImpulseY = 700;
-    private float _stompImpulseX = 700;
+    private float _stompImpulseY = 600;
+    private float _stompImpulseX = 150;
     private bool _stompJump = false;
+    private int _stompJumpTimer = 0;
+    private int _timer = 0;
     protected readonly Random _rnd = new Random();
 
     // node reference
@@ -33,13 +37,15 @@ public class ObjPlayer : BaseMovementAct
     public PlayerWalk playerWalk = new PlayerWalk();
 
     // getters and setters
+    public float CurDmg { get { return _curdmg; } set { _curdmg = value; } }
     public Vector2 Velocity { get { return _velocity; } set { _velocity = value; } }
     public bool IsDamaged { get { return _isDamaged; } set { _isDamaged = value; } }
+    public int DamagedTimer { get { return _damagedTimer; } set { _damagedTimer = value; } }
     public bool StompJump { get { return _stompJump; } set { _stompJump = value; } }
     public bool IsAnimationOver { get { return _isAnimationOver; } set { _isAnimationOver = value; } }
     public bool IsInAir { get { return _isInAir; } set { _isInAir = value; } }
     public PlayerStats NdPlayerStats { get { return _ndPlayerStats; } set { _ndPlayerStats = value; } }
-
+    public AnimatedSprite NdSprPlayer { get { return _ndSprPlayer; } set { _ndSprPlayer = value; } }
 
     public override void _Ready()
     {
@@ -69,12 +75,26 @@ public class ObjPlayer : BaseMovementAct
 
         base._PhysicsProcess(delta);
         _ndPlayerStats.PlayerPos = Position;
+        _timer++;
 
         stateMachine.Update();
         //GD.Print("Xposition = " + Position.x);
         //_velocity.y += _gravity * delta;
         //GD.Print("new velocity Y = " + _velocity.y);
         //GD.Print("gravity = " + _gravity);
+        if (_isDamaged)
+        {
+            int maxDmgTime = 150;
+            Visible = Calculations.HitFlash(_damagedTimer, Visible);
+            _damagedTimer++;
+            if (_damagedTimer == maxDmgTime)
+            {
+                _damagedTimer = 0;
+                _isDamaged = false;
+                Visible = true;
+            }
+        }
+            
 
 
     }
@@ -124,7 +144,17 @@ public class ObjPlayer : BaseMovementAct
     {
         Vector2 velocity = linearVelocity;
 
-        velocity.x = speed.x * direction.x;
+        if (_stompJumpTimer > 0 && _isInAir)
+        {
+            _stompJumpTimer++;
+            if (_stompJumpTimer == 100) _stompJumpTimer = 0;
+            velocity.x = velocity.x + (GetPhysicsProcessDeltaTime() * direction.x);
+        }
+        else
+        {
+            _stompJumpTimer = 0;
+            velocity.x = speed.x * direction.x;
+        }
 
         if (direction.y != 0.0) velocity.y = speed.y * direction.y;
 
@@ -136,24 +166,26 @@ public class ObjPlayer : BaseMovementAct
     public void SprAnimation(string animation)
     {
         // prevents player from constantly switching btw idle and walk/other states too quickly
-        if (_velocity == new Vector2(0, 0) || (IsOnWall() && !_isInAir))
+        if (_velocity == new Vector2(0, 0) || (IsOnWall() && !_isInAir && !_isDamaged))
         {
             _ndAnimPlayer.Play("Idle"); //Idle
+            //GD.Print("Animation === " + animation + " but its idle");
         }
         else
         {
             _ndAnimPlayer.Play(animation);
+            //GD.Print("Animation === " + animation);
         }   
         
     }
 
-    public Vector2 CalculateStompVelocity(float stompImpulseX, float stompImpulseY)
+    public Vector2 CalculateStompVelocity()
     {
-        float mod = (_rnd.Next(0, 2) == 0) ? -1 : 1;
-        float stompJumpX = (Input.IsActionPressed("ui_up")) ? -_speed.x : mod * stompImpulseX;
-        float stompJumpY = (Input.IsActionPressed("ui_up")) ? -_speed.y : -stompImpulseY;
-        GD.Print("STOMPJUMPX = " + stompJumpX);
-        GD.Print("STOMPJUMPY = " + stompJumpY);
+        //float mod = (_rnd.Next(0, 2) == 0) ? -1 : 1;
+        float stompJumpX = (_ndSprPlayer.FlipH) ? -_stompImpulseX :  _stompImpulseX;
+        float stompJumpY = (Input.IsActionPressed("ui_up")) ? -_speed.y : -_stompImpulseY;
+        //GD.Print("STOMPJUMPX = " + stompJumpX);
+        //GD.Print("STOMPJUMPY = " + stompJumpY);
         // X may not be modifying because of movement control reseting x value
         return new Vector2(stompJumpX, stompJumpY);
     }
@@ -162,7 +194,8 @@ public class ObjPlayer : BaseMovementAct
     {
         GD.Print("Stomp Jump");
         _stompJump = true;
-        _velocity = CalculateStompVelocity(_stompImpulseX, _stompImpulseY);
+        _stompJumpTimer++;
+        _velocity = CalculateStompVelocity();
 
     }
 

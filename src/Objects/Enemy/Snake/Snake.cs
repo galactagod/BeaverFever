@@ -11,7 +11,11 @@ public class Snake : EnemyMovementAct
         base._Ready();
 
         // modify member vars
+        _enemyType = "Snake";
+        _health = 10;
+        _maxHealth = 10;
         _speed.x = 100.0f;
+        _atkFrm = new int[] {2, 4};
 
         // start state
         stateMachine = new EnemyStateMachineManager(this, enemyIdle);
