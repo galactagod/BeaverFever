@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Player.cs" type="Script" id=1]
+[ext_resource path="res://SkillTree.cs" type="Script" id=1]
 [ext_resource path="res://assets/skills/body/armor/Body 3 Original.png" type="Texture" id=2]
 [ext_resource path="res://assets/skills/strength/teeth/Sharp Mod 1.png" type="Texture" id=3]
 [ext_resource path="res://assets/skills/strength/punch/Attack Mod 1.png" type="Texture" id=4]
@@ -40,8 +40,7 @@ __meta__ = {
 [node name="Vertical Container" type="VBoxContainer" parent="Menu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 2.0
-margin_bottom = 6.0
+margin_bottom = -146.0
 rect_min_size = Vector2( 1008, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -50,36 +49,35 @@ __meta__ = {
 }
 
 [node name="Skill Points" type="HBoxContainer" parent="Menu/Vertical Container"]
-margin_right = 1123.0
+margin_right = 1023.0
 margin_bottom = 148.35
-rect_min_size = Vector2( 0, 148.35 )
+rect_min_size = Vector2( 1023, 148.35 )
 alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Menu/Vertical Container/Skill Points"]
-margin_left = 391.0
-margin_right = 732.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Skill Points"]
+margin_left = 457.0
+margin_right = 565.0
 margin_bottom = 148.0
-rect_min_size = Vector2( 341, 0 )
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Menu/Vertical Container/Skill Points/VBoxContainer2"]
-margin_top = 20.0
-margin_right = 341.0
-margin_bottom = 60.0
+[node name="RichTextLabel" type="RichTextLabel" parent="Menu/Vertical Container/Skill Points/VBoxContainer"]
+margin_top = 9.0
+margin_right = 108.0
+margin_bottom = 49.0
 rect_min_size = Vector2( 60, 40 )
 custom_fonts/normal_font = SubResource( 1 )
 text = "120"
 
-[node name="skillsLabel2" type="Label" parent="Menu/Vertical Container/Skill Points/VBoxContainer2"]
-margin_top = 64.0
-margin_right = 341.0
-margin_bottom = 127.0
+[node name="skillsLabel2" type="Label" parent="Menu/Vertical Container/Skill Points/VBoxContainer"]
+margin_top = 53.0
+margin_right = 108.0
+margin_bottom = 138.0
 rect_min_size = Vector2( 100, 40 )
 custom_fonts/font = SubResource( 2 )
-text = "SKILL POINTS
+text = "
+SKILL POINTS
 
 "
-align = 1
 uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -87,24 +85,22 @@ __meta__ = {
 
 [node name="Tier_4 - strength" type="HBoxContainer" parent="Menu/Vertical Container"]
 margin_top = 152.0
-margin_right = 1123.0
-margin_bottom = 300.35
-rect_min_size = Vector2( 0, 148.35 )
-alignment = 1
+margin_right = 1023.0
+margin_bottom = 260.0
 
 [node name="Category" type="VBoxContainer" parent="Menu/Vertical Container/Tier_4 - strength"]
-margin_right = 100.0
-margin_bottom = 148.0
-rect_min_size = Vector2( 100, 100 )
+margin_right = 251.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 251, 100 )
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="offenseLabel" type="Label" parent="Menu/Vertical Container/Tier_4 - strength/Category"]
-margin_top = 54.0
-margin_right = 100.0
-margin_bottom = 94.0
+margin_top = 34.0
+margin_right = 251.0
+margin_bottom = 74.0
 rect_min_size = Vector2( 100, 40 )
 text = "Offense
 "
@@ -114,24 +110,22 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_4 - strength"]
-margin_left = 104.0
-margin_right = 439.0
-margin_bottom = 148.0
-rect_min_size = Vector2( 335, 0 )
+margin_left = 255.0
+margin_right = 506.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 251, 0 )
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer"]
-margin_top = 20.0
-margin_right = 335.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 100, 100 )
+margin_right = 251.0
+margin_bottom = 108.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PunchBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer/VBoxContainer"]
-margin_right = 335.0
+margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
 rect_pivot_offset = Vector2( 1535, 547 )
@@ -142,7 +136,7 @@ stretch_mode = 3
 
 [node name="punchLabel" type="Label" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer/VBoxContainer"]
 margin_top = 68.0
-margin_right = 335.0
+margin_right = 251.0
 margin_bottom = 108.0
 rect_min_size = Vector2( 100, 40 )
 text = "Punch
@@ -153,16 +147,15 @@ __meta__ = {
 }
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Menu/Vertical Container/Tier_4 - strength"]
-margin_left = 443.0
-margin_right = 784.0
-margin_bottom = 148.0
-rect_min_size = Vector2( 341, 0 )
+margin_left = 510.0
+margin_right = 761.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 251, 0 )
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer2"]
-margin_top = 20.0
-margin_right = 341.0
-margin_bottom = 128.0
+margin_right = 251.0
+margin_bottom = 108.0
 rect_min_size = Vector2( 100, 100 )
 alignment = 1
 __meta__ = {
@@ -170,7 +163,7 @@ __meta__ = {
 }
 
 [node name="clawsBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer2/VBoxContainer"]
-margin_right = 341.0
+margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
 texture_normal = ExtResource( 7 )
@@ -179,7 +172,7 @@ stretch_mode = 3
 
 [node name="clawsLabel" type="Label" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer2/VBoxContainer"]
 margin_top = 68.0
-margin_right = 341.0
+margin_right = 251.0
 margin_bottom = 108.0
 rect_min_size = Vector2( 100, 40 )
 text = "Claws
@@ -190,16 +183,15 @@ __meta__ = {
 }
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="Menu/Vertical Container/Tier_4 - strength"]
-margin_left = 788.0
-margin_right = 1123.0
-margin_bottom = 148.0
-rect_min_size = Vector2( 335, 0 )
+margin_left = 765.0
+margin_right = 1016.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 251, 0 )
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer3"]
-margin_top = 20.0
-margin_right = 335.0
-margin_bottom = 128.0
+margin_right = 251.0
+margin_bottom = 108.0
 rect_min_size = Vector2( 100, 100 )
 alignment = 1
 __meta__ = {
@@ -207,7 +199,7 @@ __meta__ = {
 }
 
 [node name="jawsBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer3/VBoxContainer"]
-margin_right = 335.0
+margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
 texture_normal = ExtResource( 3 )
@@ -216,7 +208,7 @@ stretch_mode = 3
 
 [node name="jawsLabel" type="Label" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer3/VBoxContainer"]
 margin_top = 68.0
-margin_right = 335.0
+margin_right = 251.0
 margin_bottom = 108.0
 rect_min_size = Vector2( 100, 40 )
 text = "Jaws"
@@ -226,17 +218,15 @@ __meta__ = {
 }
 
 [node name="Tier_3 - body" type="HBoxContainer" parent="Menu/Vertical Container"]
-margin_top = 304.0
-margin_right = 1123.0
-margin_bottom = 452.35
+margin_top = 264.0
+margin_right = 1023.0
+margin_bottom = 412.35
 rect_min_size = Vector2( 0, 148.35 )
-alignment = 1
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="Menu/Vertical Container/Tier_3 - body"]
-margin_left = 166.0
-margin_right = 266.0
+margin_right = 251.0
 margin_bottom = 148.0
-rect_min_size = Vector2( 100, 100 )
+rect_min_size = Vector2( 251, 100 )
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -244,7 +234,7 @@ __meta__ = {
 
 [node name="armorLabel" type="Label" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer3"]
 margin_top = 54.0
-margin_right = 100.0
+margin_right = 251.0
 margin_bottom = 94.0
 rect_min_size = Vector2( 100, 40 )
 text = "Armor"
@@ -254,15 +244,15 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_3 - body"]
-margin_left = 270.0
-margin_right = 611.0
+margin_left = 255.0
+margin_right = 506.0
 margin_bottom = 148.0
-rect_min_size = Vector2( 341, 0 )
+rect_min_size = Vector2( 251, 0 )
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer"]
 margin_top = 20.0
-margin_right = 341.0
+margin_right = 251.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 100, 100 )
 alignment = 1
@@ -271,7 +261,7 @@ __meta__ = {
 }
 
 [node name="armorBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer/VBoxContainer"]
-margin_right = 341.0
+margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
 texture_normal = ExtResource( 2 )
@@ -280,7 +270,7 @@ stretch_mode = 3
 
 [node name="armorLabel" type="Label" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer/VBoxContainer"]
 margin_top = 68.0
-margin_right = 341.0
+margin_right = 251.0
 margin_bottom = 108.0
 rect_min_size = Vector2( 100, 40 )
 text = "Armor"
@@ -290,15 +280,15 @@ __meta__ = {
 }
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Menu/Vertical Container/Tier_3 - body"]
-margin_left = 615.0
-margin_right = 956.0
+margin_left = 510.0
+margin_right = 761.0
 margin_bottom = 148.0
-rect_min_size = Vector2( 341, 0 )
+rect_min_size = Vector2( 251, 0 )
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer2"]
 margin_top = 20.0
-margin_right = 341.0
+margin_right = 251.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 100, 100 )
 alignment = 1
@@ -307,7 +297,7 @@ __meta__ = {
 }
 
 [node name="bootBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer2/VBoxContainer"]
-margin_right = 341.0
+margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
 texture_normal = ExtResource( 6 )
@@ -316,7 +306,7 @@ stretch_mode = 3
 
 [node name="bootLabel" type="Label" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer2/VBoxContainer"]
 margin_top = 68.0
-margin_right = 341.0
+margin_right = 251.0
 margin_bottom = 108.0
 rect_min_size = Vector2( 100, 40 )
 text = "Boots"

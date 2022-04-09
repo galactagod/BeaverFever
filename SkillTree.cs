@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class Player : Node2D
+public class SkillTree : Node2D
 {
 
     int skillPoints = 0;
