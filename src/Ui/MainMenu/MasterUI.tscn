@@ -1,0 +1,188 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/Ui/MainMenu/SaveQuitButton.cs" type="Script" id=1]
+[ext_resource path="res://src/Ui/MainMenu/StatMenuButton.cs" type="Script" id=2]
+[ext_resource path="res://assets/long_button_off.png" type="Texture" id=3]
+[ext_resource path="res://assets/long_button_on.png" type="Texture" id=4]
+[ext_resource path="res://assets/skill_bar_background.png" type="Texture" id=5]
+[ext_resource path="res://fonts/Roboto-Bold.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 6 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseMenu" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PauseMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PauseMenu/NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/NinePatchRect/HBoxContainer2"]
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/NinePatchRect/HBoxContainer2"]
+margin_left = 4.0
+margin_right = 1028.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 190.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="InventoryButton" type="TextureButton" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
+margin_top = 194.0
+margin_right = 1024.0
+margin_bottom = 244.0
+rect_min_size = Vector2( 0, 50 )
+size_flags_horizontal = 3
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 3 )
+expand = true
+script = ExtResource( 2 )
+toOpen = "Inventory/Inventory"
+
+[node name="Label" type="Label" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer/InventoryButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -34.0
+margin_top = -9.5
+margin_right = 34.0
+margin_bottom = 9.5
+custom_fonts/font = SubResource( 1 )
+text = "Inventory"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StoreButton" type="TextureButton" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
+margin_top = 248.0
+margin_right = 1024.0
+margin_bottom = 298.0
+rect_min_size = Vector2( 600, 50 )
+size_flags_horizontal = 3
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 3 )
+expand = true
+script = ExtResource( 2 )
+toOpen = "Store/Store"
+
+[node name="Label" type="Label" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer/StoreButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -19.5
+margin_top = -9.5
+margin_right = 19.5
+margin_bottom = 9.5
+custom_fonts/font = SubResource( 1 )
+text = "Store"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatsButton" type="TextureButton" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
+margin_top = 302.0
+margin_right = 1024.0
+margin_bottom = 352.0
+rect_min_size = Vector2( 1024, 50 )
+size_flags_horizontal = 3
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 3 )
+expand = true
+script = ExtResource( 2 )
+toOpen = "res://src/Ui/CharacterSheet/CharacterSheet.tscn"
+
+[node name="Label" type="Label" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer/StatsButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -9.5
+margin_right = 20.0
+margin_bottom = 9.5
+custom_fonts/font = SubResource( 1 )
+text = "Stats"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveQuit" type="TextureButton" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
+margin_top = 356.0
+margin_right = 1024.0
+margin_bottom = 406.0
+rect_min_size = Vector2( 1024, 50 )
+size_flags_horizontal = 3
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 3 )
+expand = true
+script = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer/SaveQuit"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -18.0
+margin_top = -9.5
+margin_right = 18.0
+margin_bottom = 9.5
+custom_fonts/font = SubResource( 1 )
+text = "Save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
+margin_top = 410.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PauseMenu/NinePatchRect/HBoxContainer2"]
+margin_left = 1032.0
+margin_right = 1032.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}

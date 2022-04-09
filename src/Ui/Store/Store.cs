@@ -1,0 +1,122 @@
+using Godot;
+using System;
+using System.Collections.Generic;
+
+public class Store : Control
+{
+    private PlayerData playerData;
+
+    [Signal]
+    public delegate void notEnoughCurrency(int slot);
+
+    
+    public override void _Ready()
+    {
+
+
+        //ConnectingToSignals
+        var slot1Button = GetNode("TabContainer/Items/RichTextLabel/control/Panel1/TextureButton");
+        slot1Button.Connect("buyButtonClicked", this, "ItemBought");
+
+        var slot2Button = GetNode("TabContainer/Items/RichTextLabel/control/Panel2/TextureButton");
+        slot2Button.Connect("buyButtonClicked", this, "ItemBought");
+
+        var slot3Button = GetNode("TabContainer/Items/RichTextLabel/control/Panel3/TextureButton");
+        slot3Button.Connect("buyButtonClicked", this, "ItemBought");
+
+        playerData = GetNode<PlayerData>("/root/PlayerData");
+
+        InitalizingItems();
+
+    }
+
+//  // Called every frame. 'delta' is the elapsed time since the previous frame.
+//  public override void _Process(float delta)
+//  {
+//      
+//  }
+
+    public void InitalizingItems()
+    {
+        //currency label
+        var currencyLabel = GetNode("Money");
+        currencyLabel.Set("text", "Currency: " + playerData.Wallet);
+        //get nodes for first 3 items
+        //change label, texture, and button status according (if have enough currency)
+        if (playerData.itemsAvaliable.Count > 0)
+        {
+            var slot1Label = GetNode("TabContainer/Items/RichTextLabel/control/Panel1/Label");
+            slot1Label.Set("text", playerData.itemsAvaliable[0].name + ": " + playerData.itemsAvaliable[0].price);
+            var slot1ButtonTexture = GetNode("TabContainer/Items/RichTextLabel/control/Panel1/Holder");
+            //slot1ButtonTexture.Set("texture", "res://assets/" + itemsAvaliable[0].name + ".png");
+            slot1ButtonTexture.Set("texture", playerData.itemsAvaliable[0].texture);
+            slot1ButtonTexture.Set("scale", playerData.itemsAvaliable[0].scale);
+            if (playerData.itemsAvaliable[0].price > playerData.Wallet)
+            {
+                EmitSignal("notEnoughCurrency", 1);
+            }
+        }
+        else
+        {
+            var slot2Label = GetNode("TabContainer/Items/RichTextLabel/control/Panel1/Label");
+            slot2Label.Set("text", "");
+            var slot2ButtonTexture = GetNode("TabContainer/Items/RichTextLabel/control/Panel1/Holder");
+            slot2ButtonTexture.Set("texture", null);
+            EmitSignal("notEnoughCurrency", 1);
+        }
+        
+        if (playerData.itemsAvaliable.Count > 1)
+        {
+            var slot2Label = GetNode("TabContainer/Items/RichTextLabel/control/Panel2/Label");
+            slot2Label.Set("text", playerData.itemsAvaliable[1].name + ": " + playerData.itemsAvaliable[1].price);
+            var slot2ButtonTexture = GetNode("TabContainer/Items/RichTextLabel/control/Panel2/Holder");
+            slot2ButtonTexture.Set("texture", playerData.itemsAvaliable[1].texture);
+            slot2ButtonTexture.Set("scale", playerData.itemsAvaliable[1].scale);
+            if (playerData.itemsAvaliable[1].price > playerData.Wallet)
+            {
+                EmitSignal("notEnoughCurrency", 2);
+            }
+        }
+        else
+        {
+            var slot2Label = GetNode("TabContainer/Items/RichTextLabel/control/Panel2/Label");
+            slot2Label.Set("text", "");
+            var slot2ButtonTexture = GetNode("TabContainer/Items/RichTextLabel/control/Panel2/Holder");
+            slot2ButtonTexture.Set("texture", null);
+            EmitSignal("notEnoughCurrency", 2);
+        }
+
+        if(playerData.itemsAvaliable.Count > 2)
+        {
+            var slot3Label = GetNode("TabContainer/Items/RichTextLabel/control/Panel3/Label");
+            slot3Label.Set("text", playerData.itemsAvaliable[2].name + ": " + playerData.itemsAvaliable[2].price);
+            var slot3ButtonTexture = GetNode("TabContainer/Items/RichTextLabel/control/Panel3/Holder");
+            slot3ButtonTexture.Set("texture", playerData.itemsAvaliable[2].texture);
+            slot3ButtonTexture.Set("scale", playerData.itemsAvaliable[2].scale);
+            if (playerData.itemsAvaliable[2].price > playerData.Wallet)
+            {
+                EmitSignal("notEnoughCurrency", 3);
+            }
+        }
+        else
+        {
+            var slot2Label = GetNode("TabContainer/Items/RichTextLabel/control/Panel3/Label");
+            slot2Label.Set("text", "");
+            var slot2ButtonTexture = GetNode("TabContainer/Items/RichTextLabel/control/Panel3/Holder");
+            slot2ButtonTexture.Set("texture", null);
+            EmitSignal("notEnoughCurrency", 3);
+        }
+    }
+
+    public void ItemBought(int slot)
+    {
+        //pop item out of list
+        //recall initializing items
+        playerData.Wallet -= playerData.itemsAvaliable[slot - 1].price;
+        playerData.itemsAvaliable[slot - 1].inventorySlot = playerData.inv.Count;
+        playerData.inv.Add(playerData.itemsAvaliable[slot - 1]);
+        playerData.itemsInStore.RemoveAt(slot - 1);
+        playerData.itemsAvaliable.RemoveAt(slot - 1);
+        InitalizingItems();
+    }
+}
