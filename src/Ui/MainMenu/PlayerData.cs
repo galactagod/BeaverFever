@@ -267,6 +267,15 @@ public class PlayerData : Node
             }
         }
 
+        foreach (var item in skills)
+        {
+            if (item.equippedSlot != null)
+            {
+                equipment.Add(item.equippedSlot, item);
+                EquipChangesStatFilter(item, false);
+            }
+        }
+
         RefreshStatFinals();
     }
     #endregion
