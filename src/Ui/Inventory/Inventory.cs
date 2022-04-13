@@ -4,41 +4,68 @@ using System.Collections.Generic;
 
 public class Inventory : Control
 {
-    // Declare member variables here. Examples:
-    // private int a = 2;
-    // private string b = "text";
-
-    // Called when the node enters the scene tree for the first time.
+    //want to make a button that flips a boolean to show inventory/skills and to be able to equip them
+    private bool showingInv = true;
 
 
     private PlayerData playerData;
 
     private string[] EquipSlots1 = new string[4] { "Helmet", "Chest", "Legs", "Boots" };
-    private string[] EquipSlots2 = new string[4] { "Necklace", "Weapon", "Talisman1", "Talisman2" };
+    private string[] EquipSlots2 = new string[4] { "Skill1", "Skill2", "Skill3", "Skill4" };
 
     public override void _Ready()
     {
         playerData = GetNode<PlayerData>("/root/PlayerData");
+
+        var flipButton = GetNode("Background/MarginContainer/WholeContainer/WholeInventory/InventoryHeader/Control2/TextureButton");
+        flipButton.Connect("FlipInv", this, "FlipBool");
+
+
         InitializeUI();
     }
 
     public void InitializeUI()
     {
-        var templateInvSlot = GD.Load<PackedScene>("res://Inventory/InventorySlot.tscn");
+        var templateInvSlot = GD.Load<PackedScene>("res://src/Ui/Inventory/InventorySlot.tscn");
 
         var gridContainer = GetNode("Background/MarginContainer/WholeContainer/WholeInventory/InventoryElements/GridContainer");
         //Creating some test items and holding them here
-
-
-        foreach (var item in playerData.inv)
+        var gridChildren = gridContainer.GetChildren();
+        
+        foreach(Node child in gridChildren)
         {
-            var invSlotNew = templateInvSlot.Instance();
-            invSlotNew.Name = "InventorySlot" + item.inventorySlot.ToString();
-            invSlotNew.GetNode("Icon").Set("texture", item.texture);
-            invSlotNew.GetNode("Icon").Set("slot", item.inventorySlot);
-            invSlotNew.GetNode("Icon").Set("hint_tooltip", playerData.getStatLine(item));
-            gridContainer.AddChild(invSlotNew);
+            gridContainer.RemoveChild(child);
         }
+
+        var inventoryLabelNode = GetNode("Background/MarginContainer/WholeContainer/WholeInventory/InventoryHeader/TextureRect/Label");
+        if(showingInv)
+        {
+            foreach (var item in playerData.inv)
+            {
+                var invSlotNew = templateInvSlot.Instance();
+                invSlotNew.Name = "InventorySlot" + item.inventorySlot.ToString();
+                invSlotNew.GetNode("Icon").Set("texture", item.texture);
+                invSlotNew.GetNode("Icon").Set("slot", item.inventorySlot);
+                invSlotNew.GetNode("Icon").Set("hint_tooltip", playerData.getStatLine(item));
+                gridContainer.AddChild(invSlotNew);
+            }
+            inventoryLabelNode.Set("text", "Inventory");
+        }
+
+        else
+        {
+            foreach (var item in playerData.skills)
+            {
+                var invSlotNew = templateInvSlot.Instance();
+                invSlotNew.Name = "InventorySlot" + item.inventorySlot.ToString();
+                invSlotNew.GetNode("Icon").Set("texture", item.texture);
+                invSlotNew.GetNode("Icon").Set("slot", item.inventorySlot);
+                invSlotNew.GetNode("Icon").Set("hint_tooltip", playerData.getStatLine(item));
+                gridContainer.AddChild(invSlotNew);
+            }
+            inventoryLabelNode.Set("text", "Skills");
+        }
+        
 
         
         //need to fill for each node in equips (8 in total)
@@ -64,7 +91,7 @@ public class Inventory : Control
             }
             else
             {
-                tempNode.Set("texture", (Texture)GD.Load("res://assets/" + slot + "Empty.png"));
+                tempNode.Set("texture", (Texture)GD.Load("res://assets/" + "Skill" + "Empty.png"));
             }
         }
 
@@ -86,9 +113,9 @@ public class Inventory : Control
         healthLabelAfterEquips.Set("text", "Health: " + playerData.healthFinal.ToString());
     }
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
+    public void FlipBool()
+    {
+        showingInv = !showingInv;
+        InitializeUI();
+    }
 }
