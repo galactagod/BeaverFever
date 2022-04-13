@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/skill_bar.png" type="Texture" id=1]
 [ext_resource path="res://src/Ui/Inventory/Inventory.cs" type="Script" id=2]

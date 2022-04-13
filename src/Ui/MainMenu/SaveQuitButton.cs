@@ -14,6 +14,7 @@ public class SaveQuitButton : TextureButton
         string filepath = "user://playerStatsFile.json";
         Godot.File files = new Godot.File();
         files.Open(filepath, Godot.File.ModeFlags.ReadWrite);
+        files.Seek(0);
         string text = files.GetAsText();
 
 
