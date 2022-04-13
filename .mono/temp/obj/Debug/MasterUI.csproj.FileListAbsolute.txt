@@ -1,9 +1,0 @@
-C:\Users\trevo\OneDrive\Documents\MasterUI\.mono\temp\bin\Debug\MasterUI.dll
-C:\Users\trevo\OneDrive\Documents\MasterUI\.mono\temp\bin\Debug\MasterUI.pdb
-C:\Users\trevo\OneDrive\Documents\MasterUI\.mono\temp\obj\Debug\MasterUI.csproj.AssemblyReference.cache
-C:\Users\trevo\OneDrive\Documents\MasterUI\.mono\temp\obj\Debug\MasterUI.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\trevo\OneDrive\Documents\MasterUI\.mono\temp\obj\Debug\MasterUI.AssemblyInfoInputs.cache
-C:\Users\trevo\OneDrive\Documents\MasterUI\.mono\temp\obj\Debug\MasterUI.AssemblyInfo.cs
-C:\Users\trevo\OneDrive\Documents\MasterUI\.mono\temp\obj\Debug\MasterUI.csproj.CoreCompileInputs.cache
-C:\Users\trevo\OneDrive\Documents\MasterUI\.mono\temp\obj\Debug\MasterUI.dll
-C:\Users\trevo\OneDrive\Documents\MasterUI\.mono\temp\obj\Debug\MasterUI.pdb

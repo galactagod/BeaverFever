@@ -1,8 +1,0 @@
-C:\Users\Galacta God\Documents\Stud\Uni\Current Semester\AI For Game Programming\Games\.mono\temp\bin\Debug\Games.dll
-C:\Users\Galacta God\Documents\Stud\Uni\Current Semester\AI For Game Programming\Games\.mono\temp\bin\Debug\Games.pdb
-C:\Users\Galacta God\Documents\Stud\Uni\Current Semester\AI For Game Programming\Games\.mono\temp\obj\Debug\Games.csprojAssemblyReference.cache
-C:\Users\Galacta God\Documents\Stud\Uni\Current Semester\AI For Game Programming\Games\.mono\temp\obj\Debug\Games.AssemblyInfoInputs.cache
-C:\Users\Galacta God\Documents\Stud\Uni\Current Semester\AI For Game Programming\Games\.mono\temp\obj\Debug\Games.AssemblyInfo.cs
-C:\Users\Galacta God\Documents\Stud\Uni\Current Semester\AI For Game Programming\Games\.mono\temp\obj\Debug\Games.csproj.CoreCompileInputs.cache
-C:\Users\Galacta God\Documents\Stud\Uni\Current Semester\AI For Game Programming\Games\.mono\temp\obj\Debug\Games.dll
-C:\Users\Galacta God\Documents\Stud\Uni\Current Semester\AI For Game Programming\Games\.mono\temp\obj\Debug\Games.pdb
