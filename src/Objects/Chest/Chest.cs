@@ -16,6 +16,7 @@ public class Chest: Node
 
     //Node reference
     private EventManager _ndEventManager;
+    //a
     
     public override void _Ready()
     {
