@@ -211,6 +211,7 @@ public class MainStatPage : Control
             Node attackPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground/Label");
             attackPointsLabel.Set("text", "AttackPoints: " + attackStatPoints);
             totalStatPoints--;
+            //total Stat Points - requiredPoints()
             Node statPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/TotalStat");
             statPointsLabel.Set("text", "Total Stat Points to Use: " + totalStatPoints);
             Node attackLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/Attack");

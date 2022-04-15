@@ -58,6 +58,9 @@ public class PlayerData : Node
 
     //The route of assets just so I can change it later if need be
     private string assetRoute = "res://assets/";
+
+    [Signal]
+    public delegate void itemRemoved();
     #endregion
 
     #region Item Classes
@@ -146,6 +149,7 @@ public class PlayerData : Node
         if(files.FileExists(filepath))
         {
             files.Open(filepath, Godot.File.ModeFlags.ReadWrite);
+            files.Seek(0);
             string text = files.GetAsText();
             var jsonFile = JSON.Parse(text).Result;
             ParsedData = jsonFile as Godot.Collections.Dictionary;
@@ -154,6 +158,7 @@ public class PlayerData : Node
         else
         {
             files.Open(filepath, Godot.File.ModeFlags.WriteRead);
+            files.Seek(0);
 
             Godot.Collections.Dictionary jsonToWrite = new Godot.Collections.Dictionary();
             jsonToWrite.Add("Attack", "0");
@@ -260,7 +265,7 @@ public class PlayerData : Node
         //iterate through inventory and see if there is anything equipted, if so add it to the dictionary
         foreach(var item in inv)
         {
-            if (item.equippedSlot != null)
+            if (item.equippedSlot != "none")
             {
                 equipment.Add(item.equippedSlot, item);
                 EquipChangesStatFilter(item, false);
@@ -376,6 +381,8 @@ public class PlayerData : Node
     public string getStatLine(item temp)
     {
         string statLine = "";
+        statLine = statLine + temp.name + "\n";
+        statLine = statLine + temp.ableToBeEquippedSlot + "\n";
         for (int i = 0; i < temp.amountOnStat.Count; i++)
         {
             statLine = statLine + temp.whichStat[i] + " " + temp.operatorOnStat[i] + " " + temp.amountOnStat[i] + "\n";
@@ -392,6 +399,17 @@ public class PlayerData : Node
         spDefenseFinal = (int)((PlayerSpDefense + spDefenseAdd) * spDefenseScale);
         staminaFinal = (int)((PlayerStamina + staminaAdd) * staminaScale);
         healthFinal = (int)((PlayerHealth + healthAdd) * healthScale);
+    }
+
+    public  void RemoveFromInv(int index)
+    {
+        inv.RemoveAt(index);
+        EmitSignal("itemRemoved");
+    }
+
+    public int CurrentStatPoints()
+    {
+        return PlayerAttack + PlayerDefense + PlayerHealth + PlayerSpAttack + PlayerSpDefense + PlayerStamina;
     }
     #endregion
 }

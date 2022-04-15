@@ -10,12 +10,13 @@ public class Inventory : Control
 
     private PlayerData playerData;
 
-    private string[] EquipSlots1 = new string[4] { "Helmet", "Chest", "Legs", "Boots" };
+    private string[] EquipSlots1 = new string[4] { "Necklace", "Weapon", "Talisman", "Consumable" };
     private string[] EquipSlots2 = new string[4] { "Skill1", "Skill2", "Skill3", "Skill4" };
 
     public override void _Ready()
     {
         playerData = GetNode<PlayerData>("/root/PlayerData");
+        playerData.Connect("itemRemoved", this, "InitializeUI");
 
         var flipButton = GetNode("Background/MarginContainer/WholeContainer/WholeInventory/InventoryHeader/Control2/TextureButton");
         flipButton.Connect("FlipInv", this, "FlipBool");

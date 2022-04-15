@@ -13,8 +13,8 @@ public class SaveQuitButton : TextureButton
     {
         string filepath = "user://playerStatsFile.json";
         Godot.File files = new Godot.File();
-        files.Open(filepath, Godot.File.ModeFlags.ReadWrite);
-        string text = files.GetAsText();
+        files.Open(filepath, Godot.File.ModeFlags.WriteRead);
+        files.Seek(0);
 
 
 
@@ -38,7 +38,7 @@ public class SaveQuitButton : TextureButton
             temp.Add("price", item.price.ToString());
             temp.Add("scaleX", item.scale.x.ToString());
             temp.Add("scaleY", item.scale.y.ToString());
-            temp.Add("equippable", item.equippable.ToString());
+            temp.Add("equippable", item.equippable.ToString() == null? "none" : item.equippable.ToString());
             temp.Add("equippedSlot", item.equippedSlot);
             temp.Add("inventorySlot", item.inventorySlot.ToString());
             temp.Add("ableToBeEquippedSlot", item.ableToBeEquippedSlot);
