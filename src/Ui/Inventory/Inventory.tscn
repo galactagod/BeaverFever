@@ -417,6 +417,7 @@ rect_min_size = Vector2( 80, 80 )
 margin_right = 80.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
+hint_tooltip = "Flips between your item inventory and your skill inventory. Give it a try!"
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 11 )
 texture_disabled = ExtResource( 11 )

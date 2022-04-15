@@ -16,6 +16,7 @@ public class Inventory : Control
     public override void _Ready()
     {
         playerData = GetNode<PlayerData>("/root/PlayerData");
+        playerData.Connect("itemRemoved", this, "InitializeUI");
 
         var flipButton = GetNode("Background/MarginContainer/WholeContainer/WholeInventory/InventoryHeader/Control2/TextureButton");
         flipButton.Connect("FlipInv", this, "FlipBool");

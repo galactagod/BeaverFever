@@ -112,9 +112,13 @@ public class Store : Control
     {
         //pop item out of list
         //recall initializing items
-        playerData.Wallet -= playerData.itemsAvaliable[slot - 1].price;
+        
         if(playerData.itemsAvaliable[slot-1].type == "item")
         {
+            if(playerData.itemsAvaliable[slot - 1].ableToBeEquippedSlot == "Consumable")
+            {
+                //if amount > allowed, just return and dont let buy
+            }
             playerData.itemsAvaliable[slot - 1].inventorySlot = playerData.inv.Count;
             playerData.inv.Add(playerData.itemsAvaliable[slot - 1]);
         }
@@ -123,7 +127,8 @@ public class Store : Control
             playerData.itemsAvaliable[slot - 1].inventorySlot = playerData.skills.Count;
             playerData.skills.Add(playerData.itemsAvaliable[slot - 1]);
         }
-        
+        playerData.Wallet -= playerData.itemsAvaliable[slot - 1].price;
+
         playerData.itemsInStore.RemoveAt(slot - 1);
         playerData.itemsAvaliable.RemoveAt(slot - 1);
         InitalizingItems();

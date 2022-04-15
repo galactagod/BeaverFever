@@ -58,6 +58,9 @@ public class PlayerData : Node
 
     //The route of assets just so I can change it later if need be
     private string assetRoute = "res://assets/";
+
+    [Signal]
+    public delegate void itemRemoved();
     #endregion
 
     #region Item Classes
@@ -378,6 +381,8 @@ public class PlayerData : Node
     public string getStatLine(item temp)
     {
         string statLine = "";
+        statLine = statLine + temp.name + "\n";
+        statLine = statLine + temp.ableToBeEquippedSlot + "\n";
         for (int i = 0; i < temp.amountOnStat.Count; i++)
         {
             statLine = statLine + temp.whichStat[i] + " " + temp.operatorOnStat[i] + " " + temp.amountOnStat[i] + "\n";
@@ -394,6 +399,12 @@ public class PlayerData : Node
         spDefenseFinal = (int)((PlayerSpDefense + spDefenseAdd) * spDefenseScale);
         staminaFinal = (int)((PlayerStamina + staminaAdd) * staminaScale);
         healthFinal = (int)((PlayerHealth + healthAdd) * healthScale);
+    }
+
+    public  void RemoveFromInv(int index)
+    {
+        inv.RemoveAt(index);
+        EmitSignal("itemRemoved");
     }
     #endregion
 }

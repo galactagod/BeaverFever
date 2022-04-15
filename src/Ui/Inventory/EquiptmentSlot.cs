@@ -91,6 +91,16 @@ public class EquiptmentSlot : TextureRect
         }
 
         //if a consumable, do the consumable things
+        if(actualData.ableToBeEquippedSlot == "Consumable")
+        {
+            Texture = actualData.texture;
+            //counter could go here?
+            //use consumable?
+            Console.WriteLine("Hi");
+            Texture = (Texture)GD.Load("res://assets/" + "Consumable" + "Empty" + ".png");
+            playerData.RemoveFromInv(actualData.inventorySlot);
+            return;
+        }
         //else, do the rest
 
         //handling if there is something already equipted
