@@ -406,5 +406,10 @@ public class PlayerData : Node
         inv.RemoveAt(index);
         EmitSignal("itemRemoved");
     }
+
+    public int CurrentStatPoints()
+    {
+        return PlayerAttack + PlayerDefense + PlayerHealth + PlayerSpAttack + PlayerSpDefense + PlayerStamina;
+    }
     #endregion
 }
