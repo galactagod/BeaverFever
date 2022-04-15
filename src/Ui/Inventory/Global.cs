@@ -17,6 +17,7 @@ public static class Global
         whichStat = new List<string> {"Health"},
         operatorOnStat = new List<string> {"+"},
         equippable = true,
+        equippedSlot = "none",
         ableToBeEquippedSlot = "Necklace",
         type = "item"
         },
@@ -29,6 +30,7 @@ public static class Global
         whichStat = new List<string> {"Attack"},
         operatorOnStat = new List<string> {"+"},
         equippable = true,
+        equippedSlot = "none",
         ableToBeEquippedSlot = "Weapon",
         type = "item"
         },
@@ -41,6 +43,7 @@ public static class Global
         whichStat = new List<string> {"SpAttack"},
         operatorOnStat = new List<string> {"+"},
         equippable = true,
+        equippedSlot = "none",
         ableToBeEquippedSlot = "Skill",
         type = "skill"
         },
@@ -53,6 +56,7 @@ public static class Global
         whichStat = new List<string> {"SpDefense"},
         operatorOnStat = new List<string> {"+"},
         equippable = true,
+        equippedSlot = "none",
         ableToBeEquippedSlot = "Talisman",
         type="item"
         },
@@ -65,6 +69,7 @@ public static class Global
         whichStat = new List<string> {"Health"},
         operatorOnStat = new List<string> {"+"},
         equippable = true,
+        equippedSlot = "none",
         ableToBeEquippedSlot = "Necklace",
         type = "skill"
         }

@@ -117,7 +117,7 @@ public class InventorySlot : TextureRect
             //make node have null texture
             var nodeToEmpty = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/" + comingFrom + "/" + actualData.equippedSlot + "/Icon");
             nodeToEmpty.Set("texture", (Texture)GD.Load("res://assets/" + actualData.equippedSlot + "Empty" + ".png"));
-            actualData.equippedSlot = null;
+            actualData.equippedSlot = "none";
             playerData.inv[actualData.inventorySlot] = actualData;
 
             // Changing label text
@@ -142,7 +142,7 @@ public class InventorySlot : TextureRect
             playerData.EquipChangesStatFilter(actualData, true);
             var nodeToEmpty = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/" + comingFrom + "/" + actualData.equippedSlot + "/Icon");
             nodeToEmpty.Set("texture", (Texture)GD.Load("res://assets/" + "Skill" + "Empty" + ".png"));
-            actualData.equippedSlot = null;
+            actualData.equippedSlot = "none";
             //go to it in skills list and remove it from the equipped area
             playerData.skills[actualData.inventorySlot] = actualData;
 

@@ -262,7 +262,7 @@ public class PlayerData : Node
         //iterate through inventory and see if there is anything equipted, if so add it to the dictionary
         foreach(var item in inv)
         {
-            if (item.equippedSlot != null)
+            if (item.equippedSlot != "none")
             {
                 equipment.Add(item.equippedSlot, item);
                 EquipChangesStatFilter(item, false);

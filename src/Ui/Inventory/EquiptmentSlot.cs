@@ -85,7 +85,7 @@ public class EquiptmentSlot : TextureRect
             return;
         }
 
-        if(actualData.equippedSlot != null)
+        if(actualData.equippedSlot != "none")
         {
             return;
         }
