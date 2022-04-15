@@ -26,7 +26,7 @@ public class EquiptmentSlot : TextureRect
         }
 
         string comingFrom = "EquipBars3";
-        if(nameOfSlot == "Helmet"|| nameOfSlot == "Chest" || nameOfSlot == "Legs" || nameOfSlot == "Boots")
+        if(nameOfSlot == "Necklace" || nameOfSlot == "Weapon" || nameOfSlot == "Talisman" || nameOfSlot == "Consumable")
         {
             comingFrom = "EquipBars";
         }
@@ -90,8 +90,11 @@ public class EquiptmentSlot : TextureRect
             return;
         }
 
+        //if a consumable, do the consumable things
+        //else, do the rest
+
         //handling if there is something already equipted
-        
+
         PlayerData.item apple;
         if(playerData.equipment.TryGetValue(nameOfSlot, out apple))
         {
@@ -123,6 +126,9 @@ public class EquiptmentSlot : TextureRect
         //Replacing it in the dictionary
         playerData.equipment.Remove(nameOfSlot);
         playerData.equipment.Add(nameOfSlot, actualData);
+
+        
+
 
 
         //here we need to do the equip stat changes of the new item we have equipped

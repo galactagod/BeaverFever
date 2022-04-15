@@ -17,7 +17,7 @@ public static class Global
         whichStat = new List<string> {"Health"},
         operatorOnStat = new List<string> {"+"},
         equippable = true,
-        ableToBeEquippedSlot = "Helmet",
+        ableToBeEquippedSlot = "Necklace",
         type = "item"
         },
         new PlayerData.item {
@@ -65,7 +65,7 @@ public static class Global
         whichStat = new List<string> {"Health"},
         operatorOnStat = new List<string> {"+"},
         equippable = true,
-        ableToBeEquippedSlot = "Helmet",
+        ableToBeEquippedSlot = "Necklace",
         type = "skill"
         }
 

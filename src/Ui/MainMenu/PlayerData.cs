@@ -146,6 +146,7 @@ public class PlayerData : Node
         if(files.FileExists(filepath))
         {
             files.Open(filepath, Godot.File.ModeFlags.ReadWrite);
+            files.Seek(0);
             string text = files.GetAsText();
             var jsonFile = JSON.Parse(text).Result;
             ParsedData = jsonFile as Godot.Collections.Dictionary;
@@ -154,6 +155,7 @@ public class PlayerData : Node
         else
         {
             files.Open(filepath, Godot.File.ModeFlags.WriteRead);
+            files.Seek(0);
 
             Godot.Collections.Dictionary jsonToWrite = new Godot.Collections.Dictionary();
             jsonToWrite.Add("Attack", "0");
