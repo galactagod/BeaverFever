@@ -387,6 +387,10 @@ public class PlayerData : Node
         {
             statLine = statLine + temp.whichStat[i] + " " + temp.operatorOnStat[i] + " " + temp.amountOnStat[i] + "\n";
         }
+        if(temp.equippedSlot != "none")
+        {
+            statLine = statLine + "Equipped";
+        }
         return statLine;
     }
 
@@ -410,6 +414,15 @@ public class PlayerData : Node
     public int CurrentStatPoints()
     {
         return PlayerAttack + PlayerDefense + PlayerHealth + PlayerSpAttack + PlayerSpDefense + PlayerStamina;
+    }
+
+
+    public int EXPNeeded(int x)
+    {
+        if (x < 12)
+            return 500;
+        //accurate level 12 and up
+        return (int)(0.02 * x * x * x + 3.06 * x * x + 105.6 * x - 895);
     }
     #endregion
 }
