@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://SkillTree.cs" type="Script" id=1]
-[ext_resource path="res://assets/skills/body/armor/Body 3 Original.png" type="Texture" id=2]
 [ext_resource path="res://assets/skills/strength/teeth/Sharp Mod 1.png" type="Texture" id=3]
 [ext_resource path="res://assets/skills/strength/punch/Attack Mod 1.png" type="Texture" id=4]
 [ext_resource path="res://assets/backgrounds/background.jpg" type="Texture" id=5]
@@ -17,6 +16,22 @@ font_data = ExtResource( 8 )
 
 [sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 9 )
+
+[sub_resource type="StreamTexture" id=3]
+flags = 4
+load_path = "res://.import/Body 3 Original.png-b9c705c4ef3ff49a6f6c659b9df19472.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 4
+load_path = "res://.import/Praying Mod 1.png-18587f3916d92bdce1457f08f579bc2f.stex"
+
+[sub_resource type="StreamTexture" id=5]
+flags = 4
+load_path = "res://.import/Leafs 1 Mod 1.png-f7f68e23b1f447f2fe521248403ae920.stex"
+
+[sub_resource type="StreamTexture" id=6]
+flags = 4
+load_path = "res://.import/Moon Mod 1.png-b27aad80f64016d6dc219f20974a6c51.stex"
 
 [node name="Skill Tree" type="Node2D"]
 script = ExtResource( 1 )
@@ -129,7 +144,8 @@ margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
 rect_pivot_offset = Vector2( 1535, 547 )
-hint_tooltip = "Improve Punching ability"
+hint_tooltip = "Beaver performs a charged attack, 20pts, 40pts, 50pts
+"
 texture_normal = ExtResource( 4 )
 expand = true
 stretch_mode = 3
@@ -166,9 +182,13 @@ __meta__ = {
 margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
+hint_tooltip = "Beaver’s default attack, quick move, uses his claws, damage: 5pts, 10pts, 15pts"
 texture_normal = ExtResource( 7 )
 expand = true
 stretch_mode = 3
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="clawsLabel" type="Label" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer2/VBoxContainer"]
 margin_top = 68.0
@@ -202,6 +222,7 @@ __meta__ = {
 margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
+hint_tooltip = "Beaver’s bite attack, 60pts damage "
 texture_normal = ExtResource( 3 )
 expand = true
 stretch_mode = 3
@@ -264,7 +285,8 @@ __meta__ = {
 margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
-texture_normal = ExtResource( 2 )
+hint_tooltip = "Beaver’s defense against attacks, 5%, 10%, 30%"
+texture_normal = SubResource( 3 )
 expand = true
 stretch_mode = 3
 
@@ -300,6 +322,7 @@ __meta__ = {
 margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
+hint_tooltip = " Increase beavers passive movement speed, 5%, 10%, 15%"
 texture_normal = ExtResource( 6 )
 expand = true
 stretch_mode = 3
@@ -310,6 +333,143 @@ margin_right = 251.0
 margin_bottom = 108.0
 rect_min_size = Vector2( 100, 40 )
 text = "Boots"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tier_2 - passives" type="HBoxContainer" parent="Menu/Vertical Container"]
+margin_top = 416.0
+margin_right = 1023.0
+margin_bottom = 564.35
+rect_min_size = Vector2( 0, 148.35 )
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Menu/Vertical Container/Tier_2 - passives"]
+margin_right = 251.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 251, 100 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="armorLabel" type="Label" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer3"]
+margin_top = 54.0
+margin_right = 251.0
+margin_bottom = 94.0
+rect_min_size = Vector2( 100, 40 )
+text = "Passives"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_2 - passives"]
+margin_left = 255.0
+margin_right = 506.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 251, 0 )
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer"]
+margin_top = 20.0
+margin_right = 251.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 100, 100 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="coinBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer/VBoxContainer"]
+margin_right = 251.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+hint_tooltip = "increases the XP gained from enemies, 3%, 7%, 10%"
+texture_normal = SubResource( 4 )
+expand = true
+stretch_mode = 3
+
+[node name="coinBtn2" type="Label" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer/VBoxContainer"]
+margin_top = 68.0
+margin_right = 251.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 100, 40 )
+text = "Grace"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Menu/Vertical Container/Tier_2 - passives"]
+margin_left = 510.0
+margin_right = 761.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 251, 0 )
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer2"]
+margin_top = 20.0
+margin_right = 251.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 100, 100 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bubbleBurstBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer2/VBoxContainer"]
+margin_right = 251.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = SubResource( 5 )
+expand = true
+stretch_mode = 3
+
+[node name="bubbleBurstLabel" type="Label" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer2/VBoxContainer"]
+margin_top = 68.0
+margin_right = 251.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 100, 40 )
+text = "Bubble Burst
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="Menu/Vertical Container/Tier_2 - passives"]
+margin_left = 765.0
+margin_right = 1016.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 251, 0 )
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer4"]
+margin_top = 20.0
+margin_right = 251.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 100, 100 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="windHowlButton" type="TextureButton" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer4/VBoxContainer"]
+margin_right = 251.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = SubResource( 6 )
+expand = true
+stretch_mode = 3
+
+[node name="windHowlLabel2" type="Label" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer4/VBoxContainer"]
+margin_top = 68.0
+margin_right = 251.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 100, 40 )
+text = "Wind Howl
+"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false

@@ -10,24 +10,32 @@ public class SkillTree : Node2D
     //          Skill Counter
     /***********************************/
 
+    // Punch: Beaver performs a charged attack, 20pts, 40pts, 50pts
+    // Claws: Beaver’s default attack, quick move, uses his claws, damage: 5pts, 10pts, 15pts 
+    // Jaws: Beaver’s bite attack, I guess this would be the ultimate?? 60pts damage 
+
     // Strength 
     int punchSkill = 0;
     int clawSkill = 0;
     int jawsSkill = 0;
 
+// Armor: Beaver’s defense against attacks, 5%, 10%, 30%
+// Boots: Increase beavers passive movement speed, 5%, 10%, 15%
 
     // Body 
     int armorSkill;
     int bootSkill;
-    int wisdomSkill;
+    
 
 
-
+    // Coin increase: increases the XP gained from enemies, 3%, 7%, 10%
 
     // Passive 
-    int nightSkill;
-    int leavesSkill;
-    int vampireSkill;
+    int graceSkill;
+
+    int bubbleBurstSkill;
+    int windHowlSkill;
+
 
 
     /***********************************/
@@ -43,15 +51,15 @@ public class SkillTree : Node2D
     // Body Buttons
     TextureButton armorBtn;
     TextureButton bootBtn;
-    TextureButton wisdomBtn;
+
 
 
 
 
     // Passive Buttons
-    TextureButton nightBtn;
-    TextureButton leavesBtn;
-    TextureButton vampireBtn;
+        TextureButton graceBtn;
+    TextureButton windHowlBtn;
+    TextureButton bubbleBurstBtn;
 
 
 
@@ -68,15 +76,15 @@ public class SkillTree : Node2D
     // Body Labels
     Label armorLabel;
     Label bootLabel;
-    Label wisdomLabel;
 
 
 
 
     // Passive Labels
-    Label nightLabel;
-    Label leavesLabel;
-    Label vampireLabel;
+    Label graceLabel;
+
+    Label windHowlLabel;
+    Label bubbleBurstLabel;
 
 
 
@@ -116,24 +124,21 @@ public class SkillTree : Node2D
         this.bootLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_3 - body/VBoxContainer2/VBoxContainer/bootLabel");
 
 
-        // this.wisdomBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_3 - body/VBoxContainer3/VBoxContainer/wisdomBtn");
-        // this.wisdomBtn.Connect("pressed", this, "upgradeWisdom");
-        // this.wisdomLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_3 - body/VBoxContainer3/VBoxContainer/wisdomLabel");
-
-
  
         // passives
-        // this.nightBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_1 - passives/VBoxContainer/VBoxContainer/moonBtn");
-        // this.nightBtn.Connect("pressed", this, "upgradeNight");
-        // this.nightLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_1 - passives/VBoxContainer/VBoxContainer/moonLabel");
+        
+        this.graceBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_2 - passives/VBoxContainer/VBoxContainer/coinBtn");
+        this.graceBtn.Connect("pressed", this, "upgradeGrace");
+        this.graceLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_2 - passives/VBoxContainer/VBoxContainer/coinBtn2");
 
-        // this.leavesBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_1 - passives/VBoxContainer2/VBoxContainer/leavesBtn");
-        // this.leavesBtn.Connect("pressed", this, "upgradeLeaves");
-        // this.leavesLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_1 - passives/VBoxContainer2/VBoxContainer/leavesLabel");
 
-        // this.vampireBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_1 - passives/VBoxContainer3/VBoxContainer/prayingBtn");
-        // this.vampireBtn.Connect("pressed", this, "upgradeVampire");
-        // this.vampireLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_1 - passives/VBoxContainer3/VBoxContainer/prayingLabel");
+        this.windHowlBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_2 - passives/VBoxContainer4/VBoxContainer/windHowlButton");
+        this.windHowlBtn.Connect("pressed", this, "upgradeWindHowl");
+        this.windHowlLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_2 - passives/VBoxContainer4/VBoxContainer/windHowlLabel2");
+
+        this.bubbleBurstBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_2 - passives/VBoxContainer2/VBoxContainer/bubbleBurstBtn");
+        this.bubbleBurstBtn.Connect("pressed", this, "upgradeBubbleBurst");
+        this.bubbleBurstLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_2 - passives/VBoxContainer2/VBoxContainer/bubbleBurstLabel");
 
     }
 
@@ -263,84 +268,84 @@ public class SkillTree : Node2D
         }
     }
 
-    // void upgradeWisdom()
-    // {
-    //     if (wisdomSkill < 5)
-    //     {
-    //         wisdomSkill++;
-    //         this.wisdomLabel.Text = "Wisdom - Level " + wisdomSkill;
+    void upgradeGrace()
+    {
+        if (graceSkill < 5)
+        {
+            graceSkill++;
+            this.graceLabel.Text = "Wisdom - Level " + graceSkill;
 
-    //     }
+        }
 
-    //     switch (wisdomSkill)
-    //     {
-    //         case 1:
-    //             changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 2.png", this.wisdomBtn);
-    //             break;
+        switch (graceSkill)
+        {
+            case 1:
+                changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 2.png", this.graceBtn);
+                break;
 
-    //         case 2:
-    //             changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 3.png", this.wisdomBtn);
-    //             break;
-    //         case 3:
-    //             changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 4.png", this.wisdomBtn);
-    //             break;
-    //         case 4:
-    //             changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 5.png", this.wisdomBtn);
-    //             break;
-    //     }
-    // }
-
-
+            case 2:
+                changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 3.png", this.graceBtn);
+                break;
+            case 3:
+                changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 4.png", this.graceBtn);
+                break;
+            case 4:
+                changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 5.png", this.graceBtn);
+                break;
+        }
+    }
 
 
 
 
-    // void upgradeNight()
-    // {
-    //     if (nightSkill < 4)
-    //     {
-    //         nightSkill++;
-    //         this.nightLabel.Text = "Night - Level " + nightSkill;
-
-    //     }
-
-    //     switch (nightSkill)
-    //     {
-    //         case 1:
-    //             changeBtnTexture("res://assets/skills/passives/night/Moon Mod 2.png", this.nightBtn);
-    //             break;
-
-    //         case 2:
-    //             changeBtnTexture("res://assets/skills/passives/night/Moon Mod 3.png", this.nightBtn);
-    //             break;
-    //         case 3:
-    //             changeBtnTexture("res://assets/skills/passives/night/Moon Mod 4.png", this.nightBtn);
-    //             break;
-    //     }
-    // }
 
 
+    void upgradeWindHowl()
+    {
+        if (windHowlSkill < 4)
+        {
+            windHowlSkill++;
+            this.windHowlLabel.Text = "Night - Level " + windHowlSkill;
 
-    // void upgradeLeaves()
-    // {
-    //     if (leavesSkill < 3)
-    //     {
-    //         leavesSkill++;
-    //         this.leavesLabel.Text = "Leaves - Level " + leavesSkill;
+        }
 
-    //     }
+        switch (windHowlSkill)
+        {
+            case 1:
+                changeBtnTexture("res://assets/skills/passives/night/Moon Mod 2.png", this.windHowlBtn);
+                break;
 
-    //     switch (leavesSkill)
-    //     {
-    //         case 1:
-    //             changeBtnTexture("res://assets/skills/passives/leaves/Leafs 1 Mod 1.png", this.leavesBtn);
-    //             break;
+            case 2:
+                changeBtnTexture("res://assets/skills/passives/night/Moon Mod 3.png", this.windHowlBtn);
+                break;
+            case 3:
+                changeBtnTexture("res://assets/skills/passives/night/Moon Mod 4.png", this.windHowlBtn);
+                break;
+        }
+    }
 
-    //         case 2:
-    //             changeBtnTexture("res://assets/skills/passives/leaves/Leafs Mod 1.png", this.leavesBtn);
-    //             break;
-    //     }
-    // }
+
+
+    void upgradeBubbleBurst()
+    {
+        if (bubbleBurstSkill < 3)
+        {
+            bubbleBurstSkill++;
+            this.bubbleBurstLabel.Text = "Leaves - Level " + bubbleBurstSkill;
+
+        }
+
+        switch (bubbleBurstSkill)
+        {
+            case 1:
+                changeBtnTexture("res://assets/skills/passives/leaves/Leafs 1 Mod 1.png", this.bubbleBurstBtn);
+                break;
+
+            case 2:
+                changeBtnTexture("res://assets/skills/passives/leaves/Leafs Mod 1.png", this.bubbleBurstBtn);
+                break;
+        }
+    }
 
 
     // void upgradeVampire()
