@@ -14,4 +14,14 @@ public class EventManager : Node
     {
         
     }
+
+    //Creates a new chest in chestEventList
+    public void createChest(int id)
+    {
+        ArrayList temp = new ArrayList();
+        temp.Add(id);
+        temp.Add(false);
+
+        chestEventList.Add(temp);
+    }
 }

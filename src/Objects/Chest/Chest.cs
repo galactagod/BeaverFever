@@ -16,11 +16,12 @@ public class Chest: Node
 
     //Node reference
     private EventManager _ndEventManager;
-    //a
     
     public override void _Ready()
     {
         _ndEventManager = GetNode<EventManager>("/root/EventManager");
+
+        bool flag = false;
 
         for(int i=0; i < _ndEventManager.chestEventList.Size; i++)
         {
@@ -28,12 +29,23 @@ public class Chest: Node
             {
                 //opened status will always be in the second position
                 opened = _ndEventManager.chestEventList[i][openedpos];
+                flag = true;
             }
+        }
+
+        if(flag = false)
+        {
+            _ndEventManager.createChest(id);
         }
     }
 
     public override void _Process(float delta)
     {
         
+    }
+
+    public void openChest(int id)
+    {
+        _ndEventManager.chestEventList[id][openedpos] = true;
     }
 }
