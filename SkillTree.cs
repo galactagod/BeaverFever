@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class Player : Node2D
+public class SkillTree : Node2D
 {
 
     int skillPoints = 0;
@@ -10,28 +10,32 @@ public class Player : Node2D
     //          Skill Counter
     /***********************************/
 
+    // Punch: Beaver performs a charged attack, 20pts, 40pts, 50pts
+    // Claws: Beaver’s default attack, quick move, uses his claws, damage: 5pts, 10pts, 15pts 
+    // Jaws: Beaver’s bite attack, I guess this would be the ultimate?? 60pts damage 
+
     // Strength 
     int punchSkill = 0;
     int clawSkill = 0;
     int jawsSkill = 0;
 
+// Armor: Beaver’s defense against attacks, 5%, 10%, 30%
+// Boots: Increase beavers passive movement speed, 5%, 10%, 15%
 
     // Body 
     int armorSkill;
     int bootSkill;
-    int wisdomSkill;
+    
 
 
-    // Weapon 
-    int swordSkill;
-    int daggerSkill;
-    int bowArrowSkill;
-
+    // Coin increase: increases the XP gained from enemies, 3%, 7%, 10%
 
     // Passive 
-    int nightSkill;
-    int leavesSkill;
-    int vampireSkill;
+    int graceSkill;
+
+    int bubbleBurstSkill;
+    int windHowlSkill;
+
 
 
     /***********************************/
@@ -47,18 +51,15 @@ public class Player : Node2D
     // Body Buttons
     TextureButton armorBtn;
     TextureButton bootBtn;
-    TextureButton wisdomBtn;
 
 
-    // Weapon Buttons
-    TextureButton swordBtn;
-    TextureButton daggerBtn;
-    TextureButton bowArrowBtn;
+
+
 
     // Passive Buttons
-    TextureButton nightBtn;
-    TextureButton leavesBtn;
-    TextureButton vampireBtn;
+        TextureButton graceBtn;
+    TextureButton windHowlBtn;
+    TextureButton bubbleBurstBtn;
 
 
 
@@ -75,18 +76,15 @@ public class Player : Node2D
     // Body Labels
     Label armorLabel;
     Label bootLabel;
-    Label wisdomLabel;
 
 
-    // Weapon Labels
-    Label swordLabel;
-    Label daggerLabel;
-    Label bowArrowLabel;
+
 
     // Passive Labels
-    Label nightLabel;
-    Label leavesLabel;
-    Label vampireLabel;
+    Label graceLabel;
+
+    Label windHowlLabel;
+    Label bubbleBurstLabel;
 
 
 
@@ -126,37 +124,21 @@ public class Player : Node2D
         this.bootLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_3 - body/VBoxContainer2/VBoxContainer/bootLabel");
 
 
-        this.wisdomBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_3 - body/VBoxContainer3/VBoxContainer/wisdomBtn");
-        this.wisdomBtn.Connect("pressed", this, "upgradeWisdom");
-        this.wisdomLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_3 - body/VBoxContainer3/VBoxContainer/wisdomLabel");
-
-
-        // weapons
-        this.swordBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_2 - weapons/VBoxContainer/VBoxContainer/swordBtn");
-        this.swordBtn.Connect("pressed", this, "upgradeSword");
-        this.swordLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_2 - weapons/VBoxContainer/VBoxContainer/swordLabel");
-
-        this.daggerBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_2 - weapons/VBoxContainer2/VBoxContainer/daggerBtn");
-        this.daggerBtn.Connect("pressed", this, "upgradeDagger");
-        this.daggerLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_2 - weapons/VBoxContainer2/VBoxContainer/daggerLabel");
-
-        this.bowArrowBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_2 - weapons/VBoxContainer3/VBoxContainer/bowBtn");
-        this.bowArrowBtn.Connect("pressed", this, "upgradeBowArrowBtn");
-        this.bowArrowLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_2 - weapons/VBoxContainer3/VBoxContainer/bowLabel");
-
-
+ 
         // passives
-        this.nightBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_1 - passives/VBoxContainer/VBoxContainer/moonBtn");
-        this.nightBtn.Connect("pressed", this, "upgradeNight");
-        this.nightLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_1 - passives/VBoxContainer/VBoxContainer/moonLabel");
+        
+        this.graceBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_2 - passives/VBoxContainer/VBoxContainer/coinBtn");
+        this.graceBtn.Connect("pressed", this, "upgradeGrace");
+        this.graceLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_2 - passives/VBoxContainer/VBoxContainer/coinBtn2");
 
-        this.leavesBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_1 - passives/VBoxContainer2/VBoxContainer/leavesBtn");
-        this.leavesBtn.Connect("pressed", this, "upgradeLeaves");
-        this.leavesLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_1 - passives/VBoxContainer2/VBoxContainer/leavesLabel");
 
-        this.vampireBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_1 - passives/VBoxContainer3/VBoxContainer/prayingBtn");
-        this.vampireBtn.Connect("pressed", this, "upgradeVampire");
-        this.vampireLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_1 - passives/VBoxContainer3/VBoxContainer/prayingLabel");
+        this.windHowlBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_2 - passives/VBoxContainer4/VBoxContainer/windHowlButton");
+        this.windHowlBtn.Connect("pressed", this, "upgradeWindHowl");
+        this.windHowlLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_2 - passives/VBoxContainer4/VBoxContainer/windHowlLabel2");
+
+        this.bubbleBurstBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_2 - passives/VBoxContainer2/VBoxContainer/bubbleBurstBtn");
+        this.bubbleBurstBtn.Connect("pressed", this, "upgradeBubbleBurst");
+        this.bubbleBurstLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_2 - passives/VBoxContainer2/VBoxContainer/bubbleBurstLabel");
 
     }
 
@@ -286,180 +268,109 @@ public class Player : Node2D
         }
     }
 
-    void upgradeWisdom()
+    void upgradeGrace()
     {
-        if (wisdomSkill < 5)
+        if (graceSkill < 5)
         {
-            wisdomSkill++;
-            this.wisdomLabel.Text = "Wisdom - Level " + wisdomSkill;
+            graceSkill++;
+            this.graceLabel.Text = "Wisdom - Level " + graceSkill;
 
         }
 
-        switch (wisdomSkill)
+        switch (graceSkill)
         {
             case 1:
-                changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 2.png", this.wisdomBtn);
+                changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 2.png", this.graceBtn);
                 break;
 
             case 2:
-                changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 3.png", this.wisdomBtn);
+                changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 3.png", this.graceBtn);
                 break;
             case 3:
-                changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 4.png", this.wisdomBtn);
+                changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 4.png", this.graceBtn);
                 break;
             case 4:
-                changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 5.png", this.wisdomBtn);
+                changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 5.png", this.graceBtn);
                 break;
         }
     }
 
 
-    void upgradeSword()
+
+
+
+
+    void upgradeWindHowl()
     {
-        if (swordSkill < 4)
+        if (windHowlSkill < 4)
         {
-            swordSkill++;
-            this.swordLabel.Text = "Sword - Level " + swordSkill;
+            windHowlSkill++;
+            this.windHowlLabel.Text = "Night - Level " + windHowlSkill;
+
         }
 
-        switch (swordSkill)
+        switch (windHowlSkill)
         {
             case 1:
-                changeBtnTexture("res://assets/skills/weapons/sword/Blade Mod 2.png", this.swordBtn);
+                changeBtnTexture("res://assets/skills/passives/night/Moon Mod 2.png", this.windHowlBtn);
                 break;
 
             case 2:
-                changeBtnTexture("res://assets/skills/weapons/sword/Blade Mod 3.png", this.swordBtn);
+                changeBtnTexture("res://assets/skills/passives/night/Moon Mod 3.png", this.windHowlBtn);
                 break;
             case 3:
-                changeBtnTexture("res://assets/skills/weapons/sword/Blade Mod 4.png", this.swordBtn);
+                changeBtnTexture("res://assets/skills/passives/night/Moon Mod 4.png", this.windHowlBtn);
                 break;
         }
     }
 
 
 
-    void upgradeDagger()
+    void upgradeBubbleBurst()
     {
-        if (daggerSkill < 4)
+        if (bubbleBurstSkill < 3)
         {
-            daggerSkill++;
-            this.daggerLabel.Text = "Dagger - Level " + daggerSkill;
+            bubbleBurstSkill++;
+            this.bubbleBurstLabel.Text = "Leaves - Level " + bubbleBurstSkill;
 
         }
 
-        switch (daggerSkill)
+        switch (bubbleBurstSkill)
         {
             case 1:
-                changeBtnTexture("res://assets/skills/weapons/dagger/Dagger 1 Mod 2.png", this.daggerBtn);
+                changeBtnTexture("res://assets/skills/passives/leaves/Leafs 1 Mod 1.png", this.bubbleBurstBtn);
                 break;
 
             case 2:
-                changeBtnTexture("res://assets/skills/weapons/dagger/Dagger 1 Mod 3.png", this.daggerBtn);
-                break;
-            case 3:
-                changeBtnTexture("res://assets/skills/weapons/dagger/Dagger 1 Mod 4.png", this.daggerBtn);
+                changeBtnTexture("res://assets/skills/passives/leaves/Leafs Mod 1.png", this.bubbleBurstBtn);
                 break;
         }
     }
 
 
-    void upgradeBowArrowBtn()
-    {
-        if (bowArrowSkill < 4)
-        {
-            bowArrowSkill++;
-            this.bowArrowLabel.Text = "Bow- Level " + bowArrowSkill;
+    // void upgradeVampire()
+    // {
+    //     if (vampireSkill < 4)
+    //     {
+    //         vampireSkill++;
+    //         this.vampireLabel.Text = "Vampire - Level " + vampireSkill;
 
-        }
+    //     }
 
-        switch (bowArrowSkill)
-        {
-            case 1:
-                changeBtnTexture("res://assets/skills/weapons/bow and arrow/Bow Mod 2.png", this.bowArrowBtn);
-                break;
+    //     switch (vampireSkill)
+    //     {
+    //         case 1:
+    //             changeBtnTexture("res://assets/skills/passives/praying/Praying Mod 2.png", this.vampireBtn);
+    //             break;
 
-            case 2:
-                changeBtnTexture("res://assets/skills/weapons/bow and arrow/Bow Mod 3.png", this.bowArrowBtn);
-                break;
-            case 3:
-                changeBtnTexture("res://assets/skills/weapons/bow and arrow/Bow Mod 4.png", this.bowArrowBtn);
-                break;
-        }
-    }
-
-
-    void upgradeNight()
-    {
-        if (nightSkill < 4)
-        {
-            nightSkill++;
-            this.nightLabel.Text = "Night - Level " + nightSkill;
-
-        }
-
-        switch (nightSkill)
-        {
-            case 1:
-                changeBtnTexture("res://assets/skills/passives/night/Moon Mod 2.png", this.nightBtn);
-                break;
-
-            case 2:
-                changeBtnTexture("res://assets/skills/passives/night/Moon Mod 3.png", this.nightBtn);
-                break;
-            case 3:
-                changeBtnTexture("res://assets/skills/passives/night/Moon Mod 4.png", this.nightBtn);
-                break;
-        }
-    }
-
-
-
-    void upgradeLeaves()
-    {
-        if (leavesSkill < 3)
-        {
-            leavesSkill++;
-            this.leavesLabel.Text = "Leaves - Level " + leavesSkill;
-
-        }
-
-        switch (leavesSkill)
-        {
-            case 1:
-                changeBtnTexture("res://assets/skills/passives/leaves/Leafs 1 Mod 1.png", this.leavesBtn);
-                break;
-
-            case 2:
-                changeBtnTexture("res://assets/skills/passives/leaves/Leafs Mod 1.png", this.leavesBtn);
-                break;
-        }
-    }
-
-
-    void upgradeVampire()
-    {
-        if (vampireSkill < 4)
-        {
-            vampireSkill++;
-            this.vampireLabel.Text = "Vampire - Level " + vampireSkill;
-
-        }
-
-        switch (vampireSkill)
-        {
-            case 1:
-                changeBtnTexture("res://assets/skills/passives/praying/Praying Mod 2.png", this.vampireBtn);
-                break;
-
-            case 2:
-                changeBtnTexture("res://assets/skills/passives/praying/Praying Mod 3.png", this.vampireBtn);
-                break;
-            case 3:
-                changeBtnTexture("res://assets/skills/passives/praying/Praying Mod 4.png", this.vampireBtn);
-                break;
-        }
-    }
+    //         case 2:
+    //             changeBtnTexture("res://assets/skills/passives/praying/Praying Mod 3.png", this.vampireBtn);
+    //             break;
+    //         case 3:
+    //             changeBtnTexture("res://assets/skills/passives/praying/Praying Mod 4.png", this.vampireBtn);
+    //             break;
+    //     }
+    // }
 
 
 
