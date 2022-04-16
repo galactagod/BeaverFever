@@ -9,17 +9,6 @@ public static class Global
     private static string assetRoute = "res://assets/";
     public static List<PlayerData.item> itemsAvaliable = new List<PlayerData.item> {
         new PlayerData.item {
-        name = "Bronze Helmet",
-        price = 500,
-        texture = (Texture) GD.Load(assetRoute + "Bronze Helmet.png"),
-        scale = new Vector2(1,1),
-        amountOnStat = new List<string> {"4"},
-        whichStat = new List<string> {"Health"},
-        operatorOnStat = new List<string> {"+"},
-        equippable = true,
-        ableToBeEquippedSlot = "Helmet"
-        },
-        new PlayerData.item {
         name = "Dual Sword",
         price = 400,
         texture = (Texture) GD.Load(assetRoute + "Dual Sword.png"),
@@ -28,7 +17,9 @@ public static class Global
         whichStat = new List<string> {"Attack"},
         operatorOnStat = new List<string> {"+"},
         equippable = true,
-        ableToBeEquippedSlot = "Weapon"
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Weapon",
+        type = "item"
         },
         new PlayerData.item {
         name = "Book",
@@ -39,21 +30,65 @@ public static class Global
         whichStat = new List<string> {"SpAttack"},
         operatorOnStat = new List<string> {"+"},
         equippable = true,
-        ableToBeEquippedSlot = "Talisman"
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Weapon",
+        type = "item"
         },
         new PlayerData.item {
-        name = "Slime",
-        price = 200,
-        texture = (Texture) GD.Load(assetRoute + "Slime.png"),
+        name = "Small Health Potion",
+        price = 600,
+        texture = (Texture) GD.Load(assetRoute + "Small Health Potion.png"),
         scale = new Vector2(1,1),
-        amountOnStat = new List<string> {"5"},
-        whichStat = new List<string> {"SpDefense"},
-        operatorOnStat = new List<string> {"+"},
+        //amountOnStat = new List<string> {"3"},
+        //whichStat = new List<string> {"SpAttack"},
+        //operatorOnStat = new List<string> {"+"},
         equippable = true,
-        ableToBeEquippedSlot = "Talisman"
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Consumable",
+        type = "item"
         }
 
-
+    };
+    public static List<PlayerData.item> skillsAvaliable = new List<PlayerData.item> {
+        new PlayerData.item {
+        name = "Dual Sword",
+        price = 400,
+        texture = (Texture) GD.Load(assetRoute + "Dual Sword.png"),
+        scale = new Vector2(3,3),
+        amountOnStat = new List<string> {"8"},
+        whichStat = new List<string> {"Attack"},
+        operatorOnStat = new List<string> {"+"},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Weapon",
+        type = "item"
+        },
+        new PlayerData.item {
+        name = "Book",
+        price = 600,
+        texture = (Texture) GD.Load(assetRoute + "Book.png"),
+        scale = new Vector2(1,1),
+        amountOnStat = new List<string> {"3"},
+        whichStat = new List<string> {"SpAttack"},
+        operatorOnStat = new List<string> {"+"},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Weapon",
+        type = "item"
+        },
+        new PlayerData.item {
+        name = "Small Health Potion",
+        price = 600,
+        texture = (Texture) GD.Load(assetRoute + "Small Health Potion.png"),
+        scale = new Vector2(1,1),
+        //amountOnStat = new List<string> {"3"},
+        //whichStat = new List<string> {"SpAttack"},
+        //operatorOnStat = new List<string> {"+"},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Consumable",
+        type = "item"
+        }
 
     };
 }

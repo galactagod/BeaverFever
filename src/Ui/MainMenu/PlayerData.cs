@@ -47,14 +47,20 @@ public class PlayerData : Node
 
     //The list of items avaliable to the player. This will get edited when the player makes a purchase.
     public List<item> itemsAvaliable { get; set; }
+
     //The list of items that are avaliable (after purchase, names get removed from the list)
     public List<string> itemsInStore { get; set; }
 
     //The equipment that the user has on
     public Dictionary<string, item> equipment { get; set; }
 
+    public List<item> skills { get; set; }
+
     //The route of assets just so I can change it later if need be
     private string assetRoute = "res://assets/";
+
+    [Signal]
+    public delegate void itemRemoved();
     #endregion
 
     #region Item Classes
@@ -68,6 +74,8 @@ public class PlayerData : Node
         public string equippedSlot;
         public int inventorySlot;
         public string ableToBeEquippedSlot;
+        //adding for skills
+        public string type;
 
         public List<string> whichStat = new List<string>();
         public List<string> operatorOnStat = new List<string>();
@@ -86,6 +94,7 @@ public class PlayerData : Node
         public int inventorySlot;
         public string ableToBeEquippedSlot;
         public string comingFrom;
+        public string type;
 
         public List<string> whichStat = new List<string>();
         public List<string> operatorOnStat = new List<string>();
@@ -104,6 +113,7 @@ public class PlayerData : Node
             amountOnStat = another.amountOnStat;
             operatorOnStat = another.operatorOnStat;
             ableToBeEquippedSlot = another.ableToBeEquippedSlot;
+            type = another.type;
             this.comingFrom = comingFrom;
         }
 
@@ -121,6 +131,7 @@ public class PlayerData : Node
             temp.amountOnStat = amountOnStat;
             temp.operatorOnStat = operatorOnStat;
             temp.ableToBeEquippedSlot = ableToBeEquippedSlot;
+            temp.type = type;
             return temp;
         }
     }
@@ -138,6 +149,7 @@ public class PlayerData : Node
         if(files.FileExists(filepath))
         {
             files.Open(filepath, Godot.File.ModeFlags.ReadWrite);
+            files.Seek(0);
             string text = files.GetAsText();
             var jsonFile = JSON.Parse(text).Result;
             ParsedData = jsonFile as Godot.Collections.Dictionary;
@@ -146,6 +158,7 @@ public class PlayerData : Node
         else
         {
             files.Open(filepath, Godot.File.ModeFlags.WriteRead);
+            files.Seek(0);
 
             Godot.Collections.Dictionary jsonToWrite = new Godot.Collections.Dictionary();
             jsonToWrite.Add("Attack", "0");
@@ -158,6 +171,8 @@ public class PlayerData : Node
             jsonToWrite.Add("Wallet", "0");
             Godot.Collections.Array inventory = new Godot.Collections.Array();
             jsonToWrite.Add("inventory", inventory);
+            Godot.Collections.Array skillsList = new Godot.Collections.Array();
+            jsonToWrite.Add("skills", skillsList);
             Godot.Collections.Array itemsAvaliable = new Godot.Collections.Array();
             foreach(var item in Global.itemsAvaliable)
             {
@@ -205,6 +220,32 @@ public class PlayerData : Node
             inv.Add(temp);
         }
 
+        skills = new List<item>();
+        foreach (Godot.Collections.Dictionary item in (Godot.Collections.Array)ParsedData["skills"])
+        {
+            item temp = new item();
+            temp.name = (string)item["name"];
+            temp.price = Int32.Parse((string)item["price"]);
+            temp.texture = (Texture)GD.Load(assetRoute + temp.name + ".png");
+            Vector2 tempVector = new Vector2();
+            tempVector.x = Int32.Parse((string)item["scaleX"]);
+            tempVector.y = Int32.Parse((string)item["scaleY"]);
+            temp.scale = tempVector;
+            temp.equippable = Boolean.Parse((string)item["equippable"]);
+            temp.equippedSlot = (string)item["equippedSlot"];
+            temp.inventorySlot = Int32.Parse((string)item["inventorySlot"]);
+            temp.ableToBeEquippedSlot = (string)item["ableToBeEquippedSlot"];
+            foreach (Godot.Collections.Dictionary statEffect in (Godot.Collections.Array)item["itemEffects"])
+            {
+                temp.whichStat.Add((string)statEffect["stat"]);
+                temp.operatorOnStat.Add((string)statEffect["operator"]);
+                temp.amountOnStat.Add((string)statEffect["amount"]);
+            }
+            skills.Add(temp);
+        }
+
+
+
         itemsInStore = new List<string>();
         foreach (var itemName in (Godot.Collections.Array)ParsedData["itemsAvaliable"])
         {
@@ -223,6 +264,15 @@ public class PlayerData : Node
         
         //iterate through inventory and see if there is anything equipted, if so add it to the dictionary
         foreach(var item in inv)
+        {
+            if (item.equippedSlot != "none")
+            {
+                equipment.Add(item.equippedSlot, item);
+                EquipChangesStatFilter(item, false);
+            }
+        }
+
+        foreach (var item in skills)
         {
             if (item.equippedSlot != null)
             {
@@ -331,6 +381,8 @@ public class PlayerData : Node
     public string getStatLine(item temp)
     {
         string statLine = "";
+        statLine = statLine + temp.name + "\n";
+        statLine = statLine + temp.ableToBeEquippedSlot + "\n";
         for (int i = 0; i < temp.amountOnStat.Count; i++)
         {
             statLine = statLine + temp.whichStat[i] + " " + temp.operatorOnStat[i] + " " + temp.amountOnStat[i] + "\n";
@@ -347,6 +399,17 @@ public class PlayerData : Node
         spDefenseFinal = (int)((PlayerSpDefense + spDefenseAdd) * spDefenseScale);
         staminaFinal = (int)((PlayerStamina + staminaAdd) * staminaScale);
         healthFinal = (int)((PlayerHealth + healthAdd) * healthScale);
+    }
+
+    public  void RemoveFromInv(int index)
+    {
+        inv.RemoveAt(index);
+        EmitSignal("itemRemoved");
+    }
+
+    public int CurrentStatPoints()
+    {
+        return PlayerAttack + PlayerDefense + PlayerHealth + PlayerSpAttack + PlayerSpDefense + PlayerStamina;
     }
     #endregion
 }
