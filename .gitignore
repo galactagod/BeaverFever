@@ -7,4 +7,6 @@ export_presets.cfg
 .mono/
 .vs/
 data_*/
+
+/icon.png.import
 Beaver Fever.sln

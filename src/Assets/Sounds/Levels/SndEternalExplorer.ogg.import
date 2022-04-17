@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SndEternalExplorer.ogg-98810df7e0583e984d32dd0ae7198433.oggstr"
+
+[deps]
+
+source_file="res://src/Assets/Sounds/Levels/SndEternalExplorer.ogg"
+dest_files=[ "res://.import/SndEternalExplorer.ogg-98810df7e0583e984d32dd0ae7198433.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

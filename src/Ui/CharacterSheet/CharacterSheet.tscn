@@ -60,7 +60,7 @@ __meta__ = {
 
 [node name="CharacterBackground" type="NinePatchRect" parent="Background"]
 margin_right = 250.0
-margin_bottom = 600.0
+margin_bottom = 720.0
 rect_min_size = Vector2( 250, 600 )
 texture = ExtResource( 10 )
 patch_margin_left = 20
@@ -82,24 +82,24 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background"]
 margin_left = 254.0
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_right = 1280.0
+margin_bottom = 720.0
 size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer"]
-margin_right = 770.0
-margin_bottom = 546.0
+margin_right = 1026.0
+margin_bottom = 666.0
 size_flags_vertical = 3
 
 [node name="MainStats" type="VBoxContainer" parent="Background/VBoxContainer/HBoxContainer"]
-margin_right = 383.0
-margin_bottom = 546.0
+margin_right = 511.0
+margin_bottom = 666.0
 rect_min_size = Vector2( 350, 0 )
 size_flags_horizontal = 3
 custom_constants/separation = 10
 
 [node name="StatBackground" type="TextureRect" parent="Background/VBoxContainer/HBoxContainer/MainStats"]
-margin_right = 383.0
+margin_right = 511.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 350, 60 )
 texture = ExtResource( 12 )
@@ -160,7 +160,7 @@ __meta__ = {
 
 [node name="StatBackground2" type="TextureRect" parent="Background/VBoxContainer/HBoxContainer/MainStats"]
 margin_top = 70.0
-margin_right = 383.0
+margin_right = 511.0
 margin_bottom = 130.0
 rect_min_size = Vector2( 350, 60 )
 texture = ExtResource( 12 )
@@ -221,7 +221,7 @@ __meta__ = {
 
 [node name="StatBackground3" type="TextureRect" parent="Background/VBoxContainer/HBoxContainer/MainStats"]
 margin_top = 140.0
-margin_right = 383.0
+margin_right = 511.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 350, 60 )
 texture = ExtResource( 12 )
@@ -282,7 +282,7 @@ __meta__ = {
 
 [node name="StatBackground4" type="TextureRect" parent="Background/VBoxContainer/HBoxContainer/MainStats"]
 margin_top = 210.0
-margin_right = 383.0
+margin_right = 511.0
 margin_bottom = 270.0
 rect_min_size = Vector2( 350, 60 )
 texture = ExtResource( 12 )
@@ -343,7 +343,7 @@ __meta__ = {
 
 [node name="StatBackground5" type="TextureRect" parent="Background/VBoxContainer/HBoxContainer/MainStats"]
 margin_top = 280.0
-margin_right = 383.0
+margin_right = 511.0
 margin_bottom = 340.0
 rect_min_size = Vector2( 350, 60 )
 texture = ExtResource( 12 )
@@ -404,7 +404,7 @@ __meta__ = {
 
 [node name="StatBackground6" type="TextureRect" parent="Background/VBoxContainer/HBoxContainer/MainStats"]
 margin_top = 350.0
-margin_right = 383.0
+margin_right = 511.0
 margin_bottom = 410.0
 rect_min_size = Vector2( 350, 60 )
 texture = ExtResource( 12 )
@@ -464,9 +464,9 @@ __meta__ = {
 }
 
 [node name="StatBackground7" type="TextureRect" parent="Background/VBoxContainer/HBoxContainer"]
-margin_left = 387.0
-margin_right = 770.0
-margin_bottom = 546.0
+margin_left = 515.0
+margin_right = 1026.0
+margin_bottom = 666.0
 rect_min_size = Vector2( 250, 60 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -575,9 +575,9 @@ __meta__ = {
 }
 
 [node name="Buttons" type="HBoxContainer" parent="Background/VBoxContainer"]
-margin_top = 550.0
-margin_right = 770.0
-margin_bottom = 600.0
+margin_top = 670.0
+margin_right = 1026.0
+margin_bottom = 720.0
 rect_min_size = Vector2( 0, 50 )
 
 [node name="TextureButton" type="TextureButton" parent="Background/VBoxContainer/Buttons"]

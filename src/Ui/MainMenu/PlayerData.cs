@@ -16,7 +16,7 @@ public class PlayerData : Node
     public int PlayerHealth = 0;
     public int PlayerStamina = 0;
     public int PlayerTotalPoints = 0;
-    public int Wallet = 0;
+    public int Muny = 0;
 
     // Vars to hold equipment effects
     public int attackAdd = 0;
@@ -186,7 +186,7 @@ public class PlayerData : Node
             jsonToWrite.Add("Stamina", "0");
             jsonToWrite.Add("Health", "0");
             jsonToWrite.Add("StatPoints", "0");
-            jsonToWrite.Add("Wallet", "0");
+            jsonToWrite.Add("Muny", "0");
             Godot.Collections.Array inventory = new Godot.Collections.Array();
             jsonToWrite.Add("inventory", inventory);
             Godot.Collections.Array skillsList = new Godot.Collections.Array();
@@ -212,7 +212,7 @@ public class PlayerData : Node
         PlayerHealth = Int32.Parse((string)ParsedData["Health"]);
         PlayerStamina = Int32.Parse((string)ParsedData["Stamina"]);
         PlayerTotalPoints = Int32.Parse((string)ParsedData["StatPoints"]);
-        Wallet = Int32.Parse((string)ParsedData["Wallet"]);
+        Muny = Int32.Parse((string)ParsedData["Muny"]);
 
         inv = new List<item>();
         foreach(Godot.Collections.Dictionary item in (Godot.Collections.Array)ParsedData["inventory"])
