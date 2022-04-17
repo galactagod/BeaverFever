@@ -405,9 +405,14 @@ public class PlayerData : Node
         healthFinal = (int)((PlayerHealth + healthAdd) * healthScale);
     }
 
-    public  void RemoveFromInv(int index)
+    public void RemoveFromInv(int index)
     {
         inv.RemoveAt(index);
+        EmitSignal("itemRemoved");
+    }
+
+    public void ResetInv()
+    {
         EmitSignal("itemRemoved");
     }
 
