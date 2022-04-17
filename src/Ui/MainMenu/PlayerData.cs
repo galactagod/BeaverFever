@@ -64,6 +64,8 @@ public class PlayerData : Node
     //The equipment that the user has on
     public Dictionary<string, item> equipment { get; set; }
 
+        //SKills held as Skill1, Skill2, Skill3
+
     public List<item> skills { get; set; }
 
     //The route of assets just so I can change it later if need be
@@ -517,6 +519,12 @@ public class PlayerData : Node
             skills[skillToChange.inventorySlot] = skillToChange;
 
         }
+    }
+
+    public void AddItemToInventory(item temp)
+    {
+        temp.inventorySlot = inv.Count;
+        inv.Add(temp);
     }
     #endregion
 }
