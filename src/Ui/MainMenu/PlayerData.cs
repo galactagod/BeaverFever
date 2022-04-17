@@ -263,7 +263,6 @@ public class PlayerData : Node
             }
             skills.Add(temp);
             SettingSkillLevels(temp.name, temp.level);
-            Console.WriteLine(armorSkill);
         }
 
 
@@ -460,8 +459,15 @@ public class PlayerData : Node
     {
         if (skillName == "Body Mod")
             armorSkill = level;
-        else if(skillName == "Attack Mod")
+        else if (skillName == "Attack Mod")
             punchSkill = level;
+        else if (skillName == "Rip Mod")
+            clawSkill = level;
+        else if (skillName == "Sharp Mod")
+            jawsSkill = level;
+        else if(skillName == "Boots Mod")
+            bootSkill = level;
+
     }
 
     public void skillBought(string skillName, int levelBought)
@@ -473,9 +479,6 @@ public class PlayerData : Node
             pulledSkill.inventorySlot = skills.Count;
             skills.Add(pulledSkill);
         }
-
-
-
         else
         {
             var skillToChange = skills.Find(x => x.name == skillName && x.level == levelBought - 1);
@@ -485,9 +488,10 @@ public class PlayerData : Node
             oldSkill.amountOnStat = skillToChange.amountOnStat;
             oldSkill.operatorOnStat = skillToChange.operatorOnStat;
             oldSkill.whichStat = skillToChange.whichStat;
-            Console.WriteLine(oldSkill.amountOnStat[0]);
 
-            var skillPulled = Global.skillsAvaliable.Find(x => x.name == skillName && x.level == levelBought);
+            var pullingSkills = Global.skillsAvaliable.FindAll(x => x.name == skillName);
+            var skillPulled = pullingSkills[levelBought - 1];
+            
             skillToChange.amountOnStat = skillPulled.amountOnStat;
             skillToChange.texture = skillPulled.texture;
             skillToChange.textureRoute = skillPulled.textureRoute;
@@ -495,8 +499,6 @@ public class PlayerData : Node
             if (skillToChange.equippedSlot != "none")
             {
                 EquipChangesStatFilter(oldSkill, true);
-                Console.WriteLine(oldSkill.amountOnStat[0]);
-                Console.WriteLine(skillToChange.amountOnStat[0]);
                 EquipChangesStatFilter(skillToChange, false);
                 equipment.Remove(skillToChange.equippedSlot);
                 equipment.Add(skillToChange.equippedSlot, skillToChange);

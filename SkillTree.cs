@@ -15,16 +15,16 @@ public class SkillTree : Node2D
     // Jaws: Beaver’s bite attack, I guess this would be the ultimate?? 60pts damage 
 
     // Strength 
-    int punchSkill = 0;
-    int clawSkill = 0;
-    int jawsSkill = 0;
+    int punchSkill = 0; //done
+    int clawSkill = 0; //done
+    int jawsSkill = 0; //done
 
 // Armor: Beaver’s defense against attacks, 5%, 10%, 30%
 // Boots: Increase beavers passive movement speed, 5%, 10%, 15%
 
     // Body 
-    int armorSkill = 0;
-    int bootSkill = 0;
+    int armorSkill = 0; //done
+    int bootSkill = 0; //done
     
 
 
@@ -154,9 +154,10 @@ public class SkillTree : Node2D
 
     void upgradePunch()
     {
-        if (playerData.punchSkill < 3)
+        if (playerData.punchSkill < 2)
         {
             playerData.punchSkill++;
+            playerData.skillBought("Attack Mod", playerData.punchSkill);
             this.punchLabel.Text = "Punch - Level " + playerData.punchSkill;
         }
 
@@ -174,9 +175,10 @@ public class SkillTree : Node2D
 
     void upgradeClaws()
     {
-        if (playerData.clawSkill < 5)
+        if (playerData.clawSkill < 4)
         {
             playerData.clawSkill++;
+            playerData.skillBought("Rip Mod", playerData.clawSkill);
             this.clawsLabel.Text = "Claws - Level " + playerData.clawSkill;
         }
 
@@ -202,9 +204,10 @@ public class SkillTree : Node2D
 
     void upgradeJaws()
     {
-        if (playerData.jawsSkill < 5)
+        if (playerData.jawsSkill < 4)
         {
             playerData.jawsSkill++;
+            playerData.skillBought("Sharp Mod", playerData.jawsSkill);
             this.jawsLabel.Text = "Jaws - Level " + playerData.jawsSkill;
 
         }
@@ -231,7 +234,7 @@ public class SkillTree : Node2D
 
     void upgradeArmor()
     {
-        if (playerData.armorSkill < 4)
+        if (playerData.armorSkill < 3)
         {
             playerData.armorSkill++;
             playerData.skillBought("Body Mod", playerData.armorSkill);
@@ -259,6 +262,7 @@ public class SkillTree : Node2D
         if (playerData.bootSkill < 4)
         {
             playerData.bootSkill++;
+            playerData.skillBought("Boots Mod", playerData.bootSkill);
             this.bootLabel.Text = "Boot - Level " + playerData.bootSkill;
 
         }
@@ -519,7 +523,6 @@ public class SkillTree : Node2D
         Texture texture = (Texture)GD.Load(texturePath);
         textureButton.TextureNormal = texture;
         textureButton.TexturePressed = texture;
-        GD.Print("change texture" + texturePath);
     }
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.
     //  public override void _Process(float delta)

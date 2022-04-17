@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public static class Global
 {
     private static string assetRoute = "res://assets/";
-    private static string skillAssetRoute = "res://assets/skills/";
+    private static string skillAssetRoute = "res://assets/skills";
     public static List<PlayerData.item> itemsAvaliable = new List<PlayerData.item> {
         new PlayerData.item {
         name = "Dual Sword",
@@ -50,7 +50,178 @@ public static class Global
         }
 
     };
+
+    // A list of every skill avaliable, held as an "item" class
     public static List<PlayerData.item> skillsAvaliable = new List<PlayerData.item> {
+        new PlayerData.item {
+        name = "Attack Mod",
+        level = 1,
+        texture = (Texture) GD.Load("res://assets/skills/strength/punch/Attack Mod 2.png"),
+        amountOnStat = new List<string> {},
+        whichStat = new List<string> {},
+        operatorOnStat = new List<string> {},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Skill",
+        textureRoute = skillAssetRoute + "/strength/punch/Attack Mod 2.png",
+        type = "skill"
+        },
+        new PlayerData.item {
+        name = "Attack Mod",
+        level = 2,
+        texture = (Texture) GD.Load("res://assets/skills/strength/punch/Attack Mod 3.png"),
+        amountOnStat = new List<string> {},
+        whichStat = new List<string> {},
+        operatorOnStat = new List<string> {},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Skill",
+        textureRoute = skillAssetRoute + "/strength/punch/Attack Mod 3.png",
+        type = "skill"
+        },
+        new PlayerData.item {
+        name = "Rip Mod",
+        level = 1,
+        texture = (Texture) GD.Load("res://assets/skills/strength/claws/Rip Mod 2.png"),
+        amountOnStat = new List<string> {},
+        whichStat = new List<string> {},
+        operatorOnStat = new List<string> {},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Skill",
+        textureRoute = skillAssetRoute + "/strength/claws/Rip Mod 2.png",
+        type = "skill"
+        },
+        new PlayerData.item {
+        name = "Rip Mod",
+        level = 2,
+        texture = (Texture) GD.Load("res://assets/skills/strength/claws/Rip Mod 3.png"),
+        amountOnStat = new List<string> {},
+        whichStat = new List<string> {},
+        operatorOnStat = new List<string> {},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Skill",
+        textureRoute = skillAssetRoute + "/strength/claws/Rip Mod 3.png",
+        type = "skill"
+        },
+        new PlayerData.item {
+        name = "Rip Mod",
+        level = 3,
+        texture = (Texture) GD.Load("res://assets/skills/strength/claws/Rip Mod 4.png"),
+        amountOnStat = new List<string> {},
+        whichStat = new List<string> {},
+        operatorOnStat = new List<string> {},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Skill",
+        textureRoute = skillAssetRoute + "/strength/claws/Rip Mod 4.png",
+        type = "skill"
+        },
+        new PlayerData.item {
+        name = "Rip Mod",
+        level = 4,
+        texture = (Texture) GD.Load("res://assets/skills/strength/claws/Rip Mod 5.png"),
+        amountOnStat = new List<string> {},
+        whichStat = new List<string> {},
+        operatorOnStat = new List<string> {},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Skill",
+        textureRoute = "res://assets/skills/strength/claws/Rip Mod 5.png",
+        type = "skill"
+        },
+        new PlayerData.item {
+        name = "Sharp Mod",
+        level = 1,
+        texture = (Texture) GD.Load("res://assets/skills/strength/teeth/Sharp Mod 2.png"),
+        amountOnStat = new List<string> {},
+        whichStat = new List<string> {},
+        operatorOnStat = new List<string> {},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Skill",
+        textureRoute = skillAssetRoute + "/strength/teeth/Sharp Mod 2.png",
+        type = "skill"
+        },
+        new PlayerData.item {
+        name = "Sharp Mod",
+        level = 2,
+        texture = (Texture) GD.Load("res://assets/skills/strength/teeth/Sharp Mod 3.png"),
+        amountOnStat = new List<string> {},
+        whichStat = new List<string> {},
+        operatorOnStat = new List<string> {},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Skill",
+        textureRoute = skillAssetRoute + "/strength/teeth/Sharp Mod 3.png",
+        type = "skill"
+        },
+        new PlayerData.item {
+        name = "Sharp Mod",
+        level = 3,
+        texture = (Texture) GD.Load("res://assets/skills/strength/teeth/Sharp Mod 4.png"),
+        amountOnStat = new List<string> {},
+        whichStat = new List<string> {},
+        operatorOnStat = new List<string> {},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Skill",
+        textureRoute = skillAssetRoute + "/strength/teeth/Sharp Mod 4.png",
+        type = "skill"
+        },
+        new PlayerData.item {
+        name = "Sharp Mod",
+        level = 4,
+        texture = (Texture) GD.Load("res://assets/skills/strength/teeth/Sharp Mod 5.png"),
+        amountOnStat = new List<string> {},
+        whichStat = new List<string> {},
+        operatorOnStat = new List<string> {},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Skill",
+        textureRoute = "res://assets/skills/strength/teeth/Sharp Mod 5.png",
+        type = "skill"
+        },
+        new PlayerData.item {
+        name = "Boots Mod",
+        level = 1,
+        texture = (Texture) GD.Load("res://assets/skills/body/boots/Boots 1 Mod 4.png"),
+        amountOnStat = new List<string> {},
+        whichStat = new List<string> {},
+        operatorOnStat = new List<string> {},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Skill",
+        textureRoute = skillAssetRoute + "/body/boots/Boots 1 Mod 4.png",
+        type = "skill"
+        },
+        new PlayerData.item {
+        name = "Boots Mod",
+        level = 2,
+        texture = (Texture) GD.Load("res://assets/skills/body/boots/Boots 1 Mod 6.png"),
+        amountOnStat = new List<string> {},
+        whichStat = new List<string> {},
+        operatorOnStat = new List<string> {},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Skill",
+        textureRoute = skillAssetRoute + "/body/boots/Boots 1 Mod 6.png",
+        type = "skill"
+        },
+        new PlayerData.item {
+        name = "Boots Mod",
+        level = 3,
+        texture = (Texture) GD.Load("res://assets/skills/body/boots/Boots 1 Mod 7.png"),
+        amountOnStat = new List<string> {},
+        whichStat = new List<string> {},
+        operatorOnStat = new List<string> {},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Skill",
+        textureRoute = skillAssetRoute + "/body/boots/Boots 1 Mod 7.png",
+        type = "skill"
+        },
         new PlayerData.item {
         name = "Body Mod",
         level = 1,
@@ -90,6 +261,5 @@ public static class Global
         textureRoute = skillAssetRoute + "/body/armor/Body Mod 3.png",
         type = "skill"
         }
-
     };
 }

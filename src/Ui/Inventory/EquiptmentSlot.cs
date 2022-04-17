@@ -107,7 +107,6 @@ public class EquiptmentSlot : TextureRect
             Texture = actualData.texture;
             //counter could go here?
             //use consumable?
-            Console.WriteLine("Hi");
             Texture = (Texture)GD.Load("res://assets/" + "Consumable" + "Empty" + ".png");
             playerData.RemoveFromInv(actualData.inventorySlot);
             return;
