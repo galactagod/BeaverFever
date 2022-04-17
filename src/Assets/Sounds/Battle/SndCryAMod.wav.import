@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/SndCryAMod.wav-be380257973276542e67a7f9b056f403.sample"
+
+[deps]
+
+source_file="res://src/Assets/Sounds/Battle/SndCryAMod.wav"
+dest_files=[ "res://.import/SndCryAMod.wav-be380257973276542e67a7f9b056f403.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

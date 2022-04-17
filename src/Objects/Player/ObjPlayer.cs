@@ -18,14 +18,20 @@ public class ObjPlayer : BaseMovementAct
     private int _timer = 0;
     protected readonly Random _rnd = new Random();
 
+    // sound paths
+    private AudioStreamSample _sndJump = (AudioStreamSample)GD.Load("res://src/Assets/Sounds/Movement/SndJumpA.wav");
+    private AudioStreamSample _sndHurt = (AudioStreamSample)GD.Load("res://src/Assets/Sounds/Battle/SndCryAMod.wav");
+    private AudioStreamSample _sndHit = (AudioStreamSample)GD.Load("res://src/Assets/Sounds/Battle/hit_p13_b.wav");
+
     // node reference
     private PlayerStats _ndPlayerStats;
+    private LevelControl _ndLevelControl;
     private AnimationPlayer _ndAnimPlayer;
     private AnimatedSprite _ndSprPlayer;
     private CollisionShape2D _ndCollBase;
     private Area2D _ndStompDetector;
     private CollisionShape2D _ndCollStomp;
-
+    
     // state setups
     protected PlayerStateMachineManager stateMachine;
     public PlayerCrawl playerCrawl = new PlayerCrawl();
@@ -47,19 +53,20 @@ public class ObjPlayer : BaseMovementAct
     public PlayerStats NdPlayerStats { get { return _ndPlayerStats; } set { _ndPlayerStats = value; } }
     public AnimatedSprite NdSprPlayer { get { return _ndSprPlayer; } set { _ndSprPlayer = value; } }
 
+
     public override void _Ready()
     {
         // acquire node references
         _ndPlayerStats = GetNode<PlayerStats>("/root/PlayerStats");
+        _ndLevelControl = GetNode<LevelControl>("/root/LevelControl");
         _ndAnimPlayer = GetNode<AnimationPlayer>("AnimPlayer");
         _ndSprPlayer = GetNode<AnimatedSprite>("SprPlayer");
         _ndCollBase = GetNode<CollisionShape2D>("CollBase");
         _ndStompDetector = GetNode<Area2D>("StompDetector");
         _ndCollStomp = GetNode<CollisionShape2D>("StompDetector/CollStomp");
 
-        _ndStompDetector.Connect("area_entered", this, nameof(OnAreaShapeEntered));
+        _ndStompDetector.Connect("area_entered", this, nameof(OnAreaShapeStompEntered));
         _ndAnimPlayer.Connect("animation_finished", this, nameof(OnAnimationFinished));
-
 
         // start state
         stateMachine = new PlayerStateMachineManager(this, playerIdle);
@@ -85,7 +92,7 @@ public class ObjPlayer : BaseMovementAct
         if (_isDamaged)
         {
             int maxDmgTime = 150;
-            Visible = Calculations.HitFlash(_damagedTimer, Visible);
+            Visible = Calculations.HitFlash(_ndLevelControl, _sndHit, _damagedTimer, Visible);
             _damagedTimer++;
             if (_damagedTimer == maxDmgTime)
             {
@@ -94,9 +101,9 @@ public class ObjPlayer : BaseMovementAct
                 Visible = true;
             }
         }
-            
 
-
+        // energy naturally replenishes
+        _ndPlayerStats.ReplenishEnergy(0.002f);
     }
 
     public void BaseMovementControl()
@@ -174,8 +181,24 @@ public class ObjPlayer : BaseMovementAct
         else
         {
             _ndAnimPlayer.Play(animation);
-            //GD.Print("Animation === " + animation);
+            GD.Print("Animation === " + animation);
+
+            // run audio on animation
+            PlayAudio(animation);
+
+
         }   
+        
+    }
+
+    public void PlayAudio(string animation)
+    {
+        switch (animation)
+        {
+            case "Jump": _ndLevelControl.SfxPlayerManager(-1, _sndJump, 5, 1.3f); break;
+            case "Hurt": _ndLevelControl.SfxPlayerManager(-1, _sndHurt, 10, 0.65f); break;
+        }
+
         
     }
 
@@ -190,13 +213,14 @@ public class ObjPlayer : BaseMovementAct
         return new Vector2(stompJumpX, stompJumpY);
     }
 
-    public void OnAreaShapeEntered(Area2D area)
+    public void OnAreaShapeStompEntered(Area2D area)
     {
+        
         GD.Print("Stomp Jump");
+
         _stompJump = true;
         _stompJumpTimer++;
         _velocity = CalculateStompVelocity();
-
     }
 
     public void OnAnimationFinished(string anim_name)

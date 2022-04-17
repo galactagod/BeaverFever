@@ -14,6 +14,7 @@ public class GrayWolf : EnemyMovementAct
         _health = 20;
         _maxHealth = 20;
         _speed.x = 100.0f;
+        _exp = 150;
         _atkFrm = new int[]{3, 7};
 
         // start state

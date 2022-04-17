@@ -6,7 +6,7 @@ public class EnemyDeath : EnemyBaseStateMachine
     public override void OnStateEnter(IEnemyStateMachine stateMachine, EnemyMovementAct owner)
     {
         owner.SprAnimation("Death");
-        owner.ChangeHealth(owner.Health - owner.NdObjPlayer.CurDmg);
+        owner.ChangeHealth(-owner.NdObjPlayer.CurDmg);
     }
 
     public override void OnStateUpdate(IEnemyStateMachine stateMachine, EnemyMovementAct owner)
@@ -15,7 +15,8 @@ public class EnemyDeath : EnemyBaseStateMachine
         {
             owner.IsStomped = false;
 
-            // remove the node
+            // give player exp and remove the node
+            owner.NdPlayerStats.ChangeExp(owner.Exp);
             owner.QueueFree();
         }
     }

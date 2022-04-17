@@ -15,6 +15,7 @@ public class Snake : EnemyMovementAct
         _health = 10;
         _maxHealth = 10;
         _speed.x = 100.0f;
+        _exp = 100;
         _atkFrm = new int[] {2, 4};
 
         // start state

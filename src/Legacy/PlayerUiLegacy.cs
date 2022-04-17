@@ -2,11 +2,12 @@ using Godot;
 using System;
 
 
-public class PlayerUi : CanvasLayer
+public class PlayerUiLegacy : CanvasLayer
 {
-    private int _health;
-    private int _maxHealth;
-    private int _extraHealth;
+    /*
+    private float _health;
+    private float _maxHealth;
+    private float _extraHealth;
     private const int MAXROWSIZE = 10;
     private const int HEARTOFFSETX = 68;
     private const int HEARTOFFSETY = 64;
@@ -99,18 +100,19 @@ public class PlayerUi : CanvasLayer
         _extraHealth = _ndPlayerStats.ExtraHealth;
     }
 
-    public void OnHealthChange(int health)
+    public void OnHealthChange(float health)
     {
         GD.Print("HEALTH SIGNAL");
     }
 
-    public void OnMaxHealthChange(int health)
+    public void OnMaxHealthChange(float health)
     {
         GD.Print("MAX HEALTH SIGNAL");
     }
 
-    public void OnExtraHealthChange(int health)
+    public void OnExtraHealthChange(float health)
     {
         GD.Print("EXTRA HEALTH SIGNAL");
     }
+    */
 }

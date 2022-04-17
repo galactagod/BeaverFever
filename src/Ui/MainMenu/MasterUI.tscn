@@ -40,7 +40,8 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/NinePatchRect/HBoxContainer2"]
-margin_bottom = 600.0
+margin_right = 124.0
+margin_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -48,9 +49,9 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/NinePatchRect/HBoxContainer2"]
-margin_left = 4.0
-margin_right = 1028.0
-margin_bottom = 600.0
+margin_left = 128.0
+margin_right = 1152.0
+margin_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -59,14 +60,14 @@ __meta__ = {
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
 margin_right = 1024.0
-margin_bottom = 190.0
+margin_bottom = 250.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="InventoryButton" type="TextureButton" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
-margin_top = 194.0
+margin_top = 254.0
 margin_right = 1024.0
-margin_bottom = 244.0
+margin_bottom = 304.0
 rect_min_size = Vector2( 0, 50 )
 size_flags_horizontal = 3
 texture_normal = ExtResource( 4 )
@@ -91,9 +92,9 @@ __meta__ = {
 }
 
 [node name="StoreButton" type="TextureButton" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
-margin_top = 248.0
+margin_top = 308.0
 margin_right = 1024.0
-margin_bottom = 298.0
+margin_bottom = 358.0
 rect_min_size = Vector2( 600, 50 )
 size_flags_horizontal = 3
 texture_normal = ExtResource( 4 )
@@ -118,9 +119,9 @@ __meta__ = {
 }
 
 [node name="StatsButton" type="TextureButton" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
-margin_top = 302.0
+margin_top = 362.0
 margin_right = 1024.0
-margin_bottom = 352.0
+margin_bottom = 412.0
 rect_min_size = Vector2( 1024, 50 )
 size_flags_horizontal = 3
 texture_normal = ExtResource( 4 )
@@ -145,9 +146,9 @@ __meta__ = {
 }
 
 [node name="SaveQuit" type="TextureButton" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
-margin_top = 356.0
+margin_top = 416.0
 margin_right = 1024.0
-margin_bottom = 406.0
+margin_bottom = 466.0
 rect_min_size = Vector2( 1024, 50 )
 size_flags_horizontal = 3
 texture_normal = ExtResource( 4 )
@@ -171,16 +172,16 @@ __meta__ = {
 }
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
-margin_top = 410.0
+margin_top = 470.0
 margin_right = 1024.0
-margin_bottom = 600.0
+margin_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PauseMenu/NinePatchRect/HBoxContainer2"]
-margin_left = 1032.0
-margin_right = 1032.0
-margin_bottom = 600.0
+margin_left = 1156.0
+margin_right = 1280.0
+margin_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {

@@ -19,10 +19,19 @@ config/icon="res://icon.png"
 PlayerData="*res://src/Ui/MainMenu/PlayerData.cs"
 PlayerStats="*res://src/Autoloads/PlayerStats.cs"
 GameControl="*res://src/Autoloads/GameControl.cs"
+LevelControl="*res://src/Autoloads/LevelControl.cs"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [global]
 
 layer=false
+viewport=false
 
 [importer_defaults]
 

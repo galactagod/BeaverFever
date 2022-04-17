@@ -12,6 +12,7 @@ public class EnemyMovementAct : KinematicBody2D
 
     protected float _health;
     protected float _maxHealth;
+    protected float _exp;
     protected Vector2 _velocity = new Vector2(0, 0);
     protected Vector2 _direction = new Vector2(0, 0);
     protected Vector2 _detectionRadius = new Vector2(200, 50);
@@ -48,6 +49,7 @@ public class EnemyMovementAct : KinematicBody2D
     // getters and setters
     public float Health { get { return _health; } set { _health = value; } }
     public float MaxHealth { get { return _maxHealth; } set { _maxHealth = value; } }
+    public float Exp { get { return _exp; } set { _exp = value; } }
     public Vector2 Velocity { get { return _velocity; } set { _velocity = value; } }
     public Vector2 Direction { get { return _direction; } set { _direction = value; } }
     public Vector2 Speed { get { return _speed; } set { _speed = value; } }
@@ -200,7 +202,7 @@ public class EnemyMovementAct : KinematicBody2D
         // do not activate stomp if not entered in the correct y position
         if (area.Position.y > _ndStompArea.Position.y)
         {
-            return;
+            //return;
         }
 
         GD.Print("Stomped On");
@@ -211,7 +213,7 @@ public class EnemyMovementAct : KinematicBody2D
 
     public void ChangeHealth(float health)
     {
-        _health = health;
+        _health += health;
 
         // clamp stats
         _health = Mathf.Clamp(_health, 0, _maxHealth);
