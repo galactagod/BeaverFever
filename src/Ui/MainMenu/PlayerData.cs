@@ -42,6 +42,16 @@ public class PlayerData : Node
     public int staminaFinal = 0;
     public int healthFinal = 0;
 
+    //vars to hold the level of skills
+    public int punchSkill = 0;
+    public int clawSkill = 0;
+    public int jawsSkill = 0;
+    public int armorSkill = 0;
+    public int bootSkill = 0;
+    public int graceSkill = 0;
+    public int bubbleBurstSkill = 0;
+    public int windHowlSkill = 0;
+
     //The inventory of the player
     public List<item> inv { get; set; }
 
@@ -252,6 +262,8 @@ public class PlayerData : Node
                 temp.amountOnStat.Add((string)statEffect["amount"]);
             }
             skills.Add(temp);
+            SettingSkillLevels(temp.name, temp.level);
+            Console.WriteLine(armorSkill);
         }
 
 
@@ -413,6 +425,10 @@ public class PlayerData : Node
         spDefenseFinal = (int)((PlayerSpDefense + spDefenseAdd) * spDefenseScale);
         staminaFinal = (int)((PlayerStamina + staminaAdd) * staminaScale);
         healthFinal = (int)((PlayerHealth + healthAdd) * healthScale);
+
+
+        attackFinal = attackFinal < PlayerAttack ? PlayerAttack : attackFinal;
+        defenseFinal = defenseFinal < PlayerDefense ? PlayerDefense : defenseFinal;
     }
 
     public void RemoveFromInv(int index)
@@ -440,6 +456,14 @@ public class PlayerData : Node
         return (int)(0.02 * x * x * x + 3.06 * x * x + 105.6 * x - 895);
     }
 
+    public void SettingSkillLevels(string skillName, int level)
+    {
+        if (skillName == "Body Mod")
+            armorSkill = level;
+        else if(skillName == "Attack Mod")
+            punchSkill = level;
+    }
+
     public void skillBought(string skillName, int levelBought)
     {
         //if the levelBought == 1, then just add it to the skills
@@ -454,17 +478,25 @@ public class PlayerData : Node
 
         else
         {
-            var skillToChange = skills.Find(x => x.name == skillName && levelBought == levelBought - 1);
+            var skillToChange = skills.Find(x => x.name == skillName && x.level == levelBought - 1);
             skillToChange.level = levelBought;
 
-            var oldSkill = skillToChange;
+            item oldSkill = new item();
+            oldSkill.amountOnStat = skillToChange.amountOnStat;
+            oldSkill.operatorOnStat = skillToChange.operatorOnStat;
+            oldSkill.whichStat = skillToChange.whichStat;
+            Console.WriteLine(oldSkill.amountOnStat[0]);
 
             var skillPulled = Global.skillsAvaliable.Find(x => x.name == skillName && x.level == levelBought);
             skillToChange.amountOnStat = skillPulled.amountOnStat;
+            skillToChange.texture = skillPulled.texture;
+            skillToChange.textureRoute = skillPulled.textureRoute;
 
             if (skillToChange.equippedSlot != "none")
-            {  
-                EquipChangesStatFilter(oldSkill, true);              
+            {
+                EquipChangesStatFilter(oldSkill, true);
+                Console.WriteLine(oldSkill.amountOnStat[0]);
+                Console.WriteLine(skillToChange.amountOnStat[0]);
                 EquipChangesStatFilter(skillToChange, false);
                 equipment.Remove(skillToChange.equippedSlot);
                 equipment.Add(skillToChange.equippedSlot, skillToChange);

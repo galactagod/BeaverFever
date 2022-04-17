@@ -148,18 +148,19 @@ public class SkillTree : Node2D
         this.bubbleBurstLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_2 - passives/VBoxContainer2/VBoxContainer/bubbleBurstLabel");
 
         playerData = GetNode<PlayerData>("/root/PlayerData");
+        initializeButtons();
     }
 
 
     void upgradePunch()
     {
-        if (punchSkill < 3)
+        if (playerData.punchSkill < 3)
         {
-            punchSkill++;
-            this.punchLabel.Text = "Punch - Level " + punchSkill;
+            playerData.punchSkill++;
+            this.punchLabel.Text = "Punch - Level " + playerData.punchSkill;
         }
 
-        switch (punchSkill)
+        switch (playerData.punchSkill)
         {
             case 1:
                 changeBtnTexture("res://assets/skills/strength/punch/Attack Mod 2.png", this.punchBtn);
@@ -173,15 +174,15 @@ public class SkillTree : Node2D
 
     void upgradeClaws()
     {
-        if (clawSkill < 5)
+        if (playerData.clawSkill < 5)
         {
-            clawSkill++;
-            this.clawsLabel.Text = "Claws - Level " + clawSkill;
+            playerData.clawSkill++;
+            this.clawsLabel.Text = "Claws - Level " + playerData.clawSkill;
         }
 
 
 
-        switch (clawSkill)
+        switch (playerData.clawSkill)
         {
             case 1:
                 changeBtnTexture("res://assets/skills/strength/claws/Rip Mod 2.png", this.clawsBtn);
@@ -201,14 +202,14 @@ public class SkillTree : Node2D
 
     void upgradeJaws()
     {
-        if (jawsSkill < 5)
+        if (playerData.jawsSkill < 5)
         {
-            jawsSkill++;
-            this.jawsLabel.Text = "Jaws - Level " + jawsSkill;
+            playerData.jawsSkill++;
+            this.jawsLabel.Text = "Jaws - Level " + playerData.jawsSkill;
 
         }
 
-        switch (jawsSkill)
+        switch (playerData.jawsSkill)
         {
             case 1:
                 changeBtnTexture("res://assets/skills/strength/teeth/Sharp Mod 2.png", this.jawsBtn);
@@ -230,22 +231,22 @@ public class SkillTree : Node2D
 
     void upgradeArmor()
     {
-        if (armorSkill < 4)
+        if (playerData.armorSkill < 4)
         {
-            armorSkill++;
-            playerData.skillBought("Body Mod", armorSkill);
-            this.armorLabel.Text = "Armor - Level " + armorSkill;
+            playerData.armorSkill++;
+            playerData.skillBought("Body Mod", playerData.armorSkill);
+            this.armorLabel.Text = "Armor - Level " + playerData.armorSkill;
 
         }
 
-        switch (armorSkill)
+        switch (playerData.armorSkill)
         {
             case 1:
                 changeBtnTexture("res://assets/skills/body/armor/Body Mod 1.png", this.armorBtn);
                 break;
 
             case 2:
-                changeBtnTexture("res://assets/skills/body/armor/Body 3 Mod 2.png", this.armorBtn);
+                changeBtnTexture("res://assets/skills/body/armor/Body Mod 2.png", this.armorBtn);
                 break;
             case 3:
                 changeBtnTexture("res://assets/skills/body/armor/Body Mod 3.png", this.armorBtn);
@@ -255,14 +256,14 @@ public class SkillTree : Node2D
 
     void upgradeBoot()
     {
-        if (bootSkill < 4)
+        if (playerData.bootSkill < 4)
         {
-            bootSkill++;
-            this.bootLabel.Text = "Boot - Level " + bootSkill;
+            playerData.bootSkill++;
+            this.bootLabel.Text = "Boot - Level " + playerData.bootSkill;
 
         }
 
-        switch (bootSkill)
+        switch (playerData.bootSkill)
         {
             case 1:
                 changeBtnTexture("res://assets/skills/body/boots/Boots 1 Mod 4.png", this.bootBtn);
@@ -279,14 +280,14 @@ public class SkillTree : Node2D
 
     void upgradeGrace()
     {
-        if (graceSkill < 5)
+        if (playerData.graceSkill < 5)
         {
-            graceSkill++;
-            this.graceLabel.Text = "Wisdom - Level " + graceSkill;
+            playerData.graceSkill++;
+            this.graceLabel.Text = "Wisdom - Level " + playerData.graceSkill;
 
         }
 
-        switch (graceSkill)
+        switch (playerData.graceSkill)
         {
             case 1:
                 changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 2.png", this.graceBtn);
@@ -311,14 +312,14 @@ public class SkillTree : Node2D
 
     void upgradeWindHowl()
     {
-        if (windHowlSkill < 4)
+        if (playerData.windHowlSkill < 4)
         {
-            windHowlSkill++;
-            this.windHowlLabel.Text = "Night - Level " + windHowlSkill;
+            playerData.windHowlSkill++;
+            this.windHowlLabel.Text = "Night - Level " + playerData.windHowlSkill;
 
         }
 
-        switch (windHowlSkill)
+        switch (playerData.windHowlSkill)
         {
             case 1:
                 changeBtnTexture("res://assets/skills/passives/night/Moon Mod 2.png", this.windHowlBtn);
@@ -337,14 +338,14 @@ public class SkillTree : Node2D
 
     void upgradeBubbleBurst()
     {
-        if (bubbleBurstSkill < 3)
+        if (playerData.bubbleBurstSkill < 3)
         {
-            bubbleBurstSkill++;
-            this.bubbleBurstLabel.Text = "Leaves - Level " + bubbleBurstSkill;
+            playerData.bubbleBurstSkill++;
+            this.bubbleBurstLabel.Text = "Leaves - Level " + playerData.bubbleBurstSkill;
 
         }
 
-        switch (bubbleBurstSkill)
+        switch (playerData.bubbleBurstSkill)
         {
             case 1:
                 changeBtnTexture("res://assets/skills/passives/leaves/Leafs 1 Mod 1.png", this.bubbleBurstBtn);
@@ -383,7 +384,123 @@ public class SkillTree : Node2D
 
 
 
+    void initializeButtons()
+    {
+        switch (playerData.punchSkill)
+        {
+            case 1:
+                changeBtnTexture("res://assets/skills/strength/punch/Attack Mod 2.png", this.punchBtn);
+                break;
 
+            case 2:
+                changeBtnTexture("res://assets/skills/strength/punch/Attack Mod 3.png", this.punchBtn);
+                break;
+        }
+
+        switch (playerData.clawSkill)
+        {
+            case 1:
+                changeBtnTexture("res://assets/skills/strength/claws/Rip Mod 2.png", this.clawsBtn);
+                break;
+
+            case 2:
+                changeBtnTexture("res://assets/skills/strength/claws/Rip Mod 3.png", this.clawsBtn);
+                break;
+            case 3:
+                changeBtnTexture("res://assets/skills/strength/claws/Rip Mod 4.png", this.clawsBtn);
+                break;
+            case 4:
+                changeBtnTexture("res://assets/skills/strength/claws/Rip Mod 5.png", this.clawsBtn);
+                break;
+        }
+
+        switch (playerData.jawsSkill)
+        {
+            case 1:
+                changeBtnTexture("res://assets/skills/strength/teeth/Sharp Mod 2.png", this.jawsBtn);
+                break;
+
+            case 2:
+                changeBtnTexture("res://assets/skills/strength/teeth/Sharp Mod 3.png", this.jawsBtn);
+                break;
+            case 3:
+                changeBtnTexture("res://assets/skills/strength/teeth/Sharp Mod 4.png", this.jawsBtn);
+                break;
+            case 4:
+                changeBtnTexture("res://assets/skills/strength/teeth/Sharp Mod 5.png", this.jawsBtn);
+                break;
+        }
+
+        switch (playerData.armorSkill)
+        {
+            case 1:
+                changeBtnTexture("res://assets/skills/body/armor/Body Mod 1.png", this.armorBtn);
+                break;
+
+            case 2:
+                changeBtnTexture("res://assets/skills/body/armor/Body Mod 2.png", this.armorBtn);
+                break;
+            case 3:
+                changeBtnTexture("res://assets/skills/body/armor/Body Mod 3.png", this.armorBtn);
+                break;
+        }
+
+        switch (playerData.bootSkill)
+        {
+            case 1:
+                changeBtnTexture("res://assets/skills/body/boots/Boots 1 Mod 4.png", this.bootBtn);
+                break;
+
+            case 2:
+                changeBtnTexture("res://assets/skills/body/boots/Boots 1 Mod 6.png", this.bootBtn);
+                break;
+            case 3:
+                changeBtnTexture("res://assets/skills/body/boots/Boots 1 Mod 7.png", this.bootBtn);
+                break;
+        }
+
+        switch (playerData.graceSkill)
+        {
+            case 1:
+                changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 2.png", this.graceBtn);
+                break;
+
+            case 2:
+                changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 3.png", this.graceBtn);
+                break;
+            case 3:
+                changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 4.png", this.graceBtn);
+                break;
+            case 4:
+                changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 5.png", this.graceBtn);
+                break;
+        }
+
+        switch (playerData.windHowlSkill)
+        {
+            case 1:
+                changeBtnTexture("res://assets/skills/passives/night/Moon Mod 2.png", this.windHowlBtn);
+                break;
+
+            case 2:
+                changeBtnTexture("res://assets/skills/passives/night/Moon Mod 3.png", this.windHowlBtn);
+                break;
+            case 3:
+                changeBtnTexture("res://assets/skills/passives/night/Moon Mod 4.png", this.windHowlBtn);
+                break;
+        }
+
+        switch (playerData.bubbleBurstSkill)
+        {
+            case 1:
+                changeBtnTexture("res://assets/skills/passives/leaves/Leafs 1 Mod 1.png", this.bubbleBurstBtn);
+                break;
+
+            case 2:
+                changeBtnTexture("res://assets/skills/passives/leaves/Leafs Mod 1.png", this.bubbleBurstBtn);
+                break;
+        }
+    }
 
 
 
