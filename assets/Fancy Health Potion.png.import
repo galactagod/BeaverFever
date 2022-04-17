@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Body 3 Mod 3.png-75db1f435e1068704a4517f11dc47f96.stex"
+path="res://.import/Fancy Health Potion.png-602310b2cf311c6bc8a8e5289681b446.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/skills/body/armor/Body 3 Mod 3.png"
-dest_files=[ "res://.import/Body 3 Mod 3.png-75db1f435e1068704a4517f11dc47f96.stex" ]
+source_file="res://assets/Fancy Health Potion.png"
+dest_files=[ "res://.import/Fancy Health Potion.png-602310b2cf311c6bc8a8e5289681b446.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
