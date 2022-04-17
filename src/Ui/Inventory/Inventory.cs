@@ -11,7 +11,7 @@ public class Inventory : Control
     private PlayerData playerData;
 
     private string[] EquipSlots1 = new string[4] { "Necklace", "Weapon", "Talisman", "Consumable" };
-    private string[] EquipSlots2 = new string[4] { "Skill1", "Skill2", "Skill3", "Skill4" };
+    private string[] EquipSlots2 = new string[4] { "Skill1", "Skill2", "Skill3", "Trash" };
 
     public override void _Ready()
     {
@@ -76,6 +76,7 @@ public class Inventory : Control
             if (playerData.equipment.TryGetValue(slot, out var temp))
             {
                 tempNode.Set("texture", temp.texture);
+                tempNode.Set("hint_tooltip", playerData.getStatLine(temp));
             }
             else
             {
@@ -89,10 +90,14 @@ public class Inventory : Control
             if (playerData.equipment.TryGetValue(slot, out var temp))
             {
                 tempNode.Set("texture", temp.texture);
+                tempNode.Set("hint_tooltip", playerData.getStatLine(temp));
             }
             else
             {
-                tempNode.Set("texture", (Texture)GD.Load("res://assets/" + "Skill" + "Empty.png"));
+                if(slot == "Trash")
+                    tempNode.Set("texture", (Texture)GD.Load("res://assets/" + "Trash" + "Empty.png"));
+                else
+                    tempNode.Set("texture", (Texture)GD.Load("res://assets/" + "Skill" + "Empty.png"));
             }
         }
 

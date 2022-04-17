@@ -350,7 +350,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Skill4" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3"]
+[node name="Trash" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3"]
 margin_top = 300.0
 margin_right = 100.0
 margin_bottom = 390.0
@@ -359,7 +359,7 @@ size_flags_horizontal = 3
 texture = ExtResource( 4 )
 expand = true
 
-[node name="Icon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3/Skill4"]
+[node name="Icon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3/Trash"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0

@@ -42,6 +42,16 @@ public class PlayerData : Node
     public int staminaFinal = 0;
     public int healthFinal = 0;
 
+    //vars to hold the level of skills
+    public int punchSkill = 0;
+    public int clawSkill = 0;
+    public int jawsSkill = 0;
+    public int armorSkill = 0;
+    public int bootSkill = 0;
+    public int graceSkill = 0;
+    public int bubbleBurstSkill = 0;
+    public int windHowlSkill = 0;
+
     //The inventory of the player
     public List<item> inv { get; set; }
 
@@ -74,6 +84,8 @@ public class PlayerData : Node
         public string equippedSlot;
         public int inventorySlot;
         public string ableToBeEquippedSlot;
+        public int level;
+        public string textureRoute;
         //adding for skills
         public string type;
 
@@ -95,6 +107,8 @@ public class PlayerData : Node
         public string ableToBeEquippedSlot;
         public string comingFrom;
         public string type;
+        public int level;
+        public string textureRoute;
 
         public List<string> whichStat = new List<string>();
         public List<string> operatorOnStat = new List<string>();
@@ -114,6 +128,8 @@ public class PlayerData : Node
             operatorOnStat = another.operatorOnStat;
             ableToBeEquippedSlot = another.ableToBeEquippedSlot;
             type = another.type;
+            level = another.level;
+            textureRoute = another.textureRoute;
             this.comingFrom = comingFrom;
         }
 
@@ -132,6 +148,8 @@ public class PlayerData : Node
             temp.operatorOnStat = operatorOnStat;
             temp.ableToBeEquippedSlot = ableToBeEquippedSlot;
             temp.type = type;
+            temp.level = level;
+            temp.textureRoute = textureRoute;
             return temp;
         }
     }
@@ -226,7 +244,8 @@ public class PlayerData : Node
             item temp = new item();
             temp.name = (string)item["name"];
             temp.price = Int32.Parse((string)item["price"]);
-            temp.texture = (Texture)GD.Load(assetRoute + temp.name + ".png");
+            temp.textureRoute = (string)item["textureRoute"];
+            temp.texture = (Texture)GD.Load(temp.textureRoute);
             Vector2 tempVector = new Vector2();
             tempVector.x = Int32.Parse((string)item["scaleX"]);
             tempVector.y = Int32.Parse((string)item["scaleY"]);
@@ -234,6 +253,7 @@ public class PlayerData : Node
             temp.equippable = Boolean.Parse((string)item["equippable"]);
             temp.equippedSlot = (string)item["equippedSlot"];
             temp.inventorySlot = Int32.Parse((string)item["inventorySlot"]);
+            temp.level = Int32.Parse((string)item["level"]);
             temp.ableToBeEquippedSlot = (string)item["ableToBeEquippedSlot"];
             foreach (Godot.Collections.Dictionary statEffect in (Godot.Collections.Array)item["itemEffects"])
             {
@@ -242,6 +262,7 @@ public class PlayerData : Node
                 temp.amountOnStat.Add((string)statEffect["amount"]);
             }
             skills.Add(temp);
+            SettingSkillLevels(temp.name, temp.level);
         }
 
 
@@ -274,7 +295,7 @@ public class PlayerData : Node
 
         foreach (var item in skills)
         {
-            if (item.equippedSlot != null)
+            if (item.equippedSlot != "none")
             {
                 equipment.Add(item.equippedSlot, item);
                 EquipChangesStatFilter(item, false);
@@ -383,9 +404,17 @@ public class PlayerData : Node
         string statLine = "";
         statLine = statLine + temp.name + "\n";
         statLine = statLine + temp.ableToBeEquippedSlot + "\n";
+        if(temp.type == "skill")
+        {
+            statLine = statLine + "Level: " + temp.level + "\n";
+        }
         for (int i = 0; i < temp.amountOnStat.Count; i++)
         {
             statLine = statLine + temp.whichStat[i] + " " + temp.operatorOnStat[i] + " " + temp.amountOnStat[i] + "\n";
+        }
+        if(temp.equippedSlot != "none")
+        {
+            statLine = statLine + "Equipped";
         }
         return statLine;
     }
@@ -399,17 +428,95 @@ public class PlayerData : Node
         spDefenseFinal = (int)((PlayerSpDefense + spDefenseAdd) * spDefenseScale);
         staminaFinal = (int)((PlayerStamina + staminaAdd) * staminaScale);
         healthFinal = (int)((PlayerHealth + healthAdd) * healthScale);
+
+
+        attackFinal = attackFinal < PlayerAttack ? PlayerAttack : attackFinal;
+        defenseFinal = defenseFinal < PlayerDefense ? PlayerDefense : defenseFinal;
     }
 
-    public  void RemoveFromInv(int index)
+    public void RemoveFromInv(int index)
     {
         inv.RemoveAt(index);
+        EmitSignal("itemRemoved");
+    }
+
+    public void ResetInv()
+    {
         EmitSignal("itemRemoved");
     }
 
     public int CurrentStatPoints()
     {
         return PlayerAttack + PlayerDefense + PlayerHealth + PlayerSpAttack + PlayerSpDefense + PlayerStamina;
+    }
+
+
+    public int EXPNeeded(int x)
+    {
+        if (x < 12)
+            return 500;
+        //accurate level 12 and up
+        return (int)(0.02 * x * x * x + 3.06 * x * x + 105.6 * x - 895);
+    }
+
+    public void SettingSkillLevels(string skillName, int level)
+    {
+        if (skillName == "Body Mod")
+            armorSkill = level;
+        else if (skillName == "Attack Mod")
+            punchSkill = level;
+        else if (skillName == "Rip Mod")
+            clawSkill = level;
+        else if (skillName == "Sharp Mod")
+            jawsSkill = level;
+        else if(skillName == "Boots Mod")
+            bootSkill = level;
+        else if(skillName == "Book Mod")
+            graceSkill = level;
+        else if(skillName == "Moon Mod")
+            windHowlSkill = level;
+        else if (skillName == "Leaf Mod")
+            bubbleBurstSkill = level;
+
+    }
+
+    public void skillBought(string skillName, int levelBought)
+    {
+        //if the levelBought == 1, then just add it to the skills
+        if(levelBought == 1)
+        {
+            var pulledSkill = Global.skillsAvaliable.Find(x => x.name == skillName && x.level == levelBought);
+            pulledSkill.inventorySlot = skills.Count;
+            skills.Add(pulledSkill);
+        }
+        else
+        {
+            var skillToChange = skills.Find(x => x.name == skillName && x.level == levelBought - 1);
+            skillToChange.level = levelBought;
+
+            item oldSkill = new item();
+            oldSkill.amountOnStat = skillToChange.amountOnStat;
+            oldSkill.operatorOnStat = skillToChange.operatorOnStat;
+            oldSkill.whichStat = skillToChange.whichStat;
+
+            var pullingSkills = Global.skillsAvaliable.FindAll(x => x.name == skillName);
+            var skillPulled = pullingSkills[levelBought - 1];
+            
+            skillToChange.amountOnStat = skillPulled.amountOnStat;
+            skillToChange.texture = skillPulled.texture;
+            skillToChange.textureRoute = skillPulled.textureRoute;
+
+            if (skillToChange.equippedSlot != "none")
+            {
+                EquipChangesStatFilter(oldSkill, true);
+                EquipChangesStatFilter(skillToChange, false);
+                equipment.Remove(skillToChange.equippedSlot);
+                equipment.Add(skillToChange.equippedSlot, skillToChange);
+            }
+
+            skills[skillToChange.inventorySlot] = skillToChange;
+
+        }
     }
     #endregion
 }
