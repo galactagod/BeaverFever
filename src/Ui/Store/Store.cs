@@ -127,7 +127,7 @@ public class Store : Control
             playerData.itemsAvaliable[slot - 1].inventorySlot = playerData.skills.Count;
             playerData.skills.Add(playerData.itemsAvaliable[slot - 1]);
         }
-        playerData.Wallet -= playerData.itemsAvaliable[slot - 1].price;
+        playerData.Muny -= playerData.itemsAvaliable[slot - 1].price;
 
         playerData.itemsInStore.RemoveAt(slot - 1);
         playerData.itemsAvaliable.RemoveAt(slot - 1);
