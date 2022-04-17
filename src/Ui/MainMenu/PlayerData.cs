@@ -295,7 +295,7 @@ public class PlayerData : Node
 
         foreach (var item in skills)
         {
-            if (item.equippedSlot != null)
+            if (item.equippedSlot != "none")
             {
                 equipment.Add(item.equippedSlot, item);
                 EquipChangesStatFilter(item, false);
@@ -404,6 +404,10 @@ public class PlayerData : Node
         string statLine = "";
         statLine = statLine + temp.name + "\n";
         statLine = statLine + temp.ableToBeEquippedSlot + "\n";
+        if(temp.type == "skill")
+        {
+            statLine = statLine + "Level: " + temp.level + "\n";
+        }
         for (int i = 0; i < temp.amountOnStat.Count; i++)
         {
             statLine = statLine + temp.whichStat[i] + " " + temp.operatorOnStat[i] + " " + temp.amountOnStat[i] + "\n";
@@ -467,6 +471,12 @@ public class PlayerData : Node
             jawsSkill = level;
         else if(skillName == "Boots Mod")
             bootSkill = level;
+        else if(skillName == "Book Mod")
+            graceSkill = level;
+        else if(skillName == "Moon Mod")
+            windHowlSkill = level;
+        else if (skillName == "Leaf Mod")
+            bubbleBurstSkill = level;
 
     }
 

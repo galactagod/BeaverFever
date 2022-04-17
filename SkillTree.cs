@@ -287,6 +287,7 @@ public class SkillTree : Node2D
         if (playerData.graceSkill < 5)
         {
             playerData.graceSkill++;
+            playerData.skillBought("Book Mod", playerData.graceSkill);
             this.graceLabel.Text = "Wisdom - Level " + playerData.graceSkill;
 
         }
@@ -319,6 +320,7 @@ public class SkillTree : Node2D
         if (playerData.windHowlSkill < 4)
         {
             playerData.windHowlSkill++;
+            playerData.skillBought("Moon Mod", playerData.graceSkill);
             this.windHowlLabel.Text = "Night - Level " + playerData.windHowlSkill;
 
         }
@@ -345,6 +347,7 @@ public class SkillTree : Node2D
         if (playerData.bubbleBurstSkill < 3)
         {
             playerData.bubbleBurstSkill++;
+            playerData.skillBought("Leaf Mod", playerData.graceSkill);
             this.bubbleBurstLabel.Text = "Leaves - Level " + playerData.bubbleBurstSkill;
 
         }
