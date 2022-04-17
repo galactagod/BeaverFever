@@ -386,7 +386,7 @@ rect_min_size = Vector2( 0, 80 )
 size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeInventory/InventoryHeader"]
-margin_right = 352.0
+margin_right = 608.0
 margin_bottom = 80.0
 size_flags_horizontal = 3
 texture = ExtResource( 3 )
@@ -408,8 +408,8 @@ __meta__ = {
 }
 
 [node name="Control2" type="Control" parent="Background/MarginContainer/WholeContainer/WholeInventory/InventoryHeader"]
-margin_left = 356.0
-margin_right = 436.0
+margin_left = 612.0
+margin_right = 692.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
 

@@ -13,7 +13,6 @@
 [ext_resource path="res://assets/Book.png" type="Texture" id=11]
 [ext_resource path="res://assets/Mini_exit_t.png" type="Texture" id=12]
 
-
 [sub_resource type="DynamicFont" id=1]
 size = 50
 font_data = ExtResource( 4 )
@@ -46,10 +45,9 @@ TabContainer/styles/tab_fg = SubResource( 4 )
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 34.0
-margin_right = -10.0
-margin_bottom = -10.0
+margin_left = -1.0
+margin_top = -4.0
+margin_right = 7.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
