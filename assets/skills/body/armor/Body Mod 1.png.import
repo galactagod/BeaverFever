@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Body 3 Mod 1.png-40d2dc165fef8557ebb6371e3f5a7e33.stex"
+path="res://.import/Body Mod 1.png-c6a756c513737bfdc1f8a930339c1f70.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/skills/body/armor/Body 3 Mod 1.png"
-dest_files=[ "res://.import/Body 3 Mod 1.png-40d2dc165fef8557ebb6371e3f5a7e33.stex" ]
+source_file="res://assets/skills/body/armor/Body Mod 1.png"
+dest_files=[ "res://.import/Body Mod 1.png-c6a756c513737bfdc1f8a930339c1f70.stex" ]
 
 [params]
 

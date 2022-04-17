@@ -7,6 +7,7 @@ using System.Collections.Generic;
 public static class Global
 {
     private static string assetRoute = "res://assets/";
+    private static string skillAssetRoute = "res://assets/skills/";
     public static List<PlayerData.item> itemsAvaliable = new List<PlayerData.item> {
         new PlayerData.item {
         name = "Dual Sword",
@@ -51,43 +52,43 @@ public static class Global
     };
     public static List<PlayerData.item> skillsAvaliable = new List<PlayerData.item> {
         new PlayerData.item {
-        name = "Dual Sword",
-        price = 400,
-        texture = (Texture) GD.Load(assetRoute + "Dual Sword.png"),
-        scale = new Vector2(3,3),
-        amountOnStat = new List<string> {"8"},
-        whichStat = new List<string> {"Attack"},
-        operatorOnStat = new List<string> {"+"},
+        name = "Body Mod",
+        level = 1,
+        texture = (Texture) GD.Load(skillAssetRoute + "/body/armor/Body Mod 1.png"),
+        amountOnStat = new List<string> {"1.05"},
+        whichStat = new List<string> {"Defense"},
+        operatorOnStat = new List<string> {"*"},
         equippable = true,
         equippedSlot = "none",
-        ableToBeEquippedSlot = "Weapon",
-        type = "item"
+        ableToBeEquippedSlot = "Skill",
+        textureRoute = skillAssetRoute + "/body/armor/Body Mod 1.png",
+        type = "skill"
         },
         new PlayerData.item {
-        name = "Book",
-        price = 600,
-        texture = (Texture) GD.Load(assetRoute + "Book.png"),
-        scale = new Vector2(1,1),
-        amountOnStat = new List<string> {"3"},
-        whichStat = new List<string> {"SpAttack"},
-        operatorOnStat = new List<string> {"+"},
+        name = "Body Mod",
+        level = 2,
+        texture = (Texture) GD.Load(skillAssetRoute + "/body/armor/Body Mod 2.png"),
+        amountOnStat = new List<string> {"1.10"},
+        whichStat = new List<string> {"Defense"},
+        operatorOnStat = new List<string> {"*"},
         equippable = true,
         equippedSlot = "none",
-        ableToBeEquippedSlot = "Weapon",
-        type = "item"
+        ableToBeEquippedSlot = "Skill",
+        textureRoute = skillAssetRoute + "/body/armor/Body Mod 2.png",
+        type = "skill"
         },
         new PlayerData.item {
-        name = "Small Health Potion",
-        price = 600,
-        texture = (Texture) GD.Load(assetRoute + "Small Health Potion.png"),
-        scale = new Vector2(1,1),
-        //amountOnStat = new List<string> {"3"},
-        //whichStat = new List<string> {"SpAttack"},
-        //operatorOnStat = new List<string> {"+"},
+        name = "Body Mod",
+        level = 3,
+        texture = (Texture) GD.Load(skillAssetRoute + "/body/armor/Body Mod 3.png"),
+        amountOnStat = new List<string> {"1.30"},
+        whichStat = new List<string> {"Defense"},
+        operatorOnStat = new List<string> {"*"},
         equippable = true,
         equippedSlot = "none",
-        ableToBeEquippedSlot = "Consumable",
-        type = "item"
+        ableToBeEquippedSlot = "Skill",
+        textureRoute = skillAssetRoute + "/body/armor/Body Mod 3.png",
+        type = "skill"
         }
 
     };

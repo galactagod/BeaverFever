@@ -23,18 +23,18 @@ public class SkillTree : Node2D
 // Boots: Increase beavers passive movement speed, 5%, 10%, 15%
 
     // Body 
-    int armorSkill;
-    int bootSkill;
+    int armorSkill = 0;
+    int bootSkill = 0;
     
 
 
     // Coin increase: increases the XP gained from enemies, 3%, 7%, 10%
 
     // Passive 
-    int graceSkill;
+    int graceSkill = 0;
 
-    int bubbleBurstSkill;
-    int windHowlSkill;
+    int bubbleBurstSkill = 0;
+    int windHowlSkill = 0;
 
 
 
@@ -92,10 +92,17 @@ public class SkillTree : Node2D
     // private int a = 2;
     // private string b = "text";
 
+    PlayerData playerData;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         GD.Print("so");
+
+
+
+
+
 
 
         // strength 
@@ -140,6 +147,7 @@ public class SkillTree : Node2D
         this.bubbleBurstBtn.Connect("pressed", this, "upgradeBubbleBurst");
         this.bubbleBurstLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_2 - passives/VBoxContainer2/VBoxContainer/bubbleBurstLabel");
 
+        playerData = GetNode<PlayerData>("/root/PlayerData");
     }
 
 
@@ -225,6 +233,7 @@ public class SkillTree : Node2D
         if (armorSkill < 4)
         {
             armorSkill++;
+            playerData.skillBought("Body Mod", armorSkill);
             this.armorLabel.Text = "Armor - Level " + armorSkill;
 
         }
@@ -232,14 +241,14 @@ public class SkillTree : Node2D
         switch (armorSkill)
         {
             case 1:
-                changeBtnTexture("res://assets/skills/body/armor/Body 3 Mod 1.png", this.armorBtn);
+                changeBtnTexture("res://assets/skills/body/armor/Body Mod 1.png", this.armorBtn);
                 break;
 
             case 2:
                 changeBtnTexture("res://assets/skills/body/armor/Body 3 Mod 2.png", this.armorBtn);
                 break;
             case 3:
-                changeBtnTexture("res://assets/skills/body/armor/Body 3 Mod 3.png", this.armorBtn);
+                changeBtnTexture("res://assets/skills/body/armor/Body Mod 3.png", this.armorBtn);
                 break;
         }
     }

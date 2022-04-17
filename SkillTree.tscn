@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://SkillTree.cs" type="Script" id=1]
+[ext_resource path="res://assets/Mini_exit.png" type="Texture" id=2]
 [ext_resource path="res://assets/skills/strength/teeth/Sharp Mod 1.png" type="Texture" id=3]
 [ext_resource path="res://assets/skills/strength/punch/Attack Mod 1.png" type="Texture" id=4]
 [ext_resource path="res://assets/backgrounds/background.jpg" type="Texture" id=5]
@@ -8,6 +9,8 @@
 [ext_resource path="res://assets/skills/strength/claws/Rip Mod 1.png" type="Texture" id=7]
 [ext_resource path="res://fonts/ARIALBD.TTF" type="DynamicFontData" id=8]
 [ext_resource path="res://fonts/ARIAL.TTF" type="DynamicFontData" id=9]
+[ext_resource path="res://assets/Mini_exit_t.png" type="Texture" id=10]
+[ext_resource path="res://src/Ui/MainMenu/ReturnToMenu.cs" type="Script" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -70,8 +73,8 @@ rect_min_size = Vector2( 1023, 148.35 )
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Skill Points"]
-margin_left = 457.0
-margin_right = 565.0
+margin_left = 410.0
+margin_right = 518.0
 margin_bottom = 148.0
 alignment = 1
 
@@ -97,6 +100,16 @@ uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TextureButton" type="TextureButton" parent="Menu/Vertical Container/Skill Points"]
+margin_left = 800.0
+margin_right = 890.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 90, 90 )
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 10 )
+expand = true
+script = ExtResource( 11 )
 
 [node name="Tier_4 - strength" type="HBoxContainer" parent="Menu/Vertical Container"]
 margin_top = 152.0

@@ -74,6 +74,8 @@ public class PlayerData : Node
         public string equippedSlot;
         public int inventorySlot;
         public string ableToBeEquippedSlot;
+        public int level;
+        public string textureRoute;
         //adding for skills
         public string type;
 
@@ -95,6 +97,8 @@ public class PlayerData : Node
         public string ableToBeEquippedSlot;
         public string comingFrom;
         public string type;
+        public int level;
+        public string textureRoute;
 
         public List<string> whichStat = new List<string>();
         public List<string> operatorOnStat = new List<string>();
@@ -114,6 +118,8 @@ public class PlayerData : Node
             operatorOnStat = another.operatorOnStat;
             ableToBeEquippedSlot = another.ableToBeEquippedSlot;
             type = another.type;
+            level = another.level;
+            textureRoute = another.textureRoute;
             this.comingFrom = comingFrom;
         }
 
@@ -132,6 +138,8 @@ public class PlayerData : Node
             temp.operatorOnStat = operatorOnStat;
             temp.ableToBeEquippedSlot = ableToBeEquippedSlot;
             temp.type = type;
+            temp.level = level;
+            temp.textureRoute = textureRoute;
             return temp;
         }
     }
@@ -226,7 +234,8 @@ public class PlayerData : Node
             item temp = new item();
             temp.name = (string)item["name"];
             temp.price = Int32.Parse((string)item["price"]);
-            temp.texture = (Texture)GD.Load(assetRoute + temp.name + ".png");
+            temp.textureRoute = (string)item["textureRoute"];
+            temp.texture = (Texture)GD.Load(temp.textureRoute);
             Vector2 tempVector = new Vector2();
             tempVector.x = Int32.Parse((string)item["scaleX"]);
             tempVector.y = Int32.Parse((string)item["scaleY"]);
@@ -234,6 +243,7 @@ public class PlayerData : Node
             temp.equippable = Boolean.Parse((string)item["equippable"]);
             temp.equippedSlot = (string)item["equippedSlot"];
             temp.inventorySlot = Int32.Parse((string)item["inventorySlot"]);
+            temp.level = Int32.Parse((string)item["level"]);
             temp.ableToBeEquippedSlot = (string)item["ableToBeEquippedSlot"];
             foreach (Godot.Collections.Dictionary statEffect in (Godot.Collections.Array)item["itemEffects"])
             {
@@ -428,6 +438,41 @@ public class PlayerData : Node
             return 500;
         //accurate level 12 and up
         return (int)(0.02 * x * x * x + 3.06 * x * x + 105.6 * x - 895);
+    }
+
+    public void skillBought(string skillName, int levelBought)
+    {
+        //if the levelBought == 1, then just add it to the skills
+        if(levelBought == 1)
+        {
+            var pulledSkill = Global.skillsAvaliable.Find(x => x.name == skillName && x.level == levelBought);
+            pulledSkill.inventorySlot = skills.Count;
+            skills.Add(pulledSkill);
+        }
+
+
+
+        else
+        {
+            var skillToChange = skills.Find(x => x.name == skillName && levelBought == levelBought - 1);
+            skillToChange.level = levelBought;
+
+            var oldSkill = skillToChange;
+
+            var skillPulled = Global.skillsAvaliable.Find(x => x.name == skillName && x.level == levelBought);
+            skillToChange.amountOnStat = skillPulled.amountOnStat;
+
+            if (skillToChange.equippedSlot != "none")
+            {  
+                EquipChangesStatFilter(oldSkill, true);              
+                EquipChangesStatFilter(skillToChange, false);
+                equipment.Remove(skillToChange.equippedSlot);
+                equipment.Add(skillToChange.equippedSlot, skillToChange);
+            }
+
+            skills[skillToChange.inventorySlot] = skillToChange;
+
+        }
     }
     #endregion
 }
