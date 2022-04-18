@@ -19,6 +19,7 @@ public class LevelControl : Node
     private bool paused = false;
 
     public string rootPath = "/root/LevelTemplate/CanvasLayer/Control/";
+    public string controlPath = "/root/LevelTemplate/CanvasLayer/Control";
 
     public override void _Ready()
     {
@@ -41,6 +42,8 @@ public class LevelControl : Node
                 PlayAudio(_musicPlayer, _sndDreamFactory, -15, 1);
                 break;
         }
+
+        PauseMode = PauseModeEnum.Process;
     }
 
     public override void _Process(float delta)
@@ -50,13 +53,13 @@ public class LevelControl : Node
             if(!paused)
             {
                 GetTree().Paused = true;
-                GetNode("/root/LevelTemplate/CanvasLayer/Control").Set("visible", true);
+                GetNode(controlPath).Set("visible", true);
                 paused = true;
             }
             else
             {
                 GetTree().Paused = false;
-                GetNode("/root/LevelTemplate/CanvasLayer/Control").Set("visible", false);
+                GetNode(controlPath).Set("visible", false);
                 paused = false;
             }
         }
@@ -66,16 +69,26 @@ public class LevelControl : Node
     public void unPause()
     {
         GetTree().Paused = false;
-        GetNode("/root/LevelTemplate/CanvasLayer/Control").Set("visible", false);
+        GetNode(controlPath).Set("visible", false);
         paused = false;
     }
 
     public void changeScene(string path)
     {
         var templateInvSlot = GD.Load<PackedScene>(path);
-        var childRemoved = GetNode("/root/LevelTemplate/CanvasLayer/Control").GetChild(0);
-        GetNode("/root/LevelTemplate/CanvasLayer/Control").RemoveChild(childRemoved);
-        GetNode("/root/LevelTemplate/CanvasLayer/Control").AddChild(templateInvSlot.Instance());
+        
+        if(GetNode(controlPath).GetChildCount() > 0)
+        {
+            var childRemoved = GetNode(controlPath).GetChild(0);
+            GetNode(controlPath).RemoveChild(childRemoved);
+        }
+        
+        GetNode(controlPath).AddChild(templateInvSlot.Instance());
+    }
+
+    public void changeLevel()
+    {
+        //add a canvas layer and control to the level template and 
     }
 
     // use the five sfx players to prioritize playing most recent sounds

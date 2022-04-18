@@ -107,6 +107,11 @@ public class PlayerStats : Node
         GD.Print("Exp = " + _exp);
     }
 
+    public void UseConsumable(string name)
+    {
+        if (name == "Small Health Potion")
+            ChangeHealth(200);
+    }
 
 
 }

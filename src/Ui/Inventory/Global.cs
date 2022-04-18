@@ -10,29 +10,13 @@ public static class Global
     private static string skillAssetRoute = "res://assets/skills";
     public static List<PlayerData.item> itemsAvaliable = new List<PlayerData.item> {
         new PlayerData.item {
-        name = "Dual Sword",
-        price = 400,
-        texture = (Texture) GD.Load(assetRoute + "Dual Sword.png"),
-        scale = new Vector2(3,3),
-        amountOnStat = new List<string> {"8"},
-        whichStat = new List<string> {"Attack"},
-        operatorOnStat = new List<string> {"+"},
-        equippable = true,
-        equippedSlot = "none",
-        ableToBeEquippedSlot = "Weapon",
-        type = "item"
-        },
-        new PlayerData.item {
-        name = "Book",
+        name = "Small Health Potion",
         price = 600,
-        texture = (Texture) GD.Load(assetRoute + "Book.png"),
+        texture = (Texture) GD.Load(assetRoute + "Small Health Potion.png"),
         scale = new Vector2(1,1),
-        amountOnStat = new List<string> {"3"},
-        whichStat = new List<string> {"SpAttack"},
-        operatorOnStat = new List<string> {"+"},
         equippable = true,
         equippedSlot = "none",
-        ableToBeEquippedSlot = "Weapon",
+        ableToBeEquippedSlot = "Consumable",
         type = "item"
         },
         new PlayerData.item {
@@ -40,9 +24,16 @@ public static class Global
         price = 600,
         texture = (Texture) GD.Load(assetRoute + "Small Health Potion.png"),
         scale = new Vector2(1,1),
-        //amountOnStat = new List<string> {"3"},
-        //whichStat = new List<string> {"SpAttack"},
-        //operatorOnStat = new List<string> {"+"},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Consumable",
+        type = "item"
+        },
+        new PlayerData.item {
+        name = "Small Health Potion",
+        price = 600,
+        texture = (Texture) GD.Load(assetRoute + "Small Health Potion.png"),
+        scale = new Vector2(1,1),
         equippable = true,
         equippedSlot = "none",
         ableToBeEquippedSlot = "Consumable",
@@ -443,9 +434,6 @@ public static class Global
         price = 600,
         texture = (Texture) GD.Load(assetRoute + "Small Health Potion.png"),
         scale = new Vector2(1,1),
-        //amountOnStat = new List<string> {"3"},
-        //whichStat = new List<string> {"SpAttack"},
-        //operatorOnStat = new List<string> {"+"},
         equippable = true,
         equippedSlot = "none",
         ableToBeEquippedSlot = "Consumable",

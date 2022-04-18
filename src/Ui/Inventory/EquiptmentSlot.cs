@@ -10,12 +10,14 @@ public class EquiptmentSlot : TextureRect
     public int a = 2;
     private PlayerData playerData;
     private LevelControl levelControl;
+    private PlayerStats playerStats;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         playerData = GetNode<PlayerData>("/root/PlayerData");
         levelControl = GetNode<LevelControl>("/root/LevelControl");
+        playerStats = GetNode<PlayerStats>("/root/PlayerStats");
     }
     public override object GetDragData(Vector2 position)
     {
@@ -110,6 +112,7 @@ public class EquiptmentSlot : TextureRect
             //counter could go here?
             //use consumable?
             Texture = (Texture)GD.Load("res://assets/" + "Consumable" + "Empty" + ".png");
+            playerStats.UseConsumable(actualData.name);
             playerData.RemoveFromInv(actualData.inventorySlot);
             return;
         }

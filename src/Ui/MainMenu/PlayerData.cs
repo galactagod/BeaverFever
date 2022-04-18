@@ -441,6 +441,12 @@ public class PlayerData : Node
     public void RemoveFromInv(int index)
     {
         inv.RemoveAt(index);
+        int counter = 0;
+        foreach(var item in inv)
+        {
+            item.inventorySlot = counter;
+            counter++;
+        }
         EmitSignal("itemRemoved");
     }
 
