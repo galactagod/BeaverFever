@@ -143,7 +143,7 @@ margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
 rect_pivot_offset = Vector2( 1535, 547 )
-hint_tooltip = "Beaver performs a charged attack, 20pts, 40pts, 50pts
+hint_tooltip = "Shoots a water projectile towards target
 "
 texture_normal = ExtResource( 4 )
 expand = true
@@ -181,7 +181,8 @@ __meta__ = {
 margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
-hint_tooltip = "Beaver’s default attack, quick move, uses his claws, damage: 5pts, 10pts, 15pts"
+hint_tooltip = "Beaver slices nearby opponent
+"
 texture_normal = ExtResource( 7 )
 expand = true
 stretch_mode = 3
@@ -225,6 +226,10 @@ hint_tooltip = "Beaver’s bite attack, 60pts damage "
 texture_normal = ExtResource( 3 )
 expand = true
 stretch_mode = 3
+__meta__ = {
+"_editor_description_": "Beaver Bites nearby opponent
+"
+}
 
 [node name="crunchLabel" type="Label" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer3/VBoxContainer"]
 margin_top = 68.0
@@ -289,6 +294,10 @@ hint_tooltip = "Beaver’s defense against attacks, 5%, 10%, 30%"
 texture_normal = SubResource( 3 )
 expand = true
 stretch_mode = 3
+__meta__ = {
+"_editor_description_": "Increases defense temporarily
+"
+}
 
 [node name="aegisLabel" type="Label" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer/VBoxContainer"]
 margin_top = 68.0
@@ -322,7 +331,8 @@ __meta__ = {
 margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
-hint_tooltip = " Increase beavers passive movement speed, 5%, 10%, 15%"
+hint_tooltip = "Increases Speed temporarily
+"
 texture_normal = ExtResource( 6 )
 expand = true
 stretch_mode = 3
@@ -385,7 +395,8 @@ __meta__ = {
 margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
-hint_tooltip = "increases the XP gained from enemies, 3%, 7%, 10%"
+hint_tooltip = "Money Multiplier
+"
 texture_normal = SubResource( 4 )
 expand = true
 stretch_mode = 3
@@ -425,6 +436,10 @@ rect_min_size = Vector2( 64, 64 )
 texture_normal = SubResource( 5 )
 expand = true
 stretch_mode = 3
+__meta__ = {
+"_editor_description_": "Regenerate a % of a hp over time
+"
+}
 
 [node name="regenerationLabel" type="Label" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer2/VBoxContainer"]
 margin_top = 68.0

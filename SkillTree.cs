@@ -158,18 +158,30 @@ public class SkillTree: Node2D {
 
     switch (playerData.bubbleBurstSkill) {
     case 1:
-      changeBtnTexture("res://assets/skills/strength/bubble burst/bubble burst tier 1.png", this.bubbleBurstBtn);
-      experiencePoints(500);
+      if (experiencePoints(500)) {
+        changeBtnTexture("res://assets/skills/strength/bubble burst/bubble burst tier 1.png", this.bubbleBurstBtn);
+      } else {
+         playerData.bubbleBurstSkill--;
+      }
+
       break;
 
     case 2:
-      changeBtnTexture("res://assets/skills/strength/bubble burst/bubble burst tier 2.png", this.bubbleBurstBtn);
-      experiencePoints(1000);
+      if (experiencePoints(1000)) {
+        changeBtnTexture("res://assets/skills/strength/bubble burst/bubble burst tier 2.png", this.bubbleBurstBtn);
+      } else {
+        playerData.bubbleBurstSkill--;
+      }
+
       break;
 
     case 3:
-      changeBtnTexture("res://assets/skills/strength/bubble burst/bubble burst tier 3.png", this.bubbleBurstBtn);
-      experiencePoints(3000);
+      if (experiencePoints(3000)) {
+        changeBtnTexture("res://assets/skills/strength/bubble burst/bubble burst tier 3.png", this.bubbleBurstBtn);
+      } else {
+            playerData.bubbleBurstSkill++;
+      }
+
       break;
     }
   }
@@ -177,24 +189,39 @@ public class SkillTree: Node2D {
   void upgradeSlice() {
     if (playerData.sliceSkill < 4) {
       playerData.sliceSkill++;
+
       playerData.skillBought("Rip Mod", playerData.sliceSkill);
       this.sliceLabel.Text = "Slice - Level " + playerData.sliceSkill;
     }
 
     switch (playerData.sliceSkill) {
     case 1:
-      changeBtnTexture("res://assets/skills/strength/claws/Rip Mod 2.png", this.sliceBtn);
-      experiencePoints(500);
+      if (experiencePoints(500)) {
+        changeBtnTexture("res://assets/skills/strength/claws/Rip Mod 2.png", this.sliceBtn);
+      } else {
+      playerData.sliceSkill--;
+
+      }
+
       break;
 
     case 2:
-      changeBtnTexture("res://assets/skills/strength/claws/Rip Mod 3.png", this.sliceBtn);
-      experiencePoints(1000);
+      if (experiencePoints(1000)) {
+        changeBtnTexture("res://assets/skills/strength/claws/Rip Mod 3.png", this.sliceBtn);
+      } else {
+      playerData.sliceSkill--;
+
+      }
 
       break;
     case 3:
-      changeBtnTexture("res://assets/skills/strength/claws/Rip Mod 4.png", this.sliceBtn);
-      experiencePoints(3000);
+      if (experiencePoints(3000)) {
+        changeBtnTexture("res://assets/skills/strength/claws/Rip Mod 4.png", this.sliceBtn);
+      } else {
+      playerData.sliceSkill--;
+
+      }
+
 
       break;
 
@@ -203,7 +230,7 @@ public class SkillTree: Node2D {
 
   void upgradeCrunch() {
     if (playerData.crunchSkill < 4) {
-      playerData.crunchSkill++;
+    playerData.crunchSkill++;   
       playerData.skillBought("Sharp Mod", playerData.crunchSkill);
       this.crunchLabel.Text = "Crunch - Level " + playerData.crunchSkill;
 
@@ -211,20 +238,31 @@ public class SkillTree: Node2D {
 
     switch (playerData.crunchSkill) {
     case 1:
-      changeBtnTexture("res://assets/skills/strength/teeth/Sharp Mod 2.png", this.crunchBtn);
-      experiencePoints(1000);
+      if (experiencePoints(1000)) {
+        changeBtnTexture("res://assets/skills/strength/teeth/Sharp Mod 2.png", this.crunchBtn);
+      } else {
+      playerData.crunchSkill--;
+
+      }
 
       break;
 
     case 2:
-      changeBtnTexture("res://assets/skills/strength/teeth/Sharp Mod 3.png", this.crunchBtn);
-      experiencePoints(2000);
+      if (experiencePoints(2000)) {
+        changeBtnTexture("res://assets/skills/strength/teeth/Sharp Mod 3.png", this.crunchBtn);
+      } else {
+      playerData.crunchSkill--;
+
+      }
 
       break;
     case 3:
-      changeBtnTexture("res://assets/skills/strength/teeth/Sharp Mod 4.png", this.crunchBtn);
-      experiencePoints(4000);
+      if (experiencePoints(4000)) {
+        changeBtnTexture("res://assets/skills/strength/teeth/Sharp Mod 4.png", this.crunchBtn);
+      } else {
+      playerData.crunchSkill--;
 
+      }
       break;
     }
   }
@@ -232,6 +270,7 @@ public class SkillTree: Node2D {
   void upgradeAegis() {
     if (playerData.aegisSkill < 4) {
       playerData.aegisSkill++;
+
       playerData.skillBought("Body Mod", playerData.aegisSkill);
       this.aegisLabel.Text = "Aegis - Level " + playerData.aegisSkill;
 
@@ -239,19 +278,30 @@ public class SkillTree: Node2D {
 
     switch (playerData.aegisSkill) {
     case 1:
-      changeBtnTexture("res://assets/skills/body/armor/Body Mod 1.png", this.aegisBtn);
-      experiencePoints(1000);
+      if (experiencePoints(1000)) {
+        changeBtnTexture("res://assets/skills/body/aegis/Body Mod 1.png", this.aegisBtn);
+      } else {
+      playerData.aegisSkill--;
+
+      }
 
       break;
 
     case 2:
-      changeBtnTexture("res://assets/skills/body/armor/Body Mod 2.png", this.aegisBtn);
-      experiencePoints(1500);
+      if (experiencePoints(1500)) {
+        changeBtnTexture("res://assets/skills/body/aegis/Body Mod 2.png", this.aegisBtn);
+      } else {
+      playerData.aegisSkill--;
 
+      }
       break;
     case 3:
-      changeBtnTexture("res://assets/skills/body/armor/Body Mod 3.png", this.aegisBtn);
-      experiencePoints(2000);
+      if (experiencePoints(2000)) {
+        changeBtnTexture("res://assets/skills/body/aegis/Body Mod 3.png", this.aegisBtn);
+      } else {
+      playerData.aegisSkill--;
+
+      }
 
       break;
     }
@@ -259,7 +309,8 @@ public class SkillTree: Node2D {
 
   void upgradeAccelerate() {
     if (playerData.accelerateSkill < 4) {
-      playerData.accelerateSkill++;
+        playerData.accelerateSkill++;
+
       playerData.skillBought("Boots Mod", playerData.accelerateSkill);
       this.accelerateLabel.Text = "Accelerate - Level " + playerData.accelerateSkill;
 
@@ -267,19 +318,31 @@ public class SkillTree: Node2D {
 
     switch (playerData.accelerateSkill) {
     case 1:
-      changeBtnTexture("res://assets/skills/body/boots/Boots 1 Mod 4.png", this.accelerateBtn);
-      experiencePoints(1000);
+      if (experiencePoints(1000)) {
+        changeBtnTexture("res://assets/skills/body/boots/Boots 1 Mod 4.png", this.accelerateBtn);
+      } else {
+      playerData.accelerateSkill--;
+
+      }
 
       break;
 
     case 2:
-      changeBtnTexture("res://assets/skills/body/boots/Boots 1 Mod 6.png", this.accelerateBtn);
-      experiencePoints(1500);
+      if (experiencePoints(1500)) {
+        changeBtnTexture("res://assets/skills/body/boots/Boots 1 Mod 6.png", this.accelerateBtn);
+      } else {
+      playerData.accelerateSkill--;
+
+      }
 
       break;
     case 3:
-      changeBtnTexture("res://assets/skills/body/boots/Boots 1 Mod 7.png", this.accelerateBtn);
-      experiencePoints(2000);
+      if (experiencePoints(2000)) {
+        changeBtnTexture("res://assets/skills/body/boots/Boots 1 Mod 7.png", this.accelerateBtn);
+      } else {
+      playerData.accelerateSkill--;
+
+      }
 
       break;
     }
@@ -295,25 +358,94 @@ public class SkillTree: Node2D {
 
     switch (playerData.graceSkill) {
     case 1:
-      changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 2.png", this.graceBtn);
-      experiencePoints(1000);
+      if (experiencePoints(1000)) {
+        changeBtnTexture("res://assets/skills/passives/praying/Praying Mod 2.png", this.graceBtn);
+      } else {
+      playerData.graceSkill--;
+
+      }
 
       break;
 
     case 2:
-      changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 3.png", this.graceBtn);
-      experiencePoints(2000);
+      if (experiencePoints(2000)) {
+        changeBtnTexture("res://assets/skills/passives/praying/Praying Mod 3.png", this.graceBtn);
+      } else {
+      playerData.graceSkill--;
+
+      }
 
       break;
     case 3:
-      changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 4.png", this.graceBtn);
-      experiencePoints(3000);
+      if (experiencePoints(3000)) {
+        changeBtnTexture("res://assets/skills/passives/praying/Praying Mod 4.png", this.graceBtn);
+      } else {
+      playerData.graceSkill--;
+
+      }
 
       break;
     }
   }
 
-  //   void upgradeRegeneration() {
+ 
+
+  void upgradeRegeneration() {
+    if (playerData.regenerationSkill < 4) {
+        playerData.regenerationSkill++;
+      playerData.skillBought("Leaf Mod", playerData.graceSkill);
+      this.regenerationLabel.Text = "Regeneration - Level " + playerData.regenerationSkill;
+
+    }
+
+    switch (playerData.regenerationSkill) {
+    case 1:
+      if (experiencePoints(1500)) {
+        changeBtnTexture("res://assets/skills/passives/leaves/Leafs 1 Original.png", this.regenerationBtn);
+      } else {
+      playerData.regenerationSkill--;
+
+      }
+
+      break;
+
+    case 2:
+      if (experiencePoints(2500)) {
+        changeBtnTexture("res://assets/skills/passives/leaves/Leafs 1 Mod 1.png", this.regenerationBtn);
+      } else {
+      playerData.regenerationSkill--;
+
+      }
+      break;
+
+    case 3:
+      if (experiencePoints(5000)) {
+        changeBtnTexture("res://assets/skills/passives/leaves/Leafs Mod 1.png", this.regenerationBtn);
+      } else {
+      playerData.regenerationSkill--;
+
+      }
+      break;
+    }
+  }
+
+  bool experiencePoints(int xp) {
+    bool unlocked = false;
+    if (playerData.PlayerTotalPoints >= xp) {
+      playerData.PlayerTotalPoints -= xp;
+      unlocked = true;
+    } else {
+      GD.Print("Error, player does not have enough XP for this skill");
+      // some error should occur
+
+    }
+
+    return unlocked;
+  }
+
+
+
+   //   void upgradeRegeneration() {
   //     if (playerData.regenerationSkill < 4) {
   //       playerData.regenerationSkill++;
   //       playerData.skillBought("Moon Mod", playerData.graceSkill);
@@ -334,45 +466,6 @@ public class SkillTree: Node2D {
   //       break;
   //     }
   //   }
-
-  void upgradeRegeneration() {
-    if (playerData.regenerationSkill < 4) {
-      playerData.regenerationSkill++;
-      playerData.skillBought("Leaf Mod", playerData.graceSkill);
-      this.bubbleBurstLabel.Text = "Regeneration - Level " + playerData.regenerationSkill;
-
-    }
-
-    switch (playerData.regenerationSkill) {
-    case 1:
-      changeBtnTexture("res://assets/skills/passives/leaves/Leafs 1 Original.png", this.bubbleBurstBtn);
-      experiencePoints(1500);
-
-      break;
-
-    case 2:
-      changeBtnTexture("res://assets/skills/passives/leaves/Leafs 1 Mod 1.png", this.bubbleBurstBtn);
-      experiencePoints(2500);
-
-      break;
-
-    case 3:
-      changeBtnTexture("res://assets/skills/passives/leaves/Leafs Mod 1.png", this.bubbleBurstBtn);
-      experiencePoints(5000);
-
-      break;
-    }
-  }
-
-  void experiencePoints(int xp) {
-    if (playerData.PlayerTotalPoints >= xp) {
-      playerData.PlayerTotalPoints -= xp;
-    } else {
-      GD.Print("Error, player does not have enough XP for this skill");
-      // some error should occur
-
-    }
-  }
   // void upgradeVampire()
   // {
   //     if (vampireSkill < 4)
@@ -438,21 +531,18 @@ public class SkillTree: Node2D {
     case 3:
       changeBtnTexture("res://assets/skills/strength/teeth/Sharp Mod 4.png", this.crunchBtn);
       break;
-    case 4:
-      changeBtnTexture("res://assets/skills/strength/teeth/Sharp Mod 5.png", this.crunchBtn);
-      break;
     }
 
     switch (playerData.aegisSkill) {
     case 1:
-      changeBtnTexture("res://assets/skills/body/armor/Body Mod 1.png", this.aegisBtn);
+      changeBtnTexture("res://assets/skills/body/aegis/Body Mod 1.png", this.aegisBtn);
       break;
 
     case 2:
-      changeBtnTexture("res://assets/skills/body/armor/Body Mod 2.png", this.aegisBtn);
+      changeBtnTexture("res://assets/skills/body/aegis/Body Mod 2.png", this.aegisBtn);
       break;
     case 3:
-      changeBtnTexture("res://assets/skills/body/armor/Body Mod 3.png", this.aegisBtn);
+      changeBtnTexture("res://assets/skills/body/aegis/Body Mod 3.png", this.aegisBtn);
       break;
     }
 
@@ -471,30 +561,28 @@ public class SkillTree: Node2D {
 
     switch (playerData.graceSkill) {
     case 1:
-      changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 2.png", this.graceBtn);
+      changeBtnTexture("res://assets/skills/passives/praying/Praying Mod 2.png", this.graceBtn);
       break;
 
     case 2:
-      changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 3.png", this.graceBtn);
+      changeBtnTexture("res://assets/skills/passives/praying/Praying Mod 3.png", this.graceBtn);
       break;
     case 3:
-      changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 4.png", this.graceBtn);
+      changeBtnTexture("res://assets/skills/passives/praying/Praying Mod 4.png", this.graceBtn);
       break;
-    case 4:
-      changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 5.png", this.graceBtn);
-      break;
+
     }
 
     switch (playerData.regenerationSkill) {
     case 1:
-      changeBtnTexture("res://assets/skills/passives/night/Moon Mod 2.png", this.regenerationBtn);
+      changeBtnTexture("res://assets/skills/passives/leaves/Leafs 1 Original.png", this.regenerationBtn);
       break;
 
     case 2:
-      changeBtnTexture("res://assets/skills/passives/night/Moon Mod 3.png", this.regenerationBtn);
+      changeBtnTexture("res://assets/skills/passives/leaves/Leafs 1 Mod 1.png", this.regenerationBtn);
       break;
     case 3:
-      changeBtnTexture("res://assets/skills/passives/night/Moon Mod 4.png", this.regenerationBtn);
+      changeBtnTexture("res://assets/skills/passives/leaves/Leafs Mod 1.png", this.regenerationBtn);
       break;
     }
 
