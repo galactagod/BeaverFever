@@ -11,6 +11,7 @@ public class MasterAddButton : TextureButton
 
     [Signal]
     public delegate void statPointsAdd(string type);
+    private LevelControl levelControl;
 
     // Used to help with dynamic routing
     private string routeUntilScene = "/root/";
@@ -18,7 +19,8 @@ public class MasterAddButton : TextureButton
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        var mainSheet = GetNode(routeUntilScene + "CharacterSheet");
+        levelControl = GetNode<LevelControl>("/root/LevelControl");
+        var mainSheet = GetNode(levelControl.rootPath + "CharacterSheet");
         mainSheet.Connect("statPointsEmptied", this, "disableThis");
         mainSheet.Connect("statPointsFilled", this, "enableThis");
     }

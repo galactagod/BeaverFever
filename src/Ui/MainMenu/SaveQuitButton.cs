@@ -4,9 +4,11 @@ using System;
 public class SaveQuitButton : TextureButton
 {
     private PlayerData playerData;
+    private PlayerStats playerStats;
     public override void _Ready()
     {
         playerData = GetNode<PlayerData>("/root/PlayerData");
+        playerStats = GetNode<PlayerStats>("/root/PlayerStats");
     }
 
     public override void _Pressed()
@@ -28,7 +30,7 @@ public class SaveQuitButton : TextureButton
         jsonToWrite.Add("Stamina", playerData.PlayerStamina.ToString());
         jsonToWrite.Add("Health", playerData.PlayerHealth.ToString());
         jsonToWrite.Add("StatPoints", playerData.PlayerTotalPoints.ToString());
-        jsonToWrite.Add("Muny", playerData.Muny.ToString());
+        jsonToWrite.Add("Muny", playerStats.Muny.ToString());
         Godot.Collections.Array inventory = new Godot.Collections.Array();
         Godot.Collections.Array skills = new Godot.Collections.Array();
         foreach (var item in playerData.inv)

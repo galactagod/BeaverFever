@@ -51,6 +51,9 @@ public class PlayerData : Node
     public int graceSkill = 0;
     public int regenerationSkill = 0;
 
+    public int inventorySize = 30;
+    public int consumableSize = 0;
+
     //The inventory of the player
     public List<item> inv { get; set; }
 
@@ -70,6 +73,8 @@ public class PlayerData : Node
 
     [Signal]
     public delegate void itemRemoved();
+
+    private PlayerStats playerStats;
     #endregion
 
     #region Item Classes

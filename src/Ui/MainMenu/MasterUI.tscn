@@ -63,27 +63,27 @@ __meta__ = {
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
 margin_right = 1024.0
-margin_bottom = 163.0
+margin_bottom = 223.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Control" type="Control" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer/HBoxContainer"]
 margin_right = 338.0
-margin_bottom = 163.0
+margin_bottom = 223.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Control2" type="Control" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer/HBoxContainer"]
 margin_left = 342.0
 margin_right = 681.0
-margin_bottom = 163.0
+margin_bottom = 223.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Control3" type="Control" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer/HBoxContainer"]
 margin_left = 685.0
 margin_right = 1024.0
-margin_bottom = 163.0
+margin_bottom = 223.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -105,9 +105,9 @@ __meta__ = {
 }
 
 [node name="InventoryButton" type="TextureButton" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
-margin_top = 194.0
+margin_top = 227.0
 margin_right = 1024.0
-margin_bottom = 244.0
+margin_bottom = 277.0
 rect_min_size = Vector2( 0, 50 )
 size_flags_horizontal = 3
 texture_normal = ExtResource( 4 )
@@ -132,9 +132,9 @@ __meta__ = {
 }
 
 [node name="StoreButton" type="TextureButton" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
-margin_top = 248.0
+margin_top = 281.0
 margin_right = 1024.0
-margin_bottom = 298.0
+margin_bottom = 331.0
 rect_min_size = Vector2( 600, 50 )
 size_flags_horizontal = 3
 texture_normal = ExtResource( 4 )
@@ -159,9 +159,9 @@ __meta__ = {
 }
 
 [node name="StatsButton" type="TextureButton" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
-margin_top = 302.0
+margin_top = 335.0
 margin_right = 1024.0
-margin_bottom = 352.0
+margin_bottom = 385.0
 rect_min_size = Vector2( 1024, 50 )
 size_flags_horizontal = 3
 texture_normal = ExtResource( 4 )
@@ -186,9 +186,9 @@ __meta__ = {
 }
 
 [node name="SkillsButton" type="TextureButton" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
-margin_top = 329.0
+margin_top = 389.0
 margin_right = 1024.0
-margin_bottom = 379.0
+margin_bottom = 439.0
 rect_min_size = Vector2( 1024, 50 )
 size_flags_horizontal = 3
 texture_normal = ExtResource( 4 )
@@ -213,9 +213,9 @@ __meta__ = {
 }
 
 [node name="SaveQuit" type="TextureButton" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
-margin_top = 356.0
+margin_top = 443.0
 margin_right = 1024.0
-margin_bottom = 406.0
+margin_bottom = 493.0
 rect_min_size = Vector2( 1024, 50 )
 size_flags_horizontal = 3
 texture_normal = ExtResource( 4 )
@@ -239,7 +239,7 @@ __meta__ = {
 }
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
-margin_top = 410.0
+margin_top = 497.0
 margin_right = 1024.0
 margin_bottom = 720.0
 size_flags_horizontal = 3

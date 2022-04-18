@@ -5,7 +5,7 @@ public class SkillTree: Node2D {
 
   // TODO
   // remove punch change it with 
-  int skillPoints = 0;
+  int skillPoints = 1000000;
 
   /***********************************/
   //          Skill Counter
@@ -149,8 +149,9 @@ public class SkillTree: Node2D {
     initializeButtons();
   }
 
+    //done
   void upgradeBubbleBurst() {
-    if (playerData.bubbleBurstSkill < 4) {
+    if (playerData.bubbleBurstSkill < 3) {
       playerData.bubbleBurstSkill++;
       playerData.skillBought("Attack Mod", playerData.bubbleBurstSkill);
       this.bubbleBurstLabel.Text = "Bubble Burst - Level " + playerData.bubbleBurstSkill;
@@ -186,8 +187,9 @@ public class SkillTree: Node2D {
     }
   }
 
+    //done
   void upgradeSlice() {
-    if (playerData.sliceSkill < 4) {
+    if (playerData.sliceSkill < 3) {
       playerData.sliceSkill++;
 
       playerData.skillBought("Rip Mod", playerData.sliceSkill);
@@ -229,7 +231,7 @@ public class SkillTree: Node2D {
   }
 
   void upgradeCrunch() {
-    if (playerData.crunchSkill < 4) {
+    if (playerData.crunchSkill < 3) {
     playerData.crunchSkill++;   
       playerData.skillBought("Sharp Mod", playerData.crunchSkill);
       this.crunchLabel.Text = "Crunch - Level " + playerData.crunchSkill;
@@ -267,8 +269,9 @@ public class SkillTree: Node2D {
     }
   }
 
+    //done
   void upgradeAegis() {
-    if (playerData.aegisSkill < 4) {
+    if (playerData.aegisSkill < 3) {
       playerData.aegisSkill++;
 
       playerData.skillBought("Body Mod", playerData.aegisSkill);
@@ -307,8 +310,9 @@ public class SkillTree: Node2D {
     }
   }
 
+    //done
   void upgradeAccelerate() {
-    if (playerData.accelerateSkill < 4) {
+    if (playerData.accelerateSkill < 3) {
         playerData.accelerateSkill++;
 
       playerData.skillBought("Boots Mod", playerData.accelerateSkill);
@@ -348,8 +352,9 @@ public class SkillTree: Node2D {
     }
   }
 
+    //done
   void upgradeGrace() {
-    if (playerData.graceSkill < 4) {
+    if (playerData.graceSkill < 3) {
       playerData.graceSkill++;
       playerData.skillBought("Book Mod", playerData.graceSkill);
       this.graceLabel.Text = "Wisdom - Level " + playerData.graceSkill;
@@ -389,11 +394,11 @@ public class SkillTree: Node2D {
   }
 
  
-
+//done
   void upgradeRegeneration() {
-    if (playerData.regenerationSkill < 4) {
+    if (playerData.regenerationSkill < 3) {
         playerData.regenerationSkill++;
-      playerData.skillBought("Leaf Mod", playerData.graceSkill);
+      playerData.skillBought("Leaf Mod", playerData.regenerationSkill);
       this.regenerationLabel.Text = "Regeneration - Level " + playerData.regenerationSkill;
 
     }
