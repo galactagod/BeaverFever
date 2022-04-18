@@ -1,539 +1,513 @@
 using Godot;
 using System;
 
-public class SkillTree : Node2D
-{
+public class SkillTree: Node2D {
 
+  // TODO
+  // remove punch change it with 
+  int skillPoints = 0;
 
+  /***********************************/
+  //          Skill Counter
+  /***********************************/
 
- // TODO
- // remove punch change it with 
-    int skillPoints = 0;
+  // Strength 
 
-    /***********************************/
-    //          Skill Counter
-    /***********************************/
+  // Slice - Tiers 3 tiers
+  // Tier 1 - Attack power: 30, Exp Cost: 500
+  // Tier 2 - Attack power: 35, Exp Cost: 1000
+  // Tier 3 - Attack power: 45, Exp Cost: 3000
+  // Explanation: Beaver slices nearby opponent
+  int sliceSkill = 0;
 
-    // Punch: Beaver performs a charged attack, 20pts, 40pts, 50pts
-    // Claws: Beaver’s default attack, quick move, uses his claws, damage: 5pts, 10pts, 15pts 
-    // Jaws: Beaver’s bite attack, I guess this would be the ultimate?? 60pts damage 
+  // Crunch - Tiers 3 tiers
+  // Tier 1 - Attack power: 45, Exp Cost: 1000
+  // Tier 2 - Attack power: 50, Exp Cost: 2000
+  // Tier 3 - Attack power: 60, Exp Cost: 4000
+  // Explanation: Beaver Bites nearby opponent
+  int crunchSkill = 0;
 
-    // Strength 
-    int punchSkill = 0; //done
-    int clawSkill = 0; //done
-    int jawsSkill = 0; //done
+  // Bubble Burst - Tiers 3 tiers
+  // Tier 1 - Attack power: 30, Exp Cost: 500
+  // Tier 2 - Attack power: 35, Exp Cost: 1000
+  // Tier 3 - Attack power: 45, Exp Cost: 3000
+  // Explanation: Shoots a water projectile towards target
+  int bubbleBurstSkill = 0;
 
-// Armor: Beaver’s defense against attacks, 5%, 10%, 30%
-// Boots: Increase beavers passive movement speed, 5%, 10%, 15%
+  // ****************************************************
+  // Body
+  // ****************************************************
+  // Aegis - Tiers 3 tiers
+  // Tier 1 - Attack power: 5%, Exp Cost: 1000
+  // Tier 2 - Attack power: 10%, Exp Cost: 1500
+  // Tier 3 - Attack power: 20%, Exp Cost: 2000
+  // Explanation: Increases defense temporarily
+  int aegisSkill = 0;
 
-    // Body 
-    int armorSkill = 0; //done
-    int bootSkill = 0; //done
-    
+  // Accelerate - Tiers 3 tiers
+  // Tier 1 - Attack power: 5%, Exp Cost: 1000
+  // Tier 2 - Attack power: 10%, Exp Cost: 1500
+  // Tier 3 - Attack power: 20%, Exp Cost: 2000
+  // Explanation: Increases Speed temporarily
+  int accelerateSkill = 0;
 
+  // ****************************************************
+  //  Passive  
+  // ****************************************************
+  // Grace - Tiers 3 tiers
+  // Tier 1 - Attack power: 1.5%, Exp Cost: 1000
+  // Tier 2 - Attack power: 2%, Exp Cost: 2000
+  // Tier 3 - Attack power: 3%, Exp Cost: 3000
+  // Explanation: Money multiplier
+  int graceSkill = 0;
 
-    // Coin increase: increases the XP gained from enemies, 3%, 7%, 10%
+  // Regeneration - Tiers 3 tiers
+  // Tier 1 - Attack power: 1%, Exp Cost: 1500
+  // Tier 2 - Attack power: 2%, Exp Cost: 2500
+  // Tier 3 - Attack power: 3%, Exp Cost: 5000
+  // Explanation: Regenerate a % of a hp over time
+  int regenerationSkill = 0;
 
-    // Passive 
-    int graceSkill = 0;
+  /***********************************/
+  //          Buttons
+  /***********************************/
 
-    int bubbleBurstSkill = 0;
-    int windHowlSkill = 0;
+  // Strength buttons
+  TextureButton bubbleBurstBtn;
+  TextureButton sliceBtn;
+  TextureButton crunchBtn;
 
+  // Body Buttons
+  TextureButton aegisBtn;
+  TextureButton accelerateBtn;
 
+  // Passive Buttons
+  TextureButton graceBtn;
+  TextureButton regenerationBtn;
 
-    /***********************************/
-    //          Buttons
-    /***********************************/
+  /***********************************/
+  //          Labels
+  /***********************************/
 
-    // Strength buttons
-    TextureButton punchBtn;
-    TextureButton clawsBtn;
-    TextureButton jawsBtn;
+  // Strength Labels
+  Label bubbleBurstLabel;
+  Label sliceLabel;
+  Label crunchLabel;
 
+  // Body Labels
+  Label aegisLabel;
+  Label accelerateLabel;
 
-    // Body Buttons
-    TextureButton armorBtn;
-    TextureButton bootBtn;
+  // Passive Labels
+  Label graceLabel;
 
+  Label regenerationLabel;
 
+  // Declare member variables here. Examples:
+  // private int a = 2;
+  // private string b = "text";
 
+  PlayerData playerData;
 
+  // Called when the node enters the scene tree for the first time.
+  public override void _Ready() {
+    GD.Print("Init Skill Tree");
 
-    // Passive Buttons
-        TextureButton graceBtn;
-    TextureButton windHowlBtn;
-    TextureButton bubbleBurstBtn;
+    // strength 
+    this.bubbleBurstBtn = this.GetNode < TextureButton > ("Menu/Vertical Container/Tier_4 - strength/VBoxContainer/VBoxContainer/bubbleBurstBtn");
+    this.bubbleBurstLabel = this.GetNode < Label > ("Menu/Vertical Container/Tier_4 - strength/VBoxContainer/VBoxContainer/bubbleBurstLabel");
+    this.bubbleBurstBtn.Connect("pressed", this, "upgradeBubbleBurst");
 
+    this.sliceBtn = this.GetNode < TextureButton > ("Menu/Vertical Container/Tier_4 - strength/VBoxContainer2/VBoxContainer/sliceBtn");
+    this.sliceBtn.Connect("pressed", this, "upgradeSlice");
+    this.sliceLabel = this.GetNode < Label > ("Menu/Vertical Container/Tier_4 - strength/VBoxContainer2/VBoxContainer/sliceLabel");
 
+    this.crunchBtn = this.GetNode < TextureButton > ("Menu/Vertical Container/Tier_4 - strength/VBoxContainer3/VBoxContainer/crunchBtn");
+    this.crunchBtn.Connect("pressed", this, "upgradeCrunch");
+    this.crunchLabel = this.GetNode < Label > ("Menu/Vertical Container/Tier_4 - strength/VBoxContainer3/VBoxContainer/crunchLabel");
 
-    /***********************************/
-    //          Labels
-    /***********************************/
+    // body 
+    this.aegisBtn = this.GetNode < TextureButton > ("Menu/Vertical Container/Tier_3 - body/VBoxContainer/VBoxContainer/aegisBtn");
+    this.aegisBtn.Connect("pressed", this, "upgradeAegis");
+    this.aegisLabel = this.GetNode < Label > ("Menu/Vertical Container/Tier_3 - body/VBoxContainer/VBoxContainer/aegisLabel");
 
-    // Strength Labels
-    Label punchLabel;
-    Label clawsLabel;
-    Label jawsLabel;
+    this.accelerateBtn = this.GetNode < TextureButton > ("Menu/Vertical Container/Tier_3 - body/VBoxContainer2/VBoxContainer/accelerateBtn");
+    this.accelerateBtn.Connect("pressed", this, "upgradeAccelerate");
+    this.accelerateLabel = this.GetNode < Label > ("Menu/Vertical Container/Tier_3 - body/VBoxContainer2/VBoxContainer/accelerateLabel");
 
+    // passives
 
-    // Body Labels
-    Label armorLabel;
-    Label bootLabel;
+    this.graceBtn = this.GetNode < TextureButton > ("Menu/Vertical Container/Tier_2 - passives/VBoxContainer/VBoxContainer/graceBtn");
+    this.graceBtn.Connect("pressed", this, "upgradeGrace");
+    this.graceLabel = this.GetNode < Label > ("Menu/Vertical Container/Tier_2 - passives/VBoxContainer/VBoxContainer/graceLabel");
 
+    this.regenerationBtn = this.GetNode < TextureButton > ("Menu/Vertical Container/Tier_2 - passives/VBoxContainer2/VBoxContainer/regenerationBtn");
+    this.regenerationBtn.Connect("pressed", this, "upgradeRegeneration");
+    this.regenerationLabel = this.GetNode < Label > ("Menu/Vertical Container/Tier_2 - passives/VBoxContainer2/VBoxContainer/regenerationLabel");
 
+    playerData = GetNode < PlayerData > ("/root/PlayerData");
+    initializeButtons();
+  }
 
-
-    // Passive Labels
-    Label graceLabel;
-
-    Label windHowlLabel;
-    Label bubbleBurstLabel;
-
-
-
-    // Declare member variables here. Examples:
-    // private int a = 2;
-    // private string b = "text";
-
-    PlayerData playerData;
-
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
-    {
-        GD.Print("so");
-
-
-
-
-
-
-
-        // strength 
-        this.punchBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_4 - strength/VBoxContainer/VBoxContainer/PunchBtn");
-        this.punchLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_4 - strength/VBoxContainer/VBoxContainer/punchLabel");
-        this.punchBtn.Connect("pressed", this, "upgradePunch");
-
-        this.clawsBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_4 - strength/VBoxContainer2/VBoxContainer/clawsBtn");
-        this.clawsBtn.Connect("pressed", this, "upgradeClaws");
-        this.clawsLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_4 - strength/VBoxContainer2/VBoxContainer/clawsLabel");
-
-
-        this.jawsBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_4 - strength/VBoxContainer3/VBoxContainer/jawsBtn");
-        this.jawsBtn.Connect("pressed", this, "upgradeJaws");
-        this.jawsLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_4 - strength/VBoxContainer3/VBoxContainer/jawsLabel");
-
-
-        // body 
-        this.armorBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_3 - body/VBoxContainer/VBoxContainer/armorBtn");
-        this.armorBtn.Connect("pressed", this, "upgradeArmor");
-        this.armorLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_3 - body/VBoxContainer/VBoxContainer/armorLabel");
-
-
-        this.bootBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_3 - body/VBoxContainer2/VBoxContainer/bootBtn");
-        this.bootBtn.Connect("pressed", this, "upgradeBoot");
-        this.bootLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_3 - body/VBoxContainer2/VBoxContainer/bootLabel");
-
-
- 
-        // passives
-        
-        this.graceBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_2 - passives/VBoxContainer/VBoxContainer/coinBtn");
-        this.graceBtn.Connect("pressed", this, "upgradeGrace");
-        this.graceLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_2 - passives/VBoxContainer/VBoxContainer/coinBtn2");
-
-
-        this.windHowlBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_2 - passives/VBoxContainer4/VBoxContainer/windHowlButton");
-        this.windHowlBtn.Connect("pressed", this, "upgradeWindHowl");
-        this.windHowlLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_2 - passives/VBoxContainer4/VBoxContainer/windHowlLabel2");
-
-        this.bubbleBurstBtn = this.GetNode<TextureButton>("Menu/Vertical Container/Tier_2 - passives/VBoxContainer2/VBoxContainer/bubbleBurstBtn");
-        this.bubbleBurstBtn.Connect("pressed", this, "upgradeBubbleBurst");
-        this.bubbleBurstLabel = this.GetNode<Label>("Menu/Vertical Container/Tier_2 - passives/VBoxContainer2/VBoxContainer/bubbleBurstLabel");
-
-        playerData = GetNode<PlayerData>("/root/PlayerData");
-        initializeButtons();
+  void upgradeBubbleBurst() {
+    if (playerData.bubbleBurstSkill < 4) {
+      playerData.bubbleBurstSkill++;
+      playerData.skillBought("Attack Mod", playerData.bubbleBurstSkill);
+      this.bubbleBurstLabel.Text = "Bubble Burst - Level " + playerData.bubbleBurstSkill;
     }
 
+    switch (playerData.bubbleBurstSkill) {
+    case 1:
+      changeBtnTexture("res://assets/skills/strength/bubble burst/bubble burst tier 1.png", this.bubbleBurstBtn);
+      experiencePoints(500);
+      break;
 
-    void upgradePunch()
-    {
-        if (playerData.punchSkill < 2)
-        {
-            playerData.punchSkill++;
-            playerData.skillBought("Attack Mod", playerData.punchSkill);
-            this.punchLabel.Text = "Punch - Level " + playerData.punchSkill;
-        }
+    case 2:
+      changeBtnTexture("res://assets/skills/strength/bubble burst/bubble burst tier 2.png", this.bubbleBurstBtn);
+      experiencePoints(1000);
+      break;
 
-        switch (playerData.punchSkill)
-        {
-            case 1:
-                changeBtnTexture("res://assets/skills/strength/punch/Attack Mod 2.png", this.punchBtn);
-                break;
+    case 3:
+      changeBtnTexture("res://assets/skills/strength/bubble burst/bubble burst tier 3.png", this.bubbleBurstBtn);
+      experiencePoints(3000);
+      break;
+    }
+  }
 
-            case 2:
-                changeBtnTexture("res://assets/skills/strength/punch/Attack Mod 3.png", this.punchBtn);
-                break;
-        }
+  void upgradeSlice() {
+    if (playerData.sliceSkill < 4) {
+      playerData.sliceSkill++;
+      playerData.skillBought("Rip Mod", playerData.sliceSkill);
+      this.sliceLabel.Text = "Slice - Level " + playerData.sliceSkill;
     }
 
-    void upgradeClaws()
-    {
-        if (playerData.clawSkill < 4)
-        {
-            playerData.clawSkill++;
-            playerData.skillBought("Rip Mod", playerData.clawSkill);
-            this.clawsLabel.Text = "Claws - Level " + playerData.clawSkill;
-        }
+    switch (playerData.sliceSkill) {
+    case 1:
+      changeBtnTexture("res://assets/skills/strength/claws/Rip Mod 2.png", this.sliceBtn);
+      experiencePoints(500);
+      break;
 
+    case 2:
+      changeBtnTexture("res://assets/skills/strength/claws/Rip Mod 3.png", this.sliceBtn);
+      experiencePoints(1000);
 
+      break;
+    case 3:
+      changeBtnTexture("res://assets/skills/strength/claws/Rip Mod 4.png", this.sliceBtn);
+      experiencePoints(3000);
 
-        switch (playerData.clawSkill)
-        {
-            case 1:
-                changeBtnTexture("res://assets/skills/strength/claws/Rip Mod 2.png", this.clawsBtn);
-                break;
+      break;
 
-            case 2:
-                changeBtnTexture("res://assets/skills/strength/claws/Rip Mod 3.png", this.clawsBtn);
-                break;
-            case 3:
-                changeBtnTexture("res://assets/skills/strength/claws/Rip Mod 4.png", this.clawsBtn);
-                break;
-            case 4:
-                changeBtnTexture("res://assets/skills/strength/claws/Rip Mod 5.png", this.clawsBtn);
-                break;
-        }
+    }
+  }
+
+  void upgradeCrunch() {
+    if (playerData.crunchSkill < 4) {
+      playerData.crunchSkill++;
+      playerData.skillBought("Sharp Mod", playerData.crunchSkill);
+      this.crunchLabel.Text = "Crunch - Level " + playerData.crunchSkill;
+
     }
 
-    void upgradeJaws()
-    {
-        if (playerData.jawsSkill < 4)
-        {
-            playerData.jawsSkill++;
-            playerData.skillBought("Sharp Mod", playerData.jawsSkill);
-            this.jawsLabel.Text = "Jaws - Level " + playerData.jawsSkill;
+    switch (playerData.crunchSkill) {
+    case 1:
+      changeBtnTexture("res://assets/skills/strength/teeth/Sharp Mod 2.png", this.crunchBtn);
+      experiencePoints(1000);
 
-        }
+      break;
 
-        switch (playerData.jawsSkill)
-        {
-            case 1:
-                changeBtnTexture("res://assets/skills/strength/teeth/Sharp Mod 2.png", this.jawsBtn);
-                break;
+    case 2:
+      changeBtnTexture("res://assets/skills/strength/teeth/Sharp Mod 3.png", this.crunchBtn);
+      experiencePoints(2000);
 
-            case 2:
-                changeBtnTexture("res://assets/skills/strength/teeth/Sharp Mod 3.png", this.jawsBtn);
-                break;
-            case 3:
-                changeBtnTexture("res://assets/skills/strength/teeth/Sharp Mod 4.png", this.jawsBtn);
-                break;
-            case 4:
-                changeBtnTexture("res://assets/skills/strength/teeth/Sharp Mod 5.png", this.jawsBtn);
-                break;
-        }
+      break;
+    case 3:
+      changeBtnTexture("res://assets/skills/strength/teeth/Sharp Mod 4.png", this.crunchBtn);
+      experiencePoints(4000);
+
+      break;
+    }
+  }
+
+  void upgradeAegis() {
+    if (playerData.aegisSkill < 4) {
+      playerData.aegisSkill++;
+      playerData.skillBought("Body Mod", playerData.aegisSkill);
+      this.aegisLabel.Text = "Aegis - Level " + playerData.aegisSkill;
+
     }
 
+    switch (playerData.aegisSkill) {
+    case 1:
+      changeBtnTexture("res://assets/skills/body/armor/Body Mod 1.png", this.aegisBtn);
+      experiencePoints(1000);
 
+      break;
 
-    void upgradeArmor()
-    {
-        if (playerData.armorSkill < 3)
-        {
-            playerData.armorSkill++;
-            playerData.skillBought("Body Mod", playerData.armorSkill);
-            this.armorLabel.Text = "Armor - Level " + playerData.armorSkill;
+    case 2:
+      changeBtnTexture("res://assets/skills/body/armor/Body Mod 2.png", this.aegisBtn);
+      experiencePoints(1500);
 
-        }
+      break;
+    case 3:
+      changeBtnTexture("res://assets/skills/body/armor/Body Mod 3.png", this.aegisBtn);
+      experiencePoints(2000);
 
-        switch (playerData.armorSkill)
-        {
-            case 1:
-                changeBtnTexture("res://assets/skills/body/armor/Body Mod 1.png", this.armorBtn);
-                break;
+      break;
+    }
+  }
 
-            case 2:
-                changeBtnTexture("res://assets/skills/body/armor/Body Mod 2.png", this.armorBtn);
-                break;
-            case 3:
-                changeBtnTexture("res://assets/skills/body/armor/Body Mod 3.png", this.armorBtn);
-                break;
-        }
+  void upgradeAccelerate() {
+    if (playerData.accelerateSkill < 4) {
+      playerData.accelerateSkill++;
+      playerData.skillBought("Boots Mod", playerData.accelerateSkill);
+      this.accelerateLabel.Text = "Accelerate - Level " + playerData.accelerateSkill;
+
     }
 
-    void upgradeBoot()
-    {
-        if (playerData.bootSkill < 4)
-        {
-            playerData.bootSkill++;
-            playerData.skillBought("Boots Mod", playerData.bootSkill);
-            this.bootLabel.Text = "Boot - Level " + playerData.bootSkill;
+    switch (playerData.accelerateSkill) {
+    case 1:
+      changeBtnTexture("res://assets/skills/body/boots/Boots 1 Mod 4.png", this.accelerateBtn);
+      experiencePoints(1000);
 
-        }
+      break;
 
-        switch (playerData.bootSkill)
-        {
-            case 1:
-                changeBtnTexture("res://assets/skills/body/boots/Boots 1 Mod 4.png", this.bootBtn);
-                break;
+    case 2:
+      changeBtnTexture("res://assets/skills/body/boots/Boots 1 Mod 6.png", this.accelerateBtn);
+      experiencePoints(1500);
 
-            case 2:
-                changeBtnTexture("res://assets/skills/body/boots/Boots 1 Mod 6.png", this.bootBtn);
-                break;
-            case 3:
-                changeBtnTexture("res://assets/skills/body/boots/Boots 1 Mod 7.png", this.bootBtn);
-                break;
-        }
+      break;
+    case 3:
+      changeBtnTexture("res://assets/skills/body/boots/Boots 1 Mod 7.png", this.accelerateBtn);
+      experiencePoints(2000);
+
+      break;
+    }
+  }
+
+  void upgradeGrace() {
+    if (playerData.graceSkill < 4) {
+      playerData.graceSkill++;
+      playerData.skillBought("Book Mod", playerData.graceSkill);
+      this.graceLabel.Text = "Wisdom - Level " + playerData.graceSkill;
+
     }
 
-    void upgradeGrace()
-    {
-        if (playerData.graceSkill < 5)
-        {
-            playerData.graceSkill++;
-            playerData.skillBought("Book Mod", playerData.graceSkill);
-            this.graceLabel.Text = "Wisdom - Level " + playerData.graceSkill;
+    switch (playerData.graceSkill) {
+    case 1:
+      changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 2.png", this.graceBtn);
+      experiencePoints(1000);
 
-        }
+      break;
 
-        switch (playerData.graceSkill)
-        {
-            case 1:
-                changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 2.png", this.graceBtn);
-                break;
+    case 2:
+      changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 3.png", this.graceBtn);
+      experiencePoints(2000);
 
-            case 2:
-                changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 3.png", this.graceBtn);
-                break;
-            case 3:
-                changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 4.png", this.graceBtn);
-                break;
-            case 4:
-                changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 5.png", this.graceBtn);
-                break;
-        }
+      break;
+    case 3:
+      changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 4.png", this.graceBtn);
+      experiencePoints(3000);
+
+      break;
+    }
+  }
+
+  //   void upgradeRegeneration() {
+  //     if (playerData.regenerationSkill < 4) {
+  //       playerData.regenerationSkill++;
+  //       playerData.skillBought("Moon Mod", playerData.graceSkill);
+  //       this.regenerationLabel.Text = "Night - Level " + playerData.regenerationSkill;
+
+  //     }
+
+  //     switch (playerData.regenerationSkill) {
+  //     case 1:
+  //       changeBtnTexture("res://assets/skills/passives/night/Moon Mod 2.png", this.regenerationBtn);
+  //       break;
+
+  //     case 2:
+  //       changeBtnTexture("res://assets/skills/passives/night/Moon Mod 3.png", this.regenerationBtn);
+  //       break;
+  //     case 3:
+  //       changeBtnTexture("res://assets/skills/passives/night/Moon Mod 4.png", this.regenerationBtn);
+  //       break;
+  //     }
+  //   }
+
+  void upgradeRegeneration() {
+    if (playerData.regenerationSkill < 4) {
+      playerData.regenerationSkill++;
+      playerData.skillBought("Leaf Mod", playerData.graceSkill);
+      this.bubbleBurstLabel.Text = "Regeneration - Level " + playerData.regenerationSkill;
+
     }
 
+    switch (playerData.regenerationSkill) {
+    case 1:
+      changeBtnTexture("res://assets/skills/passives/leaves/Leafs 1 Original.png", this.bubbleBurstBtn);
+      experiencePoints(1500);
 
+      break;
 
+    case 2:
+      changeBtnTexture("res://assets/skills/passives/leaves/Leafs 1 Mod 1.png", this.bubbleBurstBtn);
+      experiencePoints(2500);
 
+      break;
 
+    case 3:
+      changeBtnTexture("res://assets/skills/passives/leaves/Leafs Mod 1.png", this.bubbleBurstBtn);
+      experiencePoints(5000);
 
-    void upgradeWindHowl()
-    {
-        if (playerData.windHowlSkill < 4)
-        {
-            playerData.windHowlSkill++;
-            playerData.skillBought("Moon Mod", playerData.graceSkill);
-            this.windHowlLabel.Text = "Night - Level " + playerData.windHowlSkill;
+      break;
+    }
+  }
 
-        }
+  void experiencePoints(int xp) {
+    if (playerData.PlayerTotalPoints >= xp) {
+      playerData.PlayerTotalPoints -= xp;
+    } else {
+      GD.Print("Error, player does not have enough XP for this skill");
+      // some error should occur
 
-        switch (playerData.windHowlSkill)
-        {
-            case 1:
-                changeBtnTexture("res://assets/skills/passives/night/Moon Mod 2.png", this.windHowlBtn);
-                break;
+    }
+  }
+  // void upgradeVampire()
+  // {
+  //     if (vampireSkill < 4)
+  //     {
+  //         vampireSkill++;
+  //         this.vampireLabel.Text = "Vampire - Level " + vampireSkill;
 
-            case 2:
-                changeBtnTexture("res://assets/skills/passives/night/Moon Mod 3.png", this.windHowlBtn);
-                break;
-            case 3:
-                changeBtnTexture("res://assets/skills/passives/night/Moon Mod 4.png", this.windHowlBtn);
-                break;
-        }
+  //     }
+
+  //     switch (vampireSkill)
+  //     {
+  //         case 1:
+  //             changeBtnTexture("res://assets/skills/passives/praying/Praying Mod 2.png", this.vampireBtn);
+  //             break;
+
+  //         case 2:
+  //             changeBtnTexture("res://assets/skills/passives/praying/Praying Mod 3.png", this.vampireBtn);
+  //             break;
+  //         case 3:
+  //             changeBtnTexture("res://assets/skills/passives/praying/Praying Mod 4.png", this.vampireBtn);
+  //             break;
+  //     }
+  // }
+
+  void initializeButtons() {
+
+    switch (playerData.bubbleBurstSkill) {
+    case 1:
+      changeBtnTexture("res://assets/skills/strength/bubble burst/bubble burst tier 1.png", this.bubbleBurstBtn);
+      break;
+
+    case 2:
+      changeBtnTexture("res://assets/skills/strength/bubble burst/bubble burst tier 2.png", this.bubbleBurstBtn);
+      break;
+
+    case 3:
+      changeBtnTexture("res://assets/skills/strength/bubble burst/bubble burst tier 3.png", this.bubbleBurstBtn);
+      break;
     }
 
+    switch (playerData.sliceSkill) {
+    case 1:
+      changeBtnTexture("res://assets/skills/strength/claws/Rip Mod 2.png", this.sliceBtn);
+      break;
 
+    case 2:
+      changeBtnTexture("res://assets/skills/strength/claws/Rip Mod 3.png", this.sliceBtn);
+      break;
+    case 3:
+      changeBtnTexture("res://assets/skills/strength/claws/Rip Mod 4.png", this.sliceBtn);
+      break;
 
-    void upgradeBubbleBurst()
-    {
-        if (playerData.bubbleBurstSkill < 3)
-        {
-            playerData.bubbleBurstSkill++;
-            playerData.skillBought("Leaf Mod", playerData.graceSkill);
-            this.bubbleBurstLabel.Text = "Leaves - Level " + playerData.bubbleBurstSkill;
-
-        }
-
-        switch (playerData.bubbleBurstSkill)
-        {
-            case 1:
-                changeBtnTexture("res://assets/skills/passives/leaves/Leafs 1 Mod 1.png", this.bubbleBurstBtn);
-                break;
-
-            case 2:
-                changeBtnTexture("res://assets/skills/passives/leaves/Leafs Mod 1.png", this.bubbleBurstBtn);
-                break;
-        }
     }
 
+    switch (playerData.crunchSkill) {
+    case 1:
+      changeBtnTexture("res://assets/skills/strength/teeth/Sharp Mod 2.png", this.crunchBtn);
+      break;
 
-    // void upgradeVampire()
-    // {
-    //     if (vampireSkill < 4)
-    //     {
-    //         vampireSkill++;
-    //         this.vampireLabel.Text = "Vampire - Level " + vampireSkill;
-
-    //     }
-
-    //     switch (vampireSkill)
-    //     {
-    //         case 1:
-    //             changeBtnTexture("res://assets/skills/passives/praying/Praying Mod 2.png", this.vampireBtn);
-    //             break;
-
-    //         case 2:
-    //             changeBtnTexture("res://assets/skills/passives/praying/Praying Mod 3.png", this.vampireBtn);
-    //             break;
-    //         case 3:
-    //             changeBtnTexture("res://assets/skills/passives/praying/Praying Mod 4.png", this.vampireBtn);
-    //             break;
-    //     }
-    // }
-
-
-
-    void initializeButtons()
-    {
-        switch (playerData.punchSkill)
-        {
-            case 1:
-                changeBtnTexture("res://assets/skills/strength/punch/Attack Mod 2.png", this.punchBtn);
-                break;
-
-            case 2:
-                changeBtnTexture("res://assets/skills/strength/punch/Attack Mod 3.png", this.punchBtn);
-                break;
-        }
-
-        switch (playerData.clawSkill)
-        {
-            case 1:
-                changeBtnTexture("res://assets/skills/strength/claws/Rip Mod 2.png", this.clawsBtn);
-                break;
-
-            case 2:
-                changeBtnTexture("res://assets/skills/strength/claws/Rip Mod 3.png", this.clawsBtn);
-                break;
-            case 3:
-                changeBtnTexture("res://assets/skills/strength/claws/Rip Mod 4.png", this.clawsBtn);
-                break;
-            case 4:
-                changeBtnTexture("res://assets/skills/strength/claws/Rip Mod 5.png", this.clawsBtn);
-                break;
-        }
-
-        switch (playerData.jawsSkill)
-        {
-            case 1:
-                changeBtnTexture("res://assets/skills/strength/teeth/Sharp Mod 2.png", this.jawsBtn);
-                break;
-
-            case 2:
-                changeBtnTexture("res://assets/skills/strength/teeth/Sharp Mod 3.png", this.jawsBtn);
-                break;
-            case 3:
-                changeBtnTexture("res://assets/skills/strength/teeth/Sharp Mod 4.png", this.jawsBtn);
-                break;
-            case 4:
-                changeBtnTexture("res://assets/skills/strength/teeth/Sharp Mod 5.png", this.jawsBtn);
-                break;
-        }
-
-        switch (playerData.armorSkill)
-        {
-            case 1:
-                changeBtnTexture("res://assets/skills/body/armor/Body Mod 1.png", this.armorBtn);
-                break;
-
-            case 2:
-                changeBtnTexture("res://assets/skills/body/armor/Body Mod 2.png", this.armorBtn);
-                break;
-            case 3:
-                changeBtnTexture("res://assets/skills/body/armor/Body Mod 3.png", this.armorBtn);
-                break;
-        }
-
-        switch (playerData.bootSkill)
-        {
-            case 1:
-                changeBtnTexture("res://assets/skills/body/boots/Boots 1 Mod 4.png", this.bootBtn);
-                break;
-
-            case 2:
-                changeBtnTexture("res://assets/skills/body/boots/Boots 1 Mod 6.png", this.bootBtn);
-                break;
-            case 3:
-                changeBtnTexture("res://assets/skills/body/boots/Boots 1 Mod 7.png", this.bootBtn);
-                break;
-        }
-
-        switch (playerData.graceSkill)
-        {
-            case 1:
-                changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 2.png", this.graceBtn);
-                break;
-
-            case 2:
-                changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 3.png", this.graceBtn);
-                break;
-            case 3:
-                changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 4.png", this.graceBtn);
-                break;
-            case 4:
-                changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 5.png", this.graceBtn);
-                break;
-        }
-
-        switch (playerData.windHowlSkill)
-        {
-            case 1:
-                changeBtnTexture("res://assets/skills/passives/night/Moon Mod 2.png", this.windHowlBtn);
-                break;
-
-            case 2:
-                changeBtnTexture("res://assets/skills/passives/night/Moon Mod 3.png", this.windHowlBtn);
-                break;
-            case 3:
-                changeBtnTexture("res://assets/skills/passives/night/Moon Mod 4.png", this.windHowlBtn);
-                break;
-        }
-
-        switch (playerData.bubbleBurstSkill)
-        {
-            case 1:
-                changeBtnTexture("res://assets/skills/passives/leaves/Leafs 1 Mod 1.png", this.bubbleBurstBtn);
-                break;
-
-            case 2:
-                changeBtnTexture("res://assets/skills/passives/leaves/Leafs Mod 1.png", this.bubbleBurstBtn);
-                break;
-        }
+    case 2:
+      changeBtnTexture("res://assets/skills/strength/teeth/Sharp Mod 3.png", this.crunchBtn);
+      break;
+    case 3:
+      changeBtnTexture("res://assets/skills/strength/teeth/Sharp Mod 4.png", this.crunchBtn);
+      break;
+    case 4:
+      changeBtnTexture("res://assets/skills/strength/teeth/Sharp Mod 5.png", this.crunchBtn);
+      break;
     }
 
+    switch (playerData.aegisSkill) {
+    case 1:
+      changeBtnTexture("res://assets/skills/body/armor/Body Mod 1.png", this.aegisBtn);
+      break;
 
-
-
-
-
-
-
-
-
-
-
-
-    void changeBtnTexture(String texturePath, TextureButton textureButton)
-    {
-        Texture texture = (Texture)GD.Load(texturePath);
-        textureButton.TextureNormal = texture;
-        textureButton.TexturePressed = texture;
+    case 2:
+      changeBtnTexture("res://assets/skills/body/armor/Body Mod 2.png", this.aegisBtn);
+      break;
+    case 3:
+      changeBtnTexture("res://assets/skills/body/armor/Body Mod 3.png", this.aegisBtn);
+      break;
     }
-    //  // Called every frame. 'delta' is the elapsed time since the previous frame.
-    //  public override void _Process(float delta)
-    //  {
-    //      
-    //  }
+
+    switch (playerData.accelerateSkill) {
+    case 1:
+      changeBtnTexture("res://assets/skills/body/boots/Boots 1 Mod 4.png", this.accelerateBtn);
+      break;
+
+    case 2:
+      changeBtnTexture("res://assets/skills/body/boots/Boots 1 Mod 6.png", this.accelerateBtn);
+      break;
+    case 3:
+      changeBtnTexture("res://assets/skills/body/boots/Boots 1 Mod 7.png", this.accelerateBtn);
+      break;
+    }
+
+    switch (playerData.graceSkill) {
+    case 1:
+      changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 2.png", this.graceBtn);
+      break;
+
+    case 2:
+      changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 3.png", this.graceBtn);
+      break;
+    case 3:
+      changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 4.png", this.graceBtn);
+      break;
+    case 4:
+      changeBtnTexture("res://assets/skills/body/wisdom/Book 1 Mod 5.png", this.graceBtn);
+      break;
+    }
+
+    switch (playerData.regenerationSkill) {
+    case 1:
+      changeBtnTexture("res://assets/skills/passives/night/Moon Mod 2.png", this.regenerationBtn);
+      break;
+
+    case 2:
+      changeBtnTexture("res://assets/skills/passives/night/Moon Mod 3.png", this.regenerationBtn);
+      break;
+    case 3:
+      changeBtnTexture("res://assets/skills/passives/night/Moon Mod 4.png", this.regenerationBtn);
+      break;
+    }
+
+  }
+
+  void changeBtnTexture(String texturePath, TextureButton textureButton) {
+    Texture texture = (Texture) GD.Load(texturePath);
+    textureButton.TextureNormal = texture;
+    textureButton.TexturePressed = texture;
+  }
+  //  // Called every frame. 'delta' is the elapsed time since the previous frame.
+  //  public override void _Process(float delta)
+  //  {
+  //      
+  //  }
 }

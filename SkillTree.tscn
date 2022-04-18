@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://SkillTree.cs" type="Script" id=1]
 [ext_resource path="res://assets/Mini_exit.png" type="Texture" id=2]
@@ -31,10 +31,6 @@ load_path = "res://.import/Praying Mod 1.png-18587f3916d92bdce1457f08f579bc2f.st
 [sub_resource type="StreamTexture" id=5]
 flags = 4
 load_path = "res://.import/Leafs 1 Mod 1.png-f7f68e23b1f447f2fe521248403ae920.stex"
-
-[sub_resource type="StreamTexture" id=6]
-flags = 4
-load_path = "res://.import/Moon Mod 1.png-b27aad80f64016d6dc219f20974a6c51.stex"
 
 [node name="Skill Tree" type="Node2D"]
 script = ExtResource( 1 )
@@ -142,7 +138,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PunchBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer/VBoxContainer"]
+[node name="bubbleBurstBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer/VBoxContainer"]
 margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
@@ -153,12 +149,12 @@ texture_normal = ExtResource( 4 )
 expand = true
 stretch_mode = 3
 
-[node name="punchLabel" type="Label" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer/VBoxContainer"]
+[node name="bubbleBurstLabel" type="Label" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer/VBoxContainer"]
 margin_top = 68.0
 margin_right = 251.0
 margin_bottom = 108.0
 rect_min_size = Vector2( 100, 40 )
-text = "Punch
+text = "Bubble Burst
 "
 align = 1
 __meta__ = {
@@ -181,7 +177,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="clawsBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer2/VBoxContainer"]
+[node name="sliceBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer2/VBoxContainer"]
 margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
@@ -193,12 +189,12 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="clawsLabel" type="Label" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer2/VBoxContainer"]
+[node name="sliceLabel" type="Label" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer2/VBoxContainer"]
 margin_top = 68.0
 margin_right = 251.0
 margin_bottom = 108.0
 rect_min_size = Vector2( 100, 40 )
-text = "Claws
+text = "Slice
 "
 align = 1
 __meta__ = {
@@ -221,7 +217,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="jawsBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer3/VBoxContainer"]
+[node name="crunchBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer3/VBoxContainer"]
 margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
@@ -230,12 +226,13 @@ texture_normal = ExtResource( 3 )
 expand = true
 stretch_mode = 3
 
-[node name="jawsLabel" type="Label" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer3/VBoxContainer"]
+[node name="crunchLabel" type="Label" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer3/VBoxContainer"]
 margin_top = 68.0
 margin_right = 251.0
 margin_bottom = 108.0
 rect_min_size = Vector2( 100, 40 )
-text = "Jaws"
+text = "Crunch
+"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -261,7 +258,7 @@ margin_top = 54.0
 margin_right = 251.0
 margin_bottom = 94.0
 rect_min_size = Vector2( 100, 40 )
-text = "Armor"
+text = "Body"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -284,7 +281,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="armorBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer/VBoxContainer"]
+[node name="aegisBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer/VBoxContainer"]
 margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
@@ -293,12 +290,12 @@ texture_normal = SubResource( 3 )
 expand = true
 stretch_mode = 3
 
-[node name="armorLabel" type="Label" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer/VBoxContainer"]
+[node name="aegisLabel" type="Label" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer/VBoxContainer"]
 margin_top = 68.0
 margin_right = 251.0
 margin_bottom = 108.0
 rect_min_size = Vector2( 100, 40 )
-text = "Armor"
+text = "Aegis"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -321,7 +318,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="bootBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer2/VBoxContainer"]
+[node name="accelerateBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer2/VBoxContainer"]
 margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
@@ -330,12 +327,12 @@ texture_normal = ExtResource( 6 )
 expand = true
 stretch_mode = 3
 
-[node name="bootLabel" type="Label" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer2/VBoxContainer"]
+[node name="accelerateLabel" type="Label" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer2/VBoxContainer"]
 margin_top = 68.0
 margin_right = 251.0
 margin_bottom = 108.0
 rect_min_size = Vector2( 100, 40 )
-text = "Boots"
+text = "Accelerate"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -384,7 +381,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="coinBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer/VBoxContainer"]
+[node name="graceBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer/VBoxContainer"]
 margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
@@ -393,7 +390,7 @@ texture_normal = SubResource( 4 )
 expand = true
 stretch_mode = 3
 
-[node name="coinBtn2" type="Label" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer/VBoxContainer"]
+[node name="graceLabel" type="Label" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer/VBoxContainer"]
 margin_top = 68.0
 margin_right = 251.0
 margin_bottom = 108.0
@@ -421,7 +418,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="bubbleBurstBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer2/VBoxContainer"]
+[node name="regenerationBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer2/VBoxContainer"]
 margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
@@ -429,50 +426,12 @@ texture_normal = SubResource( 5 )
 expand = true
 stretch_mode = 3
 
-[node name="bubbleBurstLabel" type="Label" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer2/VBoxContainer"]
+[node name="regenerationLabel" type="Label" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer2/VBoxContainer"]
 margin_top = 68.0
 margin_right = 251.0
 margin_bottom = 108.0
 rect_min_size = Vector2( 100, 40 )
-text = "Bubble Burst
-"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer4" type="VBoxContainer" parent="Menu/Vertical Container/Tier_2 - passives"]
-margin_left = 765.0
-margin_right = 1016.0
-margin_bottom = 148.0
-rect_min_size = Vector2( 251, 0 )
-alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer4"]
-margin_top = 20.0
-margin_right = 251.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 100, 100 )
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="windHowlButton" type="TextureButton" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer4/VBoxContainer"]
-margin_right = 251.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 64, 64 )
-texture_normal = SubResource( 6 )
-expand = true
-stretch_mode = 3
-
-[node name="windHowlLabel2" type="Label" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer4/VBoxContainer"]
-margin_top = 68.0
-margin_right = 251.0
-margin_bottom = 108.0
-rect_min_size = Vector2( 100, 40 )
-text = "Wind Howl
-"
+text = "Regeneration"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
