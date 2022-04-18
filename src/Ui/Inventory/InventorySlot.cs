@@ -19,6 +19,8 @@ public class InventorySlot : TextureRect
     }
     public override object GetDragData(Vector2 position)
     {
+        if(slot == -1)
+            return null;
         PlayerData.item data;
         if ((string)inventoryLabelNode.Get("text") == "Inventory")
         {
@@ -73,6 +75,8 @@ public class InventorySlot : TextureRect
             //done?
         if(comingFrom == "Inventory" && actualData.type == "item")
         {
+            if (slot == -1)
+                return;
             //Swapping textures
             var nodeToSwapWith = GetNode(levelControl.rootPath + "Inventory/Background/MarginContainer/WholeContainer/WholeInventory/InventoryElements/GridContainer/InventorySlot" + actualData.inventorySlot + "/Icon");
             nodeToSwapWith.Set("texture", Texture);

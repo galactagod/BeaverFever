@@ -41,6 +41,7 @@ public class Inventory : Control
         var inventoryLabelNode = GetNode("Background/MarginContainer/WholeContainer/WholeInventory/InventoryHeader/TextureRect/Label");
         if(showingInv)
         {
+            int counter = 0;
             foreach (var item in playerData.inv)
             {
                 var invSlotNew = templateInvSlot.Instance();
@@ -49,7 +50,15 @@ public class Inventory : Control
                 invSlotNew.GetNode("Icon").Set("slot", item.inventorySlot);
                 invSlotNew.GetNode("Icon").Set("hint_tooltip", playerData.getStatLine(item));
                 gridContainer.AddChild(invSlotNew);
+                counter++;
             }
+            for(int i = counter; i < playerData.inventorySize; i++)
+            {
+                var invSlotNew = templateInvSlot.Instance();
+                invSlotNew.GetNode("Icon").Set("slot", -1);
+                gridContainer.AddChild(invSlotNew);
+            }
+            gridContainer.Set("columns", ((Godot.Vector2)gridContainer.Get("rect_size")).x / 90);
             inventoryLabelNode.Set("text", "Inventory");
         }
 
@@ -64,6 +73,7 @@ public class Inventory : Control
                 invSlotNew.GetNode("Icon").Set("hint_tooltip", playerData.getStatLine(item));
                 gridContainer.AddChild(invSlotNew);
             }
+            gridContainer.Set("columns", ((Godot.Vector2)gridContainer.Get("rect_size")).x / 90);
             inventoryLabelNode.Set("text", "Skills");
         }
         
