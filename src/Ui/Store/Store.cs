@@ -129,8 +129,8 @@ public class Store : Control
         }
         playerData.Muny -= playerData.itemsAvaliable[slot - 1].price;
 
-        playerData.itemsInStore.RemoveAt(slot - 1);
-        playerData.itemsAvaliable.RemoveAt(slot - 1);
+        //playerData.itemsInStore.RemoveAt(slot - 1);
+        //playerData.itemsAvaliable.RemoveAt(slot - 1);
         InitalizingItems();
     }
 }

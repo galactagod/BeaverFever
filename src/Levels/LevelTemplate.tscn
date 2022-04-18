@@ -198,6 +198,7 @@ points = PoolVector2Array( 0, 10, 30, 10, 30, 30, 0, 30 )
 [node name="LevelTemplate" type="Node"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 stream = ExtResource( 11 )
 pitch_scale = 0.69
 
