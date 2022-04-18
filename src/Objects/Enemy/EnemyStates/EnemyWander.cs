@@ -18,7 +18,10 @@ public class EnemyWander : EnemyBaseStateMachine
         if (owner.IsStomped)
         {
             owner.IsStomped = false;
-            stateMachine.TransitionToState(owner.enemyHurt);
+            if (owner.Health - owner.NdObjPlayer.CurDmg <= 0)
+                stateMachine.TransitionToState(owner.enemyDeath);
+            else
+                stateMachine.TransitionToState(owner.enemyHurt);
             return;
         }
 

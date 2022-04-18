@@ -43,7 +43,8 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/NinePatchRect/HBoxContainer2"]
-margin_bottom = 600.0
+margin_right = 124.0
+margin_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -51,9 +52,9 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/NinePatchRect/HBoxContainer2"]
-margin_left = 4.0
-margin_right = 1028.0
-margin_bottom = 600.0
+margin_left = 128.0
+margin_right = 1152.0
+margin_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -104,9 +105,9 @@ __meta__ = {
 }
 
 [node name="InventoryButton" type="TextureButton" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
-margin_top = 167.0
+margin_top = 194.0
 margin_right = 1024.0
-margin_bottom = 217.0
+margin_bottom = 244.0
 rect_min_size = Vector2( 0, 50 )
 size_flags_horizontal = 3
 texture_normal = ExtResource( 4 )
@@ -131,9 +132,9 @@ __meta__ = {
 }
 
 [node name="StoreButton" type="TextureButton" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
-margin_top = 221.0
+margin_top = 248.0
 margin_right = 1024.0
-margin_bottom = 271.0
+margin_bottom = 298.0
 rect_min_size = Vector2( 600, 50 )
 size_flags_horizontal = 3
 texture_normal = ExtResource( 4 )
@@ -158,9 +159,9 @@ __meta__ = {
 }
 
 [node name="StatsButton" type="TextureButton" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
-margin_top = 275.0
+margin_top = 302.0
 margin_right = 1024.0
-margin_bottom = 325.0
+margin_bottom = 352.0
 rect_min_size = Vector2( 1024, 50 )
 size_flags_horizontal = 3
 texture_normal = ExtResource( 4 )
@@ -212,9 +213,9 @@ __meta__ = {
 }
 
 [node name="SaveQuit" type="TextureButton" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
-margin_top = 383.0
+margin_top = 356.0
 margin_right = 1024.0
-margin_bottom = 433.0
+margin_bottom = 406.0
 rect_min_size = Vector2( 1024, 50 )
 size_flags_horizontal = 3
 texture_normal = ExtResource( 4 )
@@ -238,16 +239,16 @@ __meta__ = {
 }
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
-margin_top = 437.0
+margin_top = 410.0
 margin_right = 1024.0
-margin_bottom = 600.0
+margin_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PauseMenu/NinePatchRect/HBoxContainer2"]
-margin_left = 1032.0
-margin_right = 1032.0
-margin_bottom = 600.0
+margin_left = 1156.0
+margin_right = 1280.0
+margin_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
