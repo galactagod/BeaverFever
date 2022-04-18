@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Body Mod 2.png-0fe29394392ada16451d92b11ea15585.stex"
+path="res://.import/bubble burst base.png-2a2bc1b4cd29fc47a13b14e7c5281ccc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/skills/body/armor/Body Mod 2.png"
-dest_files=[ "res://.import/Body Mod 2.png-0fe29394392ada16451d92b11ea15585.stex" ]
+source_file="res://assets/skills/strength/bubble burst/bubble burst base.png"
+dest_files=[ "res://.import/bubble burst base.png-2a2bc1b4cd29fc47a13b14e7c5281ccc.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

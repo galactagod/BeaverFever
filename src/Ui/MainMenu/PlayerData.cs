@@ -43,14 +43,13 @@ public class PlayerData : Node
     public int healthFinal = 0;
 
     //vars to hold the level of skills
-    public int punchSkill = 0;
-    public int clawSkill = 0;
-    public int jawsSkill = 0;
-    public int armorSkill = 0;
-    public int bootSkill = 0;
-    public int graceSkill = 0;
     public int bubbleBurstSkill = 0;
-    public int windHowlSkill = 0;
+    public int sliceSkill = 0;
+    public int crunchSkill = 0;
+    public int aegisSkill = 0;
+    public int accelerateSkill = 0;
+    public int graceSkill = 0;
+    public int regenerationSkill = 0;
 
     public int inventorySize = 30;
     public int consumableSize = 0;
@@ -467,21 +466,21 @@ public class PlayerData : Node
     public void SettingSkillLevels(string skillName, int level)
     {
         if (skillName == "Body Mod")
-            armorSkill = level;
+            aegisSkill = level;
         else if (skillName == "Attack Mod")
-            punchSkill = level;
+            bubbleBurstSkill = level;
         else if (skillName == "Rip Mod")
-            clawSkill = level;
+            sliceSkill = level;
         else if (skillName == "Sharp Mod")
-            jawsSkill = level;
+            crunchSkill = level;
         else if(skillName == "Boots Mod")
-            bootSkill = level;
+            accelerateSkill = level;
         else if(skillName == "Book Mod")
             graceSkill = level;
         else if(skillName == "Moon Mod")
-            windHowlSkill = level;
+            regenerationSkill = level;
         else if (skillName == "Leaf Mod")
-            bubbleBurstSkill = level;
+            regenerationSkill = level;
 
     }
 
