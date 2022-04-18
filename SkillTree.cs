@@ -4,6 +4,10 @@ using System;
 public class SkillTree : Node2D
 {
 
+
+
+ // TODO
+ // remove punch change it with 
     int skillPoints = 0;
 
     /***********************************/
@@ -24,6 +28,8 @@ public class SkillTree : Node2D
 
     // Body 
     int armorSkill;
+
+    // change this to speed, search this up 
     int bootSkill;
     
 
