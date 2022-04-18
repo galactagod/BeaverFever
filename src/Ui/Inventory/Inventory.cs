@@ -9,12 +9,14 @@ public class Inventory : Control
 
 
     private PlayerData playerData;
+    private PlayerStats playerStats;
 
     private string[] EquipSlots1 = new string[4] { "Necklace", "Weapon", "Talisman", "Consumable" };
     private string[] EquipSlots2 = new string[4] { "Skill1", "Skill2", "Skill3", "Trash" };
 
     public override void _Ready()
     {
+        playerStats = GetNode<PlayerStats>("/root/PlayerStats");
         playerData = GetNode<PlayerData>("/root/PlayerData");
         playerData.Connect("itemRemoved", this, "InitializeUI");
 
@@ -115,6 +117,8 @@ public class Inventory : Control
 
 
         //filling node labels
+        var healthBarLabelAfterEquips = GetNode("Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/HealthBar");
+        healthBarLabelAfterEquips.Set("text", "HealthBar: " + playerStats.Health + "/" + playerStats.MaxHealth);
         var attackLabelAfterEquips = GetNode("Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/AttackLabel");
         attackLabelAfterEquips.Set("text", "Attack: " + playerData.attackFinal.ToString());
         var defenseLabelAfterEquips = GetNode("Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/DefenseLabel");

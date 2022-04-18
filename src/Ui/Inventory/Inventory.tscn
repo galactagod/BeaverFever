@@ -228,7 +228,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer"]
 margin_right = 192.0
-margin_bottom = 157.0
+margin_bottom = 180.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -239,45 +239,52 @@ margin_bottom = 19.0
 custom_fonts/font = SubResource( 3 )
 text = "Stats After Equips"
 
-[node name="AttackLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
+[node name="HealthBar" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
 margin_top = 23.0
 margin_right = 192.0
 margin_bottom = 42.0
 custom_fonts/font = SubResource( 3 )
-text = "Attack: "
+text = "HealthBar: "
 
-[node name="DefenseLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
+[node name="AttackLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
 margin_top = 46.0
 margin_right = 192.0
 margin_bottom = 65.0
 custom_fonts/font = SubResource( 3 )
-text = "Defense: "
+text = "Attack: "
 
-[node name="SpAttackLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
+[node name="DefenseLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
 margin_top = 69.0
 margin_right = 192.0
 margin_bottom = 88.0
 custom_fonts/font = SubResource( 3 )
-text = "SpAttack:"
+text = "Defense: "
 
-[node name="SpDefenseLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
+[node name="SpAttackLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
 margin_top = 92.0
 margin_right = 192.0
 margin_bottom = 111.0
 custom_fonts/font = SubResource( 3 )
-text = "SpDefense: "
+text = "SpAttack:"
 
-[node name="StaminaLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
+[node name="SpDefenseLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
 margin_top = 115.0
 margin_right = 192.0
 margin_bottom = 134.0
 custom_fonts/font = SubResource( 3 )
-text = "Stamina: "
+text = "SpDefense: "
 
-[node name="HealthLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
+[node name="StaminaLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
 margin_top = 138.0
 margin_right = 192.0
 margin_bottom = 157.0
+custom_fonts/font = SubResource( 3 )
+text = "Stamina: "
+
+[node name="HealthLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
+margin_top = 161.0
+margin_right = 192.0
+margin_bottom = 180.0
 custom_fonts/font = SubResource( 3 )
 text = "Health: "
 
