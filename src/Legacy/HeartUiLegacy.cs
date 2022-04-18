@@ -4,11 +4,12 @@
 using Godot;
 using System;
 
-public class HeartUi : Control
+public class HeartUiLegacy : Control
 {
-    private int _health;
-    private int _maxHealth;
-    private int _extraHealth;
+    /*
+    private float _health;
+    private float _maxHealth;
+    private float _extraHealth;
     private Vector2 _heartSize = new Vector2(68 , 64);
     private float _scale = 0.5f;
     [Export] private int _rowCount = 1;
@@ -150,6 +151,6 @@ public class HeartUi : Control
 
     }
 
-    
+    */
 }
-//*/
+

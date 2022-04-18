@@ -20,6 +20,9 @@ public class EquiptmentSlot : TextureRect
         
         String nameOfSlot = GetParent().Name;
 
+        if (nameOfSlot == "Consumable" || nameOfSlot == "Trash")
+            return null;
+
         if (!playerData.equipment.TryGetValue(nameOfSlot, out var data))
         {
             return null;
@@ -70,14 +73,9 @@ public class EquiptmentSlot : TextureRect
 
 
         String compareSlot = nameOfSlot;
-        if (compareSlot == "Skill1" || compareSlot == "Skill2" || compareSlot == "Skill3" || compareSlot == "Skill4")
+        if (compareSlot == "Skill1" || compareSlot == "Skill2" || compareSlot == "Skill3")
         {
             compareSlot = "Skill";
-        }
-
-        if (compareSlot != actualData.ableToBeEquippedSlot)
-        {
-            return;
         }
 
         if (comingFrom == "EquipBars3" || comingFrom == "EquipBars")
@@ -85,22 +83,36 @@ public class EquiptmentSlot : TextureRect
             return;
         }
 
-        if(actualData.equippedSlot != "none")
+        if (actualData.equippedSlot != "none")
         {
             return;
         }
 
+        if (nameOfSlot == "Trash")
+        {
+            playerData.RemoveFromInv(actualData.inventorySlot);
+            return;
+        }
+
+        if (compareSlot != actualData.ableToBeEquippedSlot)
+        {
+            return;
+        }
+
+        
+
         //if a consumable, do the consumable things
-        if(actualData.ableToBeEquippedSlot == "Consumable")
+        if (actualData.ableToBeEquippedSlot == "Consumable")
         {
             Texture = actualData.texture;
             //counter could go here?
             //use consumable?
-            Console.WriteLine("Hi");
             Texture = (Texture)GD.Load("res://assets/" + "Consumable" + "Empty" + ".png");
             playerData.RemoveFromInv(actualData.inventorySlot);
             return;
         }
+
+        
         //else, do the rest
 
         //handling if there is something already equipted
@@ -109,7 +121,7 @@ public class EquiptmentSlot : TextureRect
         if(playerData.equipment.TryGetValue(nameOfSlot, out apple))
         {
             //if its there, we gotta go to its inventory and unequipt it
-            apple.equippedSlot = null;
+            apple.equippedSlot = "none";
             if (compareSlot != "Skill")
                 playerData.inv[apple.inventorySlot] = apple;
             else
@@ -132,6 +144,8 @@ public class EquiptmentSlot : TextureRect
         Texture = actualData.texture;
         Set("scale", actualData.scale);
         Set("hint_tooltip", playerData.getStatLine(actualData));
+        
+
 
         //Replacing it in the dictionary
         playerData.equipment.Remove(nameOfSlot);
@@ -155,6 +169,7 @@ public class EquiptmentSlot : TextureRect
         staminaLabelAfterEquips.Set("text", "Stamina: " + playerData.staminaFinal);
         var healthLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/HealthLabel");
         healthLabelAfterEquips.Set("text", "Health: " + playerData.healthFinal.ToString());
+        playerData.ResetInv();
 
     }
 

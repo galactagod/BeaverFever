@@ -133,6 +133,7 @@ public class InventorySlot : TextureRect
             staminaLabelAfterEquips.Set("text", "Stamina: " + playerData.staminaFinal);
             var healthLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/HealthLabel");
             healthLabelAfterEquips.Set("text", "Health: " + playerData.healthFinal.ToString());
+            playerData.ResetInv();
         }
 
         if(comingFrom == "EquipBars3")
@@ -161,6 +162,7 @@ public class InventorySlot : TextureRect
             staminaLabelAfterEquips.Set("text", "Stamina: " + playerData.staminaFinal);
             var healthLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/HealthLabel");
             healthLabelAfterEquips.Set("text", "Health: " + playerData.healthFinal.ToString());
+            playerData.ResetInv();
         }
     }
 

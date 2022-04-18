@@ -1,0 +1,201 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://src/Assets/OverWorldUi/Health.png" type="Texture" id=1]
+[ext_resource path="res://src/Assets/OverWorldUi/HpBar.png" type="Texture" id=2]
+[ext_resource path="res://src/Assets/OverWorldUi/EnergyBar.png" type="Texture" id=3]
+[ext_resource path="res://src/Assets/OverWorldUi/Energy.png" type="Texture" id=4]
+[ext_resource path="res://src/Assets/OverWorldUi/SkillBox.png" type="Texture" id=5]
+[ext_resource path="res://src/Assets/OverWorldUi/ExpBar.png" type="Texture" id=6]
+[ext_resource path="res://src/Assets/OverWorldUi/MunyBar.png" type="Texture" id=7]
+[ext_resource path="res://fonts/Roboto-Bold.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://src/Assets/OverWorldUi/Pearl.png" type="Texture" id=9]
+[ext_resource path="res://src/Assets/OverWorldUi/Copper Nugget.png" type="Texture" id=10]
+
+[sub_resource type="CSharpScript" id=1]
+script/source = "using Godot;
+using System;
+
+public class PlayerUi : Node
+{
+    public override void _Ready()
+    {
+
+    }
+
+    public override void _Process(float delta)
+    {
+
+    }
+}
+"
+
+[sub_resource type="DynamicFont" id=2]
+size = 25
+outline_size = 2
+outline_color = Color( 0.478431, 0.247059, 0.0431373, 1 )
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+outline_size = 1
+outline_color = Color( 0.470588, 0.25098, 0.152941, 1 )
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+outline_size = 1
+outline_color = Color( 0.196078, 0.639216, 0.701961, 1 )
+font_data = ExtResource( 8 )
+
+[node name="PlayerUi" type="Node"]
+script = SubResource( 1 )
+
+[node name="CanvasA" type="CanvasLayer" parent="."]
+
+[node name="EnergyBar" type="TextureProgress" parent="CanvasA"]
+margin_left = 8.0
+margin_top = 31.0
+margin_right = 394.0
+margin_bottom = 71.0
+rect_scale = Vector2( 0.8, 0.7 )
+step = 0.001
+value = 36.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+texture_progress_offset = Vector2( 4, 3 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="HpBar" type="TextureProgress" parent="CanvasA"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 394.0
+margin_bottom = 48.0
+rect_scale = Vector2( 0.8, 0.7 )
+step = 0.001
+value = 56.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 1 )
+texture_progress_offset = Vector2( 4, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="SkillA" type="TextureRect" parent="CanvasA"]
+margin_left = 8.0
+margin_top = 544.0
+margin_right = 77.0
+margin_bottom = 614.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="SkillB" type="TextureRect" parent="CanvasA"]
+margin_left = 88.0
+margin_top = 600.0
+margin_right = 157.0
+margin_bottom = 670.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="SkillC" type="TextureRect" parent="CanvasA"]
+margin_left = 8.0
+margin_top = 648.0
+margin_right = 77.0
+margin_bottom = 718.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="MunyBar" type="TextureRect" parent="CanvasA"]
+margin_left = 1094.0
+margin_top = 8.0
+margin_right = 1273.0
+margin_bottom = 48.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ExpBar" type="TextureRect" parent="CanvasA"]
+margin_left = 1064.0
+margin_top = 680.0
+margin_right = 1272.0
+margin_bottom = 720.0
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="MunyLegacy" type="Label" parent="CanvasA"]
+visible = false
+margin_left = 1107.0
+margin_top = 12.0
+margin_right = 1170.0
+margin_bottom = 43.0
+custom_fonts/font = SubResource( 2 )
+text = "Muny"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MunyTexture" type="TextureRect" parent="CanvasA"]
+margin_left = 1103.0
+margin_top = -1.0
+margin_right = 1135.0
+margin_bottom = 31.0
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ExpTexture" type="TextureRect" parent="CanvasA"]
+margin_left = 1073.0
+margin_top = 686.0
+margin_right = 1097.0
+margin_bottom = 711.0
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="MunyCount" type="Label" parent="CanvasA"]
+margin_left = 1144.0
+margin_top = 16.0
+margin_right = 1264.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 3 )
+text = "995,887"
+align = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ExpCount" type="Label" parent="CanvasA"]
+margin_left = 1096.0
+margin_top = 688.0
+margin_right = 1265.0
+margin_bottom = 712.0
+custom_fonts/font = SubResource( 4 )
+text = "4829226722"
+align = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}

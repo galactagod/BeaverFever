@@ -28,7 +28,7 @@ public class SaveQuitButton : TextureButton
         jsonToWrite.Add("Stamina", playerData.PlayerStamina.ToString());
         jsonToWrite.Add("Health", playerData.PlayerHealth.ToString());
         jsonToWrite.Add("StatPoints", playerData.PlayerTotalPoints.ToString());
-        jsonToWrite.Add("Wallet", playerData.Wallet.ToString());
+        jsonToWrite.Add("Muny", playerData.Muny.ToString());
         Godot.Collections.Array inventory = new Godot.Collections.Array();
         Godot.Collections.Array skills = new Godot.Collections.Array();
         foreach (var item in playerData.inv)
@@ -70,6 +70,8 @@ public class SaveQuitButton : TextureButton
             temp.Add("equippedSlot", item.equippedSlot);
             temp.Add("inventorySlot", item.inventorySlot.ToString());
             temp.Add("ableToBeEquippedSlot", item.ableToBeEquippedSlot);
+            temp.Add("textureRoute", item.textureRoute);
+            temp.Add("level", item.level.ToString());
             temp.Add("type", item.type);
             //Adding item effects
             Godot.Collections.Array itemEffects = new Godot.Collections.Array();
@@ -82,6 +84,7 @@ public class SaveQuitButton : TextureButton
                 itemEffects.Add(anotherTemp);
             }
             temp.Add("itemEffects", itemEffects);
+            
 
             skills.Add(temp);
         }

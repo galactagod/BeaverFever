@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Of Far Different Nature - Ship In A Storm (CC-BY).ogg-c75e037353f34ba4f468f72a5242430f.oggstr"
+
+[deps]
+
+source_file="res://src/Assets/Sounds/Boss Fights/Of Far Different Nature - Ship In A Storm (CC-BY).ogg"
+dest_files=[ "res://.import/Of Far Different Nature - Ship In A Storm (CC-BY).ogg-c75e037353f34ba4f468f72a5242430f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,12 +1,16 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/Objects/Player/ObjPlayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Assets/Tiles/Forest A ts.png" type="Texture" id=2]
 [ext_resource path="res://src/Objects/Enemy/GrayWolf/GrayWolf.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/Ui/PlayerUi.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Ui/OverWorldUi/PlayerUi.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Assets/Backgrounds/forest A background.png" type="Texture" id=5]
 [ext_resource path="res://src/Assets/Backgrounds/sky backgroundB.png" type="Texture" id=6]
 [ext_resource path="res://src/Objects/Enemy/Snake/Snake.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/Objects/Items/Coins/CopperCoin.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/Objects/Items/Coins/GoldCoin.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/Objects/Items/Coins/SilverCoin.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/Assets/Sounds/Battle/hit_p13_a.wav" type="AudioStream" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 10, 90, 10, 90, 30, 0, 30 )
@@ -46,11 +50,11 @@ points = PoolVector2Array( 0, 10, 30, 10, 30, 30, 0, 30 )
 1/shape_offset = Vector2( 0, 0 )
 1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 1/shape = SubResource( 2 )
-1/shape_one_way = false
+1/shape_one_way = true
 1/shape_one_way_margin = 1.0
 1/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
+"one_way": true,
 "one_way_margin": 1.0,
 "shape": SubResource( 2 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -88,11 +92,11 @@ points = PoolVector2Array( 0, 10, 30, 10, 30, 30, 0, 30 )
 3/shape_offset = Vector2( 0, 0 )
 3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 3/shape = SubResource( 5 )
-3/shape_one_way = false
+3/shape_one_way = true
 3/shape_one_way_margin = 1.0
 3/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
+"one_way": true,
 "one_way_margin": 1.0,
 "shape": SubResource( 5 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -165,11 +169,11 @@ points = PoolVector2Array( 0, 10, 30, 10, 30, 30, 0, 30 )
 8/shape_offset = Vector2( 0, 0 )
 8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 8/shape = SubResource( 10 )
-8/shape_one_way = false
+8/shape_one_way = true
 8/shape_one_way_margin = 1.0
 8/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
+"one_way": true,
 "one_way_margin": 1.0,
 "shape": SubResource( 10 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -192,6 +196,10 @@ points = PoolVector2Array( 0, 10, 30, 10, 30, 30, 0, 30 )
 
 [node name="LevelTemplate" type="Node"]
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+pitch_scale = 0.69
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -213,6 +221,7 @@ texture = ExtResource( 5 )
 centered = false
 
 [node name="TileMap floor" type="TileMap" parent="."]
+position = Vector2( 1, 0 )
 tile_set = SubResource( 4 )
 cell_size = Vector2( 30, 30 )
 cell_y_sort = true
@@ -231,15 +240,60 @@ format = 1
 tile_data = PoolIntArray( -1507303, 7, 0, -1507302, 5, 0, -1507299, 9, 0, -655310, 2, 0, -655309, 0, 0, -655306, 0, 0, -655303, 0, 0, -655300, 536870912, 0, -655297, 0, 0, -655294, 0, 0, -655291, 0, 0, -655288, 0, 0, -458773, 0, 0, -458770, 0, 0, -458767, 0, 0, -458764, 0, 0, -458761, 0, 0, -458758, 0, 0, -458755, 536870912, 0, -524288, 536870914, 0, -524238, 2, 0, -524237, 0, 0, -524234, 0, 0, -524231, 0, 0, -524228, 536870912, 0, -524225, 0, 0, -524222, 0, 0, -524219, 0, 0, -524216, 0, 0, -327701, 0, 0, -327698, 0, 0, -327695, 0, 0, -327692, 0, 0, -327689, 0, 0, -327686, 0, 0, -327683, 536870912, 0, -393216, 536870914, 0, -393166, 2, 0, -393165, 0, 0, -393162, 0, 0, -393159, 0, 0, -393156, 536870912, 0, -393153, 0, 0, -393150, 0, 0, -393147, 0, 0, -393144, 0, 0, -196629, 0, 0, -196626, 0, 0, -196623, 0, 0, -196620, 0, 0, -196617, 0, 0, -196614, 0, 0, -196611, 536870912, 0, -262144, 536870914, 0, -262094, 2, 0, -262093, 0, 0, -262090, 0, 0, -262087, 0, 0, -262084, 536870912, 0, -262081, 0, 0, -262078, 0, 0, -262075, 0, 0, -262072, 0, 0, -65557, 0, 0, -65554, 0, 0, -65551, 0, 0, -65548, 0, 0, -65545, 0, 0, -65542, 0, 0, -65539, 536870912, 0, -131072, 536870914, 0, -131022, 2, 0, -131021, 0, 0, -131018, 0, 0, -131015, 0, 0, -131012, 536870912, 0, -131009, 0, 0, -131006, 0, 0, -131003, 0, 0, -131000, 0, 0, 65515, 0, 0, 65518, 0, 0, 65521, 0, 0, 65524, 0, 0, 65527, 0, 0, 65530, 0, 0, 65533, 536870912, 0, 0, 536870914, 0, 50, 2, 0, 51, 0, 0, 54, 0, 0, 57, 0, 0, 60, 536870912, 0, 63, 0, 0, 66, 0, 0, 69, 0, 0, 72, 0, 0, 196587, 0, 0, 196590, 0, 0, 196593, 0, 0, 196596, 0, 0, 196599, 0, 0, 196602, 0, 0, 196605, 536870912, 0, 131072, 536870914, 0, 131122, 2, 0, 131123, 0, 0, 131126, 0, 0, 131129, 0, 0, 131132, 536870912, 0, 131135, 0, 0, 131138, 0, 0, 131141, 0, 0, 131144, 0, 0, 327659, 0, 0, 327662, 0, 0, 327665, 0, 0, 327668, 0, 0, 327671, 0, 0, 327674, 0, 0, 327677, 536870912, 0, 262144, 536870914, 0, 262194, 2, 0, 262195, 0, 0, 262198, 0, 0, 262201, 0, 0, 262204, 536870912, 0, 262207, 0, 0, 262210, 0, 0, 262213, 0, 0, 262216, 0, 0, 458731, 0, 0, 458734, 0, 0, 458737, 0, 0, 458740, 0, 0, 458743, 0, 0, 458746, 0, 0, 458749, 536870912, 0, 393216, 0, 0, 393219, 0, 0, 393222, 0, 0, 393225, 0, 0, 393228, 0, 0, 393231, 0, 0, 393234, 0, 0, 393237, 0, 0, 393240, 0, 0, 393243, 0, 0, 393246, 0, 0, 393249, 0, 0, 393252, 0, 0, 393255, 0, 0, 393258, 0, 0, 393261, 0, 0, 393264, 0, 0, 393267, 0, 0, 393270, 0, 0, 393273, 0, 0, 393276, 536870912, 0, 393279, 0, 0, 393282, 0, 0, 393285, 0, 0, 393288, 0, 0, 589803, 0, 0, 589806, 0, 0, 589809, 0, 0, 589812, 0, 0, 589815, 0, 0, 589818, 0, 0, 589821, 536870912, 0, 524288, 0, 0, 524291, 0, 0, 524294, 0, 0, 524297, 0, 0, 524300, 0, 0, 524303, 0, 0, 524306, 0, 0, 524309, 0, 0, 524312, 0, 0, 524315, 0, 0, 524318, 0, 0, 524321, 0, 0, 524324, 0, 0, 524327, 0, 0, 524330, 0, 0, 524333, 0, 0, 524336, 0, 0, 524339, 0, 0, 524342, 0, 0, 524345, 0, 0, 524348, 536870912, 0, 524351, 0, 0, 524354, 0, 0, 524357, 0, 0, 524360, 0, 0, 720875, 0, 0, 720878, 0, 0, 720881, 0, 0, 720884, 0, 0, 720887, 0, 0, 720890, 0, 0, 720893, 536870912, 0, 655360, 0, 0, 655363, 0, 0, 655366, 0, 0, 655369, 0, 0, 655372, 0, 0, 655375, 0, 0, 655378, 0, 0, 655381, 0, 0, 655384, 0, 0, 655387, 0, 0, 655390, 0, 0, 655393, 0, 0, 655396, 0, 0, 655399, 0, 0, 655402, 0, 0, 655405, 0, 0, 655408, 0, 0, 655411, 0, 0, 655414, 0, 0, 655417, 0, 0, 655420, 536870912, 0, 655423, 0, 0, 655426, 0, 0, 655429, 0, 0, 655432, 0, 0, 851947, 0, 0, 851950, 0, 0, 851953, 0, 0, 851956, 0, 0, 851959, 0, 0, 851962, 0, 0, 851965, 536870912, 0, 786432, 0, 0, 786435, 0, 0, 786438, 0, 0, 786441, 0, 0, 786444, 0, 0, 786447, 0, 0, 786450, 0, 0, 786453, 0, 0, 786456, 0, 0, 786459, 0, 0, 786462, 0, 0, 786465, 0, 0, 786468, 0, 0, 786471, 0, 0, 786474, 0, 0, 786477, 0, 0, 786480, 0, 0, 786483, 0, 0, 786486, 0, 0, 786489, 0, 0, 786492, 536870912, 0 )
 
 [node name="GrayWolf" parent="." instance=ExtResource( 3 )]
-position = Vector2( 163, 140 )
+position = Vector2( 189, 144 )
 
 [node name="ObjPlayer" parent="." instance=ExtResource( 1 )]
-position = Vector2( 544, -49 )
+position = Vector2( 556, -49 )
+
+[node name="Camera2D" parent="ObjPlayer" index="2"]
+limit_left = 0
+limit_right = 1550
 
 [node name="PlayerUi" parent="." instance=ExtResource( 4 )]
 
-[node name="GrayWolf2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1217, 137 )
-
 [node name="Snake" parent="." instance=ExtResource( 7 )]
-position = Vector2( 679, -35 )
+position = Vector2( 1156, 28 )
+
+[node name="coins" type="Node" parent="."]
+
+[node name="CopperCoin" parent="coins" instance=ExtResource( 8 )]
+position = Vector2( 781, -17 )
+
+[node name="GoldCoin" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 780, -91 )
+
+[node name="SilverCoin" parent="coins" instance=ExtResource( 10 )]
+position = Vector2( 779, -54 )
+
+[node name="GoldCoin2" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 953, 46 )
+
+[node name="GoldCoin3" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 951, 11 )
+
+[node name="GoldCoin4" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 951, -30 )
+
+[node name="GoldCoin5" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 394, -77 )
+
+[node name="GoldCoin6" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 393, -111 )
+
+[node name="GoldCoin7" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 291, -138 )
+
+[node name="GoldCoin8" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 289, -173 )
+
+[node name="GoldCoin9" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 166, -202 )
+
+[node name="GoldCoin10" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 115, -348 )
+
+[node name="GoldCoin11" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 355, -289 )
+
+[editable path="GrayWolf"]
+[editable path="ObjPlayer"]

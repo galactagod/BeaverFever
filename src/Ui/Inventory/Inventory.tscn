@@ -54,12 +54,12 @@ __meta__ = {
 [node name="WholeContainer" type="HBoxContainer" parent="Background/MarginContainer"]
 margin_left = 50.0
 margin_top = 50.0
-margin_right = 974.0
-margin_bottom = 550.0
+margin_right = 1230.0
+margin_bottom = 670.0
 
 [node name="WholeEquip" type="VBoxContainer" parent="Background/MarginContainer/WholeContainer"]
 margin_right = 400.0
-margin_bottom = 500.0
+margin_bottom = 620.0
 rect_min_size = Vector2( 400, 0 )
 custom_constants/separation = 20
 
@@ -94,13 +94,13 @@ __meta__ = {
 [node name="EquipElements" type="HBoxContainer" parent="Background/MarginContainer/WholeContainer/WholeEquip"]
 margin_top = 100.0
 margin_right = 400.0
-margin_bottom = 500.0
+margin_bottom = 620.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="EquipBars" type="VBoxContainer" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements"]
 margin_right = 100.0
-margin_bottom = 400.0
+margin_bottom = 520.0
 rect_min_size = Vector2( 100, 0 )
 custom_constants/separation = 10
 
@@ -194,13 +194,13 @@ __meta__ = {
 [node name="Character" type="HBoxContainer" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements"]
 margin_left = 104.0
 margin_right = 296.0
-margin_bottom = 400.0
+margin_bottom = 520.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character"]
 margin_right = 192.0
-margin_bottom = 400.0
+margin_bottom = 520.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 4 )
@@ -281,7 +281,7 @@ text = "Health: "
 [node name="EquipBars3" type="VBoxContainer" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements"]
 margin_left = 300.0
 margin_right = 400.0
-margin_bottom = 400.0
+margin_bottom = 520.0
 rect_min_size = Vector2( 100, 0 )
 custom_constants/separation = 10
 
@@ -350,7 +350,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Skill4" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3"]
+[node name="Trash" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3"]
 margin_top = 300.0
 margin_right = 100.0
 margin_bottom = 390.0
@@ -359,7 +359,7 @@ size_flags_horizontal = 3
 texture = ExtResource( 4 )
 expand = true
 
-[node name="Icon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3/Skill4"]
+[node name="Icon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3/Trash"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -374,19 +374,19 @@ __meta__ = {
 
 [node name="WholeInventory" type="VBoxContainer" parent="Background/MarginContainer/WholeContainer"]
 margin_left = 404.0
-margin_right = 924.0
-margin_bottom = 500.0
+margin_right = 1180.0
+margin_bottom = 620.0
 size_flags_horizontal = 3
 custom_constants/separation = 20
 
 [node name="InventoryHeader" type="HBoxContainer" parent="Background/MarginContainer/WholeContainer/WholeInventory"]
-margin_right = 520.0
+margin_right = 776.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 0, 80 )
 size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeInventory/InventoryHeader"]
-margin_right = 352.0
+margin_right = 608.0
 margin_bottom = 80.0
 size_flags_horizontal = 3
 texture = ExtResource( 3 )
@@ -408,8 +408,8 @@ __meta__ = {
 }
 
 [node name="Control2" type="Control" parent="Background/MarginContainer/WholeContainer/WholeInventory/InventoryHeader"]
-margin_left = 356.0
-margin_right = 436.0
+margin_left = 612.0
+margin_right = 692.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
 
@@ -428,8 +428,8 @@ __meta__ = {
 }
 
 [node name="Control" type="Control" parent="Background/MarginContainer/WholeContainer/WholeInventory/InventoryHeader"]
-margin_left = 440.0
-margin_right = 520.0
+margin_left = 696.0
+margin_right = 776.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
 
@@ -447,13 +447,13 @@ __meta__ = {
 
 [node name="InventoryElements" type="ScrollContainer" parent="Background/MarginContainer/WholeContainer/WholeInventory"]
 margin_top = 100.0
-margin_right = 520.0
-margin_bottom = 500.0
+margin_right = 776.0
+margin_bottom = 620.0
 size_flags_vertical = 3
 
 [node name="GridContainer" type="GridContainer" parent="Background/MarginContainer/WholeContainer/WholeInventory/InventoryElements"]
-margin_right = 520.0
-margin_bottom = 400.0
+margin_right = 776.0
+margin_bottom = 520.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 4
