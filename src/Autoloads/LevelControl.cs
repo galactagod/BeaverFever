@@ -16,6 +16,10 @@ public class LevelControl : Node
     private AudioStreamOGGVorbis _sndEternalExplorer = (AudioStreamOGGVorbis)GD.Load("res://src/Assets/Sounds/Levels/SndEternalExplorer.ogg");
     private AudioStreamOGGVorbis _sndLargo = (AudioStreamOGGVorbis)GD.Load("res://src/Assets/Sounds/Levels/SndLargo.ogg");
 
+    private bool paused = false;
+
+    public string rootPath = "/root/LevelTemplate/CanvasLayer/Control/";
+
     public override void _Ready()
     {
         // create the audio files for music and effects
@@ -41,7 +45,37 @@ public class LevelControl : Node
 
     public override void _Process(float delta)
     {
-       
+        if (Input.IsActionJustPressed("ui_menu"))
+        {
+            if(!paused)
+            {
+                GetTree().Paused = true;
+                GetNode("/root/LevelTemplate/CanvasLayer/Control").Set("visible", true);
+                paused = true;
+            }
+            else
+            {
+                GetTree().Paused = false;
+                GetNode("/root/LevelTemplate/CanvasLayer/Control").Set("visible", false);
+                paused = false;
+            }
+        }
+
+    }
+
+    public void unPause()
+    {
+        GetTree().Paused = false;
+        GetNode("/root/LevelTemplate/CanvasLayer/Control").Set("visible", false);
+        paused = false;
+    }
+
+    public void changeScene(string path)
+    {
+        var templateInvSlot = GD.Load<PackedScene>(path);
+        var childRemoved = GetNode("/root/LevelTemplate/CanvasLayer/Control").GetChild(0);
+        GetNode("/root/LevelTemplate/CanvasLayer/Control").RemoveChild(childRemoved);
+        GetNode("/root/LevelTemplate/CanvasLayer/Control").AddChild(templateInvSlot.Instance());
     }
 
     // use the five sfx players to prioritize playing most recent sounds

@@ -105,17 +105,17 @@ public class Inventory : Control
 
 
         //filling node labels
-        var attackLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/AttackLabel");
+        var attackLabelAfterEquips = GetNode("Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/AttackLabel");
         attackLabelAfterEquips.Set("text", "Attack: " + playerData.attackFinal.ToString());
-        var defenseLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/DefenseLabel");
+        var defenseLabelAfterEquips = GetNode("Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/DefenseLabel");
         defenseLabelAfterEquips.Set("text", "Defense: " + playerData.defenseFinal.ToString());
-        var spAttackLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/SpAttackLabel");
+        var spAttackLabelAfterEquips = GetNode("Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/SpAttackLabel");
         spAttackLabelAfterEquips.Set("text", "SpAttack: " + playerData.spAttackFinal);
-        var spDefenseLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/SpDefenseLabel");
+        var spDefenseLabelAfterEquips = GetNode("Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/SpDefenseLabel");
         spDefenseLabelAfterEquips.Set("text", "SpDefense: " + playerData.spDefenseFinal);
-        var staminaLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/StaminaLabel");
+        var staminaLabelAfterEquips = GetNode("Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/StaminaLabel");
         staminaLabelAfterEquips.Set("text", "Stamina: " + playerData.staminaFinal);
-        var healthLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/HealthLabel");
+        var healthLabelAfterEquips = GetNode("Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/HealthLabel");
         healthLabelAfterEquips.Set("text", "Health: " + playerData.healthFinal.ToString());
     }
 

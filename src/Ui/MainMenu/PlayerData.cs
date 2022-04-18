@@ -71,6 +71,8 @@ public class PlayerData : Node
 
     [Signal]
     public delegate void itemRemoved();
+
+    private PlayerStats playerStats;
     #endregion
 
     #region Item Classes
