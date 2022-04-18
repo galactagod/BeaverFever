@@ -52,6 +52,9 @@ public class PlayerData : Node
     public int bubbleBurstSkill = 0;
     public int windHowlSkill = 0;
 
+
+    private PlayerStats playerStatAutoLoad;
+
     //The inventory of the player
     public List<item> inv { get; set; }
 
@@ -63,8 +66,6 @@ public class PlayerData : Node
 
     //The equipment that the user has on
     public Dictionary<string, item> equipment { get; set; }
-
-        //SKills held as Skill1, Skill2, Skill3
 
     public List<item> skills { get; set; }
 
@@ -156,17 +157,21 @@ public class PlayerData : Node
         }
     }
     #endregion
-    
+
     #region Godot Overrides
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+
+        playerStatAutoLoad = (PlayerStats)GetNode("/root/PlayerStats");
+
+
         //File IO
         //add a statement to actually write the file in if its not there
         string filepath = "user://playerStatsFile.json";
         Godot.File files = new Godot.File();
         Godot.Collections.Dictionary ParsedData = new Godot.Collections.Dictionary();
-        if(files.FileExists(filepath))
+        if (files.FileExists(filepath))
         {
             files.Open(filepath, Godot.File.ModeFlags.ReadWrite);
             files.Seek(0);
@@ -194,7 +199,7 @@ public class PlayerData : Node
             Godot.Collections.Array skillsList = new Godot.Collections.Array();
             jsonToWrite.Add("skills", skillsList);
             Godot.Collections.Array itemsAvaliable = new Godot.Collections.Array();
-            foreach(var item in Global.itemsAvaliable)
+            foreach (var item in Global.itemsAvaliable)
             {
                 itemsAvaliable.Add(item.name);
             }
@@ -206,7 +211,7 @@ public class PlayerData : Node
 
             files.Close();
         }
-        
+
         PlayerAttack = Int32.Parse((string)ParsedData["Attack"]);
         PlayerDefense = Int32.Parse((string)ParsedData["Defense"]);
         PlayerSpAttack = Int32.Parse((string)ParsedData["SpAttack"]);
@@ -217,7 +222,7 @@ public class PlayerData : Node
         Muny = Int32.Parse((string)ParsedData["Muny"]);
 
         inv = new List<item>();
-        foreach(Godot.Collections.Dictionary item in (Godot.Collections.Array)ParsedData["inventory"])
+        foreach (Godot.Collections.Dictionary item in (Godot.Collections.Array)ParsedData["inventory"])
         {
             item temp = new item();
             temp.name = (string)item["name"];
@@ -273,7 +278,7 @@ public class PlayerData : Node
         foreach (var itemName in (Godot.Collections.Array)ParsedData["itemsAvaliable"])
         {
             itemsInStore.Add((string)itemName);
-            
+
         }
 
         equipment = new Dictionary<string, item>();
@@ -284,9 +289,9 @@ public class PlayerData : Node
         {
             itemsAvaliable.Add(Global.itemsAvaliable.Find(s => s.name == name));
         }
-        
+
         //iterate through inventory and see if there is anything equipted, if so add it to the dictionary
-        foreach(var item in inv)
+        foreach (var item in inv)
         {
             if (item.equippedSlot != "none")
             {
@@ -303,6 +308,9 @@ public class PlayerData : Node
                 EquipChangesStatFilter(item, false);
             }
         }
+
+        //setting muny and exp
+        playerStatAutoLoad.Muny = Muny;
 
         RefreshStatFinals();
     }
@@ -406,7 +414,7 @@ public class PlayerData : Node
         string statLine = "";
         statLine = statLine + temp.name + "\n";
         statLine = statLine + temp.ableToBeEquippedSlot + "\n";
-        if(temp.type == "skill")
+        if (temp.type == "skill")
         {
             statLine = statLine + "Level: " + temp.level + "\n";
         }
@@ -414,7 +422,7 @@ public class PlayerData : Node
         {
             statLine = statLine + temp.whichStat[i] + " " + temp.operatorOnStat[i] + " " + temp.amountOnStat[i] + "\n";
         }
-        if(temp.equippedSlot != "none")
+        if (temp.equippedSlot != "none")
         {
             statLine = statLine + "Equipped";
         }
@@ -471,11 +479,11 @@ public class PlayerData : Node
             clawSkill = level;
         else if (skillName == "Sharp Mod")
             jawsSkill = level;
-        else if(skillName == "Boots Mod")
+        else if (skillName == "Boots Mod")
             bootSkill = level;
-        else if(skillName == "Book Mod")
+        else if (skillName == "Book Mod")
             graceSkill = level;
-        else if(skillName == "Moon Mod")
+        else if (skillName == "Moon Mod")
             windHowlSkill = level;
         else if (skillName == "Leaf Mod")
             bubbleBurstSkill = level;
@@ -485,7 +493,7 @@ public class PlayerData : Node
     public void skillBought(string skillName, int levelBought)
     {
         //if the levelBought == 1, then just add it to the skills
-        if(levelBought == 1)
+        if (levelBought == 1)
         {
             var pulledSkill = Global.skillsAvaliable.Find(x => x.name == skillName && x.level == levelBought);
             pulledSkill.inventorySlot = skills.Count;
@@ -503,7 +511,7 @@ public class PlayerData : Node
 
             var pullingSkills = Global.skillsAvaliable.FindAll(x => x.name == skillName);
             var skillPulled = pullingSkills[levelBought - 1];
-            
+
             skillToChange.amountOnStat = skillPulled.amountOnStat;
             skillToChange.texture = skillPulled.texture;
             skillToChange.textureRoute = skillPulled.textureRoute;
