@@ -86,9 +86,11 @@ public class LevelControl : Node
         GetNode(controlPath).AddChild(templateInvSlot.Instance());
     }
 
-    public void changeLevel()
+    public void changeLevel(string sceneName)
     {
         //add a canvas layer and control to the level template and 
+        rootPath = "/root/" + sceneName + "/CanvasLayer/Control/";
+        controlPath = "/root/" + sceneName + "/CanvasLayer/Control";
     }
 
     // use the five sfx players to prioritize playing most recent sounds
