@@ -56,6 +56,8 @@ margin_left = 50.0
 margin_top = 50.0
 margin_right = 1230.0
 margin_bottom = 670.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="WholeEquip" type="VBoxContainer" parent="Background/MarginContainer/WholeContainer"]
 margin_right = 400.0
@@ -185,6 +187,7 @@ margin_left = 10.0
 margin_top = 10.0
 margin_right = -10.0
 margin_bottom = -10.0
+hint_tooltip = "Use consumables here"
 expand = true
 script = ExtResource( 7 )
 __meta__ = {
@@ -366,6 +369,7 @@ margin_left = 10.0
 margin_top = 10.0
 margin_right = -10.0
 margin_bottom = -10.0
+hint_tooltip = "Throw your items away here"
 expand = true
 script = ExtResource( 7 )
 __meta__ = {
@@ -449,6 +453,7 @@ __meta__ = {
 margin_top = 100.0
 margin_right = 776.0
 margin_bottom = 620.0
+size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="GridContainer" type="GridContainer" parent="Background/MarginContainer/WholeContainer/WholeInventory/InventoryElements"]
@@ -456,4 +461,4 @@ margin_right = 776.0
 margin_bottom = 520.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-columns = 4
+columns = 5

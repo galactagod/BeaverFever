@@ -1,9 +1,9 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://SkillTree.cs" type="Script" id=1]
 [ext_resource path="res://assets/Mini_exit.png" type="Texture" id=2]
 [ext_resource path="res://assets/skills/strength/teeth/Sharp Mod 1.png" type="Texture" id=3]
-[ext_resource path="res://assets/skills/strength/punch/Attack Mod 1.png" type="Texture" id=4]
+[ext_resource path="res://assets/skills/strength/bubble burst/bubble burst base.png" type="Texture" id=4]
 [ext_resource path="res://assets/backgrounds/background.jpg" type="Texture" id=5]
 [ext_resource path="res://assets/skills/body/boots/Boots 1 Mod 1.png" type="Texture" id=6]
 [ext_resource path="res://assets/skills/strength/claws/Rip Mod 1.png" type="Texture" id=7]
@@ -31,10 +31,6 @@ load_path = "res://.import/Praying Mod 1.png-18587f3916d92bdce1457f08f579bc2f.st
 [sub_resource type="StreamTexture" id=5]
 flags = 4
 load_path = "res://.import/Leafs 1 Mod 1.png-f7f68e23b1f447f2fe521248403ae920.stex"
-
-[sub_resource type="StreamTexture" id=6]
-flags = 4
-load_path = "res://.import/Moon Mod 1.png-b27aad80f64016d6dc219f20974a6c51.stex"
 
 [node name="Skill Tree" type="Node2D"]
 script = ExtResource( 1 )
@@ -142,23 +138,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PunchBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer/VBoxContainer"]
+[node name="bubbleBurstBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer/VBoxContainer"]
 margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
 rect_pivot_offset = Vector2( 1535, 547 )
-hint_tooltip = "Beaver performs a charged attack, 20pts, 40pts, 50pts
+hint_tooltip = "Shoots a water projectile towards target
 "
 texture_normal = ExtResource( 4 )
 expand = true
 stretch_mode = 3
 
-[node name="punchLabel" type="Label" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer/VBoxContainer"]
+[node name="bubbleBurstLabel" type="Label" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer/VBoxContainer"]
 margin_top = 68.0
 margin_right = 251.0
 margin_bottom = 108.0
 rect_min_size = Vector2( 100, 40 )
-text = "Punch
+text = "Bubble Burst
 "
 align = 1
 __meta__ = {
@@ -181,11 +177,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="clawsBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer2/VBoxContainer"]
+[node name="sliceBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer2/VBoxContainer"]
 margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
-hint_tooltip = "Beaver’s default attack, quick move, uses his claws, damage: 5pts, 10pts, 15pts"
+hint_tooltip = "Beaver slices nearby opponent
+"
 texture_normal = ExtResource( 7 )
 expand = true
 stretch_mode = 3
@@ -193,12 +190,12 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="clawsLabel" type="Label" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer2/VBoxContainer"]
+[node name="sliceLabel" type="Label" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer2/VBoxContainer"]
 margin_top = 68.0
 margin_right = 251.0
 margin_bottom = 108.0
 rect_min_size = Vector2( 100, 40 )
-text = "Claws
+text = "Slice
 "
 align = 1
 __meta__ = {
@@ -221,7 +218,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="jawsBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer3/VBoxContainer"]
+[node name="crunchBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer3/VBoxContainer"]
 margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
@@ -229,13 +226,18 @@ hint_tooltip = "Beaver’s bite attack, 60pts damage "
 texture_normal = ExtResource( 3 )
 expand = true
 stretch_mode = 3
+__meta__ = {
+"_editor_description_": "Beaver Bites nearby opponent
+"
+}
 
-[node name="jawsLabel" type="Label" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer3/VBoxContainer"]
+[node name="crunchLabel" type="Label" parent="Menu/Vertical Container/Tier_4 - strength/VBoxContainer3/VBoxContainer"]
 margin_top = 68.0
 margin_right = 251.0
 margin_bottom = 108.0
 rect_min_size = Vector2( 100, 40 )
-text = "Jaws"
+text = "Crunch
+"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -261,7 +263,7 @@ margin_top = 54.0
 margin_right = 251.0
 margin_bottom = 94.0
 rect_min_size = Vector2( 100, 40 )
-text = "Armor"
+text = "Body"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -284,7 +286,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="armorBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer/VBoxContainer"]
+[node name="aegisBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer/VBoxContainer"]
 margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
@@ -292,13 +294,17 @@ hint_tooltip = "Beaver’s defense against attacks, 5%, 10%, 30%"
 texture_normal = SubResource( 3 )
 expand = true
 stretch_mode = 3
+__meta__ = {
+"_editor_description_": "Increases defense temporarily
+"
+}
 
-[node name="armorLabel" type="Label" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer/VBoxContainer"]
+[node name="aegisLabel" type="Label" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer/VBoxContainer"]
 margin_top = 68.0
 margin_right = 251.0
 margin_bottom = 108.0
 rect_min_size = Vector2( 100, 40 )
-text = "Armor"
+text = "Aegis"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -321,21 +327,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="bootBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer2/VBoxContainer"]
+[node name="accelerateBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer2/VBoxContainer"]
 margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
-hint_tooltip = " Increase beavers passive movement speed, 5%, 10%, 15%"
+hint_tooltip = "Increases Speed temporarily
+"
 texture_normal = ExtResource( 6 )
 expand = true
 stretch_mode = 3
 
-[node name="bootLabel" type="Label" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer2/VBoxContainer"]
+[node name="accelerateLabel" type="Label" parent="Menu/Vertical Container/Tier_3 - body/VBoxContainer2/VBoxContainer"]
 margin_top = 68.0
 margin_right = 251.0
 margin_bottom = 108.0
 rect_min_size = Vector2( 100, 40 )
-text = "Boots"
+text = "Accelerate"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -384,16 +391,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="coinBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer/VBoxContainer"]
+[node name="graceBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer/VBoxContainer"]
 margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
-hint_tooltip = "increases the XP gained from enemies, 3%, 7%, 10%"
+hint_tooltip = "Money Multiplier
+"
 texture_normal = SubResource( 4 )
 expand = true
 stretch_mode = 3
 
-[node name="coinBtn2" type="Label" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer/VBoxContainer"]
+[node name="graceLabel" type="Label" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer/VBoxContainer"]
 margin_top = 68.0
 margin_right = 251.0
 margin_bottom = 108.0
@@ -421,58 +429,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="bubbleBurstBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer2/VBoxContainer"]
+[node name="regenerationBtn" type="TextureButton" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer2/VBoxContainer"]
 margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
 texture_normal = SubResource( 5 )
 expand = true
 stretch_mode = 3
+__meta__ = {
+"_editor_description_": "Regenerate a % of a hp over time
+"
+}
 
-[node name="bubbleBurstLabel" type="Label" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer2/VBoxContainer"]
+[node name="regenerationLabel" type="Label" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer2/VBoxContainer"]
 margin_top = 68.0
 margin_right = 251.0
 margin_bottom = 108.0
 rect_min_size = Vector2( 100, 40 )
-text = "Bubble Burst
-"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer4" type="VBoxContainer" parent="Menu/Vertical Container/Tier_2 - passives"]
-margin_left = 765.0
-margin_right = 1016.0
-margin_bottom = 148.0
-rect_min_size = Vector2( 251, 0 )
-alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer4"]
-margin_top = 20.0
-margin_right = 251.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 100, 100 )
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="windHowlButton" type="TextureButton" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer4/VBoxContainer"]
-margin_right = 251.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 64, 64 )
-texture_normal = SubResource( 6 )
-expand = true
-stretch_mode = 3
-
-[node name="windHowlLabel2" type="Label" parent="Menu/Vertical Container/Tier_2 - passives/VBoxContainer4/VBoxContainer"]
-margin_top = 68.0
-margin_right = 251.0
-margin_bottom = 108.0
-rect_min_size = Vector2( 100, 40 )
-text = "Wind Howl
-"
+text = "Regeneration"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false

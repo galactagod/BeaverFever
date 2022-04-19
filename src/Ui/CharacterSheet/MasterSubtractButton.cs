@@ -8,11 +8,13 @@ public class MasterSubtractButton : TextureButton
     String Type;
     [Signal]
     public delegate void statPointsSubtract(string type);
+    private LevelControl levelControl;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        levelControl = GetNode<LevelControl>("/root/LevelControl");
         ActionMode = ActionModeEnum.Press;
-        var mainSheet = GetNode("/root/CharacterSheet");
+        var mainSheet = GetNode(levelControl.rootPath + "CharacterSheet");
         mainSheet.Connect("attackStatPointsEmptied", this, "disableAttack");
         mainSheet.Connect("attackStatPointsFilled", this, "enableAttack");
         mainSheet.Connect("defenseStatPointsEmptied", this, "disableDefense");

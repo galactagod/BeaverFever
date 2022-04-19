@@ -10,29 +10,13 @@ public static class Global
     private static string skillAssetRoute = "res://assets/skills";
     public static List<PlayerData.item> itemsAvaliable = new List<PlayerData.item> {
         new PlayerData.item {
-        name = "Dual Sword",
-        price = 400,
-        texture = (Texture) GD.Load(assetRoute + "Dual Sword.png"),
-        scale = new Vector2(3,3),
-        amountOnStat = new List<string> {"8"},
-        whichStat = new List<string> {"Attack"},
-        operatorOnStat = new List<string> {"+"},
-        equippable = true,
-        equippedSlot = "none",
-        ableToBeEquippedSlot = "Weapon",
-        type = "item"
-        },
-        new PlayerData.item {
-        name = "Book",
+        name = "Small Health Potion",
         price = 600,
-        texture = (Texture) GD.Load(assetRoute + "Book.png"),
+        texture = (Texture) GD.Load(assetRoute + "Small Health Potion.png"),
         scale = new Vector2(1,1),
-        amountOnStat = new List<string> {"3"},
-        whichStat = new List<string> {"SpAttack"},
-        operatorOnStat = new List<string> {"+"},
         equippable = true,
         equippedSlot = "none",
-        ableToBeEquippedSlot = "Weapon",
+        ableToBeEquippedSlot = "Consumable",
         type = "item"
         },
         new PlayerData.item {
@@ -40,9 +24,16 @@ public static class Global
         price = 600,
         texture = (Texture) GD.Load(assetRoute + "Small Health Potion.png"),
         scale = new Vector2(1,1),
-        //amountOnStat = new List<string> {"3"},
-        //whichStat = new List<string> {"SpAttack"},
-        //operatorOnStat = new List<string> {"+"},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Consumable",
+        type = "item"
+        },
+        new PlayerData.item {
+        name = "Small Health Potion",
+        price = 600,
+        texture = (Texture) GD.Load(assetRoute + "Small Health Potion.png"),
+        scale = new Vector2(1,1),
         equippable = true,
         equippedSlot = "none",
         ableToBeEquippedSlot = "Consumable",
@@ -53,30 +44,44 @@ public static class Global
 
     // A list of every skill avaliable, held as an "item" class
     public static List<PlayerData.item> skillsAvaliable = new List<PlayerData.item> {
+        //?
         new PlayerData.item {
         name = "Attack Mod",
         level = 1,
-        texture = (Texture) GD.Load("res://assets/skills/strength/punch/Attack Mod 2.png"),
+        texture = (Texture) GD.Load("res://assets/skills/strength/bubble burst/bubble burst tier 1.png"),
         amountOnStat = new List<string> {},
         whichStat = new List<string> {},
         operatorOnStat = new List<string> {},
         equippable = true,
         equippedSlot = "none",
         ableToBeEquippedSlot = "Skill",
-        textureRoute = skillAssetRoute + "/strength/punch/Attack Mod 2.png",
+        textureRoute = "res://assets/skills/strength/bubble burst/bubble burst tier 1.png",
         type = "skill"
         },
         new PlayerData.item {
         name = "Attack Mod",
         level = 2,
-        texture = (Texture) GD.Load("res://assets/skills/strength/punch/Attack Mod 3.png"),
+        texture = (Texture) GD.Load("res://assets/skills/strength/bubble burst/bubble burst tier 2.png"),
         amountOnStat = new List<string> {},
         whichStat = new List<string> {},
         operatorOnStat = new List<string> {},
         equippable = true,
         equippedSlot = "none",
         ableToBeEquippedSlot = "Skill",
-        textureRoute = skillAssetRoute + "/strength/punch/Attack Mod 3.png",
+        textureRoute = "res://assets/skills/strength/bubble burst/bubble burst tier 2.png",
+        type = "skill"
+        },
+        new PlayerData.item {
+        name = "Attack Mod",
+        level = 3,
+        texture = (Texture) GD.Load("res://assets/skills/strength/bubble burst/bubble burst tier 3.png"),
+        amountOnStat = new List<string> {},
+        whichStat = new List<string> {},
+        operatorOnStat = new List<string> {},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Skill",
+        textureRoute = "res://assets/skills/strength/bubble burst/bubble burst tier 3.png",
         type = "skill"
         },
         new PlayerData.item {
@@ -134,6 +139,19 @@ public static class Global
         new PlayerData.item {
         name = "Leaf Mod",
         level = 1,
+        texture = (Texture) GD.Load("res://assets/skills/passives/leaves/Leafs 1 Original.png"),
+        amountOnStat = new List<string> {},
+        whichStat = new List<string> {},
+        operatorOnStat = new List<string> {},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Skill",
+        textureRoute = "res://assets/skills/passives/leaves/Leafs 1 Original.png",
+        type = "skill"
+        },
+        new PlayerData.item {
+        name = "Leaf Mod",
+        level = 2,
         texture = (Texture) GD.Load("res://assets/skills/passives/leaves/Leafs 1 Mod 1.png"),
         amountOnStat = new List<string> {},
         whichStat = new List<string> {},
@@ -146,7 +164,7 @@ public static class Global
         },
         new PlayerData.item {
         name = "Leaf Mod",
-        level = 2,
+        level = 3,
         texture = (Texture) GD.Load("res://assets/skills/passives/leaves/Leafs Mod 1.png"),
         amountOnStat = new List<string> {},
         whichStat = new List<string> {},
@@ -196,43 +214,44 @@ public static class Global
         textureRoute = "res://assets/skills/passives/night/Moon Mod 4.png",
         type = "skill"
         },
+        //done
         new PlayerData.item {
         name = "Book Mod",
         level = 1,
-        texture = (Texture) GD.Load("res://assets/skills/body/wisdom/Book 1 Mod 2.png"),
+        texture = (Texture) GD.Load("res://assets/skills/passives/praying/Praying Mod 2.png"),
         amountOnStat = new List<string> {},
         whichStat = new List<string> {},
         operatorOnStat = new List<string> {},
         equippable = true,
         equippedSlot = "none",
         ableToBeEquippedSlot = "Skill",
-        textureRoute = "res://assets/skills/body/wisdom/Book 1 Mod 2.png",
+        textureRoute = "res://assets/skills/passives/praying/Praying Mod 2.png",
         type = "skill"
         },
         new PlayerData.item {
         name = "Book Mod",
         level = 2,
-        texture = (Texture) GD.Load("res://assets/skills/body/wisdom/Book 1 Mod 3.png"),
+        texture = (Texture) GD.Load("res://assets/skills/passives/praying/Praying Mod 3.png"),
         amountOnStat = new List<string> {},
         whichStat = new List<string> {},
         operatorOnStat = new List<string> {},
         equippable = true,
         equippedSlot = "none",
         ableToBeEquippedSlot = "Skill",
-        textureRoute = "res://assets/skills/body/wisdom/Book 1 Mod 3.png",
+        textureRoute = "res://assets/skills/passives/praying/Praying Mod 3.png",
         type = "skill"
         },
         new PlayerData.item {
         name = "Book Mod",
         level = 3,
-        texture = (Texture) GD.Load("res://assets/skills/body/wisdom/Book 1 Mod 4.png"),
+        texture = (Texture) GD.Load("res://assets/skills/passives/praying/Praying Mod 4.png"),
         amountOnStat = new List<string> {},
         whichStat = new List<string> {},
         operatorOnStat = new List<string> {},
         equippable = true,
         equippedSlot = "none",
         ableToBeEquippedSlot = "Skill",
-        textureRoute = "res://assets/skills/body/wisdom/Book 1 Mod 4.png",
+        textureRoute = "res://assets/skills/passives/praying/Praying Mod 4.png",
         type = "skill"
         },
         new PlayerData.item {
@@ -339,44 +358,87 @@ public static class Global
         textureRoute = skillAssetRoute + "/body/boots/Boots 1 Mod 7.png",
         type = "skill"
         },
+
+
+        //done
         new PlayerData.item {
         name = "Body Mod",
         level = 1,
-        texture = (Texture) GD.Load(skillAssetRoute + "/body/armor/Body Mod 1.png"),
+        texture = (Texture) GD.Load("res://assets/skills/body/aegis/Body Mod 1.png"),
         amountOnStat = new List<string> {"1.05"},
         whichStat = new List<string> {"Defense"},
         operatorOnStat = new List<string> {"*"},
         equippable = true,
         equippedSlot = "none",
         ableToBeEquippedSlot = "Skill",
-        textureRoute = skillAssetRoute + "/body/armor/Body Mod 1.png",
+        textureRoute = "res://assets/skills/body/aegis/Body Mod 1.png",
         type = "skill"
         },
         new PlayerData.item {
         name = "Body Mod",
         level = 2,
-        texture = (Texture) GD.Load(skillAssetRoute + "/body/armor/Body Mod 2.png"),
+        texture = (Texture) GD.Load("res://assets/skills/body/aegis/Body Mod 2.png"),
         amountOnStat = new List<string> {"1.10"},
         whichStat = new List<string> {"Defense"},
         operatorOnStat = new List<string> {"*"},
         equippable = true,
         equippedSlot = "none",
         ableToBeEquippedSlot = "Skill",
-        textureRoute = skillAssetRoute + "/body/armor/Body Mod 2.png",
+        textureRoute = "res://assets/skills/body/aegis/Body Mod 2.png",
         type = "skill"
         },
         new PlayerData.item {
         name = "Body Mod",
         level = 3,
-        texture = (Texture) GD.Load(skillAssetRoute + "/body/armor/Body Mod 3.png"),
+        texture = (Texture) GD.Load("res://assets/skills/body/aegis/Body Mod 3.png"),
         amountOnStat = new List<string> {"1.30"},
         whichStat = new List<string> {"Defense"},
         operatorOnStat = new List<string> {"*"},
         equippable = true,
         equippedSlot = "none",
         ableToBeEquippedSlot = "Skill",
-        textureRoute = skillAssetRoute + "/body/armor/Body Mod 3.png",
+        textureRoute = "res://assets/skills/body/aegis/Body Mod 3.png",
         type = "skill"
         }
+    };
+
+    public static List<PlayerData.item> itemTemplates = new List<PlayerData.item> {
+        new PlayerData.item {
+        name = "Dual Sword",
+        price = 400,
+        texture = (Texture) GD.Load(assetRoute + "Dual Sword.png"),
+        scale = new Vector2(3,3),
+        amountOnStat = new List<string> {"8"},
+        whichStat = new List<string> {"Attack"},
+        operatorOnStat = new List<string> {"+"},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Weapon",
+        type = "item"
+        },
+        new PlayerData.item {
+        name = "Book",
+        price = 600,
+        texture = (Texture) GD.Load(assetRoute + "Book.png"),
+        scale = new Vector2(1,1),
+        amountOnStat = new List<string> {"3"},
+        whichStat = new List<string> {"SpAttack"},
+        operatorOnStat = new List<string> {"+"},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Weapon",
+        type = "item"
+        },
+        new PlayerData.item {
+        name = "Small Health Potion",
+        price = 600,
+        texture = (Texture) GD.Load(assetRoute + "Small Health Potion.png"),
+        scale = new Vector2(1,1),
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Consumable",
+        type = "item"
+        }
+
     };
 }

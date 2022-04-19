@@ -10,7 +10,7 @@ public class PlayerStats : Node
     [Export] private float _energy = 3;
     [Export] private float _maxEnergy = 10;
     [Export] private float _exp = 250;
-    [Export] private float _muny = 5000;
+    [Export] private float _muny = 0;
 
     public float _maxMuny = 99999999;
 
@@ -32,9 +32,12 @@ public class PlayerStats : Node
     public float MaxMuny { get { return _maxMuny; } set { _maxMuny = value; } }
     public Vector2 PlayerPos { get { return _playerpos; } set { _playerpos = value; } }
 
+    private PlayerData playerData;
+
     public override void _Ready()
     {
-        
+        playerData = GetNode<PlayerData>("/root/PlayerData");
+        Muny = playerData.Muny;
     }
 
     public override void _Process(float delta)
@@ -104,6 +107,11 @@ public class PlayerStats : Node
         GD.Print("Exp = " + _exp);
     }
 
+    public void UseConsumable(string name)
+    {
+        if (name == "Small Health Potion")
+            ChangeHealth(200);
+    }
 
 
 }

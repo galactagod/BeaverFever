@@ -16,6 +16,11 @@ public class LevelControl : Node
     private AudioStreamOGGVorbis _sndEternalExplorer = (AudioStreamOGGVorbis)GD.Load("res://src/Assets/Sounds/Levels/SndEternalExplorer.ogg");
     private AudioStreamOGGVorbis _sndLargo = (AudioStreamOGGVorbis)GD.Load("res://src/Assets/Sounds/Levels/SndLargo.ogg");
 
+    private bool paused = false;
+
+    public string rootPath = "/root/LevelTemplate/CanvasLayer/Control/";
+    public string controlPath = "/root/LevelTemplate/CanvasLayer/Control";
+
     public override void _Ready()
     {
         // create the audio files for music and effects
@@ -37,11 +42,53 @@ public class LevelControl : Node
                 PlayAudio(_musicPlayer, _sndDreamFactory, -15, 1);
                 break;
         }
+
+        PauseMode = PauseModeEnum.Process;
     }
 
     public override void _Process(float delta)
     {
-       
+        if (Input.IsActionJustPressed("ui_menu"))
+        {
+            if(!paused)
+            {
+                GetTree().Paused = true;
+                GetNode(controlPath).Set("visible", true);
+                paused = true;
+            }
+            else
+            {
+                GetTree().Paused = false;
+                GetNode(controlPath).Set("visible", false);
+                paused = false;
+            }
+        }
+
+    }
+
+    public void unPause()
+    {
+        GetTree().Paused = false;
+        GetNode(controlPath).Set("visible", false);
+        paused = false;
+    }
+
+    public void changeScene(string path)
+    {
+        var templateInvSlot = GD.Load<PackedScene>(path);
+        
+        if(GetNode(controlPath).GetChildCount() > 0)
+        {
+            var childRemoved = GetNode(controlPath).GetChild(0);
+            GetNode(controlPath).RemoveChild(childRemoved);
+        }
+        
+        GetNode(controlPath).AddChild(templateInvSlot.Instance());
+    }
+
+    public void changeLevel()
+    {
+        //add a canvas layer and control to the level template and 
     }
 
     // use the five sfx players to prioritize playing most recent sounds

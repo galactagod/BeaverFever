@@ -41,6 +41,7 @@ public class Inventory : Control
         var inventoryLabelNode = GetNode("Background/MarginContainer/WholeContainer/WholeInventory/InventoryHeader/TextureRect/Label");
         if(showingInv)
         {
+            int counter = 0;
             foreach (var item in playerData.inv)
             {
                 var invSlotNew = templateInvSlot.Instance();
@@ -49,7 +50,15 @@ public class Inventory : Control
                 invSlotNew.GetNode("Icon").Set("slot", item.inventorySlot);
                 invSlotNew.GetNode("Icon").Set("hint_tooltip", playerData.getStatLine(item));
                 gridContainer.AddChild(invSlotNew);
+                counter++;
             }
+            for(int i = counter; i < playerData.inventorySize; i++)
+            {
+                var invSlotNew = templateInvSlot.Instance();
+                invSlotNew.GetNode("Icon").Set("slot", -1);
+                gridContainer.AddChild(invSlotNew);
+            }
+            gridContainer.Set("columns", ((Godot.Vector2)gridContainer.Get("rect_size")).x / 90);
             inventoryLabelNode.Set("text", "Inventory");
         }
 
@@ -64,6 +73,7 @@ public class Inventory : Control
                 invSlotNew.GetNode("Icon").Set("hint_tooltip", playerData.getStatLine(item));
                 gridContainer.AddChild(invSlotNew);
             }
+            gridContainer.Set("columns", ((Godot.Vector2)gridContainer.Get("rect_size")).x / 90);
             inventoryLabelNode.Set("text", "Skills");
         }
         
@@ -105,17 +115,17 @@ public class Inventory : Control
 
 
         //filling node labels
-        var attackLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/AttackLabel");
+        var attackLabelAfterEquips = GetNode("Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/AttackLabel");
         attackLabelAfterEquips.Set("text", "Attack: " + playerData.attackFinal.ToString());
-        var defenseLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/DefenseLabel");
+        var defenseLabelAfterEquips = GetNode("Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/DefenseLabel");
         defenseLabelAfterEquips.Set("text", "Defense: " + playerData.defenseFinal.ToString());
-        var spAttackLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/SpAttackLabel");
+        var spAttackLabelAfterEquips = GetNode("Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/SpAttackLabel");
         spAttackLabelAfterEquips.Set("text", "SpAttack: " + playerData.spAttackFinal);
-        var spDefenseLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/SpDefenseLabel");
+        var spDefenseLabelAfterEquips = GetNode("Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/SpDefenseLabel");
         spDefenseLabelAfterEquips.Set("text", "SpDefense: " + playerData.spDefenseFinal);
-        var staminaLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/StaminaLabel");
+        var staminaLabelAfterEquips = GetNode("Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/StaminaLabel");
         staminaLabelAfterEquips.Set("text", "Stamina: " + playerData.staminaFinal);
-        var healthLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/HealthLabel");
+        var healthLabelAfterEquips = GetNode("Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/HealthLabel");
         healthLabelAfterEquips.Set("text", "Health: " + playerData.healthFinal.ToString());
     }
 
