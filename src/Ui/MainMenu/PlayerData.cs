@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
+
 public class PlayerData : Node
 {
     #region Variables
@@ -163,6 +164,7 @@ public class PlayerData : Node
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        playerStats = (PlayerStats)GetNode("/root/PlayerStats");
         //File IO
         //add a statement to actually write the file in if its not there
         string filepath = "user://playerStatsFile.json";
@@ -306,6 +308,8 @@ public class PlayerData : Node
             }
         }
 
+        playerStats.Muny = Muny;
+        playerStats.Exp = PlayerTotalPoints;
         RefreshStatFinals();
     }
     #endregion
