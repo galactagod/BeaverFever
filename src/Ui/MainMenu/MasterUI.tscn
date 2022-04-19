@@ -195,7 +195,7 @@ texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 3 )
 expand = true
 script = ExtResource( 2 )
-toOpen = "res://SkillTree.tscn"
+toOpen = "res://src/Ui/SkillTree/SkillTree.tscn"
 
 [node name="Label" type="Label" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer/SkillsButton"]
 anchor_left = 0.5

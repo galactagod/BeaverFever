@@ -12,7 +12,6 @@
 [ext_resource path="res://assets/Mini_exit_t.png" type="Texture" id=10]
 [ext_resource path="res://src/Ui/MainMenu/ReturnToMenu.cs" type="Script" id=11]
 
-
 [sub_resource type="DynamicFont" id=1]
 size = 30
 use_mipmaps = true
