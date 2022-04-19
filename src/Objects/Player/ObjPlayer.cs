@@ -127,7 +127,7 @@ public class ObjPlayer : BaseMovementAct
             case -1:
                 _ndSprPlayer.FlipH = true;
                 _ndCollBase.Position = new Vector2(-collBasePositionX, _ndCollBase.Position.y);
-                _ndCollStomp.Position = new Vector2(-7.5f, _ndCollStomp.Position.y);
+                _ndCollStomp.Position = new Vector2(-5f, _ndCollStomp.Position.y);
                 //GD.Print("BASE POS = " + _ndCollBase.Position);
                 //GD.Print("STOMP POS = " + _ndCollStomp.Position);
                 break;
@@ -135,7 +135,7 @@ public class ObjPlayer : BaseMovementAct
             case 1:
                 _ndSprPlayer.FlipH = false;
                 _ndCollBase.Position = new Vector2(collBasePositionX, _ndCollBase.Position.y);
-                _ndCollStomp.Position = new Vector2(7.5f, _ndCollStomp.Position.y);
+                _ndCollStomp.Position = new Vector2(5f, _ndCollStomp.Position.y);
                 //GD.Print("BASE POS = " + _ndCollBase.Position);
                 //GD.Print("STOMP POS = " + _ndCollStomp.Position);
                 break;
