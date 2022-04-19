@@ -1,24 +1,24 @@
 using Godot;
 using System;
 
-public class GrayWolf : EnemyMovementAct
+public class BrownBear : EnemyMovementAct
 {
     private int _timer = 0;
-  
+
     public override void _Ready()
     {
         base._Ready();
 
         // modify member vars
-        _enemyType = "GrayWolf";
-        _health = 10;
-        _maxHealth = 10;
-        _speed.x = 100;
-        _origSpeed.x = 100;
-        _chaseSpeed.x = 250;
-        _exp = 200;
-        _atkFrm = new int[] {3, 7};
-        _attackRadius = new Vector2(55, 50);
+        _enemyType = "BrownBear";
+        _health = 20;
+        _maxHealth = 20;
+        _speed.x = 50;
+        _origSpeed.x = 50;
+        _chaseSpeed.x = 150;
+        _exp = 700;
+        _atkFrm = new int[] {2, 4};
+        _attackRadius = new Vector2(60, 50);
 
         // start state
         stateMachine = new EnemyStateMachineManager(this, enemyIdle);
@@ -30,7 +30,6 @@ public class GrayWolf : EnemyMovementAct
 
         stateMachine.Update();
         _timer++;
-
         //GD.Print("Xposition = " + Position.x);
     }
 
@@ -43,12 +42,11 @@ public class GrayWolf : EnemyMovementAct
         }
 
         // Wolf will go back and forth relative to start position
-        if (_timer % 50 == 0)
+        if (_timer % 100 == 0)
         {
             direction.x = (direction.x == 1) ? -1 : 1;
         }
 
         _direction = new Vector2(direction.x, 0);
     }
-
 }

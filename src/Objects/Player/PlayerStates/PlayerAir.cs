@@ -10,6 +10,7 @@ public class PlayerAir : PlayerBaseStateMachine
         if (owner.Velocity.y > 0)
         {
             owner.SprAnimation("Fall");
+            GD.Print("Falling");
         }
         else if (owner.Velocity.y < 0 || owner.StompJump)
         {

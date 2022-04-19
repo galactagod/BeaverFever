@@ -232,8 +232,8 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id=34]
-resource_name = "Hurt"
-length = 0.3
+resource_name = "HurtA"
+length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
@@ -372,7 +372,7 @@ tracks/2/keys = {
 extents = Vector2( 16.5, 11.75 )
 
 [sub_resource type="RectangleShape2D" id=38]
-extents = Vector2( 16.5, 5.875 )
+extents = Vector2( 16.5, 3.4375 )
 
 [node name="Snake" type="KinematicBody2D"]
 collision_layer = 2
@@ -380,16 +380,16 @@ collision_mask = 5
 script = ExtResource( 6 )
 
 [node name="SprEnemy" type="AnimatedSprite" parent="."]
-position = Vector2( 0, 4 )
+position = Vector2( 0, 2 )
 frames = SubResource( 1 )
-animation = "Wander"
+animation = "Hurt"
 offset = Vector2( 0, -16 )
 
 [node name="AnimEnemy" type="AnimationPlayer" parent="."]
 root_node = NodePath("../SprEnemy")
 anims/AttackA = SubResource( 31 )
 anims/Death = SubResource( 33 )
-anims/Hurt = SubResource( 34 )
+anims/HurtA = SubResource( 34 )
 anims/Idle = SubResource( 35 )
 anims/RESET = SubResource( 37 )
 anims/Wander = SubResource( 36 )
@@ -399,9 +399,10 @@ position = Vector2( 0, -12 )
 shape = SubResource( 32 )
 
 [node name="StompArea" type="Area2D" parent="."]
+position = Vector2( 0, -24 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StompArea"]
 modulate = Color( 0.105882, 0.843137, 0.117647, 1 )
-position = Vector2( 0, -24.875 )
+position = Vector2( 0, -2.4375 )
 shape = SubResource( 38 )
