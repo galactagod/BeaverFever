@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://SkillTree.cs" type="Script" id=1]
+[ext_resource path="res://src/Ui/SkillTree/SkillTree.cs" type="Script" id=1]
 [ext_resource path="res://assets/Mini_exit.png" type="Texture" id=2]
 [ext_resource path="res://assets/skills/strength/teeth/Sharp Mod 1.png" type="Texture" id=3]
 [ext_resource path="res://assets/skills/strength/bubble burst/bubble burst base.png" type="Texture" id=4]
@@ -11,6 +11,7 @@
 [ext_resource path="res://fonts/ARIAL.TTF" type="DynamicFontData" id=9]
 [ext_resource path="res://assets/Mini_exit_t.png" type="Texture" id=10]
 [ext_resource path="res://src/Ui/MainMenu/ReturnToMenu.cs" type="Script" id=11]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
