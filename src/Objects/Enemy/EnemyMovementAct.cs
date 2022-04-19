@@ -7,16 +7,18 @@ public class EnemyMovementAct : KinematicBody2D
     // csharp limitation, unable to set non primitive types to constants
     protected Vector2 FLOORNORMAL = new Vector2(0, -1);
 
-    [Export] public Vector2 _speed = new Vector2(300, 400);
-    [Export] public float _gravity = 2000;
+    public float _gravity = 2000;
 
     protected float _health;
     protected float _maxHealth;
     protected float _exp;
+    protected Vector2 _speed = new Vector2(0, 400);
+    protected Vector2 _origSpeed = new Vector2(0, 400);
+    protected Vector2 _chaseSpeed = new Vector2(0, 400);
     protected Vector2 _velocity = new Vector2(0, 0);
     protected Vector2 _direction = new Vector2(0, 0);
     protected Vector2 _detectionRadius = new Vector2(200, 50);
-    protected Vector2 _attackRadius = new Vector2(55, 50);
+    protected Vector2 _attackRadius = new Vector2(0, 0);
     protected Vector2 _startPos;
     protected int[] _atkFrm;
     protected bool _isAnimationOver = false;
@@ -53,10 +55,13 @@ public class EnemyMovementAct : KinematicBody2D
     public Vector2 Velocity { get { return _velocity; } set { _velocity = value; } }
     public Vector2 Direction { get { return _direction; } set { _direction = value; } }
     public Vector2 Speed { get { return _speed; } set { _speed = value; } }
+    public Vector2 OrigSpeed { get { return _origSpeed; } set { _origSpeed = value; } }
+    public Vector2 ChaseSpeed { get { return _chaseSpeed; } set { _chaseSpeed = value; } }
     public int[] AtkFrm { get { return _atkFrm; } set { _atkFrm = value; } }
     public bool IsAnimationOver { get { return _isAnimationOver; } set { _isAnimationOver = value; } }
     public bool IsStomped { get { return _isStomped; } set { _isStomped = value; } }
     public bool IsDead { get { return _isDead; } set { _isDead = value; } }
+    public string EnemyType { get { return _enemyType; } set { _enemyType = value; } }
     public PlayerStats NdPlayerStats { get { return _ndPlayerStats; } set { _ndPlayerStats = value; } }
     public ObjPlayer NdObjPlayer { get { return _ndObjPlayer; } set { _ndObjPlayer = value; } }
     public AnimationPlayer NdAnimEnemy { get { return _ndAnimEnemy; } set { _ndAnimEnemy = value; } }
@@ -73,7 +78,7 @@ public class EnemyMovementAct : KinematicBody2D
         _ndStompArea = GetNode<Area2D>("StompArea");
 
         _ndAnimEnemy.Connect("animation_finished", this, nameof(OnAnimationFinished));
-        _ndStompArea.Connect("area_entered", this, nameof(OnAreaShapeEntered));
+        _ndStompArea.Connect("area_entered", this, nameof(OnAreaShapeStompEntered));
         _collBasePositionX = _ndCollBaseEnemy.Position.x;
         _startPos = Position;
     }
@@ -133,6 +138,10 @@ public class EnemyMovementAct : KinematicBody2D
     public void SprAnimation(string animation)
     {
         _ndAnimEnemy.Play(animation);
+
+        GD.Print("Enemy Animation = " + animation);
+
+
     }
 
     public virtual void WanderLogic(Vector2 direction)
@@ -174,7 +183,18 @@ public class EnemyMovementAct : KinematicBody2D
     {
         float playerPosX = _ndObjPlayer.Position.x;
         float playerPosY = _ndObjPlayer.Position.y;
-        bool attackRangeX = (playerPosX < Position.x + _attackRadius.x && playerPosX > Position.x - _attackRadius.x) ? true : false;
+        bool attackRangeX = false;
+
+        if (_direction.x == 1)
+        {
+            attackRangeX = (playerPosX > Position.x && playerPosX < Position.x + _attackRadius.x) ? true : false;
+        }
+        else if (_direction.x == -1)
+        {
+            attackRangeX = (playerPosX < Position.x && playerPosX > Position.x - _attackRadius.x) ? true : false;
+        }
+
+
         bool attackRangeY = (playerPosY < Position.y + _attackRadius.y && playerPosY > Position.y - _attackRadius.y) ? true : false;
 
         // if within range affect the players hp stat and turn him to a damage state
@@ -196,19 +216,18 @@ public class EnemyMovementAct : KinematicBody2D
         
     }
 
-    public void OnAreaShapeEntered(Area2D area)
+    public void OnAreaShapeStompEntered(Area2D area)
     {
-        
+        //GD.Print("Enemy Area Position X = " + area.GlobalPosition.x + " Y = " + area.GlobalPosition.y);
         // do not activate stomp if not entered in the correct y position
-        if (area.Position.y > _ndStompArea.Position.y)
+        if (area.GlobalPosition.y > _ndStompArea.GlobalPosition.y)
         {
-            //return;
+            return;
         }
 
         GD.Print("Stomped On");
         // damage calculation
         _isStomped = true;
-        // if dead then queue_free()
     }
 
     public void ChangeHealth(float health)

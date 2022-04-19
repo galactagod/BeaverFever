@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/Objects/Player/ObjPlayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Assets/Tiles/Forest A ts.png" type="Texture" id=2]
@@ -10,19 +10,18 @@
 [ext_resource path="res://src/Objects/Items/Coins/CopperCoin.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/Objects/Items/Coins/GoldCoin.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/Objects/Items/Coins/SilverCoin.tscn" type="PackedScene" id=10]
-[ext_resource path="res://src/Assets/Sounds/Battle/hit_p13_a.wav" type="AudioStream" id=11]
-[ext_resource path="res://src/Ui/MainMenu/MasterUI.tscn" type="PackedScene" id=12]
-
-[sub_resource type="ConvexPolygonShape2D" id=2]
-points = PoolVector2Array( 0, 10, 90, 10, 90, 30, 0, 30 )
-
-[sub_resource type="ConvexPolygonShape2D" id=3]
-points = PoolVector2Array( 4, 0, 30, 0, 30, 60, 4, 60 )
+[ext_resource path="res://src/Objects/Enemy/BrownBear/BrownBear.tscn" type="PackedScene" id=12]
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( 0, 10, 90, 10, 90, 30, 0, 30 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+points = PoolVector2Array( 4, 0, 30, 0, 30, 60, 4, 60 )
+
+[sub_resource type="ConvexPolygonShape2D" id=7]
 points = PoolVector2Array( 4, 10, 30, 10, 30, 30, 4, 30 )
 
-[sub_resource type="ConvexPolygonShape2D" id=10]
+[sub_resource type="ConvexPolygonShape2D" id=8]
 points = PoolVector2Array( 0, 10, 30, 10, 30, 30, 0, 30 )
 
 [sub_resource type="TileSet" id=4]
@@ -50,14 +49,14 @@ points = PoolVector2Array( 0, 10, 30, 10, 30, 30, 0, 30 )
 1/navigation_offset = Vector2( 0, 0 )
 1/shape_offset = Vector2( 0, 0 )
 1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape = SubResource( 2 )
+1/shape = SubResource( 5 )
 1/shape_one_way = true
 1/shape_one_way_margin = 1.0
 1/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": true,
 "one_way_margin": 1.0,
-"shape": SubResource( 2 ),
+"shape": SubResource( 5 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 1/z_index = 0
@@ -71,14 +70,14 @@ points = PoolVector2Array( 0, 10, 30, 10, 30, 30, 0, 30 )
 2/navigation_offset = Vector2( 0, 0 )
 2/shape_offset = Vector2( 0, 0 )
 2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-2/shape = SubResource( 3 )
+2/shape = SubResource( 6 )
 2/shape_one_way = false
 2/shape_one_way_margin = 1.0
 2/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 3 ),
+"shape": SubResource( 6 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 2/z_index = 0
@@ -92,14 +91,14 @@ points = PoolVector2Array( 0, 10, 30, 10, 30, 30, 0, 30 )
 3/navigation_offset = Vector2( 0, 0 )
 3/shape_offset = Vector2( 0, 0 )
 3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-3/shape = SubResource( 5 )
+3/shape = SubResource( 7 )
 3/shape_one_way = true
 3/shape_one_way_margin = 1.0
 3/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": true,
 "one_way_margin": 1.0,
-"shape": SubResource( 5 ),
+"shape": SubResource( 7 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 3/z_index = 0
@@ -169,14 +168,14 @@ points = PoolVector2Array( 0, 10, 30, 10, 30, 30, 0, 30 )
 8/navigation_offset = Vector2( 0, 0 )
 8/shape_offset = Vector2( 0, 0 )
 8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-8/shape = SubResource( 10 )
+8/shape = SubResource( 8 )
 8/shape_one_way = true
 8/shape_one_way_margin = 1.0
 8/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": true,
 "one_way_margin": 1.0,
-"shape": SubResource( 10 ),
+"shape": SubResource( 8 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 8/z_index = 0
@@ -196,11 +195,6 @@ points = PoolVector2Array( 0, 10, 30, 10, 30, 30, 0, 30 )
 9/z_index = 0
 
 [node name="LevelTemplate" type="Node"]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-pause_mode = 2
-stream = ExtResource( 11 )
-pitch_scale = 0.69
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -297,18 +291,8 @@ position = Vector2( 115, -348 )
 [node name="GoldCoin11" parent="coins" instance=ExtResource( 9 )]
 position = Vector2( 355, -289 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-pause_mode = 2
-
-[node name="Control" type="Control" parent="CanvasLayer"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Control" parent="CanvasLayer/Control" instance=ExtResource( 12 )]
+[node name="BrownBear" parent="." instance=ExtResource( 12 )]
+position = Vector2( 602, 111 )
 
 [editable path="GrayWolf"]
 [editable path="ObjPlayer"]

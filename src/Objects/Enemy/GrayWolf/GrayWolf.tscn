@@ -290,7 +290,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id=33]
-resource_name = "Hurt"
+resource_name = "HurtA"
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:animation")
@@ -427,10 +427,10 @@ tracks/2/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=52]
-extents = Vector2( 15, 12.333 )
+extents = Vector2( 15, 10.6667 )
 
 [sub_resource type="RectangleShape2D" id=54]
-extents = Vector2( 15, 4.33332 )
+extents = Vector2( 15, 2.49999 )
 
 [node name="GrayWolf" type="KinematicBody2D"]
 scale = Vector2( 1.5, 1.5 )
@@ -439,9 +439,9 @@ collision_mask = 5
 script = ExtResource( 1 )
 
 [node name="SprEnemy" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -4 )
+position = Vector2( 0, -2.66667 )
 frames = SubResource( 11 )
-animation = "AttackA"
+animation = "Hurt"
 frame = 1
 offset = Vector2( 0, -17 )
 
@@ -449,24 +449,20 @@ offset = Vector2( 0, -17 )
 root_node = NodePath("../SprEnemy")
 anims/AttackA = SubResource( 31 )
 anims/Death = SubResource( 32 )
-anims/Hurt = SubResource( 33 )
+anims/HurtA = SubResource( 33 )
 anims/Idle = SubResource( 34 )
 anims/RESET = SubResource( 53 )
 anims/Wander = SubResource( 35 )
 
 [node name="CollBaseEnemy" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -12.6667 )
+position = Vector2( 0, -10.6667 )
 shape = SubResource( 52 )
 
 [node name="StompArea" type="Area2D" parent="."]
+position = Vector2( 0, -21.3333 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StompArea"]
 modulate = Color( 0.113725, 1, 0.168627, 1 )
-position = Vector2( 0, -25.6667 )
+position = Vector2( 0, -1.83333 )
 shape = SubResource( 54 )
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( 0, -13.3333 )
-enabled = true
-cast_to = Vector2( -40, 0 )

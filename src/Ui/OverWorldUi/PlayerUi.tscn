@@ -180,7 +180,7 @@ margin_top = 16.0
 margin_right = 1264.0
 margin_bottom = 40.0
 custom_fonts/font = SubResource( 3 )
-text = "995,887"
+text = "0"
 align = 2
 __meta__ = {
 "_edit_lock_": true,
@@ -193,7 +193,7 @@ margin_top = 688.0
 margin_right = 1265.0
 margin_bottom = 712.0
 custom_fonts/font = SubResource( 4 )
-text = "4829226722"
+text = "0"
 align = 2
 __meta__ = {
 "_edit_lock_": true,

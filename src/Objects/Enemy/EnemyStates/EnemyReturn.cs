@@ -6,7 +6,7 @@ public class EnemyReturn : EnemyBaseStateMachine
     public override void OnStateEnter(IEnemyStateMachine stateMachine, EnemyMovementAct owner)
     {
         owner.SprAnimation("Wander");
-        owner.Speed = new Vector2(200, 400);
+        owner.Speed = new Vector2(owner.OrigSpeed.x, owner.OrigSpeed.y);
     }
 
     public override void OnStateUpdate(IEnemyStateMachine stateMachine, EnemyMovementAct owner)

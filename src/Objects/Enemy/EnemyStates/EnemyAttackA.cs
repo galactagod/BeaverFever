@@ -21,6 +21,7 @@ public class EnemyAttackA : EnemyBaseStateMachine
             return;
         }
 
+        //GD.Print("Enemy Dir X = " + owner.Direction.x + " Y = " + owner.Direction.y);
         // apply damage based on frames and attack range
         if (owner.NdSprEnemy.Frame >= owner.AtkFrm[0] && owner.NdSprEnemy.Frame <= owner.AtkFrm[1] && owner.EnemyAttack() && !owner.NdObjPlayer.IsDamaged)
         {
