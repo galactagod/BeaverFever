@@ -110,7 +110,9 @@ public class PlayerStats : Node
     public void UseConsumable(string name)
     {
         if (name == "Small Health Potion")
+        {
             ChangeHealth(200);
+        }
     }
 
 
