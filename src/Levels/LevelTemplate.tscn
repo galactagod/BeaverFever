@@ -283,7 +283,7 @@ position = Vector2( 2695, -248 )
 position = Vector2( 104, 128 )
 
 [node name="SprPlayer" parent="ObjPlayer" index="0"]
-animation = "Idle"
+animation = "Crawl"
 
 [node name="Camera2D" parent="ObjPlayer" index="2"]
 limit_left = 0
