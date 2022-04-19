@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://SkillTree.cs" type="Script" id=1]
+[ext_resource path="res://src/Ui/SkillTree/SkillTree.cs" type="Script" id=1]
 [ext_resource path="res://assets/Mini_exit.png" type="Texture" id=2]
 [ext_resource path="res://assets/skills/strength/teeth/Sharp Mod 1.png" type="Texture" id=3]
 [ext_resource path="res://assets/skills/strength/bubble burst/bubble burst base.png" type="Texture" id=4]
