@@ -450,6 +450,7 @@ public class SkillTree: Node2D {
     bool unlocked = false;
     if (playerStats.Exp >= xp) {
             playerStats.Exp -= xp;
+            playerStats.ChangeExp(0);
       unlocked = true;
     } else {
       GD.Print("Error, player does not have enough XP for this skill");

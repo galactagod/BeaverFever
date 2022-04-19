@@ -6,6 +6,7 @@ public class MainStatPage : Control
 {
     #region Variables
     private PlayerData playerData;
+    private PlayerStats playerStats;
     // Stats themselves
     private int attack = 0;
     private int defense = 0;
@@ -114,6 +115,7 @@ public class MainStatPage : Control
         saveButton.Connect("saveClicked", this, "savePoints");
 
         playerData = GetNode<PlayerData>("/root/PlayerData");
+        playerStats = GetNode<PlayerStats>("/root/PlayerStats");
 
         attack = playerData.PlayerAttack;
         defense = playerData.PlayerDefense;
@@ -121,7 +123,7 @@ public class MainStatPage : Control
         specialDefense = playerData.PlayerSpDefense;
         health = playerData.PlayerHealth;
         stamina = playerData.PlayerStamina;
-        totalStatPoints = playerData.PlayerTotalPoints;
+        totalStatPoints = (int)playerStats.Exp;
         level = playerData.CurrentStatPoints();
 
         // Stat Labels
@@ -426,10 +428,12 @@ public class MainStatPage : Control
         playerData.PlayerAttack = attack;
         playerData.PlayerDefense = defense;
         playerData.PlayerHealth = health;
-        playerData.PlayerTotalPoints = totalStatPoints;
+        playerStats.Exp = totalStatPoints;
         playerData.PlayerSpDefense = specialDefense;
         playerData.PlayerSpAttack = specialAttack;
         playerData.PlayerStamina = stamina;
+
+        playerStats.ChangeExp(0);
 
 
         attackStatPoints = 0;
