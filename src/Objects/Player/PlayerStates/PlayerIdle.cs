@@ -11,7 +11,7 @@ public class PlayerIdle : PlayerBaseStateMachine
 
     public override void OnStateUpdate(IPlayerStateMachine stateMachine, ObjPlayer owner)
     {
-        if (owner.IsDamaged)
+        if (owner.IsDamaged && owner.DamagedTimer == 0)
         {
             stateMachine.TransitionToState(owner.playerHurt);
             return;

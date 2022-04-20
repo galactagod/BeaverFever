@@ -19,10 +19,19 @@ config/icon="res://icon.png"
 PlayerData="*res://src/Ui/MainMenu/PlayerData.cs"
 PlayerStats="*res://src/Autoloads/PlayerStats.cs"
 GameControl="*res://src/Autoloads/GameControl.cs"
+LevelControl="*res://src/Autoloads/LevelControl.cs"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [global]
 
 layer=false
+viewport=false
 
 [importer_defaults]
 
@@ -78,6 +87,11 @@ key_5={
 key_6={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":54,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_menu={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 

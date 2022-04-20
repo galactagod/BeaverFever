@@ -13,11 +13,16 @@ public class BuyButton : TextureButton
     [Signal]
     public delegate void buyButtonClicked(int slot);
 
+    private LevelControl levelControl;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        var mainStoreNode = GetNode("/root/Control");
+        levelControl = (LevelControl)GetNode("/root/LevelControl");
+        var mainStoreNode = GetNode(levelControl.rootPath + "Control");
         mainStoreNode.Connect("notEnoughCurrency", this, "DisableButton");
+
+
     }
 
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.

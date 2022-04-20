@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/SndJumpA.wav-a5cde9555b9b6de7644a57ddb67a7aa4.sample"
+
+[deps]
+
+source_file="res://src/Assets/Sounds/Movement/SndJumpA.wav"
+dest_files=[ "res://.import/SndJumpA.wav-a5cde9555b9b6de7644a57ddb67a7aa4.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

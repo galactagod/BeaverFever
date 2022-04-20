@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SndEpicDeparture.ogg-73452f095bbeac9bd0a66bae8303ac8c.oggstr"
+
+[deps]
+
+source_file="res://src/Assets/Sounds/Levels/SndEpicDeparture.ogg"
+dest_files=[ "res://.import/SndEpicDeparture.ogg-73452f095bbeac9bd0a66bae8303ac8c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

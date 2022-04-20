@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class Store : Control
 {
     private PlayerData playerData;
+    private PlayerStats playerStats;
 
     [Signal]
     public delegate void notEnoughCurrency(int slot);
@@ -25,6 +26,7 @@ public class Store : Control
         slot3Button.Connect("buyButtonClicked", this, "ItemBought");
 
         playerData = GetNode<PlayerData>("/root/PlayerData");
+        playerStats = GetNode<PlayerStats>("/root/PlayerStats");
 
         InitalizingItems();
 
@@ -40,7 +42,7 @@ public class Store : Control
     {
         //currency label
         var currencyLabel = GetNode("Money");
-        currencyLabel.Set("text", "Currency: " + playerData.Wallet);
+        currencyLabel.Set("text", "Currency: " + playerStats.Muny);
         //get nodes for first 3 items
         //change label, texture, and button status according (if have enough currency)
         if (playerData.itemsAvaliable.Count > 0)
@@ -51,7 +53,7 @@ public class Store : Control
             //slot1ButtonTexture.Set("texture", "res://assets/" + itemsAvaliable[0].name + ".png");
             slot1ButtonTexture.Set("texture", playerData.itemsAvaliable[0].texture);
             slot1ButtonTexture.Set("scale", playerData.itemsAvaliable[0].scale);
-            if (playerData.itemsAvaliable[0].price > playerData.Wallet)
+            if (playerData.itemsAvaliable[0].price > playerStats.Muny)
             {
                 EmitSignal("notEnoughCurrency", 1);
             }
@@ -72,7 +74,7 @@ public class Store : Control
             var slot2ButtonTexture = GetNode("TabContainer/Items/RichTextLabel/control/Panel2/Holder");
             slot2ButtonTexture.Set("texture", playerData.itemsAvaliable[1].texture);
             slot2ButtonTexture.Set("scale", playerData.itemsAvaliable[1].scale);
-            if (playerData.itemsAvaliable[1].price > playerData.Wallet)
+            if (playerData.itemsAvaliable[1].price > playerStats.Muny)
             {
                 EmitSignal("notEnoughCurrency", 2);
             }
@@ -93,7 +95,7 @@ public class Store : Control
             var slot3ButtonTexture = GetNode("TabContainer/Items/RichTextLabel/control/Panel3/Holder");
             slot3ButtonTexture.Set("texture", playerData.itemsAvaliable[2].texture);
             slot3ButtonTexture.Set("scale", playerData.itemsAvaliable[2].scale);
-            if (playerData.itemsAvaliable[2].price > playerData.Wallet)
+            if (playerData.itemsAvaliable[2].price > playerStats.Muny)
             {
                 EmitSignal("notEnoughCurrency", 3);
             }
@@ -112,11 +114,26 @@ public class Store : Control
     {
         //pop item out of list
         //recall initializing items
-        playerData.Wallet -= playerData.itemsAvaliable[slot - 1].price;
-        playerData.itemsAvaliable[slot - 1].inventorySlot = playerData.inv.Count;
-        playerData.inv.Add(playerData.itemsAvaliable[slot - 1]);
-        playerData.itemsInStore.RemoveAt(slot - 1);
-        playerData.itemsAvaliable.RemoveAt(slot - 1);
+        
+        if(playerData.itemsAvaliable[slot-1].type == "item")
+        {
+            if(playerData.itemsAvaliable[slot - 1].ableToBeEquippedSlot == "Consumable")
+            {
+                //if amount > allowed, just return and dont let buy
+            }
+            playerData.itemsAvaliable[slot - 1].inventorySlot = playerData.inv.Count;
+            playerData.inv.Add(playerData.itemsAvaliable[slot - 1]);
+        }
+        else
+        {
+            playerData.itemsAvaliable[slot - 1].inventorySlot = playerData.skills.Count;
+            playerData.skills.Add(playerData.itemsAvaliable[slot - 1]);
+        }
+        playerStats.Muny -= playerData.itemsAvaliable[slot - 1].price;
+        playerStats.ChangeMoney(0);
+
+        //playerData.itemsInStore.RemoveAt(slot - 1);
+        //playerData.itemsAvaliable.RemoveAt(slot - 1);
         InitalizingItems();
     }
 }

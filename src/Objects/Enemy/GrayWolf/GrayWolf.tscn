@@ -7,6 +7,30 @@
 [ext_resource path="res://src/Assets/Enemies/GrayWolf/GrayWolfHurt.png" type="Texture" id=5]
 [ext_resource path="res://src/Assets/Enemies/GrayWolf/GrayWolfDeath.png" type="Texture" id=6]
 
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 68, 39 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 5 )
+region = Rect2( 68, 0, 68, 39 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 5 )
+region = Rect2( 136, 0, 68, 39 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 5 )
+region = Rect2( 204, 0, 68, 39 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 5 )
+region = Rect2( 272, 0, 68, 39 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 5 )
+region = Rect2( 340, 0, 68, 39 )
+
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 59, 36 )
@@ -46,30 +70,6 @@ region = Rect2( 472, 0, 59, 36 )
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 3 )
 region = Rect2( 531, 0, 59, 36 )
-
-[sub_resource type="AtlasTexture" id=36]
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 68, 39 )
-
-[sub_resource type="AtlasTexture" id=37]
-atlas = ExtResource( 5 )
-region = Rect2( 68, 0, 68, 39 )
-
-[sub_resource type="AtlasTexture" id=38]
-atlas = ExtResource( 5 )
-region = Rect2( 136, 0, 68, 39 )
-
-[sub_resource type="AtlasTexture" id=39]
-atlas = ExtResource( 5 )
-region = Rect2( 204, 0, 68, 39 )
-
-[sub_resource type="AtlasTexture" id=40]
-atlas = ExtResource( 5 )
-region = Rect2( 272, 0, 68, 39 )
-
-[sub_resource type="AtlasTexture" id=41]
-atlas = ExtResource( 5 )
-region = Rect2( 340, 0, 68, 39 )
 
 [sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 4 )
@@ -185,15 +185,15 @@ region = Rect2( 468, 0, 52, 50 )
 
 [sub_resource type="SpriteFrames" id=11]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 10.0
-}, {
 "frames": [ SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ) ],
 "loop": true,
 "name": "Hurt",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 10.0
 }, {
 "frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ) ],
 "loop": true,
@@ -290,7 +290,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id=33]
-resource_name = "Hurt"
+resource_name = "HurtA"
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:animation")
@@ -426,11 +426,12 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=52]
-extents = Vector2( 15, 12.333 )
+[sub_resource type="CapsuleShape2D" id=55]
+radius = 10.0
+height = 14.6667
 
 [sub_resource type="RectangleShape2D" id=54]
-extents = Vector2( 15, 2.66667 )
+extents = Vector2( 11.3333, 2.49999 )
 
 [node name="GrayWolf" type="KinematicBody2D"]
 scale = Vector2( 1.5, 1.5 )
@@ -439,8 +440,9 @@ collision_mask = 5
 script = ExtResource( 1 )
 
 [node name="SprEnemy" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -4 )
 frames = SubResource( 11 )
-animation = "Run"
+animation = "AttackA"
 frame = 1
 offset = Vector2( 0, -17 )
 
@@ -448,19 +450,21 @@ offset = Vector2( 0, -17 )
 root_node = NodePath("../SprEnemy")
 anims/AttackA = SubResource( 31 )
 anims/Death = SubResource( 32 )
-anims/Hurt = SubResource( 33 )
+anims/HurtA = SubResource( 33 )
 anims/Idle = SubResource( 34 )
 anims/RESET = SubResource( 53 )
 anims/Wander = SubResource( 35 )
 
 [node name="CollBaseEnemy" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -12.6667 )
-shape = SubResource( 52 )
+position = Vector2( 0.666667, -10.6667 )
+rotation = -1.5708
+shape = SubResource( 55 )
 
 [node name="StompArea" type="Area2D" parent="."]
+position = Vector2( 0, -25.3333 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StompArea"]
 modulate = Color( 0.113725, 1, 0.168627, 1 )
-position = Vector2( 0, -27.3333 )
+position = Vector2( 0, 2.66667 )
 shape = SubResource( 54 )

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Of Far Different Nature - Pulse (CC-BY 4.0).ogg-819fce201b0b58060dba73f9f4d9bfe9.oggstr"
+
+[deps]
+
+source_file="res://src/Assets/Sounds/Boss Fights/Of Far Different Nature - Pulse (CC-BY 4.0).ogg"
+dest_files=[ "res://.import/Of Far Different Nature - Pulse (CC-BY 4.0).ogg-819fce201b0b58060dba73f9f4d9bfe9.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

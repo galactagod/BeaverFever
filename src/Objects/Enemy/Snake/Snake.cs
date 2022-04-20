@@ -5,13 +5,20 @@ public class Snake : EnemyMovementAct
 {
     private int _timer = 0;
 
-
     public override void _Ready()
     {
         base._Ready();
 
         // modify member vars
-        _speed.x = 100.0f;
+        _enemyType = "Snake";
+        _health = 6;
+        _maxHealth = 6;
+        _speed.x = 75;
+        _origSpeed.x = 75;
+        _chaseSpeed.x = 200;
+        _exp = 100;
+        _atkFrm = new int[] {2, 4};
+        _attackRadius = new Vector2(50, 50);
 
         // start state
         stateMachine = new EnemyStateMachineManager(this, enemyIdle);
@@ -36,7 +43,7 @@ public class Snake : EnemyMovementAct
         }
 
         // Wolf will go back and forth relative to start position
-        if (_timer % 50 == 0)
+        if (_timer % 70 == 0)
         {
             direction.x = (direction.x == 1) ? -1 : 1;
         }
