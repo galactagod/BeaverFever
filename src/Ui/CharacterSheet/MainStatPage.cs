@@ -6,6 +6,7 @@ public class MainStatPage : Control
 {
     #region Variables
     private PlayerData playerData;
+    private PlayerStats playerStats;
     // Stats themselves
     private int attack = 0;
     private int defense = 0;
@@ -22,6 +23,10 @@ public class MainStatPage : Control
     private int specialDefenseStatPoints = 0;
     private int staminaStatPoints = 0;
     private int healthStatPoints = 0;
+
+    //level stuff
+    private int level = 0;
+
     #endregion
 
     #region Signals
@@ -110,6 +115,7 @@ public class MainStatPage : Control
         saveButton.Connect("saveClicked", this, "savePoints");
 
         playerData = GetNode<PlayerData>("/root/PlayerData");
+        playerStats = GetNode<PlayerStats>("/root/PlayerStats");
 
         attack = playerData.PlayerAttack;
         defense = playerData.PlayerDefense;
@@ -117,7 +123,8 @@ public class MainStatPage : Control
         specialDefense = playerData.PlayerSpDefense;
         health = playerData.PlayerHealth;
         stamina = playerData.PlayerStamina;
-        totalStatPoints = playerData.PlayerTotalPoints;
+        totalStatPoints = (int)playerStats.Exp;
+        level = playerData.CurrentStatPoints();
 
         // Stat Labels
 
@@ -128,7 +135,7 @@ public class MainStatPage : Control
     public override void _Process(float delta)
     {
         // Disabling buttons adding stat points if the amount that the player has (before saving) equals 0
-        if(totalStatPoints == 0)
+        if(totalStatPoints <= playerData.EXPNeeded(level))
         {
             emitStatsEmptied();
         }
@@ -210,66 +217,98 @@ public class MainStatPage : Control
             attackStatPoints++;
             Node attackPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground/Label");
             attackPointsLabel.Set("text", "AttackPoints: " + attackStatPoints);
-            totalStatPoints--;
+            totalStatPoints-= playerData.EXPNeeded(level);
+            //total Stat Points - requiredPoints()
             Node statPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/TotalStat");
             statPointsLabel.Set("text", "Total Stat Points to Use: " + totalStatPoints);
             Node attackLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/Attack");
             attackLabel.Set("text", "Attack: " + attack + " -> " + (attack + attackStatPoints));
+            level++;
+            Node levelLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/Level");
+            levelLabel.Set("text", "Level: " + level);
+            Node nextLevelLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/NextLevel");
+            nextLevelLabel.Set("text", "Points for Next Level: " + playerData.EXPNeeded(level));
         }
         else if (type == "Defense")
         {
             defenseStatPoints++;
             Node defensePointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground2/Label");
             defensePointsLabel.Set("text", "DefensePoints: " + defenseStatPoints);
-            totalStatPoints--;
+            totalStatPoints -= playerData.EXPNeeded(level);
             Node statPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/TotalStat");
             statPointsLabel.Set("text", "Total Stat Points to Use: " + totalStatPoints);
             Node defenseLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/Defense");
             defenseLabel.Set("text", "Defense: " + defense + " -> " + (defense + defenseStatPoints));
+            level++;
+            Node levelLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/Level");
+            levelLabel.Set("text", "Level: " + level);
+            Node nextLevelLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/NextLevel");
+            nextLevelLabel.Set("text", "Points for Next Level: " + playerData.EXPNeeded(level));
+            //left off here
         }
         else if (type == "SpecialAttack")
         {
             specialAttackStatPoints++;
             Node specialAttackPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground3/Label");
             specialAttackPointsLabel.Set("text", "SpecialAttackPoints: " + specialAttackStatPoints);
-            totalStatPoints--;
+            totalStatPoints -= playerData.EXPNeeded(level);
             Node statPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/TotalStat");
             statPointsLabel.Set("text", "Total Stat Points to Use: " + totalStatPoints);
             Node specialAttackLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/SpAttack");
             specialAttackLabel.Set("text", "Special Attack: " + specialAttack + " -> " + (specialAttack + specialAttackStatPoints));
+            level++;
+            Node levelLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/Level");
+            levelLabel.Set("text", "Level: " + level);
+            Node nextLevelLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/NextLevel");
+            nextLevelLabel.Set("text", "Points for Next Level: " + playerData.EXPNeeded(level));
         }
         else if (type == "SpecialDefense")
         {
             specialDefenseStatPoints++;
             Node specialDefensePointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground4/Label");
             specialDefensePointsLabel.Set("text", "Special Defense Points: " + specialDefenseStatPoints);
-            totalStatPoints--;
+            totalStatPoints -= playerData.EXPNeeded(level);
             Node statPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/TotalStat");
             statPointsLabel.Set("text", "Total Stat Points to Use: " + totalStatPoints);
             Node specialDefenseLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/SpDefense");
             specialDefenseLabel.Set("text", "Special Defense: " + specialDefense + " -> " + (specialDefense + specialDefenseStatPoints));
+            level++;
+            Node levelLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/Level");
+            levelLabel.Set("text", "Level: " + level);
+            Node nextLevelLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/NextLevel");
+            nextLevelLabel.Set("text", "Points for Next Level: " + playerData.EXPNeeded(level));
         }
         else if (type == "Health")
         {
             healthStatPoints++;
             Node healthPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground5/Label");
             healthPointsLabel.Set("text", "HealthPoints: " + healthStatPoints);
-            totalStatPoints--;
+            totalStatPoints -= playerData.EXPNeeded(level);
             Node statPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/TotalStat");
             statPointsLabel.Set("text", "Total Stat Points to Use: " + totalStatPoints);
             Node healthLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/Health");
             healthLabel.Set("text", "Health: " + health + " -> " + (health + healthStatPoints));
+            level++;
+            Node levelLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/Level");
+            levelLabel.Set("text", "Level: " + level);
+            Node nextLevelLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/NextLevel");
+            nextLevelLabel.Set("text", "Points for Next Level: " + playerData.EXPNeeded(level));
         }
         else if (type == "Stamina")
         {
             staminaStatPoints++;
             Node staminaPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground6/Label");
             staminaPointsLabel.Set("text", "StaminaPoints: " + staminaStatPoints);
-            totalStatPoints--;
+            totalStatPoints -= playerData.EXPNeeded(level);
             Node statPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/TotalStat");
             statPointsLabel.Set("text", "Total Stat Points to Use: " + totalStatPoints);
             Node staminaLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/Stamina");
             staminaLabel.Set("text", "Stamina: " + stamina + " -> " + (stamina + staminaStatPoints));
+            level++;
+            Node levelLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/Level");
+            levelLabel.Set("text", "Level: " + level);
+            Node nextLevelLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/NextLevel");
+            nextLevelLabel.Set("text", "Points for Next Level: " + playerData.EXPNeeded(level));
         }
     }
     #endregion
@@ -282,66 +321,96 @@ public class MainStatPage : Control
             attackStatPoints--;
             Node attackPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground/Label");
             attackPointsLabel.Set("text", "AttackPoints: " + attackStatPoints);
-            totalStatPoints++;
+            level--;
+            totalStatPoints += playerData.EXPNeeded(level);
             Node statPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/TotalStat");
             statPointsLabel.Set("text", "Total Stat Points to Use: " + totalStatPoints);
             Node attackLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/Attack");
             attackLabel.Set("text", "Attack: " + attack + " -> " + (attack + attackStatPoints));
+            Node levelLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/Level");
+            levelLabel.Set("text", "Level: " + level);
+            Node nextLevelLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/NextLevel");
+            nextLevelLabel.Set("text", "Points for Next Level: " + playerData.EXPNeeded(level));
         }
         else if (type == "Defense")
         {
             defenseStatPoints--;
             Node defensePointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground2/Label");
             defensePointsLabel.Set("text", "DefensePoints: " + defenseStatPoints);
-            totalStatPoints++;
+            level--;
+            totalStatPoints += playerData.EXPNeeded(level);
             Node statPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/TotalStat");
             statPointsLabel.Set("text", "Total Stat Points to Use: " + totalStatPoints);
             Node defenseLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/Defense");
             defenseLabel.Set("text", "Defense: " + defense + " -> " + (defense + defenseStatPoints));
+            Node levelLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/Level");
+            levelLabel.Set("text", "Level: " + level);
+            Node nextLevelLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/NextLevel");
+            nextLevelLabel.Set("text", "Points for Next Level: " + playerData.EXPNeeded(level));
         }
         else if (type == "SpecialAttack")
         {
             specialAttackStatPoints--;
             Node specialAttackPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground3/Label");
             specialAttackPointsLabel.Set("text", "SpecialAttackPoints: " + specialAttackStatPoints);
-            totalStatPoints++;
+            level--;
+            totalStatPoints += playerData.EXPNeeded(level);
             Node statPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/TotalStat");
             statPointsLabel.Set("text", "Total Stat Points to Use: " + totalStatPoints);
             Node specialAttackLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/SpAttack");
             specialAttackLabel.Set("text", "Special Attack: " + specialAttack + " -> " + (specialAttack + specialAttackStatPoints));
+            Node levelLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/Level");
+            levelLabel.Set("text", "Level: " + level);
+            Node nextLevelLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/NextLevel");
+            nextLevelLabel.Set("text", "Points for Next Level: " + playerData.EXPNeeded(level));
         }
         else if (type == "SpecialDefense")
         {
             specialDefenseStatPoints--;
             Node specialDefensePointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground4/Label");
             specialDefensePointsLabel.Set("text", "Special Defense Points: " + specialDefenseStatPoints);
-            totalStatPoints++;
+            level--;
+            totalStatPoints += playerData.EXPNeeded(level);
             Node statPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/TotalStat");
             statPointsLabel.Set("text", "Total Stat Points to Use: " + totalStatPoints);
             Node specialDefenseLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/SpDefense");
             specialDefenseLabel.Set("text", "Special Defense: " + specialDefense + " -> " + (specialDefense + specialDefenseStatPoints));
+            Node levelLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/Level");
+            levelLabel.Set("text", "Level: " + level);
+            Node nextLevelLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/NextLevel");
+            nextLevelLabel.Set("text", "Points for Next Level: " + playerData.EXPNeeded(level));
         }
         else if (type == "Health")
         {
             healthStatPoints--;
             Node healthPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground5/Label");
             healthPointsLabel.Set("text", "HealthPoints: " + healthStatPoints);
-            totalStatPoints++;
+            level--;
+            totalStatPoints += playerData.EXPNeeded(level);
             Node statPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/TotalStat");
             statPointsLabel.Set("text", "Total Stat Points to Use: " + totalStatPoints);
             Node healthLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/Health");
             healthLabel.Set("text", "Health: " + health + " -> " + (health + healthStatPoints));
+            Node levelLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/Level");
+            levelLabel.Set("text", "Level: " + level);
+            Node nextLevelLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/NextLevel");
+            nextLevelLabel.Set("text", "Points for Next Level: " + playerData.EXPNeeded(level));
         }
         else if (type == "Stamina")
         {
             staminaStatPoints--;
             Node staminaPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground6/Label");
             staminaPointsLabel.Set("text", "StaminaPoints: " + staminaStatPoints);
-            totalStatPoints++;
+            level--;
+            totalStatPoints += playerData.EXPNeeded(level);
             Node statPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/TotalStat");
             statPointsLabel.Set("text", "Total Stat Points to Use: " + totalStatPoints);
             Node staminaLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/Stamina");
             staminaLabel.Set("text", "Stamina: " + stamina + " -> " + (stamina + staminaStatPoints));
+            Node levelLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/Level");
+            levelLabel.Set("text", "Level: " + level);
+            Node nextLevelLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/NextLevel");
+            nextLevelLabel.Set("text", "Points for Next Level: " + playerData.EXPNeeded(level));
         }
     }
     #endregion
@@ -359,10 +428,13 @@ public class MainStatPage : Control
         playerData.PlayerAttack = attack;
         playerData.PlayerDefense = defense;
         playerData.PlayerHealth = health;
-        playerData.PlayerTotalPoints = totalStatPoints;
+        playerStats.Exp = totalStatPoints;
         playerData.PlayerSpDefense = specialDefense;
         playerData.PlayerSpAttack = specialAttack;
         playerData.PlayerStamina = stamina;
+
+        playerStats.ChangeExp(0);
+        playerStats.ChangeMaxHealth(healthStatPoints);
 
 
         attackStatPoints = 0;
@@ -429,6 +501,12 @@ public class MainStatPage : Control
 
         Node healthPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground5/Label");
         healthPointsLabel.Set("text", "HealthPoints: " + healthStatPoints);
+
+        Node levelLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/Level");
+        levelLabel.Set("text", "Level: " + level);
+
+        Node nextLevelLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/NextLevel");
+        nextLevelLabel.Set("text", "Points for Next Level: " + playerData.EXPNeeded(level));
     }
     #endregion
 }

@@ -7,6 +7,10 @@
 [ext_resource path="res://src/Assets/Enemies/Snake/SnakeDeath.png" type="Texture" id=5]
 [ext_resource path="res://src/Objects/Enemy/Snake/Snake.cs" type="Script" id=6]
 
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 37, 28 )
+
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 44, 33 )
@@ -55,34 +59,6 @@ region = Rect2( 440, 0, 44, 33 )
 atlas = ExtResource( 2 )
 region = Rect2( 484, 0, 44, 33 )
 
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 47, 23 )
-
-[sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 3 )
-region = Rect2( 47, 0, 47, 23 )
-
-[sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 3 )
-region = Rect2( 94, 0, 47, 23 )
-
-[sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 3 )
-region = Rect2( 141, 0, 47, 23 )
-
-[sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 3 )
-region = Rect2( 188, 0, 47, 23 )
-
-[sub_resource type="AtlasTexture" id=19]
-atlas = ExtResource( 3 )
-region = Rect2( 235, 0, 47, 23 )
-
-[sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 37, 28 )
-
 [sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 43, 24 )
@@ -123,21 +99,40 @@ region = Rect2( 153, 0, 51, 43 )
 atlas = ExtResource( 5 )
 region = Rect2( 204, 0, 51, 43 )
 
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 47, 23 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 3 )
+region = Rect2( 47, 0, 47, 23 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 3 )
+region = Rect2( 94, 0, 47, 23 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 3 )
+region = Rect2( 141, 0, 47, 23 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 3 )
+region = Rect2( 188, 0, 47, 23 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 3 )
+region = Rect2( 235, 0, 47, 23 )
+
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
-"loop": true,
-"name": "Wander",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 20 ) ],
 "loop": true,
 "name": "Hurt",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
+"loop": true,
+"name": "Idle",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
@@ -149,10 +144,16 @@ animations = [ {
 "loop": true,
 "name": "Death",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
+"loop": true,
+"name": "Wander",
+"speed": 5.0
 } ]
 
 [sub_resource type="Animation" id=31]
 resource_name = "AttackA"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:animation")
 tracks/0/interp = 1
@@ -175,7 +176,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 0, 2, 3, 4 ]
+"values": [ 0, 1, 2, 3, 4 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath(".:position")
@@ -192,6 +193,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=33]
 resource_name = "Death"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
@@ -230,7 +232,8 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id=34]
-resource_name = "Hurt"
+resource_name = "HurtA"
+length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
@@ -270,6 +273,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=35]
 resource_name = "Idle"
+length = 1.1
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -325,6 +329,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=36]
 resource_name = "Wander"
+length = 0.6
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -363,11 +368,12 @@ tracks/2/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="RectangleShape2D" id=32]
-extents = Vector2( 16.5, 11.75 )
+[sub_resource type="CapsuleShape2D" id=39]
+radius = 11.0
+height = 12.0
 
 [sub_resource type="RectangleShape2D" id=38]
-extents = Vector2( 16.5, 3.75 )
+extents = Vector2( 9, 2.71875 )
 
 [node name="Snake" type="KinematicBody2D"]
 collision_layer = 2
@@ -375,28 +381,30 @@ collision_mask = 5
 script = ExtResource( 6 )
 
 [node name="SprEnemy" type="AnimatedSprite" parent="."]
-position = Vector2( 0, 4 )
+position = Vector2( 0, 2 )
 frames = SubResource( 1 )
-animation = "AttackA"
+animation = "Hurt"
 offset = Vector2( 0, -16 )
 
 [node name="AnimEnemy" type="AnimationPlayer" parent="."]
 root_node = NodePath("../SprEnemy")
 anims/AttackA = SubResource( 31 )
 anims/Death = SubResource( 33 )
-anims/Hurt = SubResource( 34 )
+anims/HurtA = SubResource( 34 )
 anims/Idle = SubResource( 35 )
 anims/RESET = SubResource( 37 )
 anims/Wander = SubResource( 36 )
 
 [node name="CollBaseEnemy" type="CollisionShape2D" parent="."]
-position = Vector2( 1, -12.25 )
-shape = SubResource( 32 )
+position = Vector2( 0, -12 )
+rotation = 1.5708
+shape = SubResource( 39 )
 
 [node name="StompArea" type="Area2D" parent="."]
+position = Vector2( 0, -28 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StompArea"]
 modulate = Color( 0.105882, 0.843137, 0.117647, 1 )
-position = Vector2( 1, -28 )
+position = Vector2( 0, 2.71875 )
 shape = SubResource( 38 )

@@ -9,16 +9,23 @@ public class EquiptmentSlot : TextureRect
     // private string b = "text";
     public int a = 2;
     private PlayerData playerData;
+    private LevelControl levelControl;
+    private PlayerStats playerStats;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         playerData = GetNode<PlayerData>("/root/PlayerData");
+        levelControl = GetNode<LevelControl>("/root/LevelControl");
+        playerStats = GetNode<PlayerStats>("/root/PlayerStats");
     }
     public override object GetDragData(Vector2 position)
     {
         
         String nameOfSlot = GetParent().Name;
+
+        if (nameOfSlot == "Consumable" || nameOfSlot == "Trash")
+            return null;
 
         if (!playerData.equipment.TryGetValue(nameOfSlot, out var data))
         {
@@ -26,7 +33,7 @@ public class EquiptmentSlot : TextureRect
         }
 
         string comingFrom = "EquipBars3";
-        if(nameOfSlot == "Helmet"|| nameOfSlot == "Chest" || nameOfSlot == "Legs" || nameOfSlot == "Boots")
+        if(nameOfSlot == "Necklace" || nameOfSlot == "Weapon" || nameOfSlot == "Talisman" || nameOfSlot == "Consumable")
         {
             comingFrom = "EquipBars";
         }
@@ -70,14 +77,9 @@ public class EquiptmentSlot : TextureRect
 
 
         String compareSlot = nameOfSlot;
-        if (compareSlot == "Talisman1" || compareSlot == "Talisman2")
+        if (compareSlot == "Skill1" || compareSlot == "Skill2" || compareSlot == "Skill3")
         {
-            compareSlot = "Talisman";
-        }
-
-        if (compareSlot != actualData.ableToBeEquippedSlot)
-        {
-            return;
+            compareSlot = "Skill";
         }
 
         if (comingFrom == "EquipBars3" || comingFrom == "EquipBars")
@@ -85,18 +87,50 @@ public class EquiptmentSlot : TextureRect
             return;
         }
 
-        if(actualData.equippedSlot != null)
+        if (actualData.equippedSlot != "none")
         {
             return;
         }
 
+        if (nameOfSlot == "Trash")
+        {
+            playerData.RemoveFromInv(actualData.inventorySlot);
+            return;
+        }
+
+        if (compareSlot != actualData.ableToBeEquippedSlot)
+        {
+            return;
+        }
+
+        
+
+        //if a consumable, do the consumable things
+        if (actualData.ableToBeEquippedSlot == "Consumable")
+        {
+            Texture = actualData.texture;
+            //counter could go here?
+            //use consumable?
+            Texture = (Texture)GD.Load("res://assets/" + "Consumable" + "Empty" + ".png");
+            playerStats.UseConsumable(actualData.name);
+            playerData.RemoveFromInv(actualData.inventorySlot);
+            return;
+        }
+
+        
+        //else, do the rest
+
         //handling if there is something already equipted
+
         PlayerData.item apple;
         if(playerData.equipment.TryGetValue(nameOfSlot, out apple))
         {
             //if its there, we gotta go to its inventory and unequipt it
-            apple.equippedSlot = null;
-            playerData.inv[apple.inventorySlot] = apple;
+            apple.equippedSlot = "none";
+            if (compareSlot != "Skill")
+                playerData.inv[apple.inventorySlot] = apple;
+            else
+                playerData.skills[apple.inventorySlot] = apple;
 
             //here we need to undo the equip stat changes of the item we have equipped
             playerData.EquipChangesStatFilter(apple, true);
@@ -106,32 +140,41 @@ public class EquiptmentSlot : TextureRect
 
         //Changing inventory of inserted to make it equipted
         actualData.equippedSlot = nameOfSlot;
-        playerData.inv[actualData.inventorySlot] = actualData;
+        if (compareSlot != "Skill")
+            playerData.inv[actualData.inventorySlot] = actualData;
+        else
+            playerData.skills[actualData.inventorySlot] = actualData;
 
         //Changing texture
         Texture = actualData.texture;
         Set("scale", actualData.scale);
         Set("hint_tooltip", playerData.getStatLine(actualData));
+        
+
 
         //Replacing it in the dictionary
         playerData.equipment.Remove(nameOfSlot);
         playerData.equipment.Add(nameOfSlot, actualData);
 
+        
+
+
 
         //here we need to do the equip stat changes of the new item we have equipped
         playerData.EquipChangesStatFilter(actualData, false);
-        var attackLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/AttackLabel");
+        var attackLabelAfterEquips = GetNode(levelControl.rootPath + "Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/AttackLabel");
         attackLabelAfterEquips.Set("text", "Attack: " + playerData.attackFinal.ToString());
-        var defenseLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/DefenseLabel");
+        var defenseLabelAfterEquips = GetNode(levelControl.rootPath + "Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/DefenseLabel");
         defenseLabelAfterEquips.Set("text", "Defense: " + playerData.defenseFinal.ToString());
-        var spAttackLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/SpAttackLabel");
+        var spAttackLabelAfterEquips = GetNode(levelControl.rootPath + "Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/SpAttackLabel");
         spAttackLabelAfterEquips.Set("text", "SpAttack: " + playerData.spAttackFinal);
-        var spDefenseLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/SpDefenseLabel");
+        var spDefenseLabelAfterEquips = GetNode(levelControl.rootPath + "Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/SpDefenseLabel");
         spDefenseLabelAfterEquips.Set("text", "SpDefense: " + playerData.spDefenseFinal);
-        var staminaLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/StaminaLabel");
+        var staminaLabelAfterEquips = GetNode(levelControl.rootPath + "Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/StaminaLabel");
         staminaLabelAfterEquips.Set("text", "Stamina: " + playerData.staminaFinal);
-        var healthLabelAfterEquips = GetNode("/root/Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/HealthLabel");
+        var healthLabelAfterEquips = GetNode(levelControl.rootPath + "Inventory/Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer/HealthLabel");
         healthLabelAfterEquips.Set("text", "Health: " + playerData.healthFinal.ToString());
+        playerData.ResetInv();
 
     }
 

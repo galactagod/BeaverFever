@@ -1,14 +1,17 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/skill_bar.png" type="Texture" id=1]
 [ext_resource path="res://src/Ui/Inventory/Inventory.cs" type="Script" id=2]
 [ext_resource path="res://assets/Background_purple.png" type="Texture" id=3]
 [ext_resource path="res://assets/Red_vert_panel.png" type="Texture" id=4]
 [ext_resource path="res://assets/Mini_exit_t.png" type="Texture" id=5]
+[ext_resource path="res://assets/Mini_arrow_bot2.png" type="Texture" id=6]
 [ext_resource path="res://src/Ui/Inventory/EquiptmentSlot.cs" type="Script" id=7]
 [ext_resource path="res://src/Ui/MainMenu/ReturnToMenu.cs" type="Script" id=8]
 [ext_resource path="res://assets/Mini_exit.png" type="Texture" id=9]
 [ext_resource path="res://fonts/Roboto-Bold.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://assets/Mini_arrow_bot2_t.png" type="Texture" id=11]
+[ext_resource path="res://src/Ui/Inventory/SwapInventoryButton.cs" type="Script" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 49
@@ -51,12 +54,14 @@ __meta__ = {
 [node name="WholeContainer" type="HBoxContainer" parent="Background/MarginContainer"]
 margin_left = 50.0
 margin_top = 50.0
-margin_right = 974.0
-margin_bottom = 550.0
+margin_right = 1230.0
+margin_bottom = 670.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="WholeEquip" type="VBoxContainer" parent="Background/MarginContainer/WholeContainer"]
 margin_right = 400.0
-margin_bottom = 500.0
+margin_bottom = 620.0
 rect_min_size = Vector2( 400, 0 )
 custom_constants/separation = 20
 
@@ -91,17 +96,17 @@ __meta__ = {
 [node name="EquipElements" type="HBoxContainer" parent="Background/MarginContainer/WholeContainer/WholeEquip"]
 margin_top = 100.0
 margin_right = 400.0
-margin_bottom = 500.0
+margin_bottom = 620.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="EquipBars" type="VBoxContainer" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements"]
 margin_right = 100.0
-margin_bottom = 400.0
+margin_bottom = 520.0
 rect_min_size = Vector2( 100, 0 )
 custom_constants/separation = 10
 
-[node name="Helmet" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars"]
+[node name="Necklace" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars"]
 margin_right = 100.0
 margin_bottom = 90.0
 rect_min_size = Vector2( 90, 90 )
@@ -109,7 +114,7 @@ size_flags_horizontal = 3
 texture = ExtResource( 4 )
 expand = true
 
-[node name="Icon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars/Helmet"]
+[node name="Icon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars/Necklace"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -122,7 +127,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Chest" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars"]
+[node name="Weapon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars"]
 margin_top = 100.0
 margin_right = 100.0
 margin_bottom = 190.0
@@ -131,7 +136,7 @@ size_flags_horizontal = 3
 texture = ExtResource( 4 )
 expand = true
 
-[node name="Icon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars/Chest"]
+[node name="Icon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars/Weapon"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -144,7 +149,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Legs" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars"]
+[node name="Talisman" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars"]
 margin_top = 200.0
 margin_right = 100.0
 margin_bottom = 290.0
@@ -153,7 +158,7 @@ size_flags_horizontal = 3
 texture = ExtResource( 4 )
 expand = true
 
-[node name="Icon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars/Legs"]
+[node name="Icon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars/Talisman"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -166,7 +171,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Boots" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars"]
+[node name="Consumable" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars"]
 margin_top = 300.0
 margin_right = 100.0
 margin_bottom = 390.0
@@ -175,13 +180,14 @@ size_flags_horizontal = 3
 texture = ExtResource( 4 )
 expand = true
 
-[node name="Icon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars/Boots"]
+[node name="Icon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars/Consumable"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
 margin_top = 10.0
 margin_right = -10.0
 margin_bottom = -10.0
+hint_tooltip = "Use consumables here"
 expand = true
 script = ExtResource( 7 )
 __meta__ = {
@@ -191,13 +197,13 @@ __meta__ = {
 [node name="Character" type="HBoxContainer" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements"]
 margin_left = 104.0
 margin_right = 296.0
-margin_bottom = 400.0
+margin_bottom = 520.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character"]
 margin_right = 192.0
-margin_bottom = 400.0
+margin_bottom = 520.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 4 )
@@ -222,7 +228,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer"]
 margin_right = 192.0
-margin_bottom = 157.0
+margin_bottom = 180.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -233,56 +239,63 @@ margin_bottom = 19.0
 custom_fonts/font = SubResource( 3 )
 text = "Stats After Equips"
 
-[node name="AttackLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
+[node name="HealthBar" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
 margin_top = 23.0
 margin_right = 192.0
 margin_bottom = 42.0
 custom_fonts/font = SubResource( 3 )
-text = "Attack: "
+text = "HealthBar: "
 
-[node name="DefenseLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
+[node name="AttackLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
 margin_top = 46.0
 margin_right = 192.0
 margin_bottom = 65.0
 custom_fonts/font = SubResource( 3 )
-text = "Defense: "
+text = "Attack: "
 
-[node name="SpAttackLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
+[node name="DefenseLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
 margin_top = 69.0
 margin_right = 192.0
 margin_bottom = 88.0
 custom_fonts/font = SubResource( 3 )
-text = "SpAttack:"
+text = "Defense: "
 
-[node name="SpDefenseLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
+[node name="SpAttackLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
 margin_top = 92.0
 margin_right = 192.0
 margin_bottom = 111.0
 custom_fonts/font = SubResource( 3 )
-text = "SpDefense: "
+text = "SpAttack:"
 
-[node name="StaminaLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
+[node name="SpDefenseLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
 margin_top = 115.0
 margin_right = 192.0
 margin_bottom = 134.0
 custom_fonts/font = SubResource( 3 )
-text = "Stamina: "
+text = "SpDefense: "
 
-[node name="HealthLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
+[node name="StaminaLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
 margin_top = 138.0
 margin_right = 192.0
 margin_bottom = 157.0
+custom_fonts/font = SubResource( 3 )
+text = "Stamina: "
+
+[node name="HealthLabel" type="Label" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/Character/NinePatchRect/TextureRect/VBoxContainer/VBoxContainer"]
+margin_top = 161.0
+margin_right = 192.0
+margin_bottom = 180.0
 custom_fonts/font = SubResource( 3 )
 text = "Health: "
 
 [node name="EquipBars3" type="VBoxContainer" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements"]
 margin_left = 300.0
 margin_right = 400.0
-margin_bottom = 400.0
+margin_bottom = 520.0
 rect_min_size = Vector2( 100, 0 )
 custom_constants/separation = 10
 
-[node name="Necklace" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3"]
+[node name="Skill1" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3"]
 margin_right = 100.0
 margin_bottom = 90.0
 rect_min_size = Vector2( 90, 90 )
@@ -290,7 +303,7 @@ size_flags_horizontal = 3
 texture = ExtResource( 4 )
 expand = true
 
-[node name="Icon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3/Necklace"]
+[node name="Icon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3/Skill1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -303,7 +316,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Weapon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3"]
+[node name="Skill2" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3"]
 margin_top = 100.0
 margin_right = 100.0
 margin_bottom = 190.0
@@ -312,7 +325,7 @@ size_flags_horizontal = 3
 texture = ExtResource( 4 )
 expand = true
 
-[node name="Icon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3/Weapon"]
+[node name="Icon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3/Skill2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -325,7 +338,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Talisman1" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3"]
+[node name="Skill3" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3"]
 margin_top = 200.0
 margin_right = 100.0
 margin_bottom = 290.0
@@ -334,7 +347,7 @@ size_flags_horizontal = 3
 texture = ExtResource( 4 )
 expand = true
 
-[node name="Icon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3/Talisman1"]
+[node name="Icon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3/Skill3"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -347,7 +360,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Talisman2" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3"]
+[node name="Trash" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3"]
 margin_top = 300.0
 margin_right = 100.0
 margin_bottom = 390.0
@@ -356,13 +369,14 @@ size_flags_horizontal = 3
 texture = ExtResource( 4 )
 expand = true
 
-[node name="Icon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3/Talisman2"]
+[node name="Icon" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeEquip/EquipElements/EquipBars3/Trash"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
 margin_top = 10.0
 margin_right = -10.0
 margin_bottom = -10.0
+hint_tooltip = "Throw your items away here"
 expand = true
 script = ExtResource( 7 )
 __meta__ = {
@@ -371,19 +385,19 @@ __meta__ = {
 
 [node name="WholeInventory" type="VBoxContainer" parent="Background/MarginContainer/WholeContainer"]
 margin_left = 404.0
-margin_right = 924.0
-margin_bottom = 500.0
+margin_right = 1180.0
+margin_bottom = 620.0
 size_flags_horizontal = 3
 custom_constants/separation = 20
 
 [node name="InventoryHeader" type="HBoxContainer" parent="Background/MarginContainer/WholeContainer/WholeInventory"]
-margin_right = 520.0
+margin_right = 776.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 0, 80 )
 size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="Background/MarginContainer/WholeContainer/WholeInventory/InventoryHeader"]
-margin_right = 436.0
+margin_right = 608.0
 margin_bottom = 80.0
 size_flags_horizontal = 3
 texture = ExtResource( 3 )
@@ -404,15 +418,36 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Control2" type="Control" parent="Background/MarginContainer/WholeContainer/WholeInventory/InventoryHeader"]
+margin_left = 612.0
+margin_right = 692.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+
+[node name="TextureButton" type="TextureButton" parent="Background/MarginContainer/WholeContainer/WholeInventory/InventoryHeader/Control2"]
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+hint_tooltip = "Flips between your item inventory and your skill inventory. Give it a try!"
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 11 )
+texture_disabled = ExtResource( 11 )
+expand = true
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Control" type="Control" parent="Background/MarginContainer/WholeContainer/WholeInventory/InventoryHeader"]
-margin_left = 440.0
-margin_right = 520.0
+margin_left = 696.0
+margin_right = 776.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
 
 [node name="TextureButton" type="TextureButton" parent="Background/MarginContainer/WholeContainer/WholeInventory/InventoryHeader/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_min_size = Vector2( 80, 80 )
 texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 5 )
 expand = true
@@ -423,13 +458,14 @@ __meta__ = {
 
 [node name="InventoryElements" type="ScrollContainer" parent="Background/MarginContainer/WholeContainer/WholeInventory"]
 margin_top = 100.0
-margin_right = 520.0
-margin_bottom = 500.0
+margin_right = 776.0
+margin_bottom = 620.0
+size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="GridContainer" type="GridContainer" parent="Background/MarginContainer/WholeContainer/WholeInventory/InventoryElements"]
-margin_right = 520.0
-margin_bottom = 400.0
+margin_right = 776.0
+margin_bottom = 520.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-columns = 4
+columns = 5

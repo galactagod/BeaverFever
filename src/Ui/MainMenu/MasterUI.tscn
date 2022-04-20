@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/Ui/MainMenu/SaveQuitButton.cs" type="Script" id=1]
 [ext_resource path="res://src/Ui/MainMenu/StatMenuButton.cs" type="Script" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://assets/long_button_on.png" type="Texture" id=4]
 [ext_resource path="res://assets/skill_bar_background.png" type="Texture" id=5]
 [ext_resource path="res://fonts/Roboto-Bold.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://assets/Mini_exit.png" type="Texture" id=7]
+[ext_resource path="res://assets/Mini_exit_t.png" type="Texture" id=8]
+[ext_resource path="res://src/Ui/MainMenu/ReturnToGame.cs" type="Script" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 6 )
@@ -40,7 +43,8 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/NinePatchRect/HBoxContainer2"]
-margin_bottom = 600.0
+margin_right = 124.0
+margin_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -48,9 +52,9 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/NinePatchRect/HBoxContainer2"]
-margin_left = 4.0
-margin_right = 1028.0
-margin_bottom = 600.0
+margin_left = 128.0
+margin_right = 1152.0
+margin_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -59,21 +63,58 @@ __meta__ = {
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
 margin_right = 1024.0
-margin_bottom = 190.0
+margin_bottom = 196.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="InventoryButton" type="TextureButton" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
-margin_top = 194.0
+[node name="Control" type="Control" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer/HBoxContainer"]
+margin_right = 338.0
+margin_bottom = 196.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control2" type="Control" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer/HBoxContainer"]
+margin_left = 342.0
+margin_right = 681.0
+margin_bottom = 196.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control3" type="Control" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer/HBoxContainer"]
+margin_left = 685.0
 margin_right = 1024.0
-margin_bottom = 244.0
+margin_bottom = 196.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureButton" type="TextureButton" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer/HBoxContainer/Control3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+expand = true
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InventoryButton" type="TextureButton" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
+margin_top = 200.0
+margin_right = 1024.0
+margin_bottom = 250.0
 rect_min_size = Vector2( 0, 50 )
 size_flags_horizontal = 3
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 3 )
 expand = true
 script = ExtResource( 2 )
-toOpen = "Inventory/Inventory"
+toOpen = "res://src/Ui/Inventory/Inventory.tscn"
 
 [node name="Label" type="Label" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer/InventoryButton"]
 anchor_left = 0.5
@@ -91,16 +132,16 @@ __meta__ = {
 }
 
 [node name="StoreButton" type="TextureButton" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
-margin_top = 248.0
+margin_top = 254.0
 margin_right = 1024.0
-margin_bottom = 298.0
+margin_bottom = 304.0
 rect_min_size = Vector2( 600, 50 )
 size_flags_horizontal = 3
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 3 )
 expand = true
 script = ExtResource( 2 )
-toOpen = "Store/Store"
+toOpen = "res://src/Ui/Store/Store.tscn"
 
 [node name="Label" type="Label" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer/StoreButton"]
 anchor_left = 0.5
@@ -118,9 +159,9 @@ __meta__ = {
 }
 
 [node name="StatsButton" type="TextureButton" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
-margin_top = 302.0
+margin_top = 308.0
 margin_right = 1024.0
-margin_bottom = 352.0
+margin_bottom = 358.0
 rect_min_size = Vector2( 1024, 50 )
 size_flags_horizontal = 3
 texture_normal = ExtResource( 4 )
@@ -144,10 +185,37 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SaveQuit" type="TextureButton" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
-margin_top = 356.0
+[node name="SkillsButton" type="TextureButton" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
+margin_top = 362.0
 margin_right = 1024.0
-margin_bottom = 406.0
+margin_bottom = 412.0
+rect_min_size = Vector2( 1024, 50 )
+size_flags_horizontal = 3
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 3 )
+expand = true
+script = ExtResource( 2 )
+toOpen = "res://src/Ui/SkillTree/SkillTree.tscn"
+
+[node name="Label" type="Label" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer/SkillsButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -9.5
+margin_right = 20.0
+margin_bottom = 9.5
+custom_fonts/font = SubResource( 1 )
+text = "Skills"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveQuit" type="TextureButton" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
+margin_top = 416.0
+margin_right = 1024.0
+margin_bottom = 466.0
 rect_min_size = Vector2( 1024, 50 )
 size_flags_horizontal = 3
 texture_normal = ExtResource( 4 )
@@ -171,16 +239,46 @@ __meta__ = {
 }
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
-margin_top = 410.0
+margin_top = 470.0
 margin_right = 1024.0
-margin_bottom = 600.0
+margin_bottom = 666.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="ControlsButton" type="TextureButton" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
+margin_top = 670.0
+margin_right = 1024.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 1024, 50 )
+size_flags_horizontal = 3
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 3 )
+expand = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+toOpen = "res://src/Ui/Controls/ControlsMenu.tscn"
+
+[node name="Label" type="Label" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer/ControlsButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -9.5
+margin_right = 20.0
+margin_bottom = 9.5
+custom_fonts/font = SubResource( 1 )
+text = "Controls"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="PauseMenu/NinePatchRect/HBoxContainer2"]
-margin_left = 1032.0
-margin_right = 1032.0
-margin_bottom = 600.0
+margin_left = 1156.0
+margin_right = 1280.0
+margin_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {

@@ -7,16 +7,16 @@ public class ReturnToMenu : TextureButton
     // private int a = 2;
     // private string b = "text";
 
-
+    private LevelControl levelControl;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        
+        levelControl = (LevelControl)GetNode("/root/LevelControl");
     }
 
     public override void _Pressed()
     {
-        GetTree().ChangeScene("res://MasterUI.tscn");
+        levelControl.changeScene("res://src/Ui/MainMenu/MasterUI.tscn");
     }
 
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.
