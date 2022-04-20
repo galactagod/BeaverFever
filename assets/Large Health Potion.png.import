@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Fancy Health Potion.png-602310b2cf311c6bc8a8e5289681b446.stex"
+path="res://.import/Large Health Potion.png-967bd1ed2456b26bc351c1aa5340b663.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Fancy Health Potion.png"
-dest_files=[ "res://.import/Fancy Health Potion.png-602310b2cf311c6bc8a8e5289681b446.stex" ]
+source_file="res://assets/Large Health Potion.png"
+dest_files=[ "res://.import/Large Health Potion.png-967bd1ed2456b26bc351c1aa5340b663.stex" ]
 
 [params]
 

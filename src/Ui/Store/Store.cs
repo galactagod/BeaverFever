@@ -130,6 +130,7 @@ public class Store : Control
             playerData.skills.Add(playerData.itemsAvaliable[slot - 1]);
         }
         playerStats.Muny -= playerData.itemsAvaliable[slot - 1].price;
+        playerStats.ChangeMoney(0);
 
         //playerData.itemsInStore.RemoveAt(slot - 1);
         //playerData.itemsAvaliable.RemoveAt(slot - 1);

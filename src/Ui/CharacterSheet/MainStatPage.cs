@@ -434,6 +434,7 @@ public class MainStatPage : Control
         playerData.PlayerStamina = stamina;
 
         playerStats.ChangeExp(0);
+        playerStats.ChangeMaxHealth(healthStatPoints);
 
 
         attackStatPoints = 0;

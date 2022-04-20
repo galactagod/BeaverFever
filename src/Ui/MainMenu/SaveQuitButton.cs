@@ -45,6 +45,7 @@ public class SaveQuitButton : TextureButton
             temp.Add("inventorySlot", item.inventorySlot.ToString());
             temp.Add("ableToBeEquippedSlot", item.ableToBeEquippedSlot);
             temp.Add("type", item.type);
+            temp.Add("tooltip", item.tooltip);
             //Adding item effects
             Godot.Collections.Array itemEffects = new Godot.Collections.Array();
             for(int i = 0; i < item.whichStat.Count;i++)
