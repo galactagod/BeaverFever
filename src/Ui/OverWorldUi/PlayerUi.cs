@@ -46,6 +46,7 @@ public class PlayerUi : Node
         _ndPlayerStats.EnergyChange += OnChangeEnergy;
         _ndPlayerStats.ExpChange += OnChangeExp;
         _ndPlayerStats.MoneyChange += OnChangeMoney;
+        _ndPlayerStats.MaxHealthChange += OnChangeMaxHealth;
 
         _ndTween.Connect("tween_all_completed", this, nameof(OnAllTweenCompletion));
         _ndTween.Connect("tween_step", this, nameof(OnTweenStep));
@@ -71,7 +72,7 @@ public class PlayerUi : Node
 
     public override void _Process(float delta)
     {
-        //_ndHpBar.Value = _ndPlayerStats.Health;
+        _ndHpBar.Value = _ndPlayerStats.Health;
         _ndEnergyBar.Value = _ndPlayerStats.Energy;
     }
 
@@ -81,6 +82,11 @@ public class PlayerUi : Node
         
         _health = _ndPlayerStats.Health;
         GD.Print("HEALTH texture SIGNAL");
+    }
+    public void OnChangeMaxHealth(float value)
+    {
+        _ndHpBar.MaxValue = value;
+        
     }
 
     public void OnChangeMoney(float value)

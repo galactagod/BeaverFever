@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
+
 public class PlayerData : Node
 {
     #region Variables
@@ -92,6 +93,7 @@ public class PlayerData : Node
         public string textureRoute;
         //adding for skills
         public string type;
+        public string tooltip;
 
         public List<string> whichStat = new List<string>();
         public List<string> operatorOnStat = new List<string>();
@@ -113,6 +115,7 @@ public class PlayerData : Node
         public string type;
         public int level;
         public string textureRoute;
+        public string tooltip;
 
         public List<string> whichStat = new List<string>();
         public List<string> operatorOnStat = new List<string>();
@@ -134,6 +137,7 @@ public class PlayerData : Node
             type = another.type;
             level = another.level;
             textureRoute = another.textureRoute;
+            tooltip = another.tooltip;
             this.comingFrom = comingFrom;
         }
 
@@ -154,6 +158,7 @@ public class PlayerData : Node
             temp.type = type;
             temp.level = level;
             temp.textureRoute = textureRoute;
+            temp.tooltip = tooltip;
             return temp;
         }
     }
@@ -163,6 +168,7 @@ public class PlayerData : Node
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        playerStats = (PlayerStats)GetNode("/root/PlayerStats");
         //File IO
         //add a statement to actually write the file in if its not there
         string filepath = "user://playerStatsFile.json";
@@ -233,6 +239,7 @@ public class PlayerData : Node
             temp.equippedSlot = (string)item["equippedSlot"];
             temp.inventorySlot = Int32.Parse((string)item["inventorySlot"]);
             temp.ableToBeEquippedSlot = (string)item["ableToBeEquippedSlot"];
+            temp.tooltip = (string)item["tooltip"];
             foreach (Godot.Collections.Dictionary statEffect in (Godot.Collections.Array)item["itemEffects"])
             {
                 temp.whichStat.Add((string)statEffect["stat"]);
@@ -259,6 +266,7 @@ public class PlayerData : Node
             temp.inventorySlot = Int32.Parse((string)item["inventorySlot"]);
             temp.level = Int32.Parse((string)item["level"]);
             temp.ableToBeEquippedSlot = (string)item["ableToBeEquippedSlot"];
+            temp.tooltip = (string)item["tooltip"];
             foreach (Godot.Collections.Dictionary statEffect in (Godot.Collections.Array)item["itemEffects"])
             {
                 temp.whichStat.Add((string)statEffect["stat"]);
@@ -306,6 +314,10 @@ public class PlayerData : Node
             }
         }
 
+        playerStats.Muny = Muny;
+        playerStats.Exp = PlayerTotalPoints;
+        playerStats.ChangeExp(0);
+        playerStats.ChangeMaxHealth(PlayerHealth);
         RefreshStatFinals();
     }
     #endregion
@@ -418,7 +430,11 @@ public class PlayerData : Node
         }
         if(temp.equippedSlot != "none")
         {
-            statLine = statLine + "Equipped";
+            statLine = statLine + "Equipped" + "\n";
+        }
+        if(temp.tooltip != null)
+        {
+            statLine = statLine + temp.tooltip;
         }
         return statLine;
     }

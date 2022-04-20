@@ -11,33 +11,36 @@ public static class Global
     public static List<PlayerData.item> itemsAvaliable = new List<PlayerData.item> {
         new PlayerData.item {
         name = "Small Health Potion",
-        price = 600,
+        price = 300,
         texture = (Texture) GD.Load(assetRoute + "Small Health Potion.png"),
-        scale = new Vector2(1,1),
+        scale = new Vector2(3,3),
         equippable = true,
         equippedSlot = "none",
         ableToBeEquippedSlot = "Consumable",
-        type = "item"
+        type = "item",
+        tooltip = "Restores 10 Health"
         },
         new PlayerData.item {
-        name = "Small Health Potion",
+        name = "Medium Health Potion",
         price = 600,
-        texture = (Texture) GD.Load(assetRoute + "Small Health Potion.png"),
-        scale = new Vector2(1,1),
+        texture = (Texture) GD.Load(assetRoute + "Medium Health Potion.png"),
+        scale = new Vector2(3,3),
         equippable = true,
         equippedSlot = "none",
         ableToBeEquippedSlot = "Consumable",
-        type = "item"
+        type = "item",
+        tooltip = "Restores 30 Health"
         },
         new PlayerData.item {
-        name = "Small Health Potion",
-        price = 600,
-        texture = (Texture) GD.Load(assetRoute + "Small Health Potion.png"),
-        scale = new Vector2(1,1),
+        name = "Large Health Potion",
+        price = 900,
+        texture = (Texture) GD.Load(assetRoute + "Large Health Potion.png"),
+        scale = new Vector2(3,3),
         equippable = true,
         equippedSlot = "none",
         ableToBeEquippedSlot = "Consumable",
-        type = "item"
+        type = "item",
+        tooltip = "Restores 60 Health"
         }
 
     };

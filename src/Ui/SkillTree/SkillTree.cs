@@ -108,6 +108,7 @@ public class SkillTree: Node2D {
   // private string b = "text";
 
   PlayerData playerData;
+    PlayerStats playerStats;
 
   // Called when the node enters the scene tree for the first time.
   public override void _Ready() {
@@ -146,7 +147,9 @@ public class SkillTree: Node2D {
     this.regenerationLabel = this.GetNode < Label > ("Menu/Vertical Container/Tier_2 - passives/VBoxContainer2/VBoxContainer/regenerationLabel");
 
     playerData = GetNode < PlayerData > ("/root/PlayerData");
+    playerStats = GetNode<PlayerStats>("/root/PlayerStats");
     initializeButtons();
+    ResetLabel();
   }
 
     //done
@@ -397,47 +400,57 @@ public class SkillTree: Node2D {
 //done
   void upgradeRegeneration() {
     if (playerData.regenerationSkill < 3) {
-        playerData.regenerationSkill++;
+        switch (playerData.regenerationSkill)
+        {
+            case 0:
+                if (experiencePoints(1500))
+                {
+                    changeBtnTexture("res://assets/skills/passives/leaves/Leafs 1 Original.png", this.regenerationBtn);
+                }
+                else
+                {
+                    return;
+
+                }
+
+                break;
+
+            case 1:
+                if (experiencePoints(2500))
+                {
+                    changeBtnTexture("res://assets/skills/passives/leaves/Leafs 1 Mod 1.png", this.regenerationBtn);
+                }
+                else
+                {
+                    return;
+
+                }
+                break;
+
+            case 2:
+                if (experiencePoints(5000))
+                {
+                    changeBtnTexture("res://assets/skills/passives/leaves/Leafs Mod 1.png", this.regenerationBtn);
+                }
+                else
+                {
+                    return;
+
+                }
+                break;
+        }
+      playerData.regenerationSkill++;
       playerData.skillBought("Leaf Mod", playerData.regenerationSkill);
       this.regenerationLabel.Text = "Regeneration - Level " + playerData.regenerationSkill;
-
-    }
-
-    switch (playerData.regenerationSkill) {
-    case 1:
-      if (experiencePoints(1500)) {
-        changeBtnTexture("res://assets/skills/passives/leaves/Leafs 1 Original.png", this.regenerationBtn);
-      } else {
-      playerData.regenerationSkill--;
-
-      }
-
-      break;
-
-    case 2:
-      if (experiencePoints(2500)) {
-        changeBtnTexture("res://assets/skills/passives/leaves/Leafs 1 Mod 1.png", this.regenerationBtn);
-      } else {
-      playerData.regenerationSkill--;
-
-      }
-      break;
-
-    case 3:
-      if (experiencePoints(5000)) {
-        changeBtnTexture("res://assets/skills/passives/leaves/Leafs Mod 1.png", this.regenerationBtn);
-      } else {
-      playerData.regenerationSkill--;
-
-      }
-      break;
+      ResetLabel();
     }
   }
 
   bool experiencePoints(int xp) {
     bool unlocked = false;
-    if (playerData.PlayerTotalPoints >= xp) {
-      playerData.PlayerTotalPoints -= xp;
+    if (playerStats.Exp >= xp) {
+            playerStats.Exp -= xp;
+            playerStats.ChangeExp(0);
       unlocked = true;
     } else {
       GD.Print("Error, player does not have enough XP for this skill");
@@ -592,6 +605,12 @@ public class SkillTree: Node2D {
     }
 
   }
+
+    void ResetLabel()
+    {
+        Node label = GetNode("Menu/Vertical Container/Skill Points/VBoxContainer/RichTextLabel");
+        label.Set("text", playerStats.Exp.ToString());
+    }
 
   void changeBtnTexture(String texturePath, TextureButton textureButton) {
     Texture texture = (Texture) GD.Load(texturePath);
