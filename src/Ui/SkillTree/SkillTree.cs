@@ -214,7 +214,7 @@ public class SkillTree: Node2D {
                 }
                 else
                 {
-                    playerData.sliceSkill--;
+                    return;
 
                 }
 
@@ -227,7 +227,7 @@ public class SkillTree: Node2D {
                 }
                 else
                 {
-                    playerData.sliceSkill--;
+                    return;
 
                 }
 
@@ -239,7 +239,7 @@ public class SkillTree: Node2D {
                 }
                 else
                 {
-                    playerData.sliceSkill--;
+                    return;
 
                 }
                 break;
