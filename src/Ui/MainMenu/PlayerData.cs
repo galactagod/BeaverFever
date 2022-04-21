@@ -531,6 +531,7 @@ public class PlayerData : Node
             skillToChange.amountOnStat = skillPulled.amountOnStat;
             skillToChange.texture = skillPulled.texture;
             skillToChange.textureRoute = skillPulled.textureRoute;
+            skillToChange.tooltip = skillPulled.tooltip;
 
             if (skillToChange.equippedSlot != "none")
             {

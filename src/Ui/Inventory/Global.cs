@@ -47,7 +47,7 @@ public static class Global
 
     // A list of every skill avaliable, held as an "item" class
     public static List<PlayerData.item> skillsAvaliable = new List<PlayerData.item> {
-        //?
+        //Bubble burst = Attack Mod
         new PlayerData.item {
         name = "Attack Mod",
         level = 1,
@@ -59,7 +59,8 @@ public static class Global
         equippedSlot = "none",
         ableToBeEquippedSlot = "Skill",
         textureRoute = "res://assets/skills/strength/bubble burst/bubble burst tier 1.png",
-        type = "skill"
+        type = "skill",
+        tooltip = "Shoots a water projectile toward the target. Attack power: 30"
         },
         new PlayerData.item {
         name = "Attack Mod",
@@ -72,7 +73,8 @@ public static class Global
         equippedSlot = "none",
         ableToBeEquippedSlot = "Skill",
         textureRoute = "res://assets/skills/strength/bubble burst/bubble burst tier 2.png",
-        type = "skill"
+        type = "skill",
+        tooltip = "Shoots a water projectile toward the target. Attack power: 35"
         },
         new PlayerData.item {
         name = "Attack Mod",
@@ -85,7 +87,8 @@ public static class Global
         equippedSlot = "none",
         ableToBeEquippedSlot = "Skill",
         textureRoute = "res://assets/skills/strength/bubble burst/bubble burst tier 3.png",
-        type = "skill"
+        type = "skill",
+        tooltip = "Shoots a water projectile toward the target. Attack power: 45"
         },
         new PlayerData.item {
         name = "Rip Mod",

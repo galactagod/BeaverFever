@@ -76,6 +76,7 @@ public class SaveQuitButton : TextureButton
             temp.Add("textureRoute", item.textureRoute);
             temp.Add("level", item.level.ToString());
             temp.Add("type", item.type);
+            temp.Add("tooltip", item.tooltip);
             //Adding item effects
             Godot.Collections.Array itemEffects = new Godot.Collections.Array();
             for (int i = 0; i < item.whichStat.Count; i++)
