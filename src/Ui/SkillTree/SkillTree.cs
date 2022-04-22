@@ -11,7 +11,7 @@ public class SkillTree: Node2D {
   //          Skill Counter
   /***********************************/
 
-  // Strength 
+  // Strength: done
 
   // Slice - Tiers 3 tiers
   // Tier 1 - Attack power: 30, Exp Cost: 500

@@ -319,6 +319,16 @@ public class PlayerData : Node
         playerStats.ChangeExp(0);
         playerStats.ChangeMaxHealth(PlayerHealth);
         RefreshStatFinals();
+
+
+
+
+        //Purely for testing TAKE OUT
+        //foreach(var item in Global.itemTemplates)
+        //{
+        //    item.inventorySlot = inv.Count;
+        //    inv.Add(item);
+        //}
     }
     #endregion
 
