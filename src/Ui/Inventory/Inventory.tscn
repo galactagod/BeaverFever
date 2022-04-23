@@ -243,6 +243,8 @@ text = "Stats After Equips"
 margin_top = 23.0
 margin_right = 192.0
 margin_bottom = 42.0
+hint_tooltip = "Health starts at 20 by deault, conatins your current health / health stat + 20."
+mouse_filter = 0
 custom_fonts/font = SubResource( 3 )
 text = "HealthBar: "
 
@@ -250,6 +252,8 @@ text = "HealthBar: "
 margin_top = 46.0
 margin_right = 192.0
 margin_bottom = 65.0
+hint_tooltip = "Affects stomp attack."
+mouse_filter = 0
 custom_fonts/font = SubResource( 3 )
 text = "Attack: "
 
@@ -257,6 +261,8 @@ text = "Attack: "
 margin_top = 69.0
 margin_right = 192.0
 margin_bottom = 88.0
+hint_tooltip = "Reduces damage against physical attackers"
+mouse_filter = 0
 custom_fonts/font = SubResource( 3 )
 text = "Defense: "
 
@@ -264,6 +270,8 @@ text = "Defense: "
 margin_top = 92.0
 margin_right = 192.0
 margin_bottom = 111.0
+hint_tooltip = "Affects skill damage"
+mouse_filter = 0
 custom_fonts/font = SubResource( 3 )
 text = "SpAttack:"
 
@@ -271,6 +279,8 @@ text = "SpAttack:"
 margin_top = 115.0
 margin_right = 192.0
 margin_bottom = 134.0
+hint_tooltip = "Affects defense against ranged attackers"
+mouse_filter = 0
 custom_fonts/font = SubResource( 3 )
 text = "SpDefense: "
 
@@ -278,6 +288,8 @@ text = "SpDefense: "
 margin_top = 138.0
 margin_right = 192.0
 margin_bottom = 157.0
+hint_tooltip = "Affects amount of stamina"
+mouse_filter = 0
 custom_fonts/font = SubResource( 3 )
 text = "Stamina: "
 
@@ -285,6 +297,8 @@ text = "Stamina: "
 margin_top = 161.0
 margin_right = 192.0
 margin_bottom = 180.0
+hint_tooltip = "Boosts max health"
+mouse_filter = 0
 custom_fonts/font = SubResource( 3 )
 text = "Health: "
 
