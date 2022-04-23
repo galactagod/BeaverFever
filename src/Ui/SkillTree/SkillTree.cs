@@ -246,12 +246,12 @@ public class SkillTree: Node2D {
         }
         playerData.sliceSkill++;
         playerData.skillBought("Rip Mod", playerData.sliceSkill);
-        this.sliceLabel.Text = "Slice - Level " + playerData.sliceSkill;
-        ResetLabel();
+            this.sliceLabel.Text = "Slice - Level " + playerData.sliceSkill;
+            ResetLabel();
+    }
     }
 
     
-  }
 
   void upgradeCrunch() {
     if (playerData.crunchSkill < 3) {
@@ -300,8 +300,7 @@ public class SkillTree: Node2D {
         ResetLabel();
     }
 
-    
-  }
+    }
 
     //done
   void upgradeAegis() {
@@ -348,7 +347,7 @@ public class SkillTree: Node2D {
         playerData.aegisSkill++;
         playerData.skillBought("Body Mod", playerData.aegisSkill);
         this.aegisLabel.Text = "Aegis - Level " + playerData.aegisSkill;
-        ResetLabel();
+            ResetLabel();
     }
 
     
@@ -401,8 +400,8 @@ public class SkillTree: Node2D {
         playerData.skillBought("Boots Mod", playerData.accelerateSkill);
         this.accelerateLabel.Text = "Accelerate - Level " + playerData.accelerateSkill;
         ResetLabel();
-    } 
-  }
+    }
+    }
 
     //done
   void upgradeGrace() {
@@ -450,7 +449,7 @@ public class SkillTree: Node2D {
         playerData.graceSkill++;
         playerData.skillBought("Book Mod", playerData.graceSkill);
         this.graceLabel.Text = "Wisdom - Level " + playerData.graceSkill;
-        ResetLabel();
+            ResetLabel();
     }
 
    
@@ -502,7 +501,7 @@ public class SkillTree: Node2D {
       playerData.regenerationSkill++;
       playerData.skillBought("Leaf Mod", playerData.regenerationSkill);
       this.regenerationLabel.Text = "Regeneration - Level " + playerData.regenerationSkill;
-      ResetLabel();
+            ResetLabel();
     }
   }
 
@@ -664,7 +663,15 @@ public class SkillTree: Node2D {
       break;
     }
 
-  }
+    this.regenerationLabel.Text = "Regeneration - Level " + playerData.regenerationSkill;
+    this.graceLabel.Text = "Wisdom - Level " + playerData.graceSkill;
+    this.aegisLabel.Text = "Aegis - Level " + playerData.aegisSkill;
+    this.bubbleBurstLabel.Text = "Bubble Burst - Level " + playerData.bubbleBurstSkill;
+    this.sliceLabel.Text = "Slice - Level " + playerData.sliceSkill;
+    this.crunchLabel.Text = "Crunch - Level " + playerData.crunchSkill;
+    this.accelerateLabel.Text = "Accelerate - Level " + playerData.accelerateSkill;
+
+    }
 
     void ResetLabel()
     {
