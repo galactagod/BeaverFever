@@ -512,7 +512,71 @@ public static class Global
         ableToBeEquippedSlot = "Weapon",
         type = "item",
         tooltip = "Ill intentions leak from this staff forged from the evil vines of the forest."
+        },
+        new PlayerData.item {
+        name = "Beaver Tribe Horn",
+        texture = (Texture) GD.Load(assetRoute + "Beaver Tribe Horn.png"),
+        scale = new Vector2(3,3),
+        amountOnStat = new List<string> {"10","10"},
+        whichStat = new List<string> {"Attack", "Defense"},
+        operatorOnStat = new List<string> {"+", "+"},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Talisman",
+        type = "item",
+        tooltip = "The ancient talisman of the Beaver Tribe. Holds ferocious energy."
+        },
+        new PlayerData.item {
+        name = "Amulet of Malice",
+        texture = (Texture) GD.Load(assetRoute + "Amulet of Malice.png"),
+        scale = new Vector2(3,3),
+        amountOnStat = new List<string> {"20"},
+        whichStat = new List<string> {"Attack"},
+        operatorOnStat = new List<string> {"+"},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Necklace",
+        type = "item",
+        tooltip = "A necklace forged from the willpower of ill intentions."
+        },
+        new PlayerData.item {
+        name = "Amulet of Mixed Madness",
+        texture = (Texture) GD.Load(assetRoute + "Amulet of Mixed Madness.png"),
+        scale = new Vector2(3,3),
+        amountOnStat = new List<string> {"15", "15"},
+        whichStat = new List<string> {"Attack", "SpAttack"},
+        operatorOnStat = new List<string> {"+","+"},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Necklace",
+        type = "item",
+        tooltip = "This necklace overflows with offensive power."
+        },
+        new PlayerData.item {
+        name = "Talisman of Mixed Madness",
+        texture = (Texture) GD.Load(assetRoute + "Talisman of Mixed Madness.png"),
+        scale = new Vector2(3,3),
+        amountOnStat = new List<string> {"15", "15"},
+        whichStat = new List<string> {"Attack", "SpAttack"},
+        operatorOnStat = new List<string> {"+","+"},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Talisman",
+        type = "item",
+        tooltip = "This heirloom overflows with offensive power."
+        },
+        new PlayerData.item {
+        name = "Ring of Malice",
+        texture = (Texture) GD.Load(assetRoute + "Ring of Malice.png"),
+        scale = new Vector2(3,3),
+        amountOnStat = new List<string> {"20"},
+        whichStat = new List<string> {"SpAttack"},
+        operatorOnStat = new List<string> {"+"},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Talisman",
+        type = "item",
+        tooltip = "Made from the malice of snakes, this ring contains evil power beyond comprehention."
         }
-
     };
 }

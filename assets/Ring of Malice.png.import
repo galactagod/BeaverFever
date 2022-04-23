@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Icon14.png-9121f7a653137c84000892f1f4cf2e4e.stex"
+path="res://.import/Ring of Malice.png-5ed23291f0a4756a6de8d6811bd049e7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Icon14.png"
-dest_files=[ "res://.import/Icon14.png-9121f7a653137c84000892f1f4cf2e4e.stex" ]
+source_file="res://assets/Ring of Malice.png"
+dest_files=[ "res://.import/Ring of Malice.png-5ed23291f0a4756a6de8d6811bd049e7.stex" ]
 
 [params]
 

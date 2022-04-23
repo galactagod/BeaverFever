@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Icon48.png-95d103751dc5102a61e31bffa516ee87.stex"
+path="res://.import/Amulet of Malice.png-ad1df1a8fdb8afeb90f382147a3530f9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Icon48.png"
-dest_files=[ "res://.import/Icon48.png-95d103751dc5102a61e31bffa516ee87.stex" ]
+source_file="res://assets/Amulet of Malice.png"
+dest_files=[ "res://.import/Amulet of Malice.png-ad1df1a8fdb8afeb90f382147a3530f9.stex" ]
 
 [params]
 

@@ -324,11 +324,11 @@ public class PlayerData : Node
 
 
         //Purely for testing TAKE OUT
-        //foreach(var item in Global.itemTemplates)
-        //{
-        //    item.inventorySlot = inv.Count;
-        //    inv.Add(item);
-        //}
+        foreach (var item in Global.itemTemplates)
+        {
+            item.inventorySlot = inv.Count;
+            inv.Add(item);
+        }
     }
     #endregion
 

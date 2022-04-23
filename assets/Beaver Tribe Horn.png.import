@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Icon26.png-3a21d32d2ce72bd560cf51b204232e97.stex"
+path="res://.import/Beaver Tribe Horn.png-d6733b64c83d5ef9ce6600fe0f8e09d9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Icon26.png"
-dest_files=[ "res://.import/Icon26.png-3a21d32d2ce72bd560cf51b204232e97.stex" ]
+source_file="res://assets/Beaver Tribe Horn.png"
+dest_files=[ "res://.import/Beaver Tribe Horn.png-d6733b64c83d5ef9ce6600fe0f8e09d9.stex" ]
 
 [params]
 
