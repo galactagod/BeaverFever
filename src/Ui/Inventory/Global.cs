@@ -579,4 +579,98 @@ public static class Global
         tooltip = "Made from the malice of snakes, this ring contains evil power beyond comprehention."
         }
     };
+
+    public static List<EnemyTemplate> enemyTemplates = new List<EnemyTemplate>
+    {
+        new EnemyTemplate
+        {
+            name = "GrayWolf",
+            level = 1,
+            health = 10,
+            attack = 3,
+            defense = 5,
+            spAttack = 3,
+            spDefense = 5
+        },
+        new EnemyTemplate
+        {
+            name = "GrayWolf",
+            level = 2,
+            health = 14,
+            attack = 7,
+            defense = 5,
+            spAttack = 7,
+            spDefense = 5
+        },
+        new EnemyTemplate
+        {
+            name = "GrayWolf",
+            level = 3,
+            health = 16,
+            attack = 12,
+            defense = 5,
+            spAttack = 12,
+            spDefense = 5
+        },
+        new EnemyTemplate
+        {
+            name = "Snake",
+            level = 1,
+            health = 6,
+            attack = 7,
+            defense = 1,
+            spAttack = 7,
+            spDefense = 1
+        },
+        new EnemyTemplate
+        {
+            name = "Snake",
+            level = 2,
+            health = 9,
+            attack = 9,
+            defense = 2,
+            spAttack = 9,
+            spDefense = 2
+        },
+        new EnemyTemplate
+        {
+            name = "Snake",
+            level = 3,
+            health = 11,
+            attack = 11,
+            defense = 3,
+            spAttack = 11,
+            spDefense = 3
+        },
+        new EnemyTemplate
+        {
+            name = "BrownBear",
+            level = 1,
+            health = 10,
+            attack = 10,
+            defense = 4,
+            spAttack = 10,
+            spDefense = 4
+        },
+        new EnemyTemplate
+        {
+            name = "BrownBear",
+            level = 2,
+            health = 15,
+            attack = 15,
+            defense = 6,
+            spAttack = 15,
+            spDefense = 6
+        },
+        new EnemyTemplate
+        {
+            name = "BrownBear",
+            level = 3,
+            health = 20,
+            attack = 20,
+            defense = 8,
+            spAttack = 20,
+            spDefense = 8
+        }
+    };
 }

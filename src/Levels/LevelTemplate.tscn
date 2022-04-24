@@ -12,7 +12,7 @@
 [ext_resource path="res://src/Objects/Items/Coins/SilverCoin.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/Ui/MainMenu/MasterUI.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/Objects/Enemy/BrownBear/BrownBear.tscn" type="PackedScene" id=12]
-[ext_resource path="res://src/Levels/LevelTemplate.cs" type="Script" id=13]
+[ext_resource path="res://src/Levels/LevelStart.cs" type="Script" id=13]
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
 points = PoolVector2Array( 0, 10, 90, 10, 90, 30, 0, 30 )
@@ -236,6 +236,7 @@ points = PoolVector2Array( 0, 10, 30, 10, 30, 30, 0, 30 )
 
 [node name="LevelTemplate" type="Node"]
 script = ExtResource( 13 )
+levelName = "LevelTemplate"
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
