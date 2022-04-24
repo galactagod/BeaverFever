@@ -68,41 +68,41 @@ public class MainStatPage : Control
     public override void _Ready()
     {
         // Add and Subtract Buttons
-        var attackSubtractButton = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground/SubtractAttackButton");
+        var attackSubtractButton = GetNode("Background/VBoxContainer/HBoxContainer/TextureRect/MainStats/StatBackground/SubtractAttackButton");
         attackSubtractButton.Connect("statPointsSubtract", this, "subtractStats");
         
-        var attackAddButton = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground/AddAttackButton");
+        var attackAddButton = GetNode("Background/VBoxContainer/HBoxContainer/TextureRect/MainStats/StatBackground/AddAttackButton");
         attackAddButton.Connect("statPointsAdd", this, "addStats");
 
-        var defenseSubtractButton = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground2/SubtractDefenseButton");
+        var defenseSubtractButton = GetNode("Background/VBoxContainer/HBoxContainer/TextureRect/MainStats/StatBackground2/SubtractDefenseButton");
         defenseSubtractButton.Connect("statPointsSubtract", this, "subtractStats");
 
-        var defenseAddButton = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground2/AddDefenseButton");
+        var defenseAddButton = GetNode("Background/VBoxContainer/HBoxContainer/TextureRect/MainStats/StatBackground2/AddDefenseButton");
         defenseAddButton.Connect("statPointsAdd", this, "addStats");
 
-        var specialAttackSubtractButton = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground3/SubtractSpecialAttackButton");
+        var specialAttackSubtractButton = GetNode("Background/VBoxContainer/HBoxContainer/TextureRect/MainStats/StatBackground3/SubtractSpecialAttackButton");
         specialAttackSubtractButton.Connect("statPointsSubtract", this, "subtractStats");
 
-        var specialAttackAddButton = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground3/AddSpecialAttackButton");
+        var specialAttackAddButton = GetNode("Background/VBoxContainer/HBoxContainer/TextureRect/MainStats/StatBackground3/AddSpecialAttackButton");
         specialAttackAddButton.Connect("statPointsAdd", this, "addStats");
 
-        var specialDefenseSubtractButton = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground4/SubtractSpecialDefenseButton");
+        var specialDefenseSubtractButton = GetNode("Background/VBoxContainer/HBoxContainer/TextureRect/MainStats/StatBackground4/SubtractSpecialDefenseButton");
         specialDefenseSubtractButton.Connect("statPointsSubtract", this, "subtractStats");
 
-        var specialDefenseAddButton = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground4/AddSpecialDefenseButton");
+        var specialDefenseAddButton = GetNode("Background/VBoxContainer/HBoxContainer/TextureRect/MainStats/StatBackground4/AddSpecialDefenseButton");
         specialDefenseAddButton.Connect("statPointsAdd", this, "addStats");
 
-        var healthSubtractButton = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground5/SubtractHealthPoints");
+        var healthSubtractButton = GetNode("Background/VBoxContainer/HBoxContainer/TextureRect/MainStats/StatBackground5/SubtractHealthPoints");
         healthSubtractButton.Connect("statPointsSubtract", this, "subtractStats");
 
-        var healthAddButton = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground5/AddHealthPoints");
+        var healthAddButton = GetNode("Background/VBoxContainer/HBoxContainer/TextureRect/MainStats/StatBackground5/AddHealthPoints");
         healthAddButton.Connect("statPointsAdd", this, "addStats");
 
 
-        var staminaSubtractButton = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground6/SubtractStaminaPoints");
+        var staminaSubtractButton = GetNode("Background/VBoxContainer/HBoxContainer/TextureRect/MainStats/StatBackground6/SubtractStaminaPoints");
         staminaSubtractButton.Connect("statPointsSubtract", this, "subtractStats");
 
-        var staminaAddButton = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground6/AddStaminaPoints");
+        var staminaAddButton = GetNode("Background/VBoxContainer/HBoxContainer/TextureRect/MainStats/StatBackground6/AddStaminaPoints");
         staminaAddButton.Connect("statPointsAdd", this, "addStats");
 
 
@@ -215,7 +215,7 @@ public class MainStatPage : Control
         if(type == "Attack")
         {
             attackStatPoints++;
-            Node attackPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground/Label");
+            Node attackPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/TextureRect/MainStats/StatBackground/Label");
             attackPointsLabel.Set("text", "AttackPoints: " + attackStatPoints);
             totalStatPoints-= playerData.EXPNeeded(level);
             //total Stat Points - requiredPoints()
@@ -232,7 +232,7 @@ public class MainStatPage : Control
         else if (type == "Defense")
         {
             defenseStatPoints++;
-            Node defensePointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground2/Label");
+            Node defensePointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/TextureRect/MainStats/StatBackground2/Label");
             defensePointsLabel.Set("text", "DefensePoints: " + defenseStatPoints);
             totalStatPoints -= playerData.EXPNeeded(level);
             Node statPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/TotalStat");
@@ -249,7 +249,7 @@ public class MainStatPage : Control
         else if (type == "SpecialAttack")
         {
             specialAttackStatPoints++;
-            Node specialAttackPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground3/Label");
+            Node specialAttackPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/TextureRect/MainStats/StatBackground3/Label");
             specialAttackPointsLabel.Set("text", "SpecialAttackPoints: " + specialAttackStatPoints);
             totalStatPoints -= playerData.EXPNeeded(level);
             Node statPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/TotalStat");
@@ -265,7 +265,7 @@ public class MainStatPage : Control
         else if (type == "SpecialDefense")
         {
             specialDefenseStatPoints++;
-            Node specialDefensePointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground4/Label");
+            Node specialDefensePointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/TextureRect/MainStats/StatBackground4/Label");
             specialDefensePointsLabel.Set("text", "Special Defense Points: " + specialDefenseStatPoints);
             totalStatPoints -= playerData.EXPNeeded(level);
             Node statPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/TotalStat");
@@ -281,7 +281,7 @@ public class MainStatPage : Control
         else if (type == "Health")
         {
             healthStatPoints++;
-            Node healthPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground5/Label");
+            Node healthPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/TextureRect/MainStats/StatBackground5/Label");
             healthPointsLabel.Set("text", "HealthPoints: " + healthStatPoints);
             totalStatPoints -= playerData.EXPNeeded(level);
             Node statPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/TotalStat");
@@ -297,7 +297,7 @@ public class MainStatPage : Control
         else if (type == "Stamina")
         {
             staminaStatPoints++;
-            Node staminaPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground6/Label");
+            Node staminaPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/TextureRect/MainStats/StatBackground6/Label");
             staminaPointsLabel.Set("text", "StaminaPoints: " + staminaStatPoints);
             totalStatPoints -= playerData.EXPNeeded(level);
             Node statPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/TotalStat");
@@ -319,7 +319,7 @@ public class MainStatPage : Control
         if (type == "Attack")
         {
             attackStatPoints--;
-            Node attackPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground/Label");
+            Node attackPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/TextureRect/MainStats/StatBackground/Label");
             attackPointsLabel.Set("text", "AttackPoints: " + attackStatPoints);
             level--;
             totalStatPoints += playerData.EXPNeeded(level);
@@ -335,7 +335,7 @@ public class MainStatPage : Control
         else if (type == "Defense")
         {
             defenseStatPoints--;
-            Node defensePointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground2/Label");
+            Node defensePointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/TextureRect/MainStats/StatBackground2/Label");
             defensePointsLabel.Set("text", "DefensePoints: " + defenseStatPoints);
             level--;
             totalStatPoints += playerData.EXPNeeded(level);
@@ -351,7 +351,7 @@ public class MainStatPage : Control
         else if (type == "SpecialAttack")
         {
             specialAttackStatPoints--;
-            Node specialAttackPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground3/Label");
+            Node specialAttackPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/TextureRect/MainStats/StatBackground3/Label");
             specialAttackPointsLabel.Set("text", "SpecialAttackPoints: " + specialAttackStatPoints);
             level--;
             totalStatPoints += playerData.EXPNeeded(level);
@@ -367,7 +367,7 @@ public class MainStatPage : Control
         else if (type == "SpecialDefense")
         {
             specialDefenseStatPoints--;
-            Node specialDefensePointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground4/Label");
+            Node specialDefensePointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/TextureRect/MainStats/StatBackground4/Label");
             specialDefensePointsLabel.Set("text", "Special Defense Points: " + specialDefenseStatPoints);
             level--;
             totalStatPoints += playerData.EXPNeeded(level);
@@ -383,7 +383,7 @@ public class MainStatPage : Control
         else if (type == "Health")
         {
             healthStatPoints--;
-            Node healthPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground5/Label");
+            Node healthPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/TextureRect/MainStats/StatBackground5/Label");
             healthPointsLabel.Set("text", "HealthPoints: " + healthStatPoints);
             level--;
             totalStatPoints += playerData.EXPNeeded(level);
@@ -399,7 +399,7 @@ public class MainStatPage : Control
         else if (type == "Stamina")
         {
             staminaStatPoints--;
-            Node staminaPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground6/Label");
+            Node staminaPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/TextureRect/MainStats/StatBackground6/Label");
             staminaPointsLabel.Set("text", "StaminaPoints: " + staminaStatPoints);
             level--;
             totalStatPoints += playerData.EXPNeeded(level);
@@ -464,18 +464,18 @@ public class MainStatPage : Control
         Node attackLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/Attack");
         attackLabel.Set("text", "Attack: " + attack);
 
-        Node attackPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground/Label");
+        Node attackPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/TextureRect/MainStats/StatBackground/Label");
         attackPointsLabel.Set("text", "AttackPoints: " + attackStatPoints);
 
         // Defense
         Node defenseLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/Defense");
         defenseLabel.Set("text", "Defense: " + defense);
 
-        Node defensePointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground2/Label");
+        Node defensePointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/TextureRect/MainStats/StatBackground2/Label");
         defensePointsLabel.Set("text", "DefensePoints: " + defenseStatPoints);
 
         //Special Attack
-        Node specialAttackPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground3/Label");
+        Node specialAttackPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/TextureRect/MainStats/StatBackground3/Label");
         specialAttackPointsLabel.Set("text", "SpecialAttackPoints: " + specialAttackStatPoints);
 
         Node specialAttackLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/SpAttack");
@@ -485,21 +485,21 @@ public class MainStatPage : Control
         Node specialDefenseLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/SpDefense");
         specialDefenseLabel.Set("text", "Special Defense: " + specialDefense);
 
-        Node specialDefensePointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground4/Label");
+        Node specialDefensePointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/TextureRect/MainStats/StatBackground4/Label");
         specialDefensePointsLabel.Set("text", "Special Defense Points: " + specialDefenseStatPoints);
 
         //Stamina
         Node staminaLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/Stamina");
         staminaLabel.Set("text", "Stamina: " + stamina);
 
-        Node staminaPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground6/Label");
+        Node staminaPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/TextureRect/MainStats/StatBackground6/Label");
         staminaPointsLabel.Set("text", "StaminaPoints: " + staminaStatPoints);
 
         //Health
         Node healthLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/Health");
         healthLabel.Set("text", "Health: " + health);
 
-        Node healthPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/MainStats/StatBackground5/Label");
+        Node healthPointsLabel = GetNode("Background/VBoxContainer/HBoxContainer/TextureRect/MainStats/StatBackground5/Label");
         healthPointsLabel.Set("text", "HealthPoints: " + healthStatPoints);
 
         Node levelLabel = GetNode("Background/VBoxContainer/HBoxContainer/StatBackground7/VBoxContainer/Level");
