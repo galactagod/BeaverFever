@@ -36,4 +36,10 @@ public class DialogueManager : Node
     {
         return bossDialogue[interval];
     }
+
+    //Allows remote access to exposition dialogue
+    public string getExpositionLine(int interval)
+    {
+        return expositionDialogue[interval];
+    }
 }
