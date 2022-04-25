@@ -21,6 +21,10 @@ public class LevelControl : Node
     public string rootPath = "/root/LevelTemplate/CanvasLayer/Control/";
     public string controlPath = "/root/LevelTemplate/CanvasLayer/Control";
 
+    public string nameOfCurrentScene { get; set; }
+
+    private Node playerUIConstant;
+    private DialogueManager dialogueManager;
     public override void _Ready()
     {
         // create the audio files for music and effects
@@ -44,6 +48,8 @@ public class LevelControl : Node
         }
 
         PauseMode = PauseModeEnum.Process;
+
+        dialogueManager = GetNode<DialogueManager>("/root/DialogueManager");
     }
 
     public override void _Process(float delta)
@@ -88,9 +94,26 @@ public class LevelControl : Node
 
     public void changeLevel(string sceneName)
     {
+        Console.WriteLine("we hit here");
+        nameOfCurrentScene = sceneName;
+        Console.WriteLine("name" + nameOfCurrentScene);
         //add a canvas layer and control to the level template and 
         rootPath = "/root/" + sceneName + "/CanvasLayer/Control/";
         controlPath = "/root/" + sceneName + "/CanvasLayer/Control";
+        //var node = GetNode("/root/" + sceneName);
+        //if(playerUIConstant != null)
+        //{
+        //    Console.WriteLine("Im here too");
+        //    node.AddChild(playerUIConstant);
+        //}
+    }
+
+
+    public void LevelChange(PackedScene teleportTo)
+    {
+        //playerUIConstant = GetNode("/root/" + nameOfCurrentScene + "/PlayerUi");
+        //Console.WriteLine("I hit here");
+        GetTree().ChangeSceneTo(teleportTo);
     }
 
     // use the five sfx players to prioritize playing most recent sounds

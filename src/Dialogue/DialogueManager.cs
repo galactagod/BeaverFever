@@ -17,6 +17,20 @@ public class DialogueManager : Control
 
     public List<InterfaceSelection> Selections = new List<InterfaceSelection>();
 
+    public List<String> TutorialLabels = new List<string>
+    {
+        "Use the up arrow to jump",
+        "When in the menu, hover over something to see what it does",
+        "Click escape to access the menu",
+        "Jump on creatures to kill them",
+        "Run into coins to collect them"
+    };
+
+    Popup PopUp;
+    Label PopUpLabel;
+
+    LevelControl levelControl;
+
     //Is the dialogue menu open?
     private bool isDialogueUp;
 
@@ -26,7 +40,7 @@ public class DialogueManager : Control
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        
+        levelControl = GetNode<LevelControl>("/root/LevelControl");
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.

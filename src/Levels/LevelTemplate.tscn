@@ -1,9 +1,9 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://src/Objects/Player/ObjPlayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Assets/Tiles/Forest A ts.png" type="Texture" id=2]
 [ext_resource path="res://src/Objects/Enemy/GrayWolf/GrayWolf.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/Ui/OverWorldUi/PlayerUi.tscn" type="PackedScene" id=4]
+[ext_resource path="res://PopUpScene.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Assets/Backgrounds/forest A background.png" type="Texture" id=5]
 [ext_resource path="res://src/Assets/Backgrounds/sky backgroundB.png" type="Texture" id=6]
 [ext_resource path="res://src/Objects/Enemy/Snake/Snake.tscn" type="PackedScene" id=7]
@@ -13,6 +13,7 @@
 [ext_resource path="res://src/Ui/MainMenu/MasterUI.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/Objects/Enemy/BrownBear/BrownBear.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/Levels/LevelStart.cs" type="Script" id=13]
+[ext_resource path="res://LevelTeleporter.tscn" type="PackedScene" id=14]
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
 points = PoolVector2Array( 0, 10, 90, 10, 90, 30, 0, 30 )
@@ -301,8 +302,6 @@ position = Vector2( 0, -8 )
 [node name="CollStomp" parent="ObjPlayer/StompDetector" index="0"]
 position = Vector2( 4.5, 4 )
 
-[node name="PlayerUi" parent="." instance=ExtResource( 4 )]
-
 [node name="Snake" parent="." instance=ExtResource( 7 )]
 position = Vector2( 2712, 24 )
 
@@ -319,10 +318,10 @@ position = Vector2( 3844, 131 )
 position = Vector2( 4269, -152 )
 
 [node name="Snake6" parent="." instance=ExtResource( 7 )]
-position = Vector2( 4420, -152 )
+position = Vector2( 4309, -150 )
 
 [node name="Snake7" parent="." instance=ExtResource( 7 )]
-position = Vector2( 4489, -157 )
+position = Vector2( 4354, -154 )
 
 [node name="coins" type="Node" parent="."]
 
@@ -364,6 +363,12 @@ position = Vector2( 2696, -344 )
 
 [node name="SilverCoin3" parent="coins" instance=ExtResource( 10 )]
 position = Vector2( 2696, -384 )
+
+[node name="SilverCoin4" parent="coins" instance=ExtResource( 10 )]
+position = Vector2( 2350, -111 )
+
+[node name="SilverCoin5" parent="coins" instance=ExtResource( 10 )]
+position = Vector2( 2350, -151 )
 
 [node name="GoldCoin2" parent="coins" instance=ExtResource( 9 )]
 position = Vector2( 1162, -20 )
@@ -422,6 +427,129 @@ position = Vector2( 4182, -230 )
 [node name="GoldCoin20" parent="coins" instance=ExtResource( 9 )]
 position = Vector2( 4184, -191 )
 
+[node name="GoldCoin21" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 4429, -253 )
+
+[node name="GoldCoin22" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 4429, -215 )
+
+[node name="GoldCoin23" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 4431, -176 )
+
+[node name="GoldCoin24" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 4466, -254 )
+
+[node name="GoldCoin25" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 4466, -216 )
+
+[node name="GoldCoin26" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 4468, -177 )
+
+[node name="GoldCoin27" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 4501, -255 )
+
+[node name="GoldCoin28" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 4501, -217 )
+
+[node name="GoldCoin29" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 4503, -178 )
+
+[node name="GoldCoin30" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 4729, 76 )
+
+[node name="GoldCoin31" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 5029, -698 )
+
+[node name="GoldCoin32" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 4228, -583 )
+
+[node name="GoldCoin33" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 2698, -308 )
+
+[node name="GoldCoin34" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 4312, -579 )
+
+[node name="GoldCoin35" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 2395, -257 )
+
+[node name="GoldCoin36" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 5247, -761 )
+
+[node name="GoldCoin37" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 4667, -632 )
+
+[node name="GoldCoin38" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 4652, 73 )
+
+[node name="GoldCoin40" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 3330, 127 )
+
+[node name="GoldCoin41" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 4691, 74 )
+
+[node name="GoldCoin42" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 3512, -128 )
+
+[node name="GoldCoin43" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 1671, -173 )
+
+[node name="GoldCoin45" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 3353, -56 )
+
+[node name="GoldCoin48" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 4069, 126 )
+
+[node name="GoldCoin49" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 4106, 125 )
+
+[node name="GoldCoin50" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 4141, 124 )
+
+[node name="GoldCoin51" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 4860, 116 )
+
+[node name="GoldCoin60" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 3080, -410 )
+
+[node name="GoldCoin61" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 3868, -531 )
+
+[node name="GoldCoin62" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 3465, -472 )
+
+[node name="GoldCoin63" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 4270, -578 )
+
+[node name="GoldCoin52" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 4902, 111 )
+
+[node name="GoldCoin53" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 4949, 116 )
+
+[node name="GoldCoin54" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 4653, 120 )
+
+[node name="GoldCoin55" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 4690, 119 )
+
+[node name="GoldCoin56" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 4725, 118 )
+
+[node name="GoldCoin57" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 4899, 67 )
+
+[node name="GoldCoin58" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 4946, 68 )
+
+[node name="GoldCoin59" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 4852, 69 )
+
+[node name="GoldCoin46" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 3290, 128 )
+
+[node name="GoldCoin47" parent="coins" instance=ExtResource( 9 )]
+position = Vector2( 1630, -177 )
+
 [node name="BrownBear" parent="." instance=ExtResource( 12 )]
 position = Vector2( 1904, -184 )
 
@@ -437,5 +565,20 @@ __meta__ = {
 }
 
 [node name="Control" parent="CanvasLayer/Control" instance=ExtResource( 11 )]
+
+[node name="Snake8" parent="." instance=ExtResource( 7 )]
+position = Vector2( 4269, -152 )
+
+[node name="Snake9" parent="." instance=ExtResource( 7 )]
+position = Vector2( 4309, -150 )
+
+[node name="Snake10" parent="." instance=ExtResource( 7 )]
+position = Vector2( 4354, -154 )
+
+[node name="PopUpCanvas" parent="." instance=ExtResource( 4 )]
+
+[node name="LevelTeleporter" parent="." instance=ExtResource( 14 )]
+position = Vector2( 6078, -820 )
+levelToGo = "res://src/Levels/ExtraLevelTrevor.tscn"
 
 [editable path="ObjPlayer"]
