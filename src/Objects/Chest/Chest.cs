@@ -3,7 +3,7 @@ using System;
 
 public class Chest: Node
 {
-    [Export] private int id = "A";
+    [Export] private int id = 0;
 
     //id will always be the first item in the arraylist
     private int idpos = 0;
@@ -23,17 +23,17 @@ public class Chest: Node
 
         bool flag = false;
 
-        for(int i=0; i < _ndEventManager.chestEventList.Size; i++)
+        for(int i=0; i < _ndEventManager.chestEventList.Count; i++)
         {
-            if(_ndEventManager.chestEventList[i][idpos] == id)
+            if(_ndEventManager.chestEventList[i].Id == id)
             {
                 //opened status will always be in the second position
-                opened = _ndEventManager.chestEventList[i][openedpos];
+                opened = _ndEventManager.chestEventList[i].Opened;
                 flag = true;
             }
         }
 
-        if(flag = false)
+        if(!flag)
         {
             _ndEventManager.createChest(id);
         }
@@ -46,6 +46,9 @@ public class Chest: Node
 
     public void openChest(int id)
     {
-        _ndEventManager.chestEventList[id][openedpos] = true;
+
+        var a = _ndEventManager.chestEventList[id];
+        a.Opened = true;
+        _ndEventManager.chestEventList[id] = a;
     }
 }
