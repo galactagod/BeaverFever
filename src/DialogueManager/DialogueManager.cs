@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public class DialogueManager : Node
+public class DialogueManager
 {
     //List containing all dialogue lines for the boss
     List<string> bossDialogue = new List<string>
@@ -22,15 +22,14 @@ public class DialogueManager : Node
         "After our hero's brave journey, the dam was once again at peace."
     };
 
-    public override void _Ready()
+    List<string> tutorialDialogue = new List<string>
     {
-
-    }
-
-    public override void _Process(float delta)
-    {
-        
-    }
+        "Use the up arrow to jump.",
+        "Tooltips in menu will help you, hover over tabs to see them.",
+        "Click ESC key to access the menu.",
+        "Jump on enemies to kill them and get XP.",
+        "Walk into coins to collect them."
+    };
 
     //Allows remote access to boss dialogue
     public string getBossLine(int interval)
@@ -42,5 +41,10 @@ public class DialogueManager : Node
     public string getExpositionLine(int interval)
     {
         return expositionDialogue[interval];
+    }
+
+    public string getTutorialLine(int interval)
+    {
+        return tutorialDialogue[interval];
     }
 }

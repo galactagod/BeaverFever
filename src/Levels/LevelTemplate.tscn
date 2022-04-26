@@ -1,16 +1,15 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://src/Objects/Player/ObjPlayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Assets/Tiles/Forest A ts.png" type="Texture" id=2]
 [ext_resource path="res://src/Objects/Enemy/GrayWolf/GrayWolf.tscn" type="PackedScene" id=3]
-[ext_resource path="res://PopUpScene.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Assets/Backgrounds/forest A background.png" type="Texture" id=5]
 [ext_resource path="res://src/Assets/Backgrounds/sky backgroundB.png" type="Texture" id=6]
 [ext_resource path="res://src/Objects/Enemy/Snake/Snake.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/Objects/Items/Coins/CopperCoin.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/Objects/Items/Coins/GoldCoin.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/Objects/Items/Coins/SilverCoin.tscn" type="PackedScene" id=10]
-[ext_resource path="res://src/Ui/MainMenu/MasterUI.tscn" type="PackedScene" id=11]
+[ext_resource path="res://NecessaryUIForLevelScene.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/Objects/Enemy/BrownBear/BrownBear.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/Levels/LevelStart.cs" type="Script" id=13]
 [ext_resource path="res://LevelTeleporter.tscn" type="PackedScene" id=14]
@@ -551,19 +550,6 @@ position = Vector2( 1630, -177 )
 [node name="BrownBear" parent="." instance=ExtResource( 12 )]
 position = Vector2( 1904, -184 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-pause_mode = 2
-
-[node name="Control" type="Control" parent="CanvasLayer"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Control" parent="CanvasLayer/Control" instance=ExtResource( 11 )]
-
 [node name="Snake8" parent="." instance=ExtResource( 7 )]
 position = Vector2( 4269, -152 )
 
@@ -573,10 +559,10 @@ position = Vector2( 4309, -150 )
 [node name="Snake10" parent="." instance=ExtResource( 7 )]
 position = Vector2( 4354, -154 )
 
-[node name="PopUpCanvas" parent="." instance=ExtResource( 4 )]
-
 [node name="LevelTeleporter" parent="." instance=ExtResource( 14 )]
 position = Vector2( 6078, -820 )
 levelToGo = "res://src/Levels/ExtraLevelTrevor.tscn"
+
+[node name="CanvasLayer" parent="." instance=ExtResource( 11 )]
 
 [editable path="ObjPlayer"]

@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/Dialogue/DialoguePopUp.cs" type="Script" id=1]
+
+[node name="DialoguePopUp" type="Node"]
+script = ExtResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PopupDialog" type="PopupDialog" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -237.5
+margin_top = -39.5
+margin_right = 237.5
+margin_bottom = 39.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="RichTextLabel" parent="CanvasLayer/PopupDialog"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -191.5
+margin_top = -18.5
+margin_right = 210.5
+margin_bottom = 19.5
+text = "Hellllooo"
+__meta__ = {
+"_edit_use_anchors_": false
+}
