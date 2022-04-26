@@ -111,8 +111,20 @@ public class PlayerStats : Node
     {
         if (name == "Small Health Potion")
         {
-            ChangeHealth(200);
+            ChangeHealth(10);
         }
+
+        if (name == "Medium Health Potion")
+        {
+            ChangeHealth(30);
+        }
+
+        if (name == "Large Health Potion")
+        {
+            ChangeHealth(60);
+        }
+
+
     }
 
 

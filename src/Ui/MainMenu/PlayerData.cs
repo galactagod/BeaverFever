@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
+
 public class PlayerData : Node
 {
     #region Variables
@@ -92,6 +93,7 @@ public class PlayerData : Node
         public string textureRoute;
         //adding for skills
         public string type;
+        public string tooltip;
 
         public List<string> whichStat = new List<string>();
         public List<string> operatorOnStat = new List<string>();
@@ -113,6 +115,7 @@ public class PlayerData : Node
         public string type;
         public int level;
         public string textureRoute;
+        public string tooltip;
 
         public List<string> whichStat = new List<string>();
         public List<string> operatorOnStat = new List<string>();
@@ -134,6 +137,7 @@ public class PlayerData : Node
             type = another.type;
             level = another.level;
             textureRoute = another.textureRoute;
+            tooltip = another.tooltip;
             this.comingFrom = comingFrom;
         }
 
@@ -154,6 +158,7 @@ public class PlayerData : Node
             temp.type = type;
             temp.level = level;
             temp.textureRoute = textureRoute;
+            temp.tooltip = tooltip;
             return temp;
         }
     }
@@ -163,6 +168,7 @@ public class PlayerData : Node
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        playerStats = (PlayerStats)GetNode("/root/PlayerStats");
         //File IO
         //add a statement to actually write the file in if its not there
         string filepath = "user://playerStatsFile.json";
@@ -233,6 +239,7 @@ public class PlayerData : Node
             temp.equippedSlot = (string)item["equippedSlot"];
             temp.inventorySlot = Int32.Parse((string)item["inventorySlot"]);
             temp.ableToBeEquippedSlot = (string)item["ableToBeEquippedSlot"];
+            temp.tooltip = (string)item["tooltip"];
             foreach (Godot.Collections.Dictionary statEffect in (Godot.Collections.Array)item["itemEffects"])
             {
                 temp.whichStat.Add((string)statEffect["stat"]);
@@ -259,6 +266,7 @@ public class PlayerData : Node
             temp.inventorySlot = Int32.Parse((string)item["inventorySlot"]);
             temp.level = Int32.Parse((string)item["level"]);
             temp.ableToBeEquippedSlot = (string)item["ableToBeEquippedSlot"];
+            temp.tooltip = (string)item["tooltip"];
             foreach (Godot.Collections.Dictionary statEffect in (Godot.Collections.Array)item["itemEffects"])
             {
                 temp.whichStat.Add((string)statEffect["stat"]);
@@ -306,7 +314,21 @@ public class PlayerData : Node
             }
         }
 
+        playerStats.Muny = Muny;
+        playerStats.Exp = PlayerTotalPoints;
+        playerStats.ChangeExp(0);
+        playerStats.ChangeMaxHealth(PlayerHealth);
         RefreshStatFinals();
+
+
+
+
+        //Purely for testing TAKE OUT
+        //foreach (var item in Global.itemTemplates)
+        //{
+        //    item.inventorySlot = inv.Count;
+        //    inv.Add(item);
+        //}
     }
     #endregion
 
@@ -418,7 +440,11 @@ public class PlayerData : Node
         }
         if(temp.equippedSlot != "none")
         {
-            statLine = statLine + "Equipped";
+            statLine = statLine + "Equipped" + "\n";
+        }
+        if(temp.tooltip != null)
+        {
+            statLine = statLine + temp.tooltip;
         }
         return statLine;
     }
@@ -515,6 +541,7 @@ public class PlayerData : Node
             skillToChange.amountOnStat = skillPulled.amountOnStat;
             skillToChange.texture = skillPulled.texture;
             skillToChange.textureRoute = skillPulled.textureRoute;
+            skillToChange.tooltip = skillPulled.tooltip;
 
             if (skillToChange.equippedSlot != "none")
             {
@@ -527,6 +554,103 @@ public class PlayerData : Node
             skills[skillToChange.inventorySlot] = skillToChange;
 
         }
+    }
+
+    public void Save()
+    {
+        string filepath = "user://playerStatsFile.json";
+        Godot.File files = new Godot.File();
+        files.Open(filepath, Godot.File.ModeFlags.WriteRead);
+        files.Seek(0);
+
+
+
+
+
+        Godot.Collections.Dictionary jsonToWrite = new Godot.Collections.Dictionary();
+        jsonToWrite.Add("Attack", PlayerAttack.ToString());
+        jsonToWrite.Add("Defense", PlayerDefense.ToString());
+        jsonToWrite.Add("SpAttack", PlayerSpAttack.ToString());
+        jsonToWrite.Add("SpDefense", PlayerSpDefense.ToString());
+        jsonToWrite.Add("Stamina", PlayerStamina.ToString());
+        jsonToWrite.Add("Health", PlayerHealth.ToString());
+        jsonToWrite.Add("StatPoints", playerStats.Exp.ToString());
+        jsonToWrite.Add("Muny", playerStats.Muny.ToString());
+        Godot.Collections.Array inventory = new Godot.Collections.Array();
+        Godot.Collections.Array skills = new Godot.Collections.Array();
+        foreach (item item in inv)
+        {
+            Godot.Collections.Dictionary temp = new Godot.Collections.Dictionary();
+            temp.Add("name", item.name);
+            temp.Add("price", item.price.ToString());
+            temp.Add("scaleX", item.scale.x.ToString());
+            temp.Add("scaleY", item.scale.y.ToString());
+            temp.Add("equippable", item.equippable.ToString() == null ? "none" : item.equippable.ToString());
+            temp.Add("equippedSlot", item.equippedSlot);
+            temp.Add("inventorySlot", item.inventorySlot.ToString());
+            temp.Add("ableToBeEquippedSlot", item.ableToBeEquippedSlot);
+            temp.Add("type", item.type);
+            temp.Add("tooltip", item.tooltip);
+            //Adding item effects
+            Godot.Collections.Array itemEffects = new Godot.Collections.Array();
+            for (int i = 0; i < item.whichStat.Count; i++)
+            {
+                Godot.Collections.Dictionary anotherTemp = new Godot.Collections.Dictionary();
+                anotherTemp.Add("stat", item.whichStat[i]);
+                anotherTemp.Add("operator", item.operatorOnStat[i]);
+                anotherTemp.Add("amount", item.amountOnStat[i]);
+                itemEffects.Add(anotherTemp);
+            }
+            temp.Add("itemEffects", itemEffects);
+
+            inventory.Add(temp);
+        }
+        jsonToWrite.Add("inventory", inventory);
+
+        foreach (item item in skills)
+        {
+            Godot.Collections.Dictionary temp = new Godot.Collections.Dictionary();
+            temp.Add("name", item.name);
+            temp.Add("price", item.price.ToString());
+            temp.Add("scaleX", item.scale.x.ToString());
+            temp.Add("scaleY", item.scale.y.ToString());
+            temp.Add("equippable", item.equippable.ToString());
+            temp.Add("equippedSlot", item.equippedSlot);
+            temp.Add("inventorySlot", item.inventorySlot.ToString());
+            temp.Add("ableToBeEquippedSlot", item.ableToBeEquippedSlot);
+            temp.Add("textureRoute", item.textureRoute);
+            temp.Add("level", item.level.ToString());
+            temp.Add("type", item.type);
+            temp.Add("tooltip", item.tooltip);
+            //Adding item effects
+            Godot.Collections.Array itemEffects = new Godot.Collections.Array();
+            for (int i = 0; i < item.whichStat.Count; i++)
+            {
+                Godot.Collections.Dictionary anotherTemp = new Godot.Collections.Dictionary();
+                anotherTemp.Add("stat", item.whichStat[i]);
+                anotherTemp.Add("operator", item.operatorOnStat[i]);
+                anotherTemp.Add("amount", item.amountOnStat[i]);
+                itemEffects.Add(anotherTemp);
+            }
+            temp.Add("itemEffects", itemEffects);
+
+
+            skills.Add(temp);
+        }
+        jsonToWrite.Add("skills", skills);
+
+        Godot.Collections.Array itemsAvaliable = new Godot.Collections.Array();
+        foreach (var name in itemsInStore)
+        {
+            itemsAvaliable.Add(name);
+        }
+        jsonToWrite.Add("itemsAvaliable", itemsAvaliable);
+
+
+
+        files.StoreString(JSON.Print(jsonToWrite, "\t"));
+
+        files.Close();
     }
     #endregion
 }

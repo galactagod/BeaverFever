@@ -20,6 +20,8 @@ PlayerData="*res://src/Ui/MainMenu/PlayerData.cs"
 PlayerStats="*res://src/Autoloads/PlayerStats.cs"
 GameControl="*res://src/Autoloads/GameControl.cs"
 LevelControl="*res://src/Autoloads/LevelControl.cs"
+EventManager="*res://src/Autoloads/EventManager.cs"
+PlayerUi="*res://src/Ui/OverWorldUi/PlayerUi.tscn"
 
 [display]
 

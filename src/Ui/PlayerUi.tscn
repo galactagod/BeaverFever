@@ -1,0 +1,92 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://src/Ui/PlayerUi.cs" type="Script" id=1]
+[ext_resource path="res://src/Ui/HeartUi.cs" type="Script" id=2]
+[ext_resource path="res://src/Assets/Player/SprEmptyHeart.png" type="Texture" id=3]
+[ext_resource path="res://src/Assets/Player/SprExtraFullHeart.png" type="Texture" id=4]
+[ext_resource path="res://src/Assets/Player/SprExtraHalfHeart.png" type="Texture" id=5]
+[ext_resource path="res://src/Assets/Player/SprHalfHeart.png" type="Texture" id=6]
+[ext_resource path="res://src/Assets/Player/SprHalfEmptyHeart.png" type="Texture" id=7]
+[ext_resource path="res://src/Assets/Player/SprFullHeart.png" type="Texture" id=8]
+[ext_resource path="res://src/Assets/Player/SprPlayerHearts.png" type="Texture" id=9]
+
+[node name="PlayerUi" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="HeartUi" type="Control" parent="."]
+visible = false
+margin_left = 9.0
+margin_top = 8.0
+margin_right = 187.0
+margin_bottom = 78.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HeartsEmpty" type="TextureRect" parent="HeartUi"]
+margin_right = 68.0
+margin_bottom = 64.0
+texture = ExtResource( 3 )
+stretch_mode = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="HeartsHalfEmpty" type="TextureRect" parent="HeartUi"]
+margin_right = 68.0
+margin_bottom = 64.0
+texture = ExtResource( 7 )
+stretch_mode = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="HeartsFull" type="TextureRect" parent="HeartUi"]
+margin_right = 68.0
+margin_bottom = 64.0
+texture = ExtResource( 8 )
+stretch_mode = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="HeartsHalf" type="TextureRect" parent="HeartUi"]
+margin_right = 68.0
+margin_bottom = 64.0
+texture = ExtResource( 6 )
+stretch_mode = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="HeartsExtraFull" type="TextureRect" parent="HeartUi"]
+margin_right = 68.0
+margin_bottom = 64.0
+texture = ExtResource( 4 )
+stretch_mode = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="HeartsExtraHalf" type="TextureRect" parent="HeartUi"]
+margin_right = 68.0
+margin_bottom = 64.0
+texture = ExtResource( 5 )
+stretch_mode = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="SprHearts" type="Sprite" parent="."]
+position = Vector2( 25, 25 )
+scale = Vector2( 0.35, 0.35 )
+texture = ExtResource( 9 )
+hframes = 6
+frame = 5
