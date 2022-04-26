@@ -8,7 +8,7 @@ public class GrayWolf : EnemyMovementAct
     public override void _Ready()
     {
         base._Ready();
-
+        
         // modify member vars
         _enemyType = "GrayWolf";
         _health = 10;
@@ -19,6 +19,7 @@ public class GrayWolf : EnemyMovementAct
         _exp = 200;
         _atkFrm = new int[] {3, 7};
         _attackRadius = new Vector2(55, 50);
+
 
         // start state
         stateMachine = new EnemyStateMachineManager(this, enemyIdle);

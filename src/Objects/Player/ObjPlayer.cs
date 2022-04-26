@@ -160,17 +160,17 @@ public class ObjPlayer : BaseMovementAct
         {
             _stompJumpTimer++;
             if (_stompJumpTimer == 100) _stompJumpTimer = 0;
-            GD.Print("Air........");
-            GD.Print("velocityX = " + _velocity.x);
-            GD.Print("velocityY = " + _velocity.y);
+            //GD.Print("Air........");
+            //GD.Print("velocityX = " + _velocity.x);
+            //GD.Print("velocityY = " + _velocity.y);
             //velocity.x += direction.x;
         }
         else if (_damagedTimer > 0 && _damagedTimer < 30)
         {
             
-            GD.Print("damaging........");
-            GD.Print("velocityX = " + _velocity.x);
-            GD.Print("velocityY = " + _velocity.y);
+            //GD.Print("damaging........");
+            //GD.Print("velocityX = " + _velocity.x);
+            //GD.Print("velocityY = " + _velocity.y);
         }
         else
         {
