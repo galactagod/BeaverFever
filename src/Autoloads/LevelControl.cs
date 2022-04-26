@@ -49,7 +49,7 @@ public class LevelControl : Node
 
         PauseMode = PauseModeEnum.Process;
 
-        dialogueManager = GetNode<DialogueManager>("/root/DialogueManager");
+        //dialogueManager = GetNode<DialogueManager>("/root/DialogueManager");
     }
 
     public override void _Process(float delta)
