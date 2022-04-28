@@ -207,6 +207,8 @@ public class PlayerData : Node
                 itemsAvaliable.Add(item.name);
             }
             jsonToWrite.Add("itemsAvaliable", itemsAvaliable);
+            //to add here, array of chest ids, array of opened status, and array of 
+            
             files.StoreString(JSON.Print(jsonToWrite, "\t"));
             string text = files.GetAsText();
             var jsonFile = JSON.Parse(text).Result;
