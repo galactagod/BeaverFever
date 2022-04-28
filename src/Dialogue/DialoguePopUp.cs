@@ -11,6 +11,7 @@ public class DialoguePopUp : Node
 
     PopupDialog myPopUp;
     RichTextLabel popUpLabel;
+    bool Popped = false;
     public override void _Ready()
     {
         myPopUp = GetNode<PopupDialog>("CanvasLayer/PopupDialog");
@@ -21,11 +22,22 @@ public class DialoguePopUp : Node
     {
         popUpLabel.Text = text;
         myPopUp?.Show();
+        Popped = true;
     }
 
     public void UnPop()
     {
-        myPopUp?.Hide();
+        if(Popped)
+        {
+            myPopUp?.Hide();
+            Popped = false;
+        }
+        
+    }
+
+    public bool Status()
+    {
+        return Popped;
     }
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.

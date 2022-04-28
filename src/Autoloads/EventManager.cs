@@ -3,15 +3,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public struct chestData
-{
-    public int Id;
-    public bool Opened;
-}
-
 public class EventManager : Node
 {
-    public List<chestData> chestEventList = new List<chestData>();
+    public List<ChestData> chestEventList = new List<ChestData>();
 
     public override void _Ready()
     {
@@ -30,7 +24,7 @@ public class EventManager : Node
         //temp.Add(id);
         //temp.Add(false);
 
-        chestData temp = new chestData();
+        ChestData temp = new ChestData();
         temp.Id = id;
         temp.Opened = false;
 
