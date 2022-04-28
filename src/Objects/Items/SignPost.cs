@@ -5,6 +5,8 @@ public class SignPost : Area2D
 {
     [Export]
     public int whichDialogue;
+    [Export]
+    public string whichSet;
 
     DialoguePopUp dialoguePopUp;
 
@@ -25,7 +27,12 @@ public class SignPost : Area2D
         if(body is ObjPlayer)
         {
             Console.WriteLine("The message is " + whichDialogue);
-            dialoguePopUp.PopUp(dialogueManager.getTutorialLine(whichDialogue));
+            if (whichSet == "Tutorial")
+                dialoguePopUp.PopUp(dialogueManager.getTutorialLine(whichDialogue));
+            else if (whichSet == "Misc")
+                dialoguePopUp.PopUp(dialogueManager.getMiscellanousDialogue(whichDialogue));
+            else
+                dialoguePopUp.PopUp("Hi");
         }
     }
 

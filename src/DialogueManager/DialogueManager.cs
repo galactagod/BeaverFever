@@ -31,6 +31,11 @@ public class DialogueManager
         "Walk into coins to collect them."
     };
 
+    List<string> miscellanousDialogue = new List<string>
+    {
+        "Hope you like jumping ;)"
+    };
+
     //Allows remote access to boss dialogue
     public string getBossLine(int interval)
     {
@@ -46,5 +51,10 @@ public class DialogueManager
     public string getTutorialLine(int interval)
     {
         return tutorialDialogue[interval];
+    }
+
+    public string getMiscellanousDialogue(int interval)
+    {
+        return miscellanousDialogue[interval];
     }
 }
