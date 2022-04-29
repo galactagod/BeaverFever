@@ -19,17 +19,18 @@ public class Exposition : RichTextLabel
     {
         introDialogue = dialogueManager.getIntroDialogue(0);
         this.AddText(introDialogue);
-        this.ScrollToLine(-138);
+        levelControl = GetNode<LevelControl>("/root/LevelControl");
     }
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
   public override void _Process(float delta)
   {
-      if(this.RectPosition >= new Vector2(this.RectPosition.x, -138))
+      if(this.RectPosition <= new Vector2(this.RectPosition.x, -138))
       {
+          //finish();
           levelControl.changeLevel("Tutorial");
       }
-      //this.RectPosition = new Vector2(0, 0);
+      this.RectPosition = new Vector2(this.RectPosition.x, this.RectPosition.y - 1);
   }
 
     /*public void scrollText()
@@ -39,4 +40,9 @@ public class Exposition : RichTextLabel
             this.position.y
         }
     }*/
+
+    public void finish()
+    {
+        levelControl.changeLevel("Tutorial");
+    }
 }
