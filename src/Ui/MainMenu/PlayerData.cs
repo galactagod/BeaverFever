@@ -55,6 +55,9 @@ public class PlayerData : Node
     public int inventorySize = 30;
     public int consumableSize = 0;
 
+    public int currentHealth = 0;
+    public string currentLevel = "Tutorial";
+
     //The inventory of the player
     public List<item> inv { get; set; }
 
@@ -76,6 +79,7 @@ public class PlayerData : Node
     public delegate void itemRemoved();
 
     private PlayerStats playerStats;
+    private LevelControl levelControl;
     #endregion
 
     #region Item Classes
@@ -169,6 +173,7 @@ public class PlayerData : Node
     public override void _Ready()
     {
         playerStats = (PlayerStats)GetNode("/root/PlayerStats");
+        levelControl = (LevelControl)GetNode("/root/LevelControl");
         //File IO
         //add a statement to actually write the file in if its not there
         string filepath = "user://playerStatsFile.json";
@@ -197,6 +202,8 @@ public class PlayerData : Node
             jsonToWrite.Add("Health", "0");
             jsonToWrite.Add("StatPoints", "0");
             jsonToWrite.Add("Muny", "0");
+            jsonToWrite.Add("CurrentHealth", "20");
+            jsonToWrite.Add("CurrentLevel", "Tutorial");
             Godot.Collections.Array inventory = new Godot.Collections.Array();
             jsonToWrite.Add("inventory", inventory);
             Godot.Collections.Array skillsList = new Godot.Collections.Array();
@@ -225,6 +232,8 @@ public class PlayerData : Node
         PlayerStamina = Int32.Parse((string)ParsedData["Stamina"]);
         PlayerTotalPoints = Int32.Parse((string)ParsedData["StatPoints"]);
         Muny = Int32.Parse((string)ParsedData["Muny"]);
+        currentHealth = Int32.Parse((string)ParsedData["CurrentHealth"]);
+        currentLevel = (string)ParsedData["CurrentLevel"];
 
         inv = new List<item>();
         foreach(Godot.Collections.Dictionary item in (Godot.Collections.Array)ParsedData["inventory"])
@@ -578,6 +587,8 @@ public class PlayerData : Node
         jsonToWrite.Add("Health", PlayerHealth.ToString());
         jsonToWrite.Add("StatPoints", playerStats.Exp.ToString());
         jsonToWrite.Add("Muny", playerStats.Muny.ToString());
+        jsonToWrite.Add("CurrentHealth", playerStats.Health.ToString());
+        jsonToWrite.Add("CurrentLevel", levelControl.nameOfCurrentScene);
         Godot.Collections.Array inventory = new Godot.Collections.Array();
         Godot.Collections.Array skills = new Godot.Collections.Array();
         foreach (item item in inv)

@@ -25,6 +25,7 @@ public class LevelControl : Node
 
     private Node playerUIConstant;
     private DialoguePopUp dialoguePopUp;
+    private PlayerData playerData;
     public override void _Ready()
     {
         // create the audio files for music and effects
@@ -50,6 +51,12 @@ public class LevelControl : Node
         PauseMode = PauseModeEnum.Process;
 
         dialoguePopUp = GetNode<DialoguePopUp>("/root/DialoguePopUp");
+        playerData = GetNode<PlayerData>("/root/PlayerData");
+
+
+        //Used to TP the player to the level they saved their game on.
+        changeLevel(playerData.currentLevel);
+        comingFromDeath();
     }
 
     public override void _Process(float delta)

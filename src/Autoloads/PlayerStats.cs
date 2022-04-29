@@ -41,6 +41,7 @@ public class PlayerStats : Node
 
         levelControl = GetNode<LevelControl>("/root/LevelControl");
         Muny = playerData.Muny;
+        _health = playerData.currentHealth;
     }
 
     public override void _Process(float delta)
