@@ -19,12 +19,15 @@ public class DialogueManager
         "Tooltips in menu will help you, hover over tabs to see them.",
         "Click ESC key to access the menu.",
         "Jump on enemies to kill them and get XP.",
-        "Walk into coins to collect them."
+        "Walk into coins to collect them.",
+        "Have you not played Mario before lol. Walk into the flag."
     };
 
     List<string> miscellanousDialogue = new List<string>
     {
-        "Hope you like jumping ;)"
+        "Hope you like jumping ;)",
+        "There's a snake in my boot.",
+        "Try left, then try right."
     };
 
     //Put intro dialogue here

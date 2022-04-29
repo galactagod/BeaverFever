@@ -77,6 +77,7 @@ public class LevelControl : Node
                 {
                     GetTree().Paused = false;
                     GetNode(controlPath).Set("visible", false);
+                    changeScene("res://src/Ui/MainMenu/MasterUI.tscn");
                     paused = false;
                 }
             }
