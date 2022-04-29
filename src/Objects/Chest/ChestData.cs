@@ -9,5 +9,6 @@ public class ChestData
 {
     public int Id;
     public bool Opened;
+    public int WhichItem;
     
 }

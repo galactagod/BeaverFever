@@ -75,11 +75,14 @@ public class PlayerData : Node
     //The route of assets just so I can change it later if need be
     private string assetRoute = "res://assets/";
 
+    public List<ChestData> allChests { get; set; }
+
     [Signal]
     public delegate void itemRemoved();
 
     private PlayerStats playerStats;
     private LevelControl levelControl;
+    private EventManager eventManager;
     #endregion
 
     #region Item Classes
@@ -174,6 +177,7 @@ public class PlayerData : Node
     {
         playerStats = (PlayerStats)GetNode("/root/PlayerStats");
         levelControl = (LevelControl)GetNode("/root/LevelControl");
+        eventManager = (EventManager)GetNode("/root/EventManager");
         //File IO
         //add a statement to actually write the file in if its not there
         string filepath = "user://playerStatsFile.json";
@@ -215,7 +219,13 @@ public class PlayerData : Node
             }
             jsonToWrite.Add("itemsAvaliable", itemsAvaliable);
             //to add here, array of chest ids, array of opened status, and array of 
-            
+            Godot.Collections.Array chestIds = new Godot.Collections.Array();
+            jsonToWrite.Add("chestIDs", chestIds);
+            Godot.Collections.Array chestOpenedStatuses = new Godot.Collections.Array();
+            jsonToWrite.Add("chestOpenedStatuses", chestOpenedStatuses);
+            Godot.Collections.Array chestItem = new Godot.Collections.Array();
+            jsonToWrite.Add("chestItems", chestItem);
+
             files.StoreString(JSON.Print(jsonToWrite, "\t"));
             string text = files.GetAsText();
             var jsonFile = JSON.Parse(text).Result;
@@ -286,6 +296,29 @@ public class PlayerData : Node
             }
             skills.Add(temp);
             SettingSkillLevels(temp.name, temp.level);
+        }
+        allChests = new List<ChestData>();
+        foreach (string id in (Godot.Collections.Array)ParsedData["chestIDs"])
+        {
+            ChestData temp = new ChestData();
+            temp.Id = Int32.Parse(id);
+            allChests.Add(temp);
+        }
+        int counter = 0;
+        foreach(string openedStatus in (Godot.Collections.Array)ParsedData["chestOpenedStatuses"])
+        {
+            ChestData temp = allChests[counter];
+            temp.Opened = Boolean.Parse(openedStatus);
+            allChests[counter] = temp;
+            counter++;
+        }
+        counter = 0;
+        foreach (string chestItem in (Godot.Collections.Array)ParsedData["chestItems"])
+        {
+            ChestData temp = allChests[counter];
+            temp.WhichItem = Int32.Parse(chestItem);
+            allChests[counter] = temp;
+            counter++;
         }
 
 
@@ -651,6 +684,18 @@ public class PlayerData : Node
             skills.Add(temp);
         }
         jsonToWrite.Add("skills", skills);
+        Godot.Collections.Array chestIds = new Godot.Collections.Array();
+        Godot.Collections.Array chestOpenedStatuses = new Godot.Collections.Array();
+        Godot.Collections.Array chestItems = new Godot.Collections.Array();
+        foreach (ChestData temp in eventManager.chestEventList)
+        {
+            chestIds.Add(temp.Id.ToString());
+            chestOpenedStatuses.Add(temp.Opened.ToString());
+            chestItems.Add(temp.WhichItem.ToString());
+        }
+        jsonToWrite.Add("chestIDs", chestIds);
+        jsonToWrite.Add("chestOpenedStatuses", chestOpenedStatuses);
+        jsonToWrite.Add("chestItems", chestItems);
 
         Godot.Collections.Array itemsAvaliable = new Godot.Collections.Array();
         foreach (var name in itemsInStore)
