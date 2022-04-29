@@ -3,13 +3,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
+
 public class EventManager : Node
 {
     public List<ChestData> chestEventList = new List<ChestData>();
+    private PlayerData playerData;
 
     public override void _Ready()
     {
-
+        playerData = GetNode<PlayerData>("/root/PlayerData");
+        chestEventList = playerData.allChests;
     }
 
     public override void _Process(float delta)
