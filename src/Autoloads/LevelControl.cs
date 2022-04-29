@@ -23,8 +23,9 @@ public class LevelControl : Node
 
     public string nameOfCurrentScene { get; set; }
 
-    private Node playerUIConstant;
-    private DialogueManager dialogueManager;
+    private DialoguePopUp dialoguePopUp;
+    private PlayerData playerData;
+    private PlayerUi playerUi;
     public override void _Ready()
     {
         // create the audio files for music and effects
@@ -43,33 +44,44 @@ public class LevelControl : Node
         switch (_curNodeScene.Name)
         {
             case "LevelTemplate":
-                PlayAudio(_musicPlayer, _sndDreamFactory, -15, 1);
+                //PlayAudio(_musicPlayer, _sndDreamFactory, -15, 1);
                 break;
         }
 
         PauseMode = PauseModeEnum.Process;
 
-        //dialogueManager = GetNode<DialogueManager>("/root/DialogueManager");
+        dialoguePopUp = GetNode<DialoguePopUp>("/root/DialoguePopUp");
+        playerData = GetNode<PlayerData>("/root/PlayerData");
+        playerUi = GetNode<PlayerUi>("/root/PlayerUi");
+
+
+        //Used to TP the player to the level they saved their game on.
+        //changeLevel(playerData.currentLevel);
+        //comingFromDeath();
     }
 
     public override void _Process(float delta)
     {
-        if (Input.IsActionJustPressed("ui_menu"))
+        if(nameOfCurrentScene != "Intro")
         {
-            if(!paused)
+            if (Input.IsActionJustPressed("ui_menu"))
             {
-                GetTree().Paused = true;
-                GetNode(controlPath).Set("visible", true);
-                paused = true;
-            }
-            else
-            {
-                GetTree().Paused = false;
-                GetNode(controlPath).Set("visible", false);
-                paused = false;
+                if (!paused)
+                {
+                    GetTree().Paused = true;
+                    GetNode(controlPath).Set("visible", true);
+                    paused = true;
+                    dialoguePopUp.UnPop();
+                }
+                else
+                {
+                    GetTree().Paused = false;
+                    GetNode(controlPath).Set("visible", false);
+                    changeScene("res://src/Ui/MainMenu/MasterUI.tscn");
+                    paused = false;
+                }
             }
         }
-
     }
 
     public void unPause()
@@ -94,20 +106,49 @@ public class LevelControl : Node
 
     public void changeLevel(string sceneName)
     {
-        Console.WriteLine("we hit here");
         nameOfCurrentScene = sceneName;
-        Console.WriteLine("name" + nameOfCurrentScene);
-        //add a canvas layer and control to the level template and 
         rootPath = "/root/" + sceneName + "/CanvasLayer/Control/";
         controlPath = "/root/" + sceneName + "/CanvasLayer/Control";
-        //var node = GetNode("/root/" + sceneName);
-        //if(playerUIConstant != null)
-        //{
-        //    Console.WriteLine("Im here too");
-        //    node.AddChild(playerUIConstant);
-        //}
+        if(nameOfCurrentScene == "Intro")
+        {
+            playerUi.Hide();
+        }
+        else
+        {
+            playerUi.Show();
+        }
+
+        if (nameOfCurrentScene == "Tutorial" || nameOfCurrentScene == "LevelTemplate" || nameOfCurrentScene == "ExtraLevelTrevor")
+        {
+            PlayAudio(_musicPlayer, _sndDreamFactory, -15, 1);
+        }
+
+
     }
 
+    public void playerDied()
+    {
+        GetTree().ChangeSceneTo(GD.Load<PackedScene>("res://src/Ui/GameOverScreen.tscn"));
+        rootPath = "/root/" + "GameOverScreen" + "/CanvasLayer/Control/";
+        controlPath = "/root/" + "GameOverScreen" + "/CanvasLayer/Control";
+        playerUi.Hide();
+    }
+
+    public void comingFromDeath()
+    {
+        if(nameOfCurrentScene == "Tutorial")
+        {
+            LevelChange(GD.Load<PackedScene>("res://src/Levels/Tutorial.tscn"));
+        }
+        else if(nameOfCurrentScene == "LevelTemplate")
+        {
+            LevelChange(GD.Load<PackedScene>("res://src/Levels/LevelTemplate.tscn"));
+        }
+        else if(nameOfCurrentScene == "ExtraLevelTrevor")
+        {
+            LevelChange(GD.Load<PackedScene>("res://src/Levels/ExtraLevelTrevor.tscn"));
+        }
+    }
 
     public void LevelChange(PackedScene teleportTo)
     {

@@ -3,19 +3,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public struct chestData
-{
-    public int Id;
-    public bool Opened;
-}
 
 public class EventManager : Node
 {
-    public List<chestData> chestEventList = new List<chestData>();
+    public List<ChestData> chestEventList = new List<ChestData>();
+    private PlayerData playerData;
 
     public override void _Ready()
     {
-
+        playerData = GetNode<PlayerData>("/root/PlayerData");
+        chestEventList = playerData.allChests;
     }
 
     public override void _Process(float delta)
@@ -30,7 +27,7 @@ public class EventManager : Node
         //temp.Add(id);
         //temp.Add(false);
 
-        chestData temp = new chestData();
+        ChestData temp = new ChestData();
         temp.Id = id;
         temp.Opened = false;
 

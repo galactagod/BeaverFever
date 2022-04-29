@@ -4,7 +4,7 @@ using System;
 public class PlayerStats : Node
 {
 
-    [Export] private float _health = 18;
+    [Export] private float _health = 1;
     [Export] private float _maxHealth = 20;
     [Export] private float _extraHealth = 2;
     [Export] private float _energy = 3;
@@ -33,16 +33,26 @@ public class PlayerStats : Node
     public Vector2 PlayerPos { get { return _playerpos; } set { _playerpos = value; } }
 
     private PlayerData playerData;
+    private LevelControl levelControl;
 
     public override void _Ready()
     {
         playerData = GetNode<PlayerData>("/root/PlayerData");
+
+        levelControl = GetNode<LevelControl>("/root/LevelControl");
         Muny = playerData.Muny;
+        _health = playerData.currentHealth;
     }
 
     public override void _Process(float delta)
     {
-        
+        if(_health == 0)
+        {
+            //Add a death scene here
+            //levelControl.changeLevel();
+            _health = _maxHealth;
+            levelControl.playerDied();
+        }
     }
 
     public void ClampHealth()

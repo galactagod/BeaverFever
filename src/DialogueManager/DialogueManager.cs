@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public class DialogueManager : Node
+public class DialogueManager
 {
     //List containing all dialogue lines for the boss
     List<string> bossDialogue = new List<string>
@@ -13,24 +13,29 @@ public class DialogueManager : Node
         "Arrrgghh! I can't believe I lost to a weak little beaver!"
     };
 
-    //List containing all exposition lines
-    List<string> expositionDialogue = new List<string>
-    { 
-        "There once was a family of beavers",
-        "They lived a happy life until...",
-        "The brave little beaver set out to rescue his parents.",
-        "After our hero's brave journey, the dam was once again at peace."
+    List<string> tutorialDialogue = new List<string>
+    {
+        "Use the up arrow to jump.",
+        "Tooltips in menu will help you, hover over tabs to see them.",
+        "Click ESC key to access the menu.",
+        "Jump on enemies to kill them and get XP.",
+        "Walk into coins to collect them.",
+        "Have you not played Mario before lol. Walk into the flag."
     };
 
-    public override void _Ready()
+    List<string> miscellanousDialogue = new List<string>
     {
+        "Hope you like jumping ;)",
+        "There's a snake in my boot.",
+        "Try left, then try right.",
+        "Hit the gym to work on the vertical. Or...be a little crafty."
+    };
 
-    }
-
-    public override void _Process(float delta)
+    //Put intro dialogue here
+    List<string> introDialogue = new List<string>
     {
-        
-    }
+        "There once was a beaver who lived in a village with his lovely parents. On a cold winter's night, a large wolf came and brutally murdered the rest of the tribe, leaving the lone beaver to fend for himself. With the power of God and anime at his side, he vows to defeat the wolf at any cost necessary."
+    };
 
     //Allows remote access to boss dialogue
     public string getBossLine(int interval)
@@ -38,9 +43,18 @@ public class DialogueManager : Node
         return bossDialogue[interval];
     }
 
-    //Allows remote access to exposition dialogue
-    public string getExpositionLine(int interval)
+    public string getTutorialLine(int interval)
     {
-        return expositionDialogue[interval];
+        return tutorialDialogue[interval];
+    }
+
+    public string getMiscellanousDialogue(int interval)
+    {
+        return miscellanousDialogue[interval];
+    }
+
+    public string getIntroDialogue(int interval)
+    {
+        return introDialogue[interval];
     }
 }

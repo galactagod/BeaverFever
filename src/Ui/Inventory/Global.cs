@@ -577,6 +577,19 @@ public static class Global
         ableToBeEquippedSlot = "Talisman",
         type = "item",
         tooltip = "Made from the malice of snakes, this ring contains evil power beyond comprehention."
+        },
+        new PlayerData.item {
+        name = "Sasuke's Blade",
+        texture = (Texture) GD.Load(assetRoute + "Sasuke's Blade.png"),
+        scale = new Vector2(3,3),
+        amountOnStat = new List<string> {"15", "15"},
+        whichStat = new List<string> {"Attack", "Defense"},
+        operatorOnStat = new List<string> {"+", "+"},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Weapon",
+        type = "item",
+        tooltip = "The sword containing the souls of the fallen Uchiha Clan. Multiverse?"
         }
     };
 
