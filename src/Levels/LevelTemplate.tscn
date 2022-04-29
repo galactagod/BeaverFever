@@ -569,11 +569,21 @@ levelToGo = "res://src/Levels/ExtraLevelTrevor.tscn"
 
 [node name="Chest" parent="." instance=ExtResource( 4 )]
 position = Vector2( 166, -345 )
-id = 10
+id = 1
+
+[node name="Chest2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 5147, 136 )
+id = 2
+whichItem = 12
 
 [node name="SignPost6" parent="." instance=ExtResource( 15 )]
 position = Vector2( 3970, -115 )
 whichDialogue = 1
+whichSet = "Misc"
+
+[node name="SignPost8" parent="." instance=ExtResource( 15 )]
+position = Vector2( 3125, 123 )
+whichDialogue = 3
 whichSet = "Misc"
 
 [node name="SignPost7" parent="." instance=ExtResource( 15 )]

@@ -27,7 +27,8 @@ public class DialogueManager
     {
         "Hope you like jumping ;)",
         "There's a snake in my boot.",
-        "Try left, then try right."
+        "Try left, then try right.",
+        "Hit the gym to work on the vertical. Or...be a little crafty."
     };
 
     //Put intro dialogue here
