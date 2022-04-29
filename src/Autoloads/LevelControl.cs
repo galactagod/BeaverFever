@@ -55,29 +55,31 @@ public class LevelControl : Node
 
 
         //Used to TP the player to the level they saved their game on.
-        changeLevel(playerData.currentLevel);
-        comingFromDeath();
+        //changeLevel(playerData.currentLevel);
+        //comingFromDeath();
     }
 
     public override void _Process(float delta)
     {
-        if (Input.IsActionJustPressed("ui_menu"))
+        if(nameOfCurrentScene != "Intro")
         {
-            if(!paused)
+            if (Input.IsActionJustPressed("ui_menu"))
             {
-                GetTree().Paused = true;
-                GetNode(controlPath).Set("visible", true);
-                paused = true;
-                dialoguePopUp.UnPop();
-            }
-            else
-            {
-                GetTree().Paused = false;
-                GetNode(controlPath).Set("visible", false);
-                paused = false;
+                if (!paused)
+                {
+                    GetTree().Paused = true;
+                    GetNode(controlPath).Set("visible", true);
+                    paused = true;
+                    dialoguePopUp.UnPop();
+                }
+                else
+                {
+                    GetTree().Paused = false;
+                    GetNode(controlPath).Set("visible", false);
+                    paused = false;
+                }
             }
         }
-
     }
 
     public void unPause()

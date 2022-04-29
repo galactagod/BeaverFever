@@ -13,15 +13,6 @@ public class DialogueManager
         "Arrrgghh! I can't believe I lost to a weak little beaver!"
     };
 
-    //List containing all exposition lines
-    List<string> expositionDialogue = new List<string>
-    { 
-        "There once was a family of beavers",
-        "They lived a happy life until...",
-        "The brave little beaver set out to rescue his parents.",
-        "After our hero's brave journey, the dam was once again at peace."
-    };
-
     List<string> tutorialDialogue = new List<string>
     {
         "Use the up arrow to jump.",
@@ -36,16 +27,16 @@ public class DialogueManager
         "Hope you like jumping ;)"
     };
 
+    //Put intro dialogue here
+    List<string> introDialogue = new List<string>
+    {
+        "There once was a beaver who lived in a village with his lovely parents. On a cold winter's night, a large wolf came and brutally murdered the rest of the tribe, leaving the lone beaver to fend for himself. With the power of God and anime at his side, he vows to defeat the wolf at any cost necessary."
+    };
+
     //Allows remote access to boss dialogue
     public string getBossLine(int interval)
     {
         return bossDialogue[interval];
-    }
-
-    //Allows remote access to exposition dialogue
-    public string getExpositionLine(int interval)
-    {
-        return expositionDialogue[interval];
     }
 
     public string getTutorialLine(int interval)
@@ -56,5 +47,10 @@ public class DialogueManager
     public string getMiscellanousDialogue(int interval)
     {
         return miscellanousDialogue[interval];
+    }
+
+    public string getIntroDialogue(int interval)
+    {
+        return introDialogue[interval];
     }
 }
