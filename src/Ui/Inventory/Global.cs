@@ -578,6 +578,7 @@ public static class Global
         type = "item",
         tooltip = "Made from the malice of snakes, this ring contains evil power beyond comprehention."
         },
+        //look at this
         new PlayerData.item {
         name = "Sasuke's Blade",
         texture = (Texture) GD.Load(assetRoute + "Sasuke's Blade.png"),
