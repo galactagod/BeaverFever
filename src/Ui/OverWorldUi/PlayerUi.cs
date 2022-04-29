@@ -20,6 +20,10 @@ public class PlayerUi : Node
     private TextureRect _ndSkillA;
     private TextureRect _ndSkillB;
     private TextureRect _ndSkillC;
+    private TextureRect _ndMunyBar;
+    private TextureRect _ndExpBar;
+    private TextureRect _ndMunyTexture;
+    private TextureRect _ndExpTexture;
     private Label _ndMunyCount;
     private Label _ndExpCount;
     private Tween _ndTween;
@@ -38,6 +42,10 @@ public class PlayerUi : Node
         _ndSkillC = GetNode<TextureRect>("CanvasA/SkillC");
         _ndMunyCount = GetNode<Label>("CanvasA/MunyCount");
         _ndExpCount = GetNode<Label>("CanvasA/ExpCount");
+        _ndMunyBar = GetNode<TextureRect>("CanvasA/MunyBar");
+        _ndExpBar = GetNode<TextureRect>("CanvasA/ExpBar");
+        _ndMunyTexture = GetNode<TextureRect>("CanvasA/MunyTexture");
+        _ndExpTexture = GetNode<TextureRect>("CanvasA/ExpTexture");
         _ndTween = new Tween();
         AddChild(_ndTween);
 
@@ -137,5 +145,35 @@ public class PlayerUi : Node
         //GD.Print("Tween Completed");
         _isExp = false;
         _isMuny = false;
+    }
+
+    public void Hide()
+    {
+        _ndHpBar.Hide();
+        _ndEnergyBar.Hide();
+        _ndSkillA.Hide();
+        _ndSkillB.Hide();
+        _ndSkillC.Hide();
+        _ndMunyCount.Hide();
+        _ndExpCount.Hide();
+        _ndMunyBar.Hide();
+        _ndExpBar.Hide();
+        _ndMunyTexture.Hide();
+        _ndExpTexture.Hide();
+    }
+
+    public void Show()
+    {
+        _ndHpBar.Show();
+        _ndEnergyBar.Show();
+        _ndSkillA.Show();
+        _ndSkillB.Show();
+        _ndSkillC.Show();
+        _ndMunyCount.Show();
+        _ndExpCount.Show();
+        _ndMunyBar.Show();
+        _ndExpBar.Show();
+        _ndMunyTexture.Show();
+        _ndExpTexture.Show();
     }
 }

@@ -23,9 +23,9 @@ public class LevelControl : Node
 
     public string nameOfCurrentScene { get; set; }
 
-    private Node playerUIConstant;
     private DialoguePopUp dialoguePopUp;
     private PlayerData playerData;
+    private PlayerUi playerUi;
     public override void _Ready()
     {
         // create the audio files for music and effects
@@ -44,7 +44,7 @@ public class LevelControl : Node
         switch (_curNodeScene.Name)
         {
             case "LevelTemplate":
-                PlayAudio(_musicPlayer, _sndDreamFactory, -15, 1);
+                //PlayAudio(_musicPlayer, _sndDreamFactory, -15, 1);
                 break;
         }
 
@@ -52,6 +52,7 @@ public class LevelControl : Node
 
         dialoguePopUp = GetNode<DialoguePopUp>("/root/DialoguePopUp");
         playerData = GetNode<PlayerData>("/root/PlayerData");
+        playerUi = GetNode<PlayerUi>("/root/PlayerUi");
 
 
         //Used to TP the player to the level they saved their game on.
@@ -104,18 +105,24 @@ public class LevelControl : Node
 
     public void changeLevel(string sceneName)
     {
-        Console.WriteLine("we hit here");
         nameOfCurrentScene = sceneName;
-        Console.WriteLine("name" + nameOfCurrentScene);
-        //add a canvas layer and control to the level template and 
         rootPath = "/root/" + sceneName + "/CanvasLayer/Control/";
         controlPath = "/root/" + sceneName + "/CanvasLayer/Control";
-        //var node = GetNode("/root/" + sceneName);
-        //if(playerUIConstant != null)
-        //{
-        //    Console.WriteLine("Im here too");
-        //    node.AddChild(playerUIConstant);
-        //}
+        if(nameOfCurrentScene == "Intro")
+        {
+            playerUi.Hide();
+        }
+        else
+        {
+            playerUi.Show();
+        }
+
+        if (nameOfCurrentScene == "Tutorial" || nameOfCurrentScene == "LevelTemplate" || nameOfCurrentScene == "ExtraLevelTrevor")
+        {
+            PlayAudio(_musicPlayer, _sndDreamFactory, -15, 1);
+        }
+
+
     }
 
     public void playerDied()
@@ -123,6 +130,7 @@ public class LevelControl : Node
         GetTree().ChangeSceneTo(GD.Load<PackedScene>("res://src/Ui/GameOverScreen.tscn"));
         rootPath = "/root/" + "GameOverScreen" + "/CanvasLayer/Control/";
         controlPath = "/root/" + "GameOverScreen" + "/CanvasLayer/Control";
+        playerUi.Hide();
     }
 
     public void comingFromDeath()
