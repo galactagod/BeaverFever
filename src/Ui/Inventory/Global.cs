@@ -580,7 +580,7 @@ public static class Global
         },
         new PlayerData.item {
         name = "Sasuke's Blade",
-        texture = (Texture) GD.Load(assetRoute + "Uchiha Clan Sword.png"),
+        texture = (Texture) GD.Load(assetRoute + "Sasuke's Blade.png"),
         scale = new Vector2(3,3),
         amountOnStat = new List<string> {"15", "15"},
         whichStat = new List<string> {"Attack", "Defense"},
