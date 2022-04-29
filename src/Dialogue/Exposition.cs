@@ -27,8 +27,7 @@ public class Exposition : RichTextLabel
   {
       if(this.RectPosition <= new Vector2(this.RectPosition.x, -138))
       {
-          //finish();
-          levelControl.changeLevel("Tutorial");
+          finish();
       }
       this.RectPosition = new Vector2(this.RectPosition.x, this.RectPosition.y - 1);
   }
@@ -43,6 +42,6 @@ public class Exposition : RichTextLabel
 
     public void finish()
     {
-        levelControl.changeLevel("Tutorial");
+        levelControl.LevelChange(GD.Load<PackedScene>("res://src/Levels/Tutorial.tscn"));
     }
 }
