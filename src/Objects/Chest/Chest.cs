@@ -23,7 +23,6 @@ public class Chest: Node
     private PlayerData _playerData;
 
     private DialoguePopUp _dialoguePop;
-    private DialogueManager _dialogueManager = new DialogueManager();
     public override void _Ready()
     {
         _ndEventManager = GetNode<EventManager>("/root/EventManager");

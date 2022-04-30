@@ -10,8 +10,6 @@ public class SignPost : Area2D
 
     DialoguePopUp dialoguePopUp;
 
-    DialogueManager dialogueManager = new DialogueManager();
-
 
     public override void _Ready()
     {
@@ -30,9 +28,9 @@ public class SignPost : Area2D
         {
             Console.WriteLine("The message is " + whichDialogue);
             if (whichSet == "Tutorial")
-                dialoguePopUp.PopUp(dialogueManager.getTutorialLine(whichDialogue));
+                dialoguePopUp.PopUp(DialogueManager.getTutorialLine(whichDialogue));
             else if (whichSet == "Misc")
-                dialoguePopUp.PopUp(dialogueManager.getMiscellanousDialogue(whichDialogue));
+                dialoguePopUp.PopUp(DialogueManager.getMiscellanousDialogue(whichDialogue));
             else
                 dialoguePopUp.PopUp("Hi");
         }
