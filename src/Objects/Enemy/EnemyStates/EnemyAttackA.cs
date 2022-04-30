@@ -26,6 +26,7 @@ public class EnemyAttackA : EnemyBaseStateMachine
         if (owner.NdSprEnemy.Frame >= owner.AtkFrm[0] && owner.NdSprEnemy.Frame <= owner.AtkFrm[1] && owner.EnemyAttack() && !owner.NdObjPlayer.IsDamaged)
         {
             owner.NdObjPlayer.IsDamaged = true;
+            owner.NdObjPlayer.Attacker = owner;
         }
 
         //GD.Print("Attack Frame = " + owner.NdSprEnemy.Frame);

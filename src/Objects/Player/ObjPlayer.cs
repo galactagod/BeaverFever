@@ -4,11 +4,15 @@ using System;
 public class ObjPlayer : BaseMovementAct
 {
     // member vars
-    private float _curdmg = 2;
+    private float _curattack = 2;
+    private float _curdefense = 2;
+    private float _curspAttack = 2;
+    private float _curspDefense = 2;
     private bool _isInAir = false;
     private float collBasePositionX;
     private float collStompPositionX;
     private bool _isDamaged = false;
+    private EnemyMovementAct _enemyMovementAct;
     private int _damagedTimer = 0;
     private bool _isAnimationOver = false;
     private float _stompImpulseY = 600;
@@ -33,6 +37,7 @@ public class ObjPlayer : BaseMovementAct
     private CollisionShape2D _ndCollBase;
     private Area2D _ndStompDetector;
     private CollisionShape2D _ndCollStomp;
+    private PlayerData _ndPlayerData;
     
     // state setups
     protected PlayerStateMachineManager stateMachine;
@@ -45,9 +50,14 @@ public class ObjPlayer : BaseMovementAct
     public PlayerWalk playerWalk = new PlayerWalk();
 
     // getters and setters
-    public float CurDmg { get { return _curdmg; } set { _curdmg = value; } }
+    public float CurDmg { get { return _curattack; } set { _curattack = value; } }
+    public float CurDef { get { return _curdefense; } set { _curdefense = value; } }
+    public float CurSpAttack { get { return _curspAttack; } set { _curspAttack = value; } }
+    public float CurSpDefense { get { return _curspDefense; } set { _curspDefense = value; } }
     public Vector2 Velocity { get { return _velocity; } set { _velocity = value; } }
     public bool IsDamaged { get { return _isDamaged; } set { _isDamaged = value; } }
+
+    public EnemyMovementAct Attacker { get { return _enemyMovementAct; } set { _enemyMovementAct = value; } }
     public int DamagedTimer { get { return _damagedTimer; } set { _damagedTimer = value; } }
     public bool StompJump { get { return _stompJump; } set { _stompJump = value; } }
     public bool IsAnimationOver { get { return _isAnimationOver; } set { _isAnimationOver = value; } }
@@ -55,6 +65,7 @@ public class ObjPlayer : BaseMovementAct
     public PlayerStats NdPlayerStats { get { return _ndPlayerStats; } set { _ndPlayerStats = value; } }
     public AnimatedSprite NdSprPlayer { get { return _ndSprPlayer; } set { _ndSprPlayer = value; } }
 
+    public PlayerData NdPlayerData { get { return _ndPlayerData; } set { _ndPlayerData = value; } }
 
     public override void _Ready()
     {
@@ -66,6 +77,7 @@ public class ObjPlayer : BaseMovementAct
         _ndCollBase = GetNode<CollisionShape2D>("CollBase");
         _ndStompDetector = GetNode<Area2D>("StompDetector");
         _ndCollStomp = GetNode<CollisionShape2D>("StompDetector/CollStomp");
+        _ndPlayerData = GetNode<PlayerData>("/root/PlayerData");
 
         _ndStompDetector.Connect("area_entered", this, nameof(OnAreaShapeStompEntered));
         _ndAnimPlayer.Connect("animation_finished", this, nameof(OnAnimationFinished));
@@ -76,6 +88,11 @@ public class ObjPlayer : BaseMovementAct
         collBasePositionX = _ndCollBase.Position.x;
         collStompPositionX = _ndCollStomp.Position.x;
         _ndPlayerStats.PlayerPos = Position;
+
+        CurDmg = _ndPlayerData.attackFinal + 2;
+        CurDef = _ndPlayerData.defenseFinal + 2;
+        CurSpAttack = _ndPlayerData.spAttackFinal + 2;
+        CurSpDefense = _ndPlayerData.spDefenseFinal + 2;
     }
 
 
@@ -85,6 +102,11 @@ public class ObjPlayer : BaseMovementAct
         base._PhysicsProcess(delta);
         _ndPlayerStats.PlayerPos = Position;
         _timer++;
+
+        CurDmg = _ndPlayerData.attackFinal + 2;
+        CurDef = _ndPlayerData.defenseFinal + 2;
+        CurSpAttack = _ndPlayerData.spAttackFinal + 2;
+        CurSpDefense = _ndPlayerData.spDefenseFinal + 2;
 
         stateMachine.Update();
         //GD.Print("Xposition = " + Position.x);
@@ -251,5 +273,12 @@ public class ObjPlayer : BaseMovementAct
         //GD.Print("Animation " + anim_name + " Finished");
         _isAnimationOver = true;
 
+    }
+    public void Battled()
+    {
+        //only have it for physical attack at the moment
+        Console.WriteLine("Attacker damage" + Attacker.CurDmg);
+        Console.WriteLine("Damage Calced" + DamageCalculation.damageEquation(Attacker.CurDmg, CurDef));
+        NdPlayerStats.ChangeHealth(-DamageCalculation.damageEquation(Attacker.CurDmg, CurDef));
     }
 }

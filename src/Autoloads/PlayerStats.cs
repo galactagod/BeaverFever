@@ -14,7 +14,7 @@ public class PlayerStats : Node
 
     public float _maxMuny = 99999999;
 
-    private float _maxHealthCap = 100;
+    private float _maxHealthCap = 1000;
     private float _maxExtraHealthCap = 100;
     private Vector2 _playerpos;
 

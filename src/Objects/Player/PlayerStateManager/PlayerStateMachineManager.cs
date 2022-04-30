@@ -24,6 +24,10 @@ public class PlayerStateMachineManager : IPlayerStateMachine
         {
             currentState.OnStateExit(this, owner);
             currentState = state;
+            if(state is PlayerHurt)
+            {
+                Console.WriteLine("hahahahahahah easy tec");
+            }
             currentState.OnStateEnter(this, owner);
         }
         else if (currentState == null && state != null)
