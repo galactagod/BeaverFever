@@ -9,7 +9,6 @@ public class Exposition : RichTextLabel
 
     // Called when the node enters the scene tree for the first time.
 
-    DialogueManager dialogueManager = new DialogueManager();
 
     LevelControl levelControl;
 
@@ -17,7 +16,7 @@ public class Exposition : RichTextLabel
 
     public override void _Ready()
     {
-        introDialogue = dialogueManager.getIntroDialogue(0);
+        introDialogue = DialogueManager.getIntroDialogue(0);
         this.AddText(introDialogue);
         levelControl = GetNode<LevelControl>("/root/LevelControl");
     }
