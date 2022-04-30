@@ -601,7 +601,7 @@ public static class Global
             name = "GrayWolf",
             level = 1,
             health = 10,
-            attack = 100,
+            attack = 3,
             defense = 5,
             spAttack = 3,
             spDefense = 5
