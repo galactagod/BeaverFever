@@ -9,13 +9,13 @@ public class DialoguePopUp : Node
 
     // Called when the node enters the scene tree for the first time.
 
-    PopupDialog myPopUp;
+    Popup myPopUp;
     RichTextLabel popUpLabel;
     bool Popped = false;
     public override void _Ready()
     {
-        myPopUp = GetNode<PopupDialog>("CanvasLayer/PopupDialog");
-        popUpLabel = GetNode<RichTextLabel>("CanvasLayer/PopupDialog/Label");
+        myPopUp = GetNode<Popup>("CanvasLayer/Popup");
+        popUpLabel = GetNode<RichTextLabel>("CanvasLayer/Popup/TextureRect/Label");
     }
 
     public void PopUp(string text)

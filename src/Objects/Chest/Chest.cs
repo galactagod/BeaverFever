@@ -3,8 +3,8 @@ using System;
 
 public class Chest: Node
 {
-    [Export] private int id = 0;
-    [Export] private int whichItem = 0;
+    [Export] private int id;
+    [Export] private int whichItem;
 
     //id will always be the first item in the arraylist
     private int idpos = 0;
@@ -28,7 +28,6 @@ public class Chest: Node
     {
         _ndEventManager = GetNode<EventManager>("/root/EventManager");
         _playerData = GetNode<PlayerData>("/root/PlayerData");
-        _dialoguePop = GetNode<DialoguePopUp>("/root/DialoguePopUp");
 
         mySprite = GetNode<Sprite>("Sprite");
 
@@ -53,7 +52,7 @@ public class Chest: Node
 
         if(!flag)
         {
-            _ndEventManager.createChest(id);
+            _ndEventManager.createChest(id, whichItem);
         }
 
         this.Connect("body_entered", this, nameof(openChest));
@@ -67,7 +66,9 @@ public class Chest: Node
 
     public void openChest(Node body)
     {
-        if(!opened)
+        AddChild(GD.Load<PackedScene>("res://src/Dialogue/DialoguePopUp.tscn").Instance());
+        _dialoguePop = GetNode<DialoguePopUp>("DialoguePopUp");
+        if (!opened)
         {
             ChestData temp = new ChestData();
             int i = 0;
@@ -94,5 +95,6 @@ public class Chest: Node
     public void unPopDialogue(Node body)
     {
         _dialoguePop.UnPop();
+        GetNode("DialoguePopUp").QueueFree();
     }
 }

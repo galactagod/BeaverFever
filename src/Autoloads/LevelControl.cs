@@ -23,7 +23,6 @@ public class LevelControl : Node
 
     public string nameOfCurrentScene { get; set; }
 
-    private DialoguePopUp dialoguePopUp;
     private PlayerData playerData;
     private PlayerUi playerUi;
     public override void _Ready()
@@ -50,7 +49,6 @@ public class LevelControl : Node
 
         PauseMode = PauseModeEnum.Process;
 
-        dialoguePopUp = GetNode<DialoguePopUp>("/root/DialoguePopUp");
         playerData = GetNode<PlayerData>("/root/PlayerData");
         playerUi = GetNode<PlayerUi>("/root/PlayerUi");
 
@@ -71,7 +69,6 @@ public class LevelControl : Node
                     GetTree().Paused = true;
                     GetNode(controlPath).Set("visible", true);
                     paused = true;
-                    dialoguePopUp.UnPop();
                 }
                 else
                 {
@@ -99,6 +96,7 @@ public class LevelControl : Node
         {
             var childRemoved = GetNode(controlPath).GetChild(0);
             GetNode(controlPath).RemoveChild(childRemoved);
+            childRemoved.QueueFree();
         }
         
         GetNode(controlPath).AddChild(templateInvSlot.Instance());

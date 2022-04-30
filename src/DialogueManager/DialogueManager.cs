@@ -20,7 +20,7 @@ public class DialogueManager
         "Click ESC key to access the menu.",
         "Jump on enemies to kill them and get XP.",
         "Walk into coins to collect them.",
-        "Have you not played Mario before lol. Walk into the flag."
+        "Have you not played Mario before lol. Get to the flag."
     };
 
     List<string> miscellanousDialogue = new List<string>
