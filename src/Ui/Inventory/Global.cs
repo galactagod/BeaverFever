@@ -660,7 +660,7 @@ public static class Global
         {
             name = "BrownBear",
             level = 1,
-            health = 10,
+            health = 20,
             attack = 10,
             defense = 4,
             spAttack = 10,
@@ -670,7 +670,7 @@ public static class Global
         {
             name = "BrownBear",
             level = 2,
-            health = 15,
+            health = 30,
             attack = 15,
             defense = 6,
             spAttack = 15,
@@ -680,7 +680,7 @@ public static class Global
         {
             name = "BrownBear",
             level = 3,
-            health = 20,
+            health = 40,
             attack = 20,
             defense = 8,
             spAttack = 20,
