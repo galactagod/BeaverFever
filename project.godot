@@ -22,7 +22,6 @@ GameControl="*res://src/Autoloads/GameControl.cs"
 LevelControl="*res://src/Autoloads/LevelControl.cs"
 EventManager="*res://src/Autoloads/EventManager.cs"
 PlayerUi="*res://src/Ui/OverWorldUi/PlayerUi.tscn"
-DialoguePopUp="*res://src/Dialogue/DialoguePopUp.tscn"
 
 [display]
 

@@ -17,14 +17,16 @@ public class SignPost : Area2D
     {
         this.Connect("body_entered", this, nameof(OnBodyEntered));
         this.Connect("body_exited", this, nameof(OnBodyExited));
-        dialoguePopUp = GetNode<DialoguePopUp>("/root/DialoguePopUp");
+        
     }
 
     
 
     public void OnBodyEntered(Node body)
     {
-        if(body is ObjPlayer)
+        AddChild(GD.Load<PackedScene>("res://src/Dialogue/DialoguePopUp.tscn").Instance());
+        dialoguePopUp = GetNode<DialoguePopUp>("DialoguePopUp");
+        if (body is ObjPlayer)
         {
             Console.WriteLine("The message is " + whichDialogue);
             if (whichSet == "Tutorial")
@@ -43,5 +45,6 @@ public class SignPost : Area2D
             Console.WriteLine("The message is " + whichDialogue);
             dialoguePopUp.UnPop();
         }
+        GetNode("DialoguePopUp").QueueFree();
     }
 }
