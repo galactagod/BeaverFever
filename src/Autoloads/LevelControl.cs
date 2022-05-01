@@ -116,7 +116,7 @@ public class LevelControl : Node
             playerUi.Show();
         }
 
-        if (nameOfCurrentScene == "Tutorial" || nameOfCurrentScene == "LevelTemplate" || nameOfCurrentScene == "ExtraLevelTrevor")
+        if (nameOfCurrentScene == "Tutorial" || nameOfCurrentScene == "LevelTemplate" || nameOfCurrentScene == "ExtraLevelTrevor" || nameOfCurrentScene == "CountryLVL")
         {
             PlayAudio(_musicPlayer, _sndDreamFactory, -15, 1);
         }
@@ -149,6 +149,10 @@ public class LevelControl : Node
         else if(nameOfCurrentScene == "AnotherExtraLevel")
         {
             LevelChange(GD.Load<PackedScene>("res://src/Levels/AnotherExtraLevel.tscn"));
+        }
+        else if (nameOfCurrentScene == "CountryLVL")
+        {
+            LevelChange(GD.Load<PackedScene>("res://src/Levels/CountryLVL.tscn"));
         }
     }
 
