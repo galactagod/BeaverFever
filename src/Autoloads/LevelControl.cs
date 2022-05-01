@@ -107,7 +107,7 @@ public class LevelControl : Node
         nameOfCurrentScene = sceneName;
         rootPath = "/root/" + sceneName + "/CanvasLayer/Control/";
         controlPath = "/root/" + sceneName + "/CanvasLayer/Control";
-        if(nameOfCurrentScene == "Intro")
+        if(nameOfCurrentScene == "Intro" || nameOfCurrentScene == "Ending")
         {
             playerUi.Hide();
         }
@@ -145,6 +145,10 @@ public class LevelControl : Node
         else if(nameOfCurrentScene == "ExtraLevelTrevor")
         {
             LevelChange(GD.Load<PackedScene>("res://src/Levels/ExtraLevelTrevor.tscn"));
+        }
+        else if(nameOfCurrentScene == "AnotherExtraLevel")
+        {
+            LevelChange(GD.Load<PackedScene>("res://src/Levels/AnotherExtraLevel.tscn"));
         }
     }
 

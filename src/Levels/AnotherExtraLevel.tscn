@@ -1,0 +1,395 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://src/Objects/Player/ObjPlayer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Assets/Tiles/Forest A ts.png" type="Texture" id=2]
+[ext_resource path="res://SignPost.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Objects/Enemy/BrownBear/BrownBear.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Assets/Backgrounds/forest A background.png" type="Texture" id=5]
+[ext_resource path="res://src/Assets/Backgrounds/sky backgroundB.png" type="Texture" id=6]
+[ext_resource path="res://src/Levels/LevelStart.cs" type="Script" id=7]
+[ext_resource path="res://src/Objects/Items/Coins/CopperCoin.tscn" type="PackedScene" id=8]
+[ext_resource path="res://LevelTeleporter.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/Objects/Items/Coins/GoldCoin.tscn" type="PackedScene" id=10]
+[ext_resource path="res://NecessaryUIForLevelScene.tscn" type="PackedScene" id=11]
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( 0, 10, 90, 10, 90, 30, 0, 30 )
+
+[sub_resource type="ConvexPolygonShape2D" id=9]
+points = PoolVector2Array( 90, 90, 0, 90, 0, 68, 90, 6 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+points = PoolVector2Array( 4, 0, 30, 0, 30, 60, 4, 60 )
+
+[sub_resource type="ConvexPolygonShape2D" id=7]
+points = PoolVector2Array( 4, 10, 30, 10, 30, 30, 4, 30 )
+
+[sub_resource type="ConvexPolygonShape2D" id=8]
+points = PoolVector2Array( 0, 10, 30, 10, 30, 30, 0, 30 )
+
+[sub_resource type="TileSet" id=4]
+0/name = "Forest A ts.png 0"
+0/texture = ExtResource( 2 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 90, 60 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "Forest A ts.png 1"
+1/texture = ExtResource( 2 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 60, 90, 30 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 5 )
+1/shape_one_way = true
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": true,
+"one_way_margin": 1.0,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+2/name = "Forest A ts.png 2"
+2/texture = ExtResource( 2 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 90, 30, 60 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape = SubResource( 6 )
+2/shape_one_way = false
+2/shape_one_way_margin = 1.0
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 6 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+2/z_index = 0
+3/name = "Forest A ts.png 3"
+3/texture = ExtResource( 2 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 330, 30, 30, 30 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape = SubResource( 7 )
+3/shape_one_way = true
+3/shape_one_way_margin = 1.0
+3/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": true,
+"one_way_margin": 1.0,
+"shape": SubResource( 7 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+3/z_index = 0
+4/name = "Forest A ts.png 4"
+4/texture = ExtResource( 2 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 330, 90, 90, 60 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
+4/shapes = [  ]
+4/z_index = 0
+5/name = "Forest A ts.png 5"
+5/texture = ExtResource( 2 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 210, 90, 90, 60 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape_one_way = false
+5/shape_one_way_margin = 0.0
+5/shapes = [  ]
+5/z_index = 0
+6/name = "Forest A ts.png 6"
+6/texture = ExtResource( 2 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 90, 150, 90, 90 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+6/shape_one_way = false
+6/shape_one_way_margin = 0.0
+6/shapes = [  ]
+6/z_index = 0
+7/name = "Forest A ts.png 7"
+7/texture = ExtResource( 2 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 330, 0, 30, 30 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape_one_way = false
+7/shape_one_way_margin = 0.0
+7/shapes = [  ]
+7/z_index = 0
+8/name = "Forest A ts.png 8"
+8/texture = ExtResource( 2 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 360, 30, 30, 30 )
+8/tile_mode = 0
+8/occluder_offset = Vector2( 0, 0 )
+8/navigation_offset = Vector2( 0, 0 )
+8/shape_offset = Vector2( 0, 0 )
+8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+8/shape = SubResource( 8 )
+8/shape_one_way = true
+8/shape_one_way_margin = 1.0
+8/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": true,
+"one_way_margin": 1.0,
+"shape": SubResource( 8 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+8/z_index = 0
+9/name = "Forest A ts.png 9"
+9/texture = ExtResource( 2 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 360, 0, 30, 30 )
+9/tile_mode = 0
+9/occluder_offset = Vector2( 0, 0 )
+9/navigation_offset = Vector2( 0, 0 )
+9/shape_offset = Vector2( 0, 0 )
+9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+9/shape_one_way = false
+9/shape_one_way_margin = 0.0
+9/shapes = [  ]
+9/z_index = 0
+10/name = "Forest A ts.png 10"
+10/texture = ExtResource( 2 )
+10/tex_offset = Vector2( 0, 0 )
+10/modulate = Color( 1, 1, 1, 1 )
+10/region = Rect2( 300, 150, 90, 90 )
+10/tile_mode = 0
+10/occluder_offset = Vector2( 0, 0 )
+10/navigation_offset = Vector2( 0, 0 )
+10/shape_offset = Vector2( 0, 0 )
+10/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+10/shape = SubResource( 9 )
+10/shape_one_way = false
+10/shape_one_way_margin = 1.0
+10/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 9 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+10/z_index = 0
+11/name = "Forest A ts.png 11"
+11/texture = ExtResource( 2 )
+11/tex_offset = Vector2( 0, 0 )
+11/modulate = Color( 1, 1, 1, 1 )
+11/region = Rect2( 210, 150, 90, 120 )
+11/tile_mode = 0
+11/occluder_offset = Vector2( 0, 0 )
+11/navigation_offset = Vector2( 0, 0 )
+11/shape_offset = Vector2( 0, 0 )
+11/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+11/shape_one_way = false
+11/shape_one_way_margin = 0.0
+11/shapes = [  ]
+11/z_index = 0
+
+[node name="AnotherExtraLevel" type="Node"]
+script = ExtResource( 7 )
+levelName = "AnotherExtraLevel"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 800, 0 )
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( 9, -1429 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.3, 0.5 )
+motion_mirroring = Vector2( 722, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 5, -145 )
+scale = Vector2( 1, 1.3 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="TileMap floor" type="TileMap" parent="."]
+tile_set = SubResource( 4 )
+cell_size = Vector2( 30, 30 )
+cell_y_sort = true
+collision_layer = 4
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( -589737, 3, 0, -589736, 8, 0, -589732, 3, 0, -589731, 1, 0, -589728, 8, 0, -589725, 3, 0, -589724, 1, 0, -589721, 8, 0, -524201, 7, 0, -524200, 9, 0, -524196, 7, 0, -524195, 5, 0, -524192, 9, 0, -524189, 7, 0, -524188, 5, 0, -524185, 9, 0, -458668, 3, 0, -458667, 8, 0, -458645, 536870922, 0, -393132, 7, 0, -393131, 9, 0, -327599, 3, 0, -327598, 8, 0, -327570, 536870922, 0, -262063, 7, 0, -262062, 9, 0, -196533, 3, 0, -196532, 1, 0, -196529, 8, 0, -196495, 536870913, 0, -196492, 536870913, 0, -196489, 536870913, 0, -196483, 3, 0, -196482, 1, 0, -196479, 8, 0, -196476, 3, 0, -196475, 1, 0, -196472, 8, 0, -196469, 3, 0, -196468, 1, 0, -196465, 8, 0, -196462, 3, 0, -196461, 1, 0, -196458, 1, 0, -196455, 1, 0, -196452, 8, 0, -131036, 3, 0, -131035, 1, 0, -131032, 8, 0, -130997, 7, 0, -130996, 5, 0, -130993, 9, 0, -130966, 7, 0, -130965, 536870918, 0, -130962, 6, 0, -130959, 4, 0, -130956, 536870918, 0, -130953, 6, 0, -130947, 7, 0, -130946, 5, 0, -130943, 9, 0, -130940, 7, 0, -130939, 5, 0, -130936, 9, 0, -130933, 7, 0, -130932, 5, 0, -130929, 9, 0, -130926, 7, 0, -130925, 4, 0, -130922, 11, 0, -130919, 6, 0, -130916, 9, 0, -65512, 3, 0, -65511, 8, 0, -65508, 3, 0, -65507, 8, 0, -65504, 3, 0, -65503, 8, 0, -65500, 7, 0, -65499, 5, 0, -65496, 9, 0, -65468, 3, 0, -65467, 1, 0, -65464, 8, 0, -65444, 3, 0, -65443, 536870913, 0, -65440, 536870915, 0, -65375, 3, 0, -65374, 1, 0, -65371, 536870915, 0, 17, 3, 0, 18, 1, 0, 21, 8, 0, 24, 7, 0, 25, 9, 0, 28, 7, 0, 29, 9, 0, 32, 7, 0, 33, 9, 0, 68, 7, 0, 69, 5, 0, 72, 9, 0, 98, 3, 0, 99, 8, 0, 65553, 7, 0, 65554, 5, 0, 65557, 9, 0, 65577, 3, 0, 65578, 536870922, 0, 65599, 10, 0, 65602, 536870915, 0, 65634, 7, 0, 65635, 9, 0, 131082, 3, 0, 131083, 1, 0, 131086, 8, 0, 131172, 3, 0, 131173, 8, 0, 196618, 7, 0, 196619, 5, 0, 196622, 9, 0, 196653, 536870922, 0, 196668, 10, 0, 196708, 7, 0, 196709, 9, 0, 327680, 1, 0, 327683, 1, 0, 327686, 1, 0, 327689, 1, 0, 327692, 1, 0, 327695, 1, 0, 327698, 1, 0, 327701, 1, 0, 327704, 1, 0, 327707, 1, 0, 327710, 1, 0, 327713, 1, 0, 327716, 1, 0, 327719, 1, 0, 327728, 1, 0, 327731, 1, 0, 327734, 1, 0, 327737, 1, 0, 327746, 1, 0, 327749, 1, 0, 327752, 1, 0, 327755, 1, 0, 327758, 1, 0, 327761, 1, 0, 327764, 1, 0, 327767, 1, 0, 327770, 1, 0, 327776, 1, 0, 327779, 1, 0, 327782, 1, 0, 327785, 1, 0, 327788, 1, 0, 327791, 1, 0, 327794, 1, 0, 327797, 1, 0, 327800, 1, 0, 327803, 1, 0, 327806, 1, 0, 327809, 1, 0, 327812, 1, 0, 327815, 1, 0, 327818, 1, 0, 327821, 1, 0, 327824, 1, 0, 327827, 1, 0, 327830, 1, 0, 327833, 1, 0, 327836, 1, 0, 327839, 1, 0, 327845, 1, 0, 327848, 1, 0, 327851, 1, 0, 327854, 1, 0, 327857, 1, 0, 327860, 1, 0, 327863, 1, 0, 327866, 1, 0, 327869, 1, 0 )
+
+[node name="TileMap walls" type="TileMap" parent="."]
+tile_set = SubResource( 4 )
+cell_size = Vector2( 30, 30 )
+cell_y_sort = true
+collision_layer = 4
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( -1507331, 536870912, 0, -1572864, 536870914, 0, -1376259, 536870912, 0, -1441792, 536870914, 0, -1245187, 536870912, 0, -1310720, 536870914, 0, -1114115, 536870912, 0, -1179648, 536870914, 0, -983043, 536870912, 0, -1048576, 536870914, 0, -1048385, 2, 0, -1048384, 0, 0, -1048381, 0, 0, -1048378, 0, 0, -851971, 536870912, 0, -917504, 536870914, 0, -917313, 2, 0, -917312, 0, 0, -917309, 0, 0, -917306, 0, 0, -720899, 536870912, 0, -786432, 536870914, 0, -786241, 2, 0, -786240, 0, 0, -786237, 0, 0, -786234, 0, 0, -589827, 536870912, 0, -655360, 536870914, 0, -655169, 2, 0, -655168, 0, 0, -655165, 0, 0, -655162, 0, 0, -458755, 536870912, 0, -524288, 536870914, 0, -524097, 2, 0, -524096, 0, 0, -524093, 0, 0, -524090, 0, 0, -458646, 3, 0, -327683, 536870912, 0, -393216, 536870914, 0, -393110, 2, 0, -393025, 2, 0, -393024, 0, 0, -393021, 0, 0, -393018, 0, 0, -196611, 536870912, 0, -262144, 536870914, 0, -262038, 2, 0, -262037, 536870912, 0, -261953, 2, 0, -261952, 0, 0, -261949, 0, 0, -261946, 0, 0, -65539, 536870912, 0, -131072, 536870914, 0, -130881, 2, 0, -130880, 0, 0, -130877, 0, 0, -130874, 0, 0, 65533, 536870912, 0, 0, 536870914, 0, 92, 2, 0, 93, 536870912, 0, 96, 536870914, 0, 161, 2, 0, 162, 536870912, 0, 165, 536870914, 0, 191, 2, 0, 192, 0, 0, 195, 0, 0, 198, 0, 0, 196605, 536870912, 0, 131072, 536870914, 0, 131113, 2, 0, 131138, 536870914, 0, 131164, 2, 0, 131165, 536870912, 0, 131168, 536870914, 0, 131233, 2, 0, 131234, 536870912, 0, 131237, 536870914, 0, 131263, 2, 0, 131264, 0, 0, 131267, 0, 0, 131270, 0, 0, 327677, 536870912, 0, 262144, 536870914, 0, 262185, 2, 0, 262186, 536870912, 0, 262207, 0, 0, 262210, 536870914, 0, 262236, 2, 0, 262237, 536870912, 0, 262240, 536870914, 0, 262305, 2, 0, 262306, 536870912, 0, 262309, 536870914, 0, 262335, 2, 0, 262336, 0, 0, 262339, 0, 0, 262342, 0, 0, 458749, 536870912, 0, 393216, 0, 0, 393219, 0, 0, 393222, 0, 0, 393225, 0, 0, 393228, 0, 0, 393231, 0, 0, 393234, 0, 0, 393237, 0, 0, 393240, 0, 0, 393243, 0, 0, 393246, 0, 0, 393249, 0, 0, 393252, 0, 0, 393255, 0, 0, 393258, 0, 0, 393261, 0, 0, 393264, 0, 0, 393267, 0, 0, 393270, 0, 0, 393273, 0, 0, 393276, 0, 0, 393279, 0, 0, 393282, 0, 0, 393285, 0, 0, 393288, 0, 0, 393291, 0, 0, 393294, 0, 0, 393297, 0, 0, 393300, 0, 0, 393303, 0, 0, 393306, 0, 0, 393309, 0, 0, 393312, 0, 0, 393315, 0, 0, 393318, 0, 0, 393321, 0, 0, 393324, 0, 0, 393327, 0, 0, 393330, 0, 0, 393333, 0, 0, 393336, 0, 0, 393339, 0, 0, 393342, 0, 0, 393345, 0, 0, 393348, 0, 0, 393351, 0, 0, 393354, 0, 0, 393357, 0, 0, 393360, 0, 0, 393363, 0, 0, 393366, 0, 0, 393369, 0, 0, 393372, 0, 0, 393375, 0, 0, 393378, 0, 0, 393381, 0, 0, 393384, 0, 0, 393387, 0, 0, 393390, 0, 0, 393393, 0, 0, 393396, 0, 0, 393399, 0, 0, 393402, 0, 0, 393405, 0, 0, 393408, 0, 0, 393411, 0, 0, 393414, 0, 0, 589821, 536870912, 0, 524288, 0, 0, 524291, 0, 0, 524294, 0, 0, 524297, 0, 0, 524300, 0, 0, 524303, 0, 0, 524306, 0, 0, 524309, 0, 0, 524312, 0, 0, 524315, 0, 0, 524318, 0, 0, 524321, 0, 0, 524324, 0, 0, 524327, 0, 0, 524330, 0, 0, 524333, 0, 0, 524336, 0, 0, 524339, 0, 0, 524342, 0, 0, 524345, 0, 0, 524348, 0, 0, 524351, 0, 0, 524354, 0, 0, 524357, 0, 0, 524360, 0, 0, 524363, 0, 0, 524366, 0, 0, 524369, 0, 0, 524372, 0, 0, 524375, 0, 0, 524378, 0, 0, 524381, 0, 0, 524384, 0, 0, 524387, 0, 0, 524390, 0, 0, 524393, 0, 0, 524396, 0, 0, 524399, 0, 0, 524402, 0, 0, 524405, 0, 0, 524408, 0, 0, 524411, 0, 0, 524414, 0, 0, 524417, 0, 0, 524420, 0, 0, 524423, 0, 0, 524426, 0, 0, 524429, 0, 0, 524432, 0, 0, 524435, 0, 0, 524438, 0, 0, 524441, 0, 0, 524444, 0, 0, 524447, 0, 0, 524450, 0, 0, 524453, 0, 0, 524456, 0, 0, 524459, 0, 0, 524462, 0, 0, 524465, 0, 0, 524468, 0, 0, 524471, 0, 0, 524474, 0, 0, 524477, 0, 0, 524480, 0, 0, 524483, 0, 0, 524486, 0, 0, 720893, 536870912, 0, 655360, 0, 0, 655363, 0, 0, 655366, 0, 0, 655369, 0, 0, 655372, 0, 0, 655375, 0, 0, 655378, 0, 0, 655381, 0, 0, 655384, 0, 0, 655387, 0, 0, 655390, 0, 0, 655393, 0, 0, 655396, 0, 0, 655399, 0, 0, 655402, 0, 0, 655405, 0, 0, 655408, 0, 0, 655411, 0, 0, 655414, 0, 0, 655417, 0, 0, 655420, 0, 0, 655423, 0, 0, 655426, 0, 0, 655429, 0, 0, 655432, 0, 0, 655435, 0, 0, 655438, 0, 0, 655441, 0, 0, 655444, 0, 0, 655447, 0, 0, 655450, 0, 0, 655453, 0, 0, 655456, 0, 0, 655459, 0, 0, 655462, 0, 0, 655465, 0, 0, 655468, 0, 0, 655471, 0, 0, 655474, 0, 0, 655477, 0, 0, 655480, 0, 0, 655483, 0, 0, 655486, 0, 0, 655489, 0, 0, 655492, 0, 0, 655495, 0, 0, 655498, 0, 0, 655501, 0, 0, 655504, 0, 0, 655507, 0, 0, 655510, 0, 0, 655513, 0, 0, 655516, 0, 0, 655519, 0, 0, 655522, 0, 0, 655525, 0, 0, 655528, 0, 0, 655531, 0, 0, 655534, 0, 0, 655537, 0, 0, 655540, 0, 0, 655543, 0, 0, 655546, 0, 0, 655549, 0, 0, 655552, 0, 0, 655555, 0, 0, 655558, 0, 0, 851965, 536870912, 0, 786432, 0, 0, 786435, 0, 0, 786438, 0, 0, 786441, 0, 0, 786444, 0, 0, 786447, 0, 0, 786450, 0, 0, 786453, 0, 0, 786456, 0, 0, 786459, 0, 0, 786462, 0, 0, 786465, 0, 0, 786468, 0, 0, 786471, 0, 0, 786474, 0, 0, 786477, 0, 0, 786480, 0, 0, 786483, 0, 0, 786486, 0, 0, 786489, 0, 0, 786492, 0, 0, 786495, 0, 0, 786498, 0, 0, 786501, 0, 0, 786504, 0, 0, 786507, 0, 0, 786510, 0, 0, 786513, 0, 0, 786516, 0, 0, 786519, 0, 0, 786522, 0, 0, 786525, 0, 0, 786528, 0, 0, 786531, 0, 0, 786534, 0, 0, 786537, 0, 0, 786540, 0, 0, 786543, 0, 0, 786546, 0, 0, 786549, 0, 0, 786552, 0, 0, 786555, 0, 0, 786558, 0, 0, 786561, 0, 0, 786564, 0, 0, 786567, 0, 0, 786570, 0, 0, 786573, 0, 0, 786576, 0, 0, 786579, 0, 0, 786582, 0, 0, 786585, 0, 0, 786588, 0, 0, 786591, 0, 0, 786594, 0, 0, 786597, 0, 0, 786600, 0, 0, 786603, 0, 0, 786606, 0, 0, 786609, 0, 0, 786612, 0, 0, 786615, 0, 0, 786618, 0, 0, 786621, 0, 0, 786624, 0, 0, 786627, 0, 0, 786630, 0, 0 )
+
+[node name="ObjPlayer" parent="." instance=ExtResource( 1 )]
+position = Vector2( 104, 128 )
+
+[node name="SprPlayer" parent="ObjPlayer" index="0"]
+animation = "Crawl"
+
+[node name="Camera2D" parent="ObjPlayer" index="2"]
+limit_left = 0
+limit_right = 6250
+
+[node name="CollBase" parent="ObjPlayer" index="3"]
+position = Vector2( 4, -24 )
+
+[node name="StompDetector" parent="ObjPlayer" index="4"]
+position = Vector2( 0, -8 )
+
+[node name="CollStomp" parent="ObjPlayer/StompDetector" index="0"]
+position = Vector2( 4.5, 4 )
+
+[node name="coins" type="Node" parent="."]
+
+[node name="CanvasLayer" parent="." instance=ExtResource( 11 )]
+
+[node name="SignPost5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1149, -85 )
+whichDialogue = 4
+whichSet = "Misc"
+
+[node name="SignPost6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2317, -117 )
+whichDialogue = 5
+whichSet = "Misc"
+
+[node name="BrownBear2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1481, 123 )
+
+[node name="BrownBear3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1721, 124 )
+
+[node name="BrownBear4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2099, -57 )
+
+[node name="CopperCoin9" parent="." instance=ExtResource( 8 )]
+position = Vector2( 557, -27 )
+
+[node name="CopperCoin10" parent="." instance=ExtResource( 8 )]
+position = Vector2( 589, -27 )
+
+[node name="CopperCoin11" parent="." instance=ExtResource( 8 )]
+position = Vector2( 621, -27 )
+
+[node name="CopperCoin15" parent="." instance=ExtResource( 8 )]
+position = Vector2( 2095, 126 )
+
+[node name="CopperCoin16" parent="." instance=ExtResource( 8 )]
+position = Vector2( 2127, 126 )
+
+[node name="CopperCoin17" parent="." instance=ExtResource( 8 )]
+position = Vector2( 2159, 126 )
+
+[node name="CopperCoin12" parent="." instance=ExtResource( 8 )]
+position = Vector2( 349, 45 )
+
+[node name="CopperCoin13" parent="." instance=ExtResource( 8 )]
+position = Vector2( 381, 45 )
+
+[node name="CopperCoin14" parent="." instance=ExtResource( 8 )]
+position = Vector2( 413, 45 )
+
+[node name="GoldCoin15" parent="." instance=ExtResource( 10 )]
+position = Vector2( 2835, -293 )
+
+[node name="GoldCoin16" parent="." instance=ExtResource( 10 )]
+position = Vector2( 2802, -293 )
+
+[node name="GoldCoin17" parent="." instance=ExtResource( 10 )]
+position = Vector2( 2866, -292 )
+
+[node name="GoldCoin18" parent="." instance=ExtResource( 10 )]
+position = Vector2( 3475, -113 )
+
+[node name="GoldCoin19" parent="." instance=ExtResource( 10 )]
+position = Vector2( 3442, -113 )
+
+[node name="GoldCoin20" parent="." instance=ExtResource( 10 )]
+position = Vector2( 3506, -112 )
+
+[node name="GoldCoin21" parent="." instance=ExtResource( 10 )]
+position = Vector2( 4246, -111 )
+
+[node name="GoldCoin22" parent="." instance=ExtResource( 10 )]
+position = Vector2( 4213, -111 )
+
+[node name="GoldCoin23" parent="." instance=ExtResource( 10 )]
+position = Vector2( 4277, -110 )
+
+[node name="GoldCoin24" parent="." instance=ExtResource( 10 )]
+position = Vector2( 4147, 129 )
+
+[node name="GoldCoin25" parent="." instance=ExtResource( 10 )]
+position = Vector2( 4114, 129 )
+
+[node name="GoldCoin26" parent="." instance=ExtResource( 10 )]
+position = Vector2( 4178, 130 )
+
+[node name="GoldCoin27" parent="." instance=ExtResource( 10 )]
+position = Vector2( 3365, 126 )
+
+[node name="GoldCoin28" parent="." instance=ExtResource( 10 )]
+position = Vector2( 3332, 126 )
+
+[node name="GoldCoin29" parent="." instance=ExtResource( 10 )]
+position = Vector2( 3396, 127 )
+
+[node name="LevelTeleporter" parent="." instance=ExtResource( 9 )]
+position = Vector2( 5568, 111 )
+levelToGo = "res://src/Levels/Ending.tscn"
+
+[editable path="ObjPlayer"]
