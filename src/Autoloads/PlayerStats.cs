@@ -126,12 +126,12 @@ public class PlayerStats : Node
 
         if (name == "Medium Health Potion")
         {
-            ChangeHealth(30);
+            ChangeHealth(25);
         }
 
         if (name == "Large Health Potion")
         {
-            ChangeHealth(60);
+            ChangeHealth(55);
         }
 
 

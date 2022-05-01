@@ -29,7 +29,7 @@ public static class Global
         equippedSlot = "none",
         ableToBeEquippedSlot = "Consumable",
         type = "item",
-        tooltip = "Restores 30 Health"
+        tooltip = "Restores 25 Health"
         },
         new PlayerData.item {
         name = "Large Health Potion",
@@ -40,7 +40,7 @@ public static class Global
         equippedSlot = "none",
         ableToBeEquippedSlot = "Consumable",
         type = "item",
-        tooltip = "Restores 60 Health"
+        tooltip = "Restores 55 Health"
         }
 
     };
@@ -464,7 +464,7 @@ public static class Global
         equippedSlot = "none",
         ableToBeEquippedSlot = "Consumable",
         type = "item",
-        tooltip = "Restores 30 Health"
+        tooltip = "Restores 25 Health"
         },
         //3
         new PlayerData.item {
@@ -476,7 +476,7 @@ public static class Global
         equippedSlot = "none",
         ableToBeEquippedSlot = "Consumable",
         type = "item",
-        tooltip = "Restores 60 Health"
+        tooltip = "Restores 55 Health"
         },
         //4
         new PlayerData.item {

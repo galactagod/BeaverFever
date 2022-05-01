@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/Mini_exit.png" type="Texture" id=2]
 [ext_resource path="res://assets/skills/strength/teeth/Sharp Mod 1.png" type="Texture" id=3]
 [ext_resource path="res://assets/skills/strength/bubble burst/bubble burst base.png" type="Texture" id=4]
-[ext_resource path="res://assets/backgrounds/background.jpg" type="Texture" id=5]
+[ext_resource path="res://assets/Background_grey.png" type="Texture" id=5]
 [ext_resource path="res://assets/skills/body/boots/Boots 1 Mod 1.png" type="Texture" id=6]
 [ext_resource path="res://assets/skills/strength/claws/Rip Mod 1.png" type="Texture" id=7]
 [ext_resource path="res://fonts/ARIALBD.TTF" type="DynamicFontData" id=8]
