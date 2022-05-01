@@ -283,9 +283,6 @@ position = Vector2( 1178, 151 )
 [node name="ObjPlayer" parent="." instance=ExtResource( 1 )]
 position = Vector2( 104, 128 )
 
-[node name="SprPlayer" parent="ObjPlayer" index="0"]
-animation = "Crawl"
-
 [node name="Camera2D" parent="ObjPlayer" index="2"]
 limit_left = 0
 limit_right = 7500

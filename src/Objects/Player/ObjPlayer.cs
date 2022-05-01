@@ -22,6 +22,7 @@ public class ObjPlayer : BaseMovementAct
     private bool _stompJump = false;
     private int _stompJumpTimer = 0;
     private int _timer = 0;
+    private object _ndSkillMove;
     protected readonly Random _rnd = new Random();
 
     // sound paths
@@ -128,6 +129,13 @@ public class ObjPlayer : BaseMovementAct
 
         // energy naturally replenishes
         _ndPlayerStats.ReplenishEnergy(0.002f);
+
+        // use Skill
+        if (Input.IsActionJustReleased("ui_accept"))
+        {
+            Type t = Type.GetType("Crunch");
+            object ndSkillMove = Activator.CreateInstance(t);
+        }
     }
 
     public void BaseMovementControl()
