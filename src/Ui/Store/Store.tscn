@@ -148,10 +148,10 @@ margin_bottom = 41.0
 align = 1
 
 [node name="Panel2" type="Panel" parent="TabContainer/Items/RichTextLabel/control"]
-margin_left = 330.0
-margin_top = 1.0
-margin_right = 640.0
-margin_bottom = 417.0
+margin_left = 375.0
+margin_top = 2.0
+margin_right = 685.0
+margin_bottom = 418.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -179,33 +179,34 @@ slot = 2
 [node name="Label" type="Label" parent="TabContainer/Items/RichTextLabel/control/Panel2"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -148.5
-margin_right = 148.5
-margin_bottom = 41.0
+margin_left = -150.5
+margin_top = 2.0
+margin_right = 146.5
+margin_bottom = 43.0
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Panel3" type="Panel" parent="TabContainer/Items/RichTextLabel/control"]
-margin_left = 649.0
-margin_top = -1.0
-margin_right = 959.0
-margin_bottom = 415.0
+margin_left = 747.0
+margin_top = 9.0
+margin_right = 1083.0
+margin_bottom = 425.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Holder" type="Sprite" parent="TabContainer/Items/RichTextLabel/control/Panel3"]
-position = Vector2( 153, 169 )
+position = Vector2( 163, 166 )
 scale = Vector2( 0.949219, 0.917969 )
 texture = ExtResource( 11 )
 
 [node name="TextureButton" type="TextureButton" parent="TabContainer/Items/RichTextLabel/control/Panel3"]
-margin_left = 9.0
-margin_top = 290.0
-margin_right = 300.0
-margin_bottom = 370.0
+margin_left = 21.0
+margin_top = 286.0
+margin_right = 312.0
+margin_bottom = 366.0
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 6 )
 texture_disabled = ExtResource( 6 )

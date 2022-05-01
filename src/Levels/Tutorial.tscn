@@ -294,17 +294,22 @@ position = Vector2( 4.5, 4 )
 [node name="CanvasLayer" parent="." instance=ExtResource( 11 )]
 
 [node name="SignPost" parent="." instance=ExtResource( 3 )]
-position = Vector2( 788, 124 )
+position = Vector2( 258, 124 )
 whichSet = "Tutorial"
 
 [node name="SignPost2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1061, 125 )
+position = Vector2( 824, 123 )
 whichDialogue = 1
 whichSet = "Tutorial"
 
 [node name="SignPost3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1458, 124 )
+position = Vector2( 1156, 125 )
 whichDialogue = 2
+whichSet = "Tutorial"
+
+[node name="SignPost7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1510, 123 )
+whichDialogue = 6
 whichSet = "Tutorial"
 
 [node name="SignPost4" parent="." instance=ExtResource( 3 )]
@@ -318,7 +323,7 @@ whichDialogue = 4
 whichSet = "Tutorial"
 
 [node name="SignPost6" parent="." instance=ExtResource( 3 )]
-position = Vector2( 3717, 123 )
+position = Vector2( 3484, 123 )
 whichDialogue = 5
 whichSet = "Tutorial"
 

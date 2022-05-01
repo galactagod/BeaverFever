@@ -48,7 +48,7 @@ public class Store : Control
         if (playerData.itemsAvaliable.Count > 0)
         {
             var slot1Label = GetNode("TabContainer/Items/RichTextLabel/control/Panel1/Label");
-            slot1Label.Set("text", playerData.itemsAvaliable[0].name + ": " + playerData.itemsAvaliable[0].price);
+            slot1Label.Set("text", playerData.itemsAvaliable[0].name + ": " + playerData.itemsAvaliable[0].price + "--" + playerData.itemsAvaliable[0].tooltip);
             var slot1ButtonTexture = GetNode("TabContainer/Items/RichTextLabel/control/Panel1/Holder");
             //slot1ButtonTexture.Set("texture", "res://assets/" + itemsAvaliable[0].name + ".png");
             slot1ButtonTexture.Set("texture", playerData.itemsAvaliable[0].texture);
@@ -70,7 +70,7 @@ public class Store : Control
         if (playerData.itemsAvaliable.Count > 1)
         {
             var slot2Label = GetNode("TabContainer/Items/RichTextLabel/control/Panel2/Label");
-            slot2Label.Set("text", playerData.itemsAvaliable[1].name + ": " + playerData.itemsAvaliable[1].price);
+            slot2Label.Set("text", playerData.itemsAvaliable[1].name + ": " + playerData.itemsAvaliable[1].price + "--" + playerData.itemsAvaliable[1].tooltip);
             var slot2ButtonTexture = GetNode("TabContainer/Items/RichTextLabel/control/Panel2/Holder");
             slot2ButtonTexture.Set("texture", playerData.itemsAvaliable[1].texture);
             slot2ButtonTexture.Set("scale", playerData.itemsAvaliable[1].scale);
@@ -91,7 +91,7 @@ public class Store : Control
         if(playerData.itemsAvaliable.Count > 2)
         {
             var slot3Label = GetNode("TabContainer/Items/RichTextLabel/control/Panel3/Label");
-            slot3Label.Set("text", playerData.itemsAvaliable[2].name + ": " + playerData.itemsAvaliable[2].price);
+            slot3Label.Set("text", playerData.itemsAvaliable[2].name + ": " + playerData.itemsAvaliable[2].price + "--" + playerData.itemsAvaliable[2].tooltip);
             var slot3ButtonTexture = GetNode("TabContainer/Items/RichTextLabel/control/Panel3/Holder");
             slot3ButtonTexture.Set("texture", playerData.itemsAvaliable[2].texture);
             slot3ButtonTexture.Set("scale", playerData.itemsAvaliable[2].scale);

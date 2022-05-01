@@ -19,18 +19,18 @@ __meta__ = {
 [node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect"]
 margin_left = 425.0
 margin_top = 160.0
-margin_right = 794.0
-margin_bottom = 184.0
-text = "GAME OVER. CLICK BUTTON TO REPLAY CURRENT LEVEL."
+margin_right = 788.0
+margin_bottom = 235.0
+text = "GAME OVER. CLICK BUTTON TO REPLAY CURRENT LEVEL. YOU CAN BUY HEALTH POTIONS IN THE STORE. DRAG AND DROP THEM FROM YOUR INVENTORY INTO THE BOTTOM LEFT SLOT TO USE THEM!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureButton" type="TextureButton" parent="NinePatchRect"]
 margin_left = 426.0
-margin_top = 210.0
+margin_top = 245.0
 margin_right = 793.0
-margin_bottom = 255.0
+margin_bottom = 290.0
 texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 2 )
 expand = true

@@ -15,11 +15,12 @@ public static class DialogueManager
     static List<string> tutorialDialogue = new List<string>
     {
         "Use the up arrow to jump.",
-        "Tooltips in menu will help you, hover over tabs to see them.",
-        "Click ESC key to access the menu.",
-        "Jump on enemies to kill them and get XP.",
+        "Tooltips in menu will help you, hover over tabs to see them. Click ESC key to access the menu. Make sure to hover over each tab in the menu to see what it does.",
+        "Make sure to explore levels in great detail. Items are avaliable in chests and can be drag-n-dropped in the inventory screen,",
+        "Jump on enemies to kill them and get XP. It will take lots of jumps, your stats are low right now. Increase your stats in the stat page and by equipping items.",
         "Walk into coins to collect them.",
-        "Have you not played Mario before lol. Get to the flag."
+        "Mario?",
+        "Skills can be bought in the skills tab and seen in the inventory tab by clicking the bottom facing arrow in the top right."
     };
 
     static List<string> miscellanousDialogue = new List<string>
