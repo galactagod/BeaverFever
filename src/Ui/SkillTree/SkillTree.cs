@@ -194,7 +194,7 @@ public class SkillTree: Node2D {
                 break;
         }
         playerData.bubbleBurstSkill++;
-        playerData.skillBought("Attack Mod", playerData.bubbleBurstSkill);
+        playerData.skillBought("BubbleBurst", playerData.bubbleBurstSkill);
         this.bubbleBurstLabel.Text = "Bubble Burst - Level " + playerData.bubbleBurstSkill;
         ResetLabel();
     }
@@ -245,7 +245,7 @@ public class SkillTree: Node2D {
                 break;
         }
         playerData.sliceSkill++;
-        playerData.skillBought("Rip Mod", playerData.sliceSkill);
+        playerData.skillBought("Slice", playerData.sliceSkill);
             this.sliceLabel.Text = "Slice - Level " + playerData.sliceSkill;
             ResetLabel();
     }
@@ -295,7 +295,7 @@ public class SkillTree: Node2D {
                 break;
         }
         playerData.crunchSkill++;   
-        playerData.skillBought("Sharp Mod", playerData.crunchSkill);
+        playerData.skillBought("Crunch", playerData.crunchSkill);
         this.crunchLabel.Text = "Crunch - Level " + playerData.crunchSkill;
         ResetLabel();
     }
@@ -345,7 +345,7 @@ public class SkillTree: Node2D {
                 break;
         }
         playerData.aegisSkill++;
-        playerData.skillBought("Body Mod", playerData.aegisSkill);
+        playerData.skillBought("Aegis", playerData.aegisSkill);
         this.aegisLabel.Text = "Aegis - Level " + playerData.aegisSkill;
             ResetLabel();
     }
@@ -397,7 +397,7 @@ public class SkillTree: Node2D {
                 break;
         }
         playerData.accelerateSkill++;
-        playerData.skillBought("Boots Mod", playerData.accelerateSkill);
+        playerData.skillBought("Accelerate", playerData.accelerateSkill);
         this.accelerateLabel.Text = "Accelerate - Level " + playerData.accelerateSkill;
         ResetLabel();
     }
@@ -447,8 +447,8 @@ public class SkillTree: Node2D {
                 break;
         }
         playerData.graceSkill++;
-        playerData.skillBought("Book Mod", playerData.graceSkill);
-        this.graceLabel.Text = "Wisdom - Level " + playerData.graceSkill;
+        playerData.skillBought("Grace", playerData.graceSkill);
+        this.graceLabel.Text = "Grace - Level " + playerData.graceSkill;
             ResetLabel();
     }
 
@@ -499,7 +499,7 @@ public class SkillTree: Node2D {
                 break;
         }
       playerData.regenerationSkill++;
-      playerData.skillBought("Leaf Mod", playerData.regenerationSkill);
+      playerData.skillBought("Regeneration", playerData.regenerationSkill);
       this.regenerationLabel.Text = "Regeneration - Level " + playerData.regenerationSkill;
             ResetLabel();
     }
@@ -519,53 +519,6 @@ public class SkillTree: Node2D {
 
     return unlocked;
   }
-
-
-
-   //   void upgradeRegeneration() {
-  //     if (playerData.regenerationSkill < 4) {
-  //       playerData.regenerationSkill++;
-  //       playerData.skillBought("Moon Mod", playerData.graceSkill);
-  //       this.regenerationLabel.Text = "Night - Level " + playerData.regenerationSkill;
-
-  //     }
-
-  //     switch (playerData.regenerationSkill) {
-  //     case 1:
-  //       changeBtnTexture("res://assets/skills/passives/night/Moon Mod 2.png", this.regenerationBtn);
-  //       break;
-
-  //     case 2:
-  //       changeBtnTexture("res://assets/skills/passives/night/Moon Mod 3.png", this.regenerationBtn);
-  //       break;
-  //     case 3:
-  //       changeBtnTexture("res://assets/skills/passives/night/Moon Mod 4.png", this.regenerationBtn);
-  //       break;
-  //     }
-  //   }
-  // void upgradeVampire()
-  // {
-  //     if (vampireSkill < 4)
-  //     {
-  //         vampireSkill++;
-  //         this.vampireLabel.Text = "Vampire - Level " + vampireSkill;
-
-  //     }
-
-  //     switch (vampireSkill)
-  //     {
-  //         case 1:
-  //             changeBtnTexture("res://assets/skills/passives/praying/Praying Mod 2.png", this.vampireBtn);
-  //             break;
-
-  //         case 2:
-  //             changeBtnTexture("res://assets/skills/passives/praying/Praying Mod 3.png", this.vampireBtn);
-  //             break;
-  //         case 3:
-  //             changeBtnTexture("res://assets/skills/passives/praying/Praying Mod 4.png", this.vampireBtn);
-  //             break;
-  //     }
-  // }
 
   void initializeButtons() {
 
@@ -664,7 +617,7 @@ public class SkillTree: Node2D {
     }
 
     this.regenerationLabel.Text = "Regeneration - Level " + playerData.regenerationSkill;
-    this.graceLabel.Text = "Wisdom - Level " + playerData.graceSkill;
+    this.graceLabel.Text = "Grace - Level " + playerData.graceSkill;
     this.aegisLabel.Text = "Aegis - Level " + playerData.aegisSkill;
     this.bubbleBurstLabel.Text = "Bubble Burst - Level " + playerData.bubbleBurstSkill;
     this.sliceLabel.Text = "Slice - Level " + playerData.sliceSkill;

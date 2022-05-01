@@ -332,6 +332,7 @@ position = Vector2( 3481, -38 )
 levelToGo = "res://src/Levels/LevelTemplate.tscn"
 
 [node name="GrayWolf" parent="." instance=ExtResource( 9 )]
+modulate = Color( 0.87451, 0.686275, 0.286275, 1 )
 position = Vector2( 2445, 138 )
 
 [node name="GoldCoin7" parent="." instance=ExtResource( 10 )]
