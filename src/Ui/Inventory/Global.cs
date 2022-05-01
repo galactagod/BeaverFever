@@ -427,12 +427,13 @@ public static class Global
     };
 
     public static List<PlayerData.item> itemTemplates = new List<PlayerData.item> {
+        //0
         new PlayerData.item {
         name = "Iron Broadsword",
         price = 400,
         texture = (Texture) GD.Load(assetRoute + "Iron Broadsword.png"),
         scale = new Vector2(3,3),
-        amountOnStat = new List<string> {"8"},
+        amountOnStat = new List<string> {"2"},
         whichStat = new List<string> {"Attack"},
         operatorOnStat = new List<string> {"+"},
         equippable = true,
@@ -441,6 +442,7 @@ public static class Global
         type = "item",
         tooltip = "A basic broadsword for the common traveler."
         },
+        //1
         new PlayerData.item {
         name = "Small Health Potion",
         price = 300,
@@ -452,6 +454,7 @@ public static class Global
         type = "item",
         tooltip = "Restores 10 Health"
         },
+        //2
         new PlayerData.item {
         name = "Medium Health Potion",
         price = 600,
@@ -463,6 +466,7 @@ public static class Global
         type = "item",
         tooltip = "Restores 30 Health"
         },
+        //3
         new PlayerData.item {
         name = "Large Health Potion",
         price = 900,
@@ -474,11 +478,12 @@ public static class Global
         type = "item",
         tooltip = "Restores 60 Health"
         },
+        //4
         new PlayerData.item {
         name = "Sword of Mixed Madness",
         texture = (Texture) GD.Load(assetRoute + "Sword of Mixed Madness.png"),
         scale = new Vector2(3,3),
-        amountOnStat = new List<string> {"20", "20"},
+        amountOnStat = new List<string> {"4", "4"},
         whichStat = new List<string> {"Attack", "SpAttack"},
         operatorOnStat = new List<string> {"+", "+"},
         equippable = true,
@@ -487,11 +492,12 @@ public static class Global
         type = "item",
         tooltip = "Madness flows from this sword, mixing each aspect of offense to boost both by a large amount."
         },
+        //5
         new PlayerData.item {
         name = "Sword of Malice",
         texture = (Texture) GD.Load(assetRoute + "Sword of Malice.png"),
         scale = new Vector2(3,3),
-        amountOnStat = new List<string> {"25"},
+        amountOnStat = new List<string> {"5"},
         whichStat = new List<string> {"Attack"},
         operatorOnStat = new List<string> {"+"},
         equippable = true,
@@ -500,11 +506,12 @@ public static class Global
         type = "item",
         tooltip = "Ill intentions leak from this blade forged from the evil vines of the forest."
         },
+        //6
         new PlayerData.item {
         name = "Staff of Malice",
         texture = (Texture) GD.Load(assetRoute + "Staff of Malice.png"),
         scale = new Vector2(3,3),
-        amountOnStat = new List<string> {"25"},
+        amountOnStat = new List<string> {"5"},
         whichStat = new List<string> {"SpAttack"},
         operatorOnStat = new List<string> {"+"},
         equippable = true,
@@ -513,11 +520,12 @@ public static class Global
         type = "item",
         tooltip = "Ill intentions leak from this staff forged from the evil vines of the forest."
         },
+        //7
         new PlayerData.item {
         name = "Beaver Tribe Horn",
         texture = (Texture) GD.Load(assetRoute + "Beaver Tribe Horn.png"),
         scale = new Vector2(3,3),
-        amountOnStat = new List<string> {"10","10"},
+        amountOnStat = new List<string> {"2","2"},
         whichStat = new List<string> {"Attack", "Defense"},
         operatorOnStat = new List<string> {"+", "+"},
         equippable = true,
@@ -526,11 +534,12 @@ public static class Global
         type = "item",
         tooltip = "The ancient talisman of the Beaver Tribe. Holds ferocious energy."
         },
+        //8
         new PlayerData.item {
         name = "Amulet of Malice",
         texture = (Texture) GD.Load(assetRoute + "Amulet of Malice.png"),
         scale = new Vector2(3,3),
-        amountOnStat = new List<string> {"20"},
+        amountOnStat = new List<string> {"5"},
         whichStat = new List<string> {"Attack"},
         operatorOnStat = new List<string> {"+"},
         equippable = true,
@@ -539,11 +548,12 @@ public static class Global
         type = "item",
         tooltip = "A necklace forged from the willpower of ill intentions."
         },
+        //9
         new PlayerData.item {
         name = "Amulet of Mixed Madness",
         texture = (Texture) GD.Load(assetRoute + "Amulet of Mixed Madness.png"),
         scale = new Vector2(3,3),
-        amountOnStat = new List<string> {"15", "15"},
+        amountOnStat = new List<string> {"4", "4"},
         whichStat = new List<string> {"Attack", "SpAttack"},
         operatorOnStat = new List<string> {"+","+"},
         equippable = true,
@@ -552,11 +562,12 @@ public static class Global
         type = "item",
         tooltip = "This necklace overflows with offensive power."
         },
+        //10
         new PlayerData.item {
         name = "Talisman of Mixed Madness",
         texture = (Texture) GD.Load(assetRoute + "Talisman of Mixed Madness.png"),
         scale = new Vector2(3,3),
-        amountOnStat = new List<string> {"15", "15"},
+        amountOnStat = new List<string> {"4", "4"},
         whichStat = new List<string> {"Attack", "SpAttack"},
         operatorOnStat = new List<string> {"+","+"},
         equippable = true,
@@ -565,11 +576,12 @@ public static class Global
         type = "item",
         tooltip = "This heirloom overflows with offensive power."
         },
+        //11
         new PlayerData.item {
         name = "Ring of Malice",
         texture = (Texture) GD.Load(assetRoute + "Ring of Malice.png"),
         scale = new Vector2(3,3),
-        amountOnStat = new List<string> {"20"},
+        amountOnStat = new List<string> {"5"},
         whichStat = new List<string> {"SpAttack"},
         operatorOnStat = new List<string> {"+"},
         equippable = true,
@@ -579,11 +591,12 @@ public static class Global
         tooltip = "Made from the malice of snakes, this ring contains evil power beyond comprehention."
         },
         //look at this
+        //12
         new PlayerData.item {
         name = "Sasuke's Blade",
         texture = (Texture) GD.Load(assetRoute + "Sasuke's Blade.png"),
         scale = new Vector2(3,3),
-        amountOnStat = new List<string> {"15", "15"},
+        amountOnStat = new List<string> {"3", "3"},
         whichStat = new List<string> {"Attack", "Defense"},
         operatorOnStat = new List<string> {"+", "+"},
         equippable = true,

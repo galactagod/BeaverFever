@@ -107,7 +107,7 @@ public class LevelControl : Node
         nameOfCurrentScene = sceneName;
         rootPath = "/root/" + sceneName + "/CanvasLayer/Control/";
         controlPath = "/root/" + sceneName + "/CanvasLayer/Control";
-        if(nameOfCurrentScene == "Intro")
+        if(nameOfCurrentScene == "Intro" || nameOfCurrentScene == "Ending")
         {
             playerUi.Hide();
         }
@@ -119,6 +119,10 @@ public class LevelControl : Node
         if (nameOfCurrentScene == "Tutorial" || nameOfCurrentScene == "LevelTemplate" || nameOfCurrentScene == "ExtraLevelTrevor")
         {
             PlayAudio(_musicPlayer, _sndDreamFactory, -15, 1);
+        }
+        else if(nameOfCurrentScene == "CountryLVL")
+        {
+            PlayAudio(_musicPlayer, _sndEpicDeparture, -15, 1);
         }
 
 
@@ -145,6 +149,14 @@ public class LevelControl : Node
         else if(nameOfCurrentScene == "ExtraLevelTrevor")
         {
             LevelChange(GD.Load<PackedScene>("res://src/Levels/ExtraLevelTrevor.tscn"));
+        }
+        else if(nameOfCurrentScene == "AnotherExtraLevel")
+        {
+            LevelChange(GD.Load<PackedScene>("res://src/Levels/AnotherExtraLevel.tscn"));
+        }
+        else if (nameOfCurrentScene == "CountryLVL")
+        {
+            LevelChange(GD.Load<PackedScene>("res://src/Levels/CountryLVL.tscn"));
         }
     }
 
