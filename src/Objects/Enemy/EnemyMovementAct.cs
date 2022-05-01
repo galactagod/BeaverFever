@@ -1,11 +1,15 @@
 using Godot;
 using System;
 
+
 public class EnemyMovementAct : KinematicBody2D
 {
     // maintain the vector2 upwards
     // csharp limitation, unable to set non primitive types to constants
     protected Vector2 FLOORNORMAL = new Vector2(0, -1);
+
+    [Export]
+    public int level;
 
     public float _gravity = 2000;
 

@@ -35,8 +35,9 @@ public static class DialogueManager
         "A little too far...try up",
         "Did you check everywhere?",
         "Equip items by clicking ESC and dragging and dropping the item into its equip slot.",
-        "Just jump trust me", //10
-        "Bear dens ahead."
+        "As we get closer to the mountain, madness consumes the animals, making them even stronger. Be extra careful.", //10
+        "Bear dens ahead.",
+        "The evil of the forest leaks through to the animals. Different colored enemies are stronger. Be careful."
     };
 
     //Put intro dialogue here
