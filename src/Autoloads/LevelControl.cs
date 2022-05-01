@@ -116,9 +116,13 @@ public class LevelControl : Node
             playerUi.Show();
         }
 
-        if (nameOfCurrentScene == "Tutorial" || nameOfCurrentScene == "LevelTemplate" || nameOfCurrentScene == "ExtraLevelTrevor" || nameOfCurrentScene == "CountryLVL")
+        if (nameOfCurrentScene == "Tutorial" || nameOfCurrentScene == "LevelTemplate" || nameOfCurrentScene == "ExtraLevelTrevor")
         {
             PlayAudio(_musicPlayer, _sndDreamFactory, -15, 1);
+        }
+        else if(nameOfCurrentScene == "CountryLVL")
+        {
+            PlayAudio(_musicPlayer, _sndEpicDeparture, -15, 1);
         }
 
 

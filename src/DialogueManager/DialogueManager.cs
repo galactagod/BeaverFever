@@ -24,16 +24,18 @@ public static class DialogueManager
 
     static List<string> miscellanousDialogue = new List<string>
     {
-        "Hope you like jumping ;)",
+        "Hope you like jumping ;)", //0
         "There's a snake in my boot.",
         "Try left, then try right.",
         "Hit the gym to work on the vertical. Or...be a little crafty.",
         "Bewear of bear",
-        "Bear with the jumps",
+        "Bear with the jumps", //5
         "You can equip different items in different slots. Hover over the item to see where you can equip it. Try the slots until it drops in.",
         "A little too far...try up",
         "Did you check everywhere?",
-        "Equip items by clicking ESC and dragging and dropping the item into its equip slot."
+        "Equip items by clicking ESC and dragging and dropping the item into its equip slot.",
+        "Just jump trust me", //10
+        "Bear dens ahead."
     };
 
     //Put intro dialogue here

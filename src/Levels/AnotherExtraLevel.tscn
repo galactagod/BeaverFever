@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://src/Objects/Player/ObjPlayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Assets/Tiles/Forest A ts.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://LevelTeleporter.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/Objects/Items/Coins/GoldCoin.tscn" type="PackedScene" id=10]
 [ext_resource path="res://NecessaryUIForLevelScene.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/Objects/Chest/Chest.tscn" type="PackedScene" id=12]
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
 points = PoolVector2Array( 0, 10, 90, 10, 90, 30, 0, 30 )
@@ -277,9 +278,6 @@ tile_data = PoolIntArray( -1507331, 536870912, 0, -1572864, 536870914, 0, -13762
 [node name="ObjPlayer" parent="." instance=ExtResource( 1 )]
 position = Vector2( 104, 128 )
 
-[node name="SprPlayer" parent="ObjPlayer" index="0"]
-animation = "Crawl"
-
 [node name="Camera2D" parent="ObjPlayer" index="2"]
 limit_left = 0
 limit_right = 6250
@@ -379,6 +377,9 @@ position = Vector2( 4114, 129 )
 [node name="GoldCoin26" parent="." instance=ExtResource( 10 )]
 position = Vector2( 4178, 130 )
 
+[node name="GoldCoin30" parent="." instance=ExtResource( 10 )]
+position = Vector2( 4765, 13 )
+
 [node name="GoldCoin27" parent="." instance=ExtResource( 10 )]
 position = Vector2( 3365, 126 )
 
@@ -390,6 +391,11 @@ position = Vector2( 3396, 127 )
 
 [node name="LevelTeleporter" parent="." instance=ExtResource( 9 )]
 position = Vector2( 5568, 111 )
-levelToGo = "res://src/Levels/Ending.tscn"
+levelToGo = "res://src/Levels/CountryLVL.tscn"
+
+[node name="Chest4" parent="." instance=ExtResource( 12 )]
+position = Vector2( 4770, 136 )
+id = 7
+whichItem = 9
 
 [editable path="ObjPlayer"]

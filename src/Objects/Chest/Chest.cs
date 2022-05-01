@@ -65,35 +65,43 @@ public class Chest: Node
 
     public void openChest(Node body)
     {
-        AddChild(GD.Load<PackedScene>("res://src/Dialogue/DialoguePopUp.tscn").Instance());
-        _dialoguePop = GetNode<DialoguePopUp>("DialoguePopUp");
-        if (!opened)
+        if(body is ObjPlayer)
         {
-            ChestData temp = new ChestData();
-            int i = 0;
-            for(i = 0; i < _ndEventManager.chestEventList.Count;i++)
+            AddChild(GD.Load<PackedScene>("res://src/Dialogue/DialoguePopUp.tscn").Instance());
+            _dialoguePop = GetNode<DialoguePopUp>("DialoguePopUp");
+            if (!opened)
             {
-                if(_ndEventManager.chestEventList[i].Id == id)
+                ChestData temp = new ChestData();
+                int i = 0;
+                for (i = 0; i < _ndEventManager.chestEventList.Count; i++)
                 {
-                    temp = _ndEventManager.chestEventList[i];
-                    break;
+                    if (_ndEventManager.chestEventList[i].Id == id)
+                    {
+                        temp = _ndEventManager.chestEventList[i];
+                        break;
+                    }
                 }
+                temp.Opened = true;
+                _ndEventManager.chestEventList[i] = temp;
+                PlayerData.item item = Global.itemTemplates[whichItem];
+                item.inventorySlot = _playerData.inv.Count;
+                _playerData.inv.Add(item);
+                _dialoguePop.PopUp("You received " + item.name + "!");
+                Rect2 rect2 = new Rect2(135, 0, 35, 40);
+                mySprite.RegionRect = rect2;
+                opened = true;
             }
-            temp.Opened = true;
-            _ndEventManager.chestEventList[i] = temp;
-            PlayerData.item item = Global.itemTemplates[whichItem];
-            item.inventorySlot = _playerData.inv.Count;
-            _playerData.inv.Add(item);
-            _dialoguePop.PopUp("You received " + item.name + "!");
-            Rect2 rect2 = new Rect2(135, 0, 35, 40);
-            mySprite.RegionRect = rect2;
-            opened = true;
         }
+        
     }
 
     public void unPopDialogue(Node body)
     {
-        _dialoguePop.UnPop();
-        GetNode("DialoguePopUp").QueueFree();
+        if(body is ObjPlayer)
+        {
+            _dialoguePop.UnPop();
+            GetNode("DialoguePopUp").QueueFree();
+        }
+        
     }
 }

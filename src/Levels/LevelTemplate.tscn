@@ -555,15 +555,6 @@ position = Vector2( 1630, -177 )
 [node name="BrownBear" parent="." instance=ExtResource( 12 )]
 position = Vector2( 1904, -184 )
 
-[node name="Snake8" parent="." instance=ExtResource( 7 )]
-position = Vector2( 4269, -152 )
-
-[node name="Snake9" parent="." instance=ExtResource( 7 )]
-position = Vector2( 4309, -150 )
-
-[node name="Snake10" parent="." instance=ExtResource( 7 )]
-position = Vector2( 4354, -154 )
-
 [node name="LevelTeleporter" parent="." instance=ExtResource( 14 )]
 position = Vector2( 6078, -820 )
 levelToGo = "res://src/Levels/ExtraLevelTrevor.tscn"
