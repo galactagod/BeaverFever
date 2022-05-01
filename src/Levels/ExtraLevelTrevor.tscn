@@ -497,7 +497,7 @@ whichSet = "Misc"
 
 [node name="SignPost7" parent="." instance=ExtResource( 12 )]
 position = Vector2( 421, 126 )
-whichDialogue = 6
+whichDialogue = 12
 whichSet = "Misc"
 
 [node name="Chest" parent="." instance=ExtResource( 14 )]
