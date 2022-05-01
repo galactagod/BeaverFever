@@ -9,6 +9,11 @@ public class EnemyMovementAct : KinematicBody2D
 
     public float _gravity = 2000;
 
+    protected float _curattack = 2;
+    protected float _curdefense = 2;
+    protected float _curspAttack = 2;
+    protected float _curspDefense = 2;
+
     protected float _health;
     protected float _maxHealth;
     protected float _exp;
@@ -49,6 +54,10 @@ public class EnemyMovementAct : KinematicBody2D
     public EnemyWander enemyWander = new EnemyWander();
 
     // getters and setters
+    public float CurDmg { get { return _curattack; } set { _curattack = value; } }
+    public float CurDef { get { return _curdefense; } set { _curdefense = value; } }
+    public float CurSpAttack { get { return _curspAttack; } set { _curspAttack = value; } }
+    public float CurSpDefense { get { return _curspDefense; } set { _curspDefense = value; } }
     public float Health { get { return _health; } set { _health = value; } }
     public float MaxHealth { get { return _maxHealth; } set { _maxHealth = value; } }
     public float Exp { get { return _exp; } set { _exp = value; } }
@@ -237,6 +246,16 @@ public class EnemyMovementAct : KinematicBody2D
         // clamp stats
         _health = Mathf.Clamp(_health, 0, _maxHealth);
         GD.Print(_enemyType +"'s Health = " + _health);
+    }
+
+    public void Battled(float attackerAttack)
+    {
+        //coded for a physical stomp attack at the moment
+        Console.WriteLine("Damage onto wolf" + DamageCalculation.damageEquation(attackerAttack, _curdefense));
+        Console.WriteLine("current attack" + attackerAttack);
+        Console.WriteLine("current xdefense" + _curdefense);
+        ChangeHealth(-DamageCalculation.damageEquation(attackerAttack, _curdefense));
+
     }
 
 }

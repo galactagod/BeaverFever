@@ -20,6 +20,12 @@ public class GrayWolf : EnemyMovementAct
         _atkFrm = new int[] {3, 7};
         _attackRadius = new Vector2(55, 50);
 
+        EnemyTemplate temp = Global.enemyTemplates.Find(x => x.name == _enemyType);
+        _curattack = temp.attack;
+        _curdefense = temp.defense;
+        _curspAttack = temp.spAttack;
+        _curspDefense = temp.spDefense;
+
 
         // start state
         stateMachine = new EnemyStateMachineManager(this, enemyIdle);
