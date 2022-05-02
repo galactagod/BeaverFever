@@ -21,10 +21,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -279.0
-margin_top = 249.0
-margin_right = 196.0
-margin_bottom = 328.0
+margin_left = -280.0
+margin_top = 272.0
+margin_right = 195.0
+margin_bottom = 351.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -57,10 +57,10 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Popup"]
-margin_left = -257.0
-margin_top = 225.0
-margin_right = 242.0
-margin_bottom = 313.0
+margin_left = -252.0
+margin_top = 284.0
+margin_right = 247.0
+margin_bottom = 372.0
 texture = ExtResource( 2 )
 expand = true
 __meta__ = {

@@ -28,6 +28,7 @@ public class EnemyMovementAct : KinematicBody2D
     protected Vector2 _direction = new Vector2(0, 0);
     protected Vector2 _detectionRadius = new Vector2(200, 50);
     protected Vector2 _attackRadius = new Vector2(0, 0);
+    protected Vector2 _rangeRadius = new Vector2(0, 0);
     protected Vector2 _startPos;
     protected int[] _atkFrm;
     protected bool _isAnimationOver = false;
@@ -36,6 +37,9 @@ public class EnemyMovementAct : KinematicBody2D
     protected bool _isDead = false;
     protected float _collBasePositionX;
     protected string _enemyType;
+    protected string _curSkill;
+    protected string _skillA;
+    protected bool _useSkill;
     protected readonly Random _rnd = new Random();
 
     // node reference
@@ -77,6 +81,8 @@ public class EnemyMovementAct : KinematicBody2D
     public bool IsDamaged { get { return _isDamaged; } set { _isDamaged = value; } }
     public bool IsDead { get { return _isDead; } set { _isDead = value; } }
     public string EnemyType { get { return _enemyType; } set { _enemyType = value; } }
+    public string CurSkill { get { return _curSkill; } set { _curSkill = value; } }
+    public bool UseSkill { get { return _useSkill; } set { _useSkill = value; } }
     public PlayerStats NdPlayerStats { get { return _ndPlayerStats; } set { _ndPlayerStats = value; } }
     public ObjPlayer NdObjPlayer { get { return _ndObjPlayer; } set { _ndObjPlayer = value; } }
     public AnimationPlayer NdAnimEnemy { get { return _ndAnimEnemy; } set { _ndAnimEnemy = value; } }
@@ -101,17 +107,6 @@ public class EnemyMovementAct : KinematicBody2D
     public override void _PhysicsProcess(float delta)
     {
         _velocity.y += _gravity * delta;
-        
-
-        // Base Land Ai Logic
-        /*(check for y location since enemy may chase player at same x level but completely different y's
-         * Idle -> Wander
-         * if detect player -> chase
-         * chase-> attack/wander
-         * if player within attack range -> attack
-         * if player out of detection -> wander/return
-         */
-        //GD.Print("new velocity Y = " + _velocity.y);
     }
 
     public void BaseMovementControl()
@@ -216,6 +211,36 @@ public class EnemyMovementAct : KinematicBody2D
         return attackRangeX && attackRangeY; 
     }
 
+    public bool EnemyRangeAttack()
+    {
+        // dont run if enemy has nor range radius
+        if (_rangeRadius == new Vector2(0, 0))
+        {
+            return false;
+        }
+
+        float playerPosX = _ndObjPlayer.Position.x;
+        float playerPosY = _ndObjPlayer.Position.y;
+        bool attackRangeX = false;
+
+        if (_direction.x == 1)
+        {
+            attackRangeX = (playerPosX > Position.x && playerPosX < Position.x + _rangeRadius.x) ? true : false;
+        }
+        else if (_direction.x == -1)
+        {
+            attackRangeX = (playerPosX < Position.x && playerPosX > Position.x - _rangeRadius.x) ? true : false;
+        }
+
+
+        bool attackRangeY = (playerPosY < Position.y + _rangeRadius.y && playerPosY > Position.y - _rangeRadius.y) ? true : false;
+
+        // if within range affect the players hp stat and turn him to a damage state
+        _curSkill = _skillA;
+        _useSkill = true;
+        return attackRangeX && attackRangeY;
+    }
+
     public void EnemyTurnIdle()
     {
         if (_velocity == new Vector2(0, 0))
@@ -246,7 +271,12 @@ public class EnemyMovementAct : KinematicBody2D
             return;
         }
 
-        GD.Print("Stomped On");
+        if (area.GetParent() is SkillMove)
+        {
+            return;
+        }
+
+            GD.Print("Stomped On");
         // damage calculation
         _isStomped = true;
 

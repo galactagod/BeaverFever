@@ -34,8 +34,6 @@ public class EnemyReturn : EnemyBaseStateMachine
         {
             stateMachine.TransitionToState(owner.enemyChase);
         }
-
-
     }
 
     public override void OnStateExit(IEnemyStateMachine stateMachine, EnemyMovementAct owner)

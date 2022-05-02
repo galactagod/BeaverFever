@@ -31,6 +31,17 @@ public class EnemyWander : EnemyBaseStateMachine
         {
             stateMachine.TransitionToState(owner.enemyChase);
         }
+        // Do range attack on player till detection is false and maintain attack if player jumps out of detection
+        else if (owner.EnemyRangeAttack())
+        {
+            float dirX;
+            dirX = (owner.NdObjPlayer.Position.x > owner.Position.x) ? 1 : -1;
+            // turn towards direction of player
+            owner.Direction = new Vector2(dirX, 0);
+            stateMachine.TransitionToState(owner.enemyAttackB);
+        }
+        
+
     }
 
     public override void OnStateExit(IEnemyStateMachine stateMachine, EnemyMovementAct owner)

@@ -715,6 +715,46 @@ public static class Global
             defense = 16,
             spAttack = 20,
             spDefense = 16
-        }
+        },
+        new EnemyTemplate
+        {
+            name = "Spider",
+            level = 1,
+            health = 6,
+            attack = 10,
+            defense = 1,
+            spAttack = 7,
+            spDefense = 1
+        },
+        new EnemyTemplate
+        {
+            name = "Spider",
+            level = 2,
+            health = 9,
+            attack = 13,
+            defense = 2,
+            spAttack = 9,
+            spDefense = 2
+        },
+        new EnemyTemplate
+        {
+            name = "Spider",
+            level = 3,
+            health = 12,
+            attack = 19,
+            defense = 3,
+            spAttack = 19,
+            spDefense = 3
+        },
+        new EnemyTemplate
+        {
+            name = "Spider",
+            level = 4,
+            health = 15,
+            attack = 26,
+            defense = 4,
+            spAttack = 26,
+            spDefense = 4
+        },
     };
 }

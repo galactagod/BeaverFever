@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/Objects/Player/ObjPlayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Assets/Tiles/Forest A ts.png" type="Texture" id=2]
 [ext_resource path="res://SignPost.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Objects/Enemy/Spider/Spider.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Assets/Backgrounds/forest A background.png" type="Texture" id=5]
 [ext_resource path="res://src/Assets/Backgrounds/sky backgroundB.png" type="Texture" id=6]
 [ext_resource path="res://src/Levels/LevelStart.cs" type="Script" id=7]
@@ -337,5 +338,8 @@ position = Vector2( 0, -8 )
 
 [node name="CollStomp" parent="ObjPlayer/StompDetector" index="0"]
 position = Vector2( 4.5, 4 )
+
+[node name="Spider" parent="." instance=ExtResource( 4 )]
+position = Vector2( 614, 131 )
 
 [editable path="ObjPlayer"]
