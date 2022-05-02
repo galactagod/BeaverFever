@@ -29,7 +29,7 @@ public static class Global
         equippedSlot = "none",
         ableToBeEquippedSlot = "Consumable",
         type = "item",
-        tooltip = "Restores 30 Health"
+        tooltip = "Restores 25 Health"
         },
         new PlayerData.item {
         name = "Large Health Potion",
@@ -40,7 +40,7 @@ public static class Global
         equippedSlot = "none",
         ableToBeEquippedSlot = "Consumable",
         type = "item",
-        tooltip = "Restores 60 Health"
+        tooltip = "Restores 55 Health"
         }
 
     };
@@ -49,7 +49,7 @@ public static class Global
     public static List<PlayerData.item> skillsAvaliable = new List<PlayerData.item> {
         //Bubble burst = Attack Mod
         new PlayerData.item {
-        name = "Attack Mod",
+        name = "BubbleBurst",
         level = 1,
         texture = (Texture) GD.Load("res://assets/skills/strength/bubble burst/bubble burst tier 1.png"),
         amountOnStat = new List<string> {},
@@ -60,10 +60,10 @@ public static class Global
         ableToBeEquippedSlot = "Skill",
         textureRoute = "res://assets/skills/strength/bubble burst/bubble burst tier 1.png",
         type = "skill",
-        tooltip = "Shoots a water projectile toward the target. Attack power: 30"
+        tooltip = "Shoots a water projectile toward the target. Attack power: 3 + Special Attack"
         },
         new PlayerData.item {
-        name = "Attack Mod",
+        name = "BubbleBurst",
         level = 2,
         texture = (Texture) GD.Load("res://assets/skills/strength/bubble burst/bubble burst tier 2.png"),
         amountOnStat = new List<string> {},
@@ -74,10 +74,10 @@ public static class Global
         ableToBeEquippedSlot = "Skill",
         textureRoute = "res://assets/skills/strength/bubble burst/bubble burst tier 2.png",
         type = "skill",
-        tooltip = "Shoots a water projectile toward the target. Attack power: 35"
+        tooltip = "Shoots a water projectile toward the target. Attack power: 5 + Special Attack"
         },
         new PlayerData.item {
-        name = "Attack Mod",
+        name = "BubbleBurst",
         level = 3,
         texture = (Texture) GD.Load("res://assets/skills/strength/bubble burst/bubble burst tier 3.png"),
         amountOnStat = new List<string> {},
@@ -88,10 +88,10 @@ public static class Global
         ableToBeEquippedSlot = "Skill",
         textureRoute = "res://assets/skills/strength/bubble burst/bubble burst tier 3.png",
         type = "skill",
-        tooltip = "Shoots a water projectile toward the target. Attack power: 45"
+        tooltip = "Shoots a water projectile toward the target. Attack power: 8 + Special Attack"
         },
         new PlayerData.item {
-        name = "Rip Mod",
+        name = "Slice",
         level = 1,
         texture = (Texture) GD.Load("res://assets/skills/strength/claws/Rip Mod 2.png"),
         amountOnStat = new List<string> {},
@@ -102,10 +102,10 @@ public static class Global
         ableToBeEquippedSlot = "Skill",
         textureRoute = skillAssetRoute + "/strength/claws/Rip Mod 2.png",
         type = "skill",
-        tooltip = "Beaver slices nearby opponent. Attack power: 30"
+        tooltip = "Beaver slices nearby opponent. Attack power: 3 + Attack"
         },
         new PlayerData.item {
-        name = "Rip Mod",
+        name = "Slice",
         level = 2,
         texture = (Texture) GD.Load("res://assets/skills/strength/claws/Rip Mod 3.png"),
         amountOnStat = new List<string> {},
@@ -116,10 +116,10 @@ public static class Global
         ableToBeEquippedSlot = "Skill",
         textureRoute = skillAssetRoute + "/strength/claws/Rip Mod 3.png",
         type = "skill",
-        tooltip = "Beaver bites nearby opponent. Attack power: 35"
+        tooltip = "Beaver bites nearby opponent. Attack power: 5 + Attack"
         },
         new PlayerData.item {
-        name = "Rip Mod",
+        name = "Slice",
         level = 3,
         texture = (Texture) GD.Load("res://assets/skills/strength/claws/Rip Mod 4.png"),
         amountOnStat = new List<string> {},
@@ -130,7 +130,7 @@ public static class Global
         ableToBeEquippedSlot = "Skill",
         textureRoute = skillAssetRoute + "/strength/claws/Rip Mod 4.png",
         type = "skill",
-        tooltip = "Beaver bites nearby opponent. Attack power: 45"
+        tooltip = "Beaver bites nearby opponent. Attack power: 8 + Attack"
         },
         new PlayerData.item {
         name = "Rip Mod",
@@ -146,7 +146,7 @@ public static class Global
         type = "skill"
         },
         new PlayerData.item {
-        name = "Leaf Mod",
+        name = "Regeneration",
         level = 1,
         texture = (Texture) GD.Load("res://assets/skills/passives/leaves/Leafs 1 Original.png"),
         amountOnStat = new List<string> {},
@@ -160,7 +160,7 @@ public static class Global
         tooltip = "Regenerate 1% of hp over time."
         },
         new PlayerData.item {
-        name = "Leaf Mod",
+        name = "Regeneration",
         level = 2,
         texture = (Texture) GD.Load("res://assets/skills/passives/leaves/Leafs 1 Mod 1.png"),
         amountOnStat = new List<string> {},
@@ -174,7 +174,7 @@ public static class Global
         tooltip = "Regenerate 2% of hp over time."
         },
         new PlayerData.item {
-        name = "Leaf Mod",
+        name = "Regeneration",
         level = 3,
         texture = (Texture) GD.Load("res://assets/skills/passives/leaves/Leafs Mod 1.png"),
         amountOnStat = new List<string> {},
@@ -228,7 +228,7 @@ public static class Global
         },
         //done
         new PlayerData.item {
-        name = "Book Mod",
+        name = "Grace",
         level = 1,
         texture = (Texture) GD.Load("res://assets/skills/passives/praying/Praying Mod 2.png"),
         amountOnStat = new List<string> {},
@@ -242,7 +242,7 @@ public static class Global
         tooltip = "Increases money gained by 1.5%."
         },
         new PlayerData.item {
-        name = "Book Mod",
+        name = "Grace",
         level = 2,
         texture = (Texture) GD.Load("res://assets/skills/passives/praying/Praying Mod 3.png"),
         amountOnStat = new List<string> {},
@@ -256,7 +256,7 @@ public static class Global
         tooltip = "Increases money gained by 2%."
         },
         new PlayerData.item {
-        name = "Book Mod",
+        name = "Grace",
         level = 3,
         texture = (Texture) GD.Load("res://assets/skills/passives/praying/Praying Mod 4.png"),
         amountOnStat = new List<string> {},
@@ -270,7 +270,7 @@ public static class Global
         tooltip = "Increases money gained by 3%."
         },
         new PlayerData.item {
-        name = "Book Mod",
+        name = "Grace",
         level = 4,
         texture = (Texture) GD.Load("res://assets/skills/body/wisdom/Book 1 Mod 5.png"),
         amountOnStat = new List<string> {},
@@ -283,7 +283,7 @@ public static class Global
         type = "skill"
         },
         new PlayerData.item {
-        name = "Sharp Mod",
+        name = "Crunch",
         level = 1,
         texture = (Texture) GD.Load("res://assets/skills/strength/teeth/Sharp Mod 2.png"),
         amountOnStat = new List<string> {},
@@ -294,10 +294,10 @@ public static class Global
         ableToBeEquippedSlot = "Skill",
         textureRoute = skillAssetRoute + "/strength/teeth/Sharp Mod 2.png",
         type = "skill",
-        tooltip = "Beaver bites nearby opponent. Attack power: 45"
+        tooltip = "Beaver bites nearby opponent. Attack power: 4 + Attack"
         },
         new PlayerData.item {
-        name = "Sharp Mod",
+        name = "Crunch",
         level = 2,
         texture = (Texture) GD.Load("res://assets/skills/strength/teeth/Sharp Mod 3.png"),
         amountOnStat = new List<string> {},
@@ -308,10 +308,10 @@ public static class Global
         ableToBeEquippedSlot = "Skill",
         textureRoute = skillAssetRoute + "/strength/teeth/Sharp Mod 3.png",
         type = "skill",
-        tooltip = "Beaver bites nearby opponent. Attack power: 50"
+        tooltip = "Beaver bites nearby opponent. Attack power: 6 + Attack"
         },
         new PlayerData.item {
-        name = "Sharp Mod",
+        name = "Crunch",
         level = 3,
         texture = (Texture) GD.Load("res://assets/skills/strength/teeth/Sharp Mod 4.png"),
         amountOnStat = new List<string> {},
@@ -322,23 +322,10 @@ public static class Global
         ableToBeEquippedSlot = "Skill",
         textureRoute = skillAssetRoute + "/strength/teeth/Sharp Mod 4.png",
         type = "skill",
-        tooltip = "Beaver bites nearby opponent. Attack power: 60"
+        tooltip = "Beaver bites nearby opponent. Attack power: 9 + Attack"
         },
         new PlayerData.item {
-        name = "Sharp Mod",
-        level = 4,
-        texture = (Texture) GD.Load("res://assets/skills/strength/teeth/Sharp Mod 5.png"),
-        amountOnStat = new List<string> {},
-        whichStat = new List<string> {},
-        operatorOnStat = new List<string> {},
-        equippable = true,
-        equippedSlot = "none",
-        ableToBeEquippedSlot = "Skill",
-        textureRoute = "res://assets/skills/strength/teeth/Sharp Mod 5.png",
-        type = "skill"
-        },
-        new PlayerData.item {
-        name = "Boots Mod",
+        name = "Accelerate",
         level = 1,
         texture = (Texture) GD.Load("res://assets/skills/body/boots/Boots 1 Mod 4.png"),
         amountOnStat = new List<string> {},
@@ -352,7 +339,7 @@ public static class Global
         tooltip = "Increases speed by 5%."
         },
         new PlayerData.item {
-        name = "Boots Mod",
+        name = "Accelerate",
         level = 2,
         texture = (Texture) GD.Load("res://assets/skills/body/boots/Boots 1 Mod 6.png"),
         amountOnStat = new List<string> {},
@@ -366,7 +353,7 @@ public static class Global
         tooltip = "Increases speed by 10%."
         },
         new PlayerData.item {
-        name = "Boots Mod",
+        name = "Accelerate",
         level = 3,
         texture = (Texture) GD.Load("res://assets/skills/body/boots/Boots 1 Mod 7.png"),
         amountOnStat = new List<string> {},
@@ -383,12 +370,12 @@ public static class Global
 
         //done
         new PlayerData.item {
-        name = "Body Mod",
+        name = "Aegis",
         level = 1,
         texture = (Texture) GD.Load("res://assets/skills/body/aegis/Body Mod 1.png"),
-        amountOnStat = new List<string> {"1.05"},
-        whichStat = new List<string> {"Defense"},
-        operatorOnStat = new List<string> {"*"},
+        amountOnStat = new List<string> {},
+        whichStat = new List<string> {},
+        operatorOnStat = new List<string> {},
         equippable = true,
         equippedSlot = "none",
         ableToBeEquippedSlot = "Skill",
@@ -397,12 +384,12 @@ public static class Global
         tooltip = "Boosts defense by 5%."
         },
         new PlayerData.item {
-        name = "Body Mod",
+        name = "Aegis",
         level = 2,
         texture = (Texture) GD.Load("res://assets/skills/body/aegis/Body Mod 2.png"),
-        amountOnStat = new List<string> {"1.10"},
-        whichStat = new List<string> {"Defense"},
-        operatorOnStat = new List<string> {"*"},
+        amountOnStat = new List<string> {},
+        whichStat = new List<string> {},
+        operatorOnStat = new List<string> {},
         equippable = true,
         equippedSlot = "none",
         ableToBeEquippedSlot = "Skill",
@@ -411,12 +398,12 @@ public static class Global
         tooltip = "Boosts defense by 10%."
         },
         new PlayerData.item {
-        name = "Body Mod",
+        name = "Aegis",
         level = 3,
         texture = (Texture) GD.Load("res://assets/skills/body/aegis/Body Mod 3.png"),
-        amountOnStat = new List<string> {"1.30"},
-        whichStat = new List<string> {"Defense"},
-        operatorOnStat = new List<string> {"*"},
+        amountOnStat = new List<string> {},
+        whichStat = new List<string> {},
+        operatorOnStat = new List<string> {},
         equippable = true,
         equippedSlot = "none",
         ableToBeEquippedSlot = "Skill",
@@ -427,12 +414,13 @@ public static class Global
     };
 
     public static List<PlayerData.item> itemTemplates = new List<PlayerData.item> {
+        //0
         new PlayerData.item {
         name = "Iron Broadsword",
         price = 400,
         texture = (Texture) GD.Load(assetRoute + "Iron Broadsword.png"),
         scale = new Vector2(3,3),
-        amountOnStat = new List<string> {"8"},
+        amountOnStat = new List<string> {"2"},
         whichStat = new List<string> {"Attack"},
         operatorOnStat = new List<string> {"+"},
         equippable = true,
@@ -441,6 +429,7 @@ public static class Global
         type = "item",
         tooltip = "A basic broadsword for the common traveler."
         },
+        //1
         new PlayerData.item {
         name = "Small Health Potion",
         price = 300,
@@ -452,6 +441,7 @@ public static class Global
         type = "item",
         tooltip = "Restores 10 Health"
         },
+        //2
         new PlayerData.item {
         name = "Medium Health Potion",
         price = 600,
@@ -461,8 +451,9 @@ public static class Global
         equippedSlot = "none",
         ableToBeEquippedSlot = "Consumable",
         type = "item",
-        tooltip = "Restores 30 Health"
+        tooltip = "Restores 25 Health"
         },
+        //3
         new PlayerData.item {
         name = "Large Health Potion",
         price = 900,
@@ -472,13 +463,14 @@ public static class Global
         equippedSlot = "none",
         ableToBeEquippedSlot = "Consumable",
         type = "item",
-        tooltip = "Restores 60 Health"
+        tooltip = "Restores 55 Health"
         },
+        //4
         new PlayerData.item {
         name = "Sword of Mixed Madness",
         texture = (Texture) GD.Load(assetRoute + "Sword of Mixed Madness.png"),
         scale = new Vector2(3,3),
-        amountOnStat = new List<string> {"20", "20"},
+        amountOnStat = new List<string> {"4", "4"},
         whichStat = new List<string> {"Attack", "SpAttack"},
         operatorOnStat = new List<string> {"+", "+"},
         equippable = true,
@@ -487,11 +479,12 @@ public static class Global
         type = "item",
         tooltip = "Madness flows from this sword, mixing each aspect of offense to boost both by a large amount."
         },
+        //5
         new PlayerData.item {
         name = "Sword of Malice",
         texture = (Texture) GD.Load(assetRoute + "Sword of Malice.png"),
         scale = new Vector2(3,3),
-        amountOnStat = new List<string> {"25"},
+        amountOnStat = new List<string> {"5"},
         whichStat = new List<string> {"Attack"},
         operatorOnStat = new List<string> {"+"},
         equippable = true,
@@ -500,11 +493,12 @@ public static class Global
         type = "item",
         tooltip = "Ill intentions leak from this blade forged from the evil vines of the forest."
         },
+        //6
         new PlayerData.item {
         name = "Staff of Malice",
         texture = (Texture) GD.Load(assetRoute + "Staff of Malice.png"),
         scale = new Vector2(3,3),
-        amountOnStat = new List<string> {"25"},
+        amountOnStat = new List<string> {"5"},
         whichStat = new List<string> {"SpAttack"},
         operatorOnStat = new List<string> {"+"},
         equippable = true,
@@ -513,11 +507,12 @@ public static class Global
         type = "item",
         tooltip = "Ill intentions leak from this staff forged from the evil vines of the forest."
         },
+        //7
         new PlayerData.item {
         name = "Beaver Tribe Horn",
         texture = (Texture) GD.Load(assetRoute + "Beaver Tribe Horn.png"),
         scale = new Vector2(3,3),
-        amountOnStat = new List<string> {"10","10"},
+        amountOnStat = new List<string> {"2","2"},
         whichStat = new List<string> {"Attack", "Defense"},
         operatorOnStat = new List<string> {"+", "+"},
         equippable = true,
@@ -526,11 +521,12 @@ public static class Global
         type = "item",
         tooltip = "The ancient talisman of the Beaver Tribe. Holds ferocious energy."
         },
+        //8
         new PlayerData.item {
         name = "Amulet of Malice",
         texture = (Texture) GD.Load(assetRoute + "Amulet of Malice.png"),
         scale = new Vector2(3,3),
-        amountOnStat = new List<string> {"20"},
+        amountOnStat = new List<string> {"5"},
         whichStat = new List<string> {"Attack"},
         operatorOnStat = new List<string> {"+"},
         equippable = true,
@@ -539,11 +535,12 @@ public static class Global
         type = "item",
         tooltip = "A necklace forged from the willpower of ill intentions."
         },
+        //9
         new PlayerData.item {
         name = "Amulet of Mixed Madness",
         texture = (Texture) GD.Load(assetRoute + "Amulet of Mixed Madness.png"),
         scale = new Vector2(3,3),
-        amountOnStat = new List<string> {"15", "15"},
+        amountOnStat = new List<string> {"4", "4"},
         whichStat = new List<string> {"Attack", "SpAttack"},
         operatorOnStat = new List<string> {"+","+"},
         equippable = true,
@@ -552,11 +549,12 @@ public static class Global
         type = "item",
         tooltip = "This necklace overflows with offensive power."
         },
+        //10
         new PlayerData.item {
         name = "Talisman of Mixed Madness",
         texture = (Texture) GD.Load(assetRoute + "Talisman of Mixed Madness.png"),
         scale = new Vector2(3,3),
-        amountOnStat = new List<string> {"15", "15"},
+        amountOnStat = new List<string> {"4", "4"},
         whichStat = new List<string> {"Attack", "SpAttack"},
         operatorOnStat = new List<string> {"+","+"},
         equippable = true,
@@ -565,11 +563,12 @@ public static class Global
         type = "item",
         tooltip = "This heirloom overflows with offensive power."
         },
+        //11
         new PlayerData.item {
         name = "Ring of Malice",
         texture = (Texture) GD.Load(assetRoute + "Ring of Malice.png"),
         scale = new Vector2(3,3),
-        amountOnStat = new List<string> {"20"},
+        amountOnStat = new List<string> {"5"},
         whichStat = new List<string> {"SpAttack"},
         operatorOnStat = new List<string> {"+"},
         equippable = true,
@@ -579,11 +578,12 @@ public static class Global
         tooltip = "Made from the malice of snakes, this ring contains evil power beyond comprehention."
         },
         //look at this
+        //12
         new PlayerData.item {
         name = "Sasuke's Blade",
         texture = (Texture) GD.Load(assetRoute + "Sasuke's Blade.png"),
         scale = new Vector2(3,3),
-        amountOnStat = new List<string> {"15", "15"},
+        amountOnStat = new List<string> {"3", "3"},
         whichStat = new List<string> {"Attack", "Defense"},
         operatorOnStat = new List<string> {"+", "+"},
         equippable = true,
@@ -610,7 +610,7 @@ public static class Global
         {
             name = "GrayWolf",
             level = 2,
-            health = 14,
+            health = 18,
             attack = 7,
             defense = 5,
             spAttack = 7,
@@ -620,7 +620,7 @@ public static class Global
         {
             name = "GrayWolf",
             level = 3,
-            health = 16,
+            health = 22,
             attack = 12,
             defense = 5,
             spAttack = 12,
@@ -631,7 +631,7 @@ public static class Global
             name = "Snake",
             level = 1,
             health = 6,
-            attack = 7,
+            attack = 10,
             defense = 1,
             spAttack = 7,
             spDefense = 1
@@ -641,7 +641,7 @@ public static class Global
             name = "Snake",
             level = 2,
             health = 9,
-            attack = 9,
+            attack = 13,
             defense = 2,
             spAttack = 9,
             spDefense = 2
@@ -650,7 +650,7 @@ public static class Global
         {
             name = "Snake",
             level = 3,
-            health = 11,
+            health = 15,
             attack = 11,
             defense = 3,
             spAttack = 11,
@@ -660,7 +660,7 @@ public static class Global
         {
             name = "BrownBear",
             level = 1,
-            health = 10,
+            health = 20,
             attack = 10,
             defense = 4,
             spAttack = 10,
@@ -670,8 +670,8 @@ public static class Global
         {
             name = "BrownBear",
             level = 2,
-            health = 15,
-            attack = 15,
+            health = 30,
+            attack = 20,
             defense = 6,
             spAttack = 15,
             spDefense = 6
@@ -680,8 +680,8 @@ public static class Global
         {
             name = "BrownBear",
             level = 3,
-            health = 20,
-            attack = 20,
+            health = 40,
+            attack = 30,
             defense = 8,
             spAttack = 20,
             spDefense = 8

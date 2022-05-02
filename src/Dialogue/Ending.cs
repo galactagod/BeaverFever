@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-public class Exposition : RichTextLabel
+public class Ending : RichTextLabel
 {
     // Declare member variables here. Examples:
     // private int a = 2;
@@ -12,12 +12,12 @@ public class Exposition : RichTextLabel
 
     LevelControl levelControl;
 
-    string introDialogue;
+    string endingDialogue;
 
     public override void _Ready()
     {
-        introDialogue = DialogueManager.getIntroDialogue(0);
-        this.AddText(introDialogue);
+        endingDialogue = DialogueManager.getEndingDialogue(0);
+        this.AddText(endingDialogue);
         levelControl = GetNode<LevelControl>("/root/LevelControl");
     }
 
@@ -41,6 +41,7 @@ public class Exposition : RichTextLabel
 
     public void finish()
     {
-        levelControl.LevelChange(GD.Load<PackedScene>("res://src/Levels/Tutorial.tscn"));
+        //levelControl.LevelChange(GD.Load<PackedScene>("res://src/Levels/Tutorial.tscn"));
+        GetTree().Quit();
     }
 }

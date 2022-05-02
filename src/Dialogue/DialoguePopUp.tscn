@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/Dialogue/DialoguePopUp.cs" type="Script" id=1]
+[ext_resource path="res://src/Assets/OverWorldUi/DialogueBox.png" type="Texture" id=2]
 
 [node name="DialoguePopUp" type="Node"]
 script = ExtResource( 1 )
@@ -41,3 +42,38 @@ text = "Hellllooo"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Popup" type="Popup" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Popup"]
+margin_left = -257.0
+margin_top = 225.0
+margin_right = 242.0
+margin_bottom = 313.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="RichTextLabel" parent="CanvasLayer/Popup/TextureRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -211.5
+margin_top = -20.0
+margin_right = 211.5
+margin_bottom = 20.0
+text = "hellooo"

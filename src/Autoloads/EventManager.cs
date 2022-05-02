@@ -21,7 +21,7 @@ public class EventManager : Node
     }
 
     //Creates a new chest in chestEventList
-    public void createChest(int id)
+    public void createChest(int id, int item)
     {
         //ArrayList temp = new ArrayList();
         //temp.Add(id);
@@ -30,6 +30,7 @@ public class EventManager : Node
         ChestData temp = new ChestData();
         temp.Id = id;
         temp.Opened = false;
+        temp.WhichItem = item;
 
         chestEventList.Add(temp);
     }

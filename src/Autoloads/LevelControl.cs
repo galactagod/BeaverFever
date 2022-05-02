@@ -23,7 +23,6 @@ public class LevelControl : Node
 
     public string nameOfCurrentScene { get; set; }
 
-    private DialoguePopUp dialoguePopUp;
     private PlayerData playerData;
     private PlayerUi playerUi;
     public override void _Ready()
@@ -50,7 +49,6 @@ public class LevelControl : Node
 
         PauseMode = PauseModeEnum.Process;
 
-        dialoguePopUp = GetNode<DialoguePopUp>("/root/DialoguePopUp");
         playerData = GetNode<PlayerData>("/root/PlayerData");
         playerUi = GetNode<PlayerUi>("/root/PlayerUi");
 
@@ -71,7 +69,6 @@ public class LevelControl : Node
                     GetTree().Paused = true;
                     GetNode(controlPath).Set("visible", true);
                     paused = true;
-                    dialoguePopUp.UnPop();
                 }
                 else
                 {
@@ -99,6 +96,7 @@ public class LevelControl : Node
         {
             var childRemoved = GetNode(controlPath).GetChild(0);
             GetNode(controlPath).RemoveChild(childRemoved);
+            childRemoved.QueueFree();
         }
         
         GetNode(controlPath).AddChild(templateInvSlot.Instance());
@@ -109,7 +107,7 @@ public class LevelControl : Node
         nameOfCurrentScene = sceneName;
         rootPath = "/root/" + sceneName + "/CanvasLayer/Control/";
         controlPath = "/root/" + sceneName + "/CanvasLayer/Control";
-        if(nameOfCurrentScene == "Intro")
+        if(nameOfCurrentScene == "Intro" || nameOfCurrentScene == "Ending")
         {
             playerUi.Hide();
         }
@@ -121,6 +119,10 @@ public class LevelControl : Node
         if (nameOfCurrentScene == "Tutorial" || nameOfCurrentScene == "LevelTemplate" || nameOfCurrentScene == "ExtraLevelTrevor")
         {
             PlayAudio(_musicPlayer, _sndDreamFactory, -15, 1);
+        }
+        else if(nameOfCurrentScene == "CountryLVL")
+        {
+            PlayAudio(_musicPlayer, _sndEpicDeparture, -15, 1);
         }
 
 
@@ -147,6 +149,14 @@ public class LevelControl : Node
         else if(nameOfCurrentScene == "ExtraLevelTrevor")
         {
             LevelChange(GD.Load<PackedScene>("res://src/Levels/ExtraLevelTrevor.tscn"));
+        }
+        else if(nameOfCurrentScene == "AnotherExtraLevel")
+        {
+            LevelChange(GD.Load<PackedScene>("res://src/Levels/AnotherExtraLevel.tscn"));
+        }
+        else if (nameOfCurrentScene == "CountryLVL")
+        {
+            LevelChange(GD.Load<PackedScene>("res://src/Levels/CountryLVL.tscn"));
         }
     }
 

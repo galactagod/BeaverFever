@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/Levels/LevelStart.cs" type="Script" id=1]
+[ext_resource path="res://src/Dialogue/Ending.cs" type="Script" id=2]
+[ext_resource path="res://assets/info_window.png" type="Texture" id=3]
+
+[node name="Intro" type="Node"]
+script = ExtResource( 1 )
+levelName = "Ending"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exposition" type="RichTextLabel" parent="NinePatchRect"]
+margin_left = 100.0
+margin_top = 720.0
+margin_right = 1180.0
+margin_bottom = 858.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

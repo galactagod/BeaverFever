@@ -6,7 +6,7 @@ public class EnemyHurt : EnemyBaseStateMachine
     public override void OnStateEnter(IEnemyStateMachine stateMachine, EnemyMovementAct owner)
     {
         owner.SprAnimation("HurtA");
-        owner.ChangeHealth(-owner.NdObjPlayer.CurDmg);
+        owner.Battled(owner.NdObjPlayer.CurDmg);
         GD.Print(owner.EnemyType + " Hurt State----------------------------------------");
     }
 
