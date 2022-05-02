@@ -168,6 +168,11 @@ public class LevelControl : Node
         }
     }
 
+    public void replayFromBeginning()
+    {
+        LevelChange(GD.Load<PackedScene>("res://src/Levels/Tutorial.tscn"));
+    }
+
     public void changeBasedOnName(string nameOfChange)
     {
         if (nameOfChange == "Tutorial")

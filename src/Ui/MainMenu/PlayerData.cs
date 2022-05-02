@@ -507,6 +507,8 @@ public class PlayerData : Node
 
         attackFinal = attackFinal < PlayerAttack ? PlayerAttack : attackFinal;
         defenseFinal = defenseFinal < PlayerDefense ? PlayerDefense : defenseFinal;
+        spAttackFinal = spAttackFinal < PlayerSpAttack ? PlayerSpAttack : spAttackFinal;
+        spDefenseFinal = spDefenseFinal < PlayerSpDefense ? PlayerSpDefense : spDefenseFinal;
     }
 
     public void RemoveFromInv(int index)

@@ -23,7 +23,7 @@ public class Inventory : Control
         var flipButton = GetNode("Background/MarginContainer/WholeContainer/WholeInventory/InventoryHeader/Control2/TextureButton");
         flipButton.Connect("FlipInv", this, "FlipBool");
 
-
+        playerData.RefreshStatFinals();
         InitializeUI();
     }
 

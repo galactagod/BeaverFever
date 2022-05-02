@@ -381,7 +381,7 @@ public static class Global
         ableToBeEquippedSlot = "Skill",
         textureRoute = "res://assets/skills/body/aegis/Body Mod 1.png",
         type = "skill",
-        tooltip = "Boosts defense by 5%."
+        tooltip = "Boosts defense by 2."
         },
         new PlayerData.item {
         name = "Aegis",
@@ -395,7 +395,7 @@ public static class Global
         ableToBeEquippedSlot = "Skill",
         textureRoute = "res://assets/skills/body/aegis/Body Mod 2.png",
         type = "skill",
-        tooltip = "Boosts defense by 10%."
+        tooltip = "Boosts defense by 4."
         },
         new PlayerData.item {
         name = "Aegis",
@@ -409,7 +409,7 @@ public static class Global
         ableToBeEquippedSlot = "Skill",
         textureRoute = "res://assets/skills/body/aegis/Body Mod 3.png",
         type = "skill",
-        tooltip = "Boosts defense by 30%."
+        tooltip = "Boosts defense by 6."
         }
     };
 
@@ -591,7 +591,52 @@ public static class Global
         ableToBeEquippedSlot = "Weapon",
         type = "item",
         tooltip = "The sword containing the souls of the fallen Uchiha Clan. Multiverse?"
+        },
+        //13
+        new PlayerData.item {
+        name = "Zoro's Katana",
+        texture = (Texture) GD.Load(assetRoute + "Zoro's Katana.png"),
+        scale = new Vector2(3,3),
+        amountOnStat = new List<string> {"10"},
+        whichStat = new List<string> {"Attack"},
+        operatorOnStat = new List<string> {"+"},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Weapon",
+        type = "item",
+        tooltip = "One of the blades of a legendary swordsman. It's said to hold the power of its previous owner."
+        },
+        //14
+        new PlayerData.item {
+        name = "Pacifist Wand",
+        texture = (Texture) GD.Load(assetRoute + "Pacifist Wand.png"),
+        scale = new Vector2(3,3),
+        amountOnStat = new List<string> {"8", "15"},
+        whichStat = new List<string> {"SpAttack", "Defense"},
+        operatorOnStat = new List<string> {"+", "+"},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Weapon",
+        type = "item",
+        tooltip = "A wand belonging to the elder beaver cleric. Peace is the main option with this wand of grace."
+        },
+        //15
+        new PlayerData.item {
+        name = "Water Spirit Ring",
+        texture = (Texture) GD.Load(assetRoute + "Water Spirit Ring.png"),
+        scale = new Vector2(3,3),
+        amountOnStat = new List<string> {"12"},
+        whichStat = new List<string> {"SpAttack"},
+        operatorOnStat = new List<string> {"+"},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Weapon",
+        type = "item",
+        tooltip = "A ring bestowed to the water tribes by the gods themselves. Holds amazing bubble power."
         }
+
+
+
     };
 
     public static List<EnemyTemplate> enemyTemplates = new List<EnemyTemplate>
@@ -690,8 +735,8 @@ public static class Global
         {
             name = "BrownBear",
             level = 2,
-            health = 30,
-            attack = 20,
+            health = 25,
+            attack = 15,
             defense = 8,
             spAttack = 15,
             spDefense = 8
@@ -700,8 +745,8 @@ public static class Global
         {
             name = "BrownBear",
             level = 3,
-            health = 40,
-            attack = 30,
+            health = 30,
+            attack = 20,
             defense = 12,
             spAttack = 20,
             spDefense = 12
@@ -710,8 +755,8 @@ public static class Global
         {
             name = "BrownBear",
             level = 4,
-            health = 50,
-            attack = 40,
+            health = 35,
+            attack = 25,
             defense = 16,
             spAttack = 20,
             spDefense = 16
