@@ -6,8 +6,7 @@ public class PlayerStats : Node
 
     [Export] private float _health = 1;
     [Export] private float _maxHealth = 20;
-    [Export] private float _extraHealth = 2;
-    [Export] private float _energy = 3;
+    [Export] private float _energy = 8;
     [Export] private float _maxEnergy = 10;
     [Export] private float _exp = 250;
     [Export] private float _muny = 0;
@@ -16,20 +15,22 @@ public class PlayerStats : Node
     [Export] private float[] _skillCoolDowns = new float[3];
     [Export] private float[] _skillMaxCoolDowns = new float[3];
     [Export] private float[] _skillEnergyUse = new float[3];
+    private bool _energyPause = false;
+    private bool _healthPause = false;
 
     public float _maxMuny = 99999999;
 
     private float _maxHealthCap = 1000;
-    private float _maxExtraHealthCap = 100;
+    private float _maxEnergyCap = 100;
     private Vector2 _playerpos;
 
     public delegate void StatEventHandler(float value);
-    public event StatEventHandler HealthChange, MaxHealthChange, ExtraHealthChange, MoneyChange, EnergyChange, ExpChange;
+    public event StatEventHandler HealthChange, MaxHealthChange, EnergyChange, MaxEnergyChange, MoneyChange, 
+    ExpChange, ReplenishEnergyChange, ReplenishHealthChange;
     //public event HealthEventHandler<PlayerStats> HealthChange;
 
     public float Health { get { return _health; } set { _health = value; } }
     public float MaxHealth { get { return _maxHealth; } set { _maxHealth = value; } }
-    public float ExtraHealth { get { return _extraHealth; } set { _extraHealth = value; } }
     public float Energy { get { return _energy; } set { _energy = value; } }
     public float MaxEnergy { get { return _maxEnergy; } set { _maxEnergy = value; } }
     public float Exp { get { return _exp; } set { _exp = value; } }
@@ -41,6 +42,8 @@ public class PlayerStats : Node
     public float[] SkillCoolDowns { get { return _skillCoolDowns; } set { _skillCoolDowns = value; } }
     public float[] SkillMaxCoolDowns { get { return _skillMaxCoolDowns; } set { _skillMaxCoolDowns = value; } }
     public float[] SkillEnergyUse { get { return _skillEnergyUse; } set { _skillEnergyUse = value; } }
+    public bool EnergyPause { get { return _energyPause; } set { _energyPause = value; } }
+    public bool HealthPause { get { return _healthPause; } set { _healthPause = value; } }
 
     private PlayerData _ndplayerData;
     private LevelControl levelControl;
@@ -85,12 +88,12 @@ public class PlayerStats : Node
                 _skillNames[i] = skill.name;
                 //_skillNames[i] = name;
                 _skillTiers[i] = skill.level;
-                SetSkillCoolDownEnergy(_skillNames[i]);
+                SetSkillCoolDownEnergy(_skillNames[i], i);
             }
             else
             {
                 _skillNames[i] = name;
-                SetSkillCoolDownEnergy("");
+                SetSkillCoolDownEnergy("", i);
             }
 
         }
@@ -108,91 +111,90 @@ public class PlayerStats : Node
     }
 
 
-    public void SetSkillCoolDownEnergy(string name)
+    public void SetSkillCoolDownEnergy(string name, int index)
     {
         int cooldown;
         int energy = 0;
 
-        for (int i = 0; i < 3; i++)
+        cooldown = 100;
+        if (name != "")
         {
-            cooldown = 100;
-            if (_skillNames[i] != "")
+            switch (name)
             {
-                switch (name)
-                {
-                    case "Slice":
-                        cooldown = 30;
-                        energy = 2;
-                        break;
-                    case "Crunch": case "BubbleBurst":
-                        cooldown = 50;
-                        energy = 4;
-                        break;
-                    case "Aegis": case "Accelerate":
-                        cooldown = 100;
-                        energy = 5;
-                        break;
-                    case "Regeneration": case "Grace":
-                        cooldown = 0;
-                        energy = 0;
-                        break;
-                }
+                case "Slice":
+                    cooldown = 40;
+                    energy = 2;
+                    break;
+                case "Crunch": case "BubbleBurst":
+                    cooldown = 70;
+                    energy = 4;
+                    break;
+                case "Aegis": case "Accelerate":
+                    cooldown = 150;
+                    energy = 5;
+                    break;
+                case "Regeneration": case "Grace":
+                    cooldown = 0;
+                    energy = 0;
+                    break;
+            }
 
-                _skillMaxCoolDowns[i] = cooldown;
-                _skillEnergyUse[i] = energy;
-            }
-            else
-            {
-                _skillMaxCoolDowns[i] = cooldown;
-                _skillCoolDowns[i] = cooldown;
-            }
+            _skillMaxCoolDowns[index] = cooldown;
+            _skillEnergyUse[index] = energy;
         }
-    }
-
-    public void ClampHealth()
-    {
-        // clamp stats
-        _health = Mathf.Clamp(_health, 0, _maxHealth);
-        _maxHealth = Mathf.Clamp(_maxHealth, 0, _maxHealthCap);
-        _extraHealth = Mathf.Clamp(_extraHealth, 0, _maxExtraHealthCap);
+        else
+        {
+            _skillMaxCoolDowns[index] = cooldown;
+            _skillCoolDowns[index] = cooldown;
+        }
     }
 
     public void ChangeHealth(float health)
     {
         _health += health;
-        ClampHealth();
+        _health = Mathf.Clamp(_health, 0, _maxHealth);
         HealthChange?.Invoke(_health);
+        GD.Print("health = " + _health);
+    }
+
+    public void ChangeReplenishHealth(float health)
+    {
+        _health += health;
+        _health = Mathf.Clamp(_health, 0, _maxHealth);
+        ReplenishHealthChange?.Invoke(_health);
         GD.Print("health = " + _health);
     }
 
     public void ChangeMaxHealth(float health)
     {
         _maxHealth += health;
-        ClampHealth();
+        _maxHealth = Mathf.Clamp(_maxHealth, 0, _maxHealthCap);
         MaxHealthChange?.Invoke(_maxHealth);
         GD.Print("Max health = " + _maxHealth);
-    }
-
-    public void ChangeExtraHealth(float health)
-    {
-        _extraHealth += health;
-        ClampHealth();
-        ExtraHealthChange?.Invoke(_extraHealth);
-        GD.Print("Extra health = " + _extraHealth);
     }
 
     public void ChangeEnergy(float energy)
     {
         _energy += energy;
         _energy = Mathf.Clamp(_energy, 0, _maxEnergy);
-        EnergyChange?.Invoke(energy);
+        EnergyChange?.Invoke(_energy);
         GD.Print("Energy = " + _energy);
     }
 
-    public void ReplenishEnergy(float energy)
+    public void ChangeReplenishEnergy(float energy)
     {
         _energy += energy;
         _energy = Mathf.Clamp(_energy, 0, _maxEnergy);
+        ReplenishEnergyChange?.Invoke(_energy);
+        //GD.Print("Energy = " + _energy);
+    }
+
+    public void ChangeMaxEnergy(float energy)
+    {
+        _maxEnergy += energy;
+        _maxEnergy = Mathf.Clamp(_maxEnergy, 0, _maxEnergyCap);
+        MaxEnergyChange?.Invoke(_maxEnergy);
+        GD.Print("Max Energy = " + _maxEnergy);
     }
 
     public void ChangeCooldown(float value)

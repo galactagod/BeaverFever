@@ -15,10 +15,11 @@ public class EnemyWander : EnemyBaseStateMachine
         owner.BaseMovementControl();
         owner.EnemyTurnIdle();
 
-        if (owner.IsStomped)
+        if (owner.IsStomped || owner.IsDamaged)
         {
             owner.IsStomped = false;
-            if (owner.Health - owner.NdObjPlayer.CurDmg <= 0)
+            owner.IsDamaged = false;
+            if (owner.Health - owner.Battled(owner.NdObjPlayer.CurDmg, owner.NdObjPlayer.IsPhysical) <= 0)
                 stateMachine.TransitionToState(owner.enemyDeath);
             else
                 stateMachine.TransitionToState(owner.enemyHurt);

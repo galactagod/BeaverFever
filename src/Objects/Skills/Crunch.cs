@@ -17,13 +17,26 @@ public class Crunch : SkillMove
     public override void _Ready()
     {
         base._Ready();
+        for (int i = 0; i < 3; i++)
+        {
+            if (_ndPlayerStats.SkillNames[i] == "Crunch")
+            {
+                switch (_ndPlayerStats.SkillTiers[i])
+                {
+                    case 1: _power = 4; break;
+                    case 2: _power = 6; break;
+                    case 3: _power = 9; break;
+                }
+                break;
+            }
+        }
+
         _ndSprite = CreateSprite(_sprite, _hFrame);
         Vector2 skillSprSize = _ndSprite.GetRect().Size;
         _ndArea = CreateArea(skillSprSize/2);
         _ndTween = CreateTween();
 
-        _type = "physical";
-        _energy = 10;
+        _ndArea.Connect("body_entered", this, nameof(OnBodyEntered));
 
         // set position based on user sprite height
         string anim = _player.NdSprPlayer.Animation;
@@ -35,12 +48,7 @@ public class Crunch : SkillMove
         Position = new Vector2(Position.x + (_player.Direction.x * playerSprSize.x/2), Position.y - (playerSprSize.y/2 + skillSprSize.y/2));
         _ndSprite.FlipH = _player.NdSprPlayer.FlipH;
 
-        switch (_tier)
-        {
-            case 1: _power = 45; break;
-            case 2: _power = 50; break;
-            case 3: _power = 60; break;
-        }
+        
 
         _timer.Start(0.1f);
 
@@ -72,6 +80,18 @@ public class Crunch : SkillMove
         }
 
         _ndSprite.Frame = Mathf.Clamp(_ndSprite.Frame + 1, 0, _hFrame - 1);
+    }
+
+    public void OnBodyEntered(Node body)
+    {
+        if (body is EnemyMovementAct)
+        {
+            EnemyMovementAct obj = (EnemyMovementAct)body;
+            obj.IsDamaged = true;
+            _player.CurDmg = _power + _player.CurAttack;
+            _player.IsPhysical = true;
+            GD.Print("EnemyMovementAct =========" + body.Name);
+        }
     }
 
 }

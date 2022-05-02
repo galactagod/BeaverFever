@@ -22,6 +22,22 @@ public class BubbleBurst : SkillMove
     public override void _Ready()
     {
         base._Ready();
+        // modify tiers
+
+        for (int i = 0; i < 3; i++)
+        {
+            if (_ndPlayerStats.SkillNames[i] == "BubbleBurst")
+            {
+                switch (_ndPlayerStats.SkillTiers[i])
+                {
+                    case 1: _power = 3; break;
+                    case 2: _power = 5; break;
+                    case 3: _power = 8; break;
+                }
+                break;
+            }
+        }
+
         _ndTween = CreateTween();
         MakeSprites();
         _sprOrigPosY = _ndSprite[0].Position.y;
@@ -33,6 +49,8 @@ public class BubbleBurst : SkillMove
         Vector2 playerSprSize = _player.NdSprPlayer.Frames.GetFrame(anim, frame).GetSize();
         _ndArea = CreateArea(skillSprSize/2);
         _ndArea.Position = new Vector2(_ndArea.Position.x, _ndArea.Position.y - (playerSprSize.y/2 + skillSprSize.y/2));
+
+        _ndArea.Connect("body_entered", this, nameof(OnBodyEntered));
 
         switch (_player.NdSprPlayer.FlipH)
         {
@@ -141,6 +159,18 @@ public class BubbleBurst : SkillMove
                     }
                 }
             }
+        }
+    }
+
+    public void OnBodyEntered(Node body)
+    {
+        if (body is EnemyMovementAct)
+        {
+            EnemyMovementAct obj = (EnemyMovementAct)body;
+            obj.IsDamaged = true;
+            _player.CurDmg = _power + _player.CurSpAttack;
+            _player.IsPhysical = false;
+            GD.Print("EnemyMovementAct =========" + body.Name);
         }
     }
 }

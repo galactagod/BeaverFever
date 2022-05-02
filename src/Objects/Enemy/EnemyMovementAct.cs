@@ -32,6 +32,7 @@ public class EnemyMovementAct : KinematicBody2D
     protected int[] _atkFrm;
     protected bool _isAnimationOver = false;
     protected bool _isStomped = false;
+    protected bool _isDamaged = false;
     protected bool _isDead = false;
     protected float _collBasePositionX;
     protected string _enemyType;
@@ -73,6 +74,7 @@ public class EnemyMovementAct : KinematicBody2D
     public int[] AtkFrm { get { return _atkFrm; } set { _atkFrm = value; } }
     public bool IsAnimationOver { get { return _isAnimationOver; } set { _isAnimationOver = value; } }
     public bool IsStomped { get { return _isStomped; } set { _isStomped = value; } }
+    public bool IsDamaged { get { return _isDamaged; } set { _isDamaged = value; } }
     public bool IsDead { get { return _isDead; } set { _isDead = value; } }
     public string EnemyType { get { return _enemyType; } set { _enemyType = value; } }
     public PlayerStats NdPlayerStats { get { return _ndPlayerStats; } set { _ndPlayerStats = value; } }
@@ -233,7 +235,13 @@ public class EnemyMovementAct : KinematicBody2D
     {
         //GD.Print("Enemy Area Position X = " + area.GlobalPosition.x + " Y = " + area.GlobalPosition.y);
         // do not activate stomp if not entered in the correct y position
-        if (area.GlobalPosition.y > _ndStompArea.GlobalPosition.y)
+        if (area.GlobalPosition.y > _ndStompArea.GlobalPosition.y )
+        {
+            return;
+        }
+
+        // do not activated stomp damage if hit during a skill use
+        if (_ndObjPlayer.UseSkill == true)
         {
             return;
         }
@@ -241,6 +249,10 @@ public class EnemyMovementAct : KinematicBody2D
         GD.Print("Stomped On");
         // damage calculation
         _isStomped = true;
+
+        // modify player damage
+        _ndObjPlayer.CurDmg = _ndObjPlayer.CurAttack;
+        _ndObjPlayer.IsPhysical = true;
     }
 
     public void ChangeHealth(float health)
@@ -252,13 +264,40 @@ public class EnemyMovementAct : KinematicBody2D
         GD.Print(_enemyType +"'s Health = " + _health);
     }
 
-    public void Battled(float attackerAttack)
+    public void BattledDamage(float attackerAttack, bool isPhysical)
     {
+        int totalDamage;
         //coded for a physical stomp attack at the moment
-        Console.WriteLine("Damage onto wolf" + DamageCalculation.damageEquation(attackerAttack, _curdefense));
-        Console.WriteLine("current attack" + attackerAttack);
-        Console.WriteLine("current xdefense" + _curdefense);
-        ChangeHealth(-DamageCalculation.damageEquation(attackerAttack, _curdefense));
+        if (isPhysical)
+        {
+            totalDamage = DamageCalculation.damageEquation(attackerAttack, _curdefense);
+        }
+        else
+        {
+            totalDamage = DamageCalculation.damageEquation(attackerAttack, _curspDefense);
+        }
+        GD.Print("DAMAGE TIME");
+        ChangeHealth(-totalDamage);
+        // stomp = 5 special phys
+        // moveskill = 20
+    }
+
+    public int Battled(float attackerAttack, bool isPhysical)
+    {
+        int totalDamage;
+        //coded for a physical stomp attack at the moment
+        if (isPhysical)
+        {
+            totalDamage = DamageCalculation.damageEquation(attackerAttack, _curdefense);
+        }
+        else
+        {
+            totalDamage = DamageCalculation.damageEquation(attackerAttack, _curspDefense);
+        }
+
+        return totalDamage;
+        // stomp = 5 special phys
+        // moveskill = 20
 
     }
 

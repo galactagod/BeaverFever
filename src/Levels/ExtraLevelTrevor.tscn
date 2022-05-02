@@ -461,7 +461,6 @@ position = Vector2( 5684, -337 )
 
 [node name="Snake6" parent="." instance=ExtResource( 4 )]
 position = Vector2( 6644, -215 )
-level = 1
 
 [node name="BrownBear" parent="." instance=ExtResource( 8 )]
 position = Vector2( 2027, 101 )
@@ -477,7 +476,6 @@ position = Vector2( 6060, 112 )
 
 [node name="GrayWolf2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1945, -218 )
-level = 1
 
 [node name="GrayWolf3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 4933, -438 )
