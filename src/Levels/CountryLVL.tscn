@@ -749,9 +749,14 @@ level = 2
 
 [node name="GrayWolf5" parent="." instance=ExtResource( 12 )]
 position = Vector2( 3521, -352 )
+level = 2
 
 [node name="GrayWolf6" parent="." instance=ExtResource( 12 )]
 position = Vector2( 3878, -244 )
+level = 1
+
+[node name="GrayWolf7" parent="." instance=ExtResource( 12 )]
+position = Vector2( 3436, -161 )
 level = 1
 
 [node name="BrownBear4" parent="." instance=ExtResource( 11 )]
@@ -850,6 +855,11 @@ position = Vector2( 1871, 429 )
 id = 8
 whichItem = 5
 
+[node name="Chest4" parent="." instance=ExtResource( 16 )]
+position = Vector2( 4263, -81 )
+id = 10
+whichItem = 15
+
 [node name="Chest3" parent="." instance=ExtResource( 16 )]
 position = Vector2( 758, 334 )
 id = 9
@@ -881,6 +891,21 @@ position = Vector2( 3641, -238 )
 
 [node name="SilverCoin10" parent="." instance=ExtResource( 17 )]
 position = Vector2( 3678, -239 )
+
+[node name="SilverCoin14" parent="." instance=ExtResource( 17 )]
+position = Vector2( 3856, -147 )
+
+[node name="SilverCoin15" parent="." instance=ExtResource( 17 )]
+position = Vector2( 3892, -147 )
+
+[node name="SilverCoin16" parent="." instance=ExtResource( 17 )]
+position = Vector2( 3929, -148 )
+
+[node name="SilverCoin17" parent="." instance=ExtResource( 17 )]
+position = Vector2( 4046, -89 )
+
+[node name="SilverCoin18" parent="." instance=ExtResource( 17 )]
+position = Vector2( 4158, -92 )
 
 [node name="SilverCoin11" parent="." instance=ExtResource( 17 )]
 position = Vector2( 4623, -792 )

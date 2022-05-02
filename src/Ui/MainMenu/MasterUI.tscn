@@ -193,6 +193,7 @@ margin_top = 362.0
 margin_right = 1024.0
 margin_bottom = 412.0
 rect_min_size = Vector2( 1024, 50 )
+hint_tooltip = "Houses all the skills you can buy and their level."
 size_flags_horizontal = 3
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 3 )
@@ -220,6 +221,7 @@ margin_top = 416.0
 margin_right = 1024.0
 margin_bottom = 466.0
 rect_min_size = Vector2( 1024, 50 )
+hint_tooltip = "Saves your game, including your stats, your current level, inventory, skills, and what chests you have opened."
 size_flags_horizontal = 3
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 3 )
@@ -241,17 +243,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
+[node name="ControlsButton" type="TextureButton" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
 margin_top = 470.0
 margin_right = 1024.0
-margin_bottom = 666.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="ControlsButton" type="TextureButton" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
-margin_top = 670.0
-margin_right = 1024.0
-margin_bottom = 720.0
+margin_bottom = 520.0
 rect_min_size = Vector2( 1024, 50 )
 size_flags_horizontal = 3
 texture_normal = ExtResource( 4 )
@@ -268,15 +263,22 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -20.0
+margin_left = -30.0
 margin_top = -9.5
-margin_right = 20.0
+margin_right = 30.0
 margin_bottom = 9.5
 custom_fonts/font = SubResource( 1 )
 text = "Controls"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PauseMenu/NinePatchRect/HBoxContainer2/VBoxContainer"]
+margin_top = 524.0
+margin_right = 1024.0
+margin_bottom = 720.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PauseMenu/NinePatchRect/HBoxContainer2"]
 margin_left = 1156.0
