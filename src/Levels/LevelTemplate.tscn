@@ -572,6 +572,7 @@ id = 2
 [node name="SignPost6" parent="." instance=ExtResource( 15 )]
 position = Vector2( 3970, -115 )
 whichDialogue = 1
+whichSet = "Misc"
 
 [node name="SignPost9" parent="." instance=ExtResource( 15 )]
 position = Vector2( 5486, 123 )
@@ -586,10 +587,12 @@ whichSet = "Misc"
 [node name="SignPost8" parent="." instance=ExtResource( 15 )]
 position = Vector2( 3125, 123 )
 whichDialogue = 3
+whichSet = "Misc"
 
 [node name="SignPost7" parent="." instance=ExtResource( 15 )]
 position = Vector2( 940, 36 )
 whichDialogue = 2
+whichSet = "Misc"
 
 [node name="SignPost11" parent="." instance=ExtResource( 15 )]
 position = Vector2( 528, -356 )
