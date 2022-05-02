@@ -556,6 +556,7 @@ id = 1
 [node name="Chest2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 5147, 136 )
 id = 2
+whichItem = 12
 
 [node name="SignPost6" parent="." instance=ExtResource( 15 )]
 position = Vector2( 3970, -115 )
