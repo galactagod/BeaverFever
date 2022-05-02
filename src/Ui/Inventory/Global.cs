@@ -610,7 +610,7 @@ public static class Global
         {
             name = "GrayWolf",
             level = 2,
-            health = 14,
+            health = 18,
             attack = 7,
             defense = 5,
             spAttack = 7,
@@ -620,7 +620,7 @@ public static class Global
         {
             name = "GrayWolf",
             level = 3,
-            health = 16,
+            health = 22,
             attack = 12,
             defense = 5,
             spAttack = 12,
@@ -631,7 +631,7 @@ public static class Global
             name = "Snake",
             level = 1,
             health = 6,
-            attack = 7,
+            attack = 10,
             defense = 1,
             spAttack = 7,
             spDefense = 1
@@ -641,7 +641,7 @@ public static class Global
             name = "Snake",
             level = 2,
             health = 9,
-            attack = 9,
+            attack = 13,
             defense = 2,
             spAttack = 9,
             spDefense = 2
@@ -650,7 +650,7 @@ public static class Global
         {
             name = "Snake",
             level = 3,
-            health = 11,
+            health = 15,
             attack = 11,
             defense = 3,
             spAttack = 11,
@@ -671,7 +671,7 @@ public static class Global
             name = "BrownBear",
             level = 2,
             health = 30,
-            attack = 15,
+            attack = 20,
             defense = 6,
             spAttack = 15,
             spDefense = 6
@@ -681,7 +681,7 @@ public static class Global
             name = "BrownBear",
             level = 3,
             health = 40,
-            attack = 20,
+            attack = 30,
             defense = 8,
             spAttack = 20,
             spDefense = 8
