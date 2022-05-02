@@ -286,7 +286,7 @@ position = Vector2( 1178, 151 )
 position = Vector2( 2695, -248 )
 
 [node name="ObjPlayer" parent="." instance=ExtResource( 1 )]
-position = Vector2( 798, 117 )
+position = Vector2( 722, 120 )
 
 [node name="Camera2D" parent="ObjPlayer" index="2"]
 limit_left = 0
@@ -574,21 +574,17 @@ id = 1
 [node name="Chest2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 5147, 136 )
 id = 2
-whichItem = 12
 
 [node name="SignPost6" parent="." instance=ExtResource( 15 )]
 position = Vector2( 3970, -115 )
 whichDialogue = 1
-whichSet = "Misc"
 
 [node name="SignPost8" parent="." instance=ExtResource( 15 )]
 position = Vector2( 3125, 123 )
 whichDialogue = 3
-whichSet = "Misc"
 
 [node name="SignPost7" parent="." instance=ExtResource( 15 )]
 position = Vector2( 940, 36 )
 whichDialogue = 2
-whichSet = "Misc"
 
 [editable path="ObjPlayer"]

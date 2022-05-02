@@ -11,7 +11,6 @@
 [ext_resource path="res://src/Objects/Items/Coins/GoldCoin.tscn" type="PackedScene" id=10]
 [ext_resource path="res://NecessaryUIForLevelScene.tscn" type="PackedScene" id=11]
 
-
 [sub_resource type="ConvexPolygonShape2D" id=5]
 points = PoolVector2Array( 0, 10, 90, 10, 90, 30, 0, 30 )
 
@@ -278,7 +277,7 @@ tile_data = PoolIntArray( -1507331, 536870912, 0, -1572864, 536870914, 0, -13762
 position = Vector2( 104, 128 )
 
 [node name="SprPlayer" parent="ObjPlayer" index="0"]
-animation = "Crawl"
+animation = "AirAttackA"
 
 [node name="Camera2D" parent="ObjPlayer" index="2"]
 limit_left = 0

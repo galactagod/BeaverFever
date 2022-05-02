@@ -18,7 +18,8 @@ public class ObjPlayer : BaseMovementAct
     private bool _stompJump = false;
     private int _stompJumpTimer = 0;
     private int _timer = 0;
-    private object _ndSkillMove;
+    private string _curSkill = "";
+    private bool _useSkill = false;
     protected readonly Random _rnd = new Random();
 
     // sound paths
@@ -37,22 +38,26 @@ public class ObjPlayer : BaseMovementAct
     
     // state setups
     protected PlayerStateMachineManager stateMachine;
+    public PlayerAir playerAir = new PlayerAir();
     public PlayerCrawl playerCrawl = new PlayerCrawl();
     public PlayerCrouch playerCrouch = new PlayerCrouch();
     public PlayerHurt playerHurt = new PlayerHurt();
     public PlayerIdle playerIdle = new PlayerIdle();
-    public PlayerAir playerAir = new PlayerAir();
+    public PlayerSkill playerSkill = new PlayerSkill();
     public PlayerSwim playerSwim = new PlayerSwim();
     public PlayerWalk playerWalk = new PlayerWalk();
 
     // getters and setters
     public float CurDmg { get { return _curdmg; } set { _curdmg = value; } }
     public Vector2 Velocity { get { return _velocity; } set { _velocity = value; } }
+    public Vector2 Direction { get { return _direction; } set { _direction = value; } }
     public bool IsDamaged { get { return _isDamaged; } set { _isDamaged = value; } }
     public int DamagedTimer { get { return _damagedTimer; } set { _damagedTimer = value; } }
     public bool StompJump { get { return _stompJump; } set { _stompJump = value; } }
     public bool IsAnimationOver { get { return _isAnimationOver; } set { _isAnimationOver = value; } }
     public bool IsInAir { get { return _isInAir; } set { _isInAir = value; } }
+    public string CurSkill { get { return _curSkill; } set { _curSkill = value; } }
+    public bool UseSkill { get { return _useSkill; } set { _useSkill = value; } }
     public PlayerStats NdPlayerStats { get { return _ndPlayerStats; } set { _ndPlayerStats = value; } }
     public AnimatedSprite NdSprPlayer { get { return _ndSprPlayer; } set { _ndSprPlayer = value; } }
 
@@ -108,16 +113,15 @@ public class ObjPlayer : BaseMovementAct
         // energy naturally replenishes
         _ndPlayerStats.ReplenishEnergy(0.002f);
 
-        // use Skill
-        if (Input.IsActionJustReleased("ui_accept"))
-        {
-            Type t = Type.GetType("Crunch");
-            object ndSkillMove = Activator.CreateInstance(t);
-        }
+        // naturally decrease cooldown
+        _ndPlayerStats.ChangeCooldown(0.1f);
+
+
     }
 
     public void BaseMovementControl()
     {
+
         bool jumpInterrupted = (Input.IsActionJustReleased("ui_up") && _velocity.y < 0) ? true : false;
         _direction = GetDirection();
         _velocity = CalculateVelocity(_velocity, _direction, _speed, jumpInterrupted);
@@ -150,12 +154,72 @@ public class ObjPlayer : BaseMovementAct
         }
     }
 
+    public bool ActivateSkill()
+    {
+        int skill = 0;
+
+        string[] skillNames = _ndPlayerStats.SkillNames;
+        float[] SkillCoolDowns = _ndPlayerStats.SkillCoolDowns;
+        float[] skillEnergy = _ndPlayerStats.SkillEnergyUse;
+
+        if (Input.IsActionJustPressed("SkillA"))
+        {
+            if (skillNames[0] != "" && SkillCoolDowns[0] == 0 && skillEnergy[0] < _ndPlayerStats.Energy)
+            {
+                skill = 1;
+                _curSkill = skillNames[0];
+            }
+        }
+        else if (Input.IsActionJustPressed("SkillB"))
+        {
+            if (skillNames[1] != "" && SkillCoolDowns[1] == 0 && skillEnergy[1] < _ndPlayerStats.Energy)
+            {
+                skill = 2;
+                _curSkill = skillNames[1];
+            }
+        }
+        else if (Input.IsActionJustPressed("SkillC"))
+        {
+            if (skillNames[2] != "" && SkillCoolDowns[2] == 0 && skillEnergy[2] < _ndPlayerStats.Energy)
+            {
+                skill = 3;
+                _curSkill = skillNames[2];
+            }
+        }
+
+        if (_isInAir && (_curSkill == "Accelerate" || _curSkill == "Aegis"))
+        {
+            _useSkill = false;
+            return false;
+        }
+        else
+        {
+            if (skill != 0)
+            {
+                _useSkill = true;
+                // reset cool down and change energy
+                _ndPlayerStats.SkillCoolDowns[skill - 1] = _ndPlayerStats.SkillMaxCoolDowns[skill - 1];
+                _ndPlayerStats.ChangeEnergy(-_ndPlayerStats.SkillEnergyUse[skill - 1]);
+            }
+
+            return (skill != 0);
+        }
+        
+    }
+
     public Vector2 GetDirection()
     {
-        float xDirection = Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left");
-        float yDirection = (IsOnFloor() && Input.IsActionJustPressed("ui_up")) ? -Input.GetActionStrength("ui_up") : 0;
+        float xDirection = 0;
+        float yDirection = 0;
 
-            //GD.Print("new Direction X = " + xDirection);
+        if (!_useSkill)
+        {
+            xDirection = Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left");
+            yDirection = (IsOnFloor() && Input.IsActionJustPressed("ui_up")) ? -Input.GetActionStrength("ui_up") : 0;
+        }
+        
+
+        //GD.Print("new Direction X = " + xDirection);
 
         return new Vector2(xDirection, yDirection); 
     }
@@ -209,6 +273,37 @@ public class ObjPlayer : BaseMovementAct
             // run audio on animation
             PlayAudio(animation);
         }    
+    }
+
+    public void AttackAnimation(string curSkill, string pos)
+    {
+        string animation = "";
+
+        switch (curSkill)
+        {
+            case "Slice":
+                animation = (!IsOnFloor()) ? "AirAttackA" : "AttackA";
+                break;
+            case "Crunch": case "BubbleBurst":
+                animation = (!IsOnFloor()) ? "AirAttackB" : "AttackB";
+                break;
+            case "Aegis": case "Accelerate":
+                animation = "Buff";
+                break;
+        }
+
+        if (pos == "start")
+        {
+            _ndAnimPlayer.Play(animation);
+        }
+        else if (pos == "end")
+        {
+            //_ndSprPlayer.Animation = animation;
+            //_ndSprPlayer.Frame = 1;
+            _ndAnimPlayer.Play(animation);
+            _ndAnimPlayer.Seek(0.1f, true);
+        }
+        
     }
 
     public void PlayAudio(string animation)
