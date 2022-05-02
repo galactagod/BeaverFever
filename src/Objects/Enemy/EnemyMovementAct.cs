@@ -152,7 +152,7 @@ public class EnemyMovementAct : KinematicBody2D
     {
         _ndAnimEnemy.Play(animation);
 
-        GD.Print("Enemy Animation = " + animation);
+       //GD.Print("Enemy Animation = " + animation);
 
 
     }

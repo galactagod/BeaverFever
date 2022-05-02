@@ -14,20 +14,21 @@ public class PlayerIdle : PlayerBaseStateMachine
         if (owner.IsDamaged && owner.DamagedTimer == 0)
         {
             stateMachine.TransitionToState(owner.playerHurt);
-            return;
         }
-
-        if (!owner.IsOnFloor())
+        else if (!owner.IsOnFloor())
         {
-            stateMachine.TransitionToState(owner.playerAir);
-            return;
+            stateMachine.TransitionToState(owner.playerAir); 
         }
 
         owner.BaseMovementControl();
-        
+
         if (Input.IsActionJustPressed("ui_up"))
         {
             stateMachine.TransitionToState(owner.playerAir);
+        }
+        else if (owner.ActivateSkill())
+        {
+            stateMachine.TransitionToState(owner.playerSkill);
         }
         else if (owner.Velocity.x != 0)
         {
@@ -35,6 +36,7 @@ public class PlayerIdle : PlayerBaseStateMachine
         }
 
         
+
     }
 
     public override void OnStateExit(IPlayerStateMachine stateMachine, ObjPlayer owner)

@@ -29,6 +29,10 @@ public class PlayerWalk : PlayerBaseStateMachine
         {
             stateMachine.TransitionToState(owner.playerAir);
         }
+        else if (owner.ActivateSkill())
+        {
+            stateMachine.TransitionToState(owner.playerSkill);
+        }
         else if (owner.Velocity == new Vector2(0, 0))
         {
             stateMachine.TransitionToState(owner.playerIdle);
