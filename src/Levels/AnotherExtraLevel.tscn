@@ -308,6 +308,7 @@ whichSet = "Misc"
 
 [node name="BrownBear2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1481, 123 )
+level = 1
 
 [node name="BrownBear3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1721, 124 )
