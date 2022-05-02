@@ -277,6 +277,7 @@ public class EnemyMovementAct : KinematicBody2D
             totalDamage = DamageCalculation.damageEquation(attackerAttack, _curspDefense);
         }
         GD.Print("DAMAGE TIME");
+        Console.WriteLine("I AM HURT...THIS IS WHAT HAPPENED" + totalDamage);
         ChangeHealth(-totalDamage);
         // stomp = 5 special phys
         // moveskill = 20

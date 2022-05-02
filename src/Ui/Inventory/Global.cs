@@ -735,8 +735,8 @@ public static class Global
         {
             name = "BrownBear",
             level = 2,
-            health = 30,
-            attack = 20,
+            health = 25,
+            attack = 15,
             defense = 8,
             spAttack = 15,
             spDefense = 8
@@ -745,8 +745,8 @@ public static class Global
         {
             name = "BrownBear",
             level = 3,
-            health = 40,
-            attack = 30,
+            health = 30,
+            attack = 20,
             defense = 12,
             spAttack = 20,
             spDefense = 12
@@ -755,8 +755,8 @@ public static class Global
         {
             name = "BrownBear",
             level = 4,
-            health = 50,
-            attack = 40,
+            health = 35,
+            attack = 25,
             defense = 16,
             spAttack = 20,
             spDefense = 16

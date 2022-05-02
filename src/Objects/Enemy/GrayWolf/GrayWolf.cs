@@ -21,6 +21,7 @@ public class GrayWolf : EnemyMovementAct
         _attackRadius = new Vector2(55, 50);
 
         EnemyTemplate temp = Global.enemyTemplates.FindAll(x => x.name == _enemyType)[level];
+        _health = temp.health;
         _curattack = temp.attack;
         _curdefense = temp.defense;
         _curspAttack = temp.spAttack;
