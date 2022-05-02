@@ -50,30 +50,6 @@ region = Rect2( 0, 0, 62, 56 )
 atlas = ExtResource( 5 )
 region = Rect2( 62, 0, 62, 56 )
 
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 8 )
-region = Rect2( 0, 0, 61, 40 )
-
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 8 )
-region = Rect2( 61, 0, 61, 40 )
-
-[sub_resource type="AtlasTexture" id=30]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 86, 39 )
-
-[sub_resource type="AtlasTexture" id=31]
-atlas = ExtResource( 6 )
-region = Rect2( 86, 0, 86, 39 )
-
-[sub_resource type="AtlasTexture" id=32]
-atlas = ExtResource( 6 )
-region = Rect2( 172, 0, 86, 39 )
-
-[sub_resource type="AtlasTexture" id=33]
-atlas = ExtResource( 6 )
-region = Rect2( 258, 0, 86, 39 )
-
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 59, 64 )
@@ -122,21 +98,33 @@ region = Rect2( 0, 0, 47, 67 )
 atlas = ExtResource( 9 )
 region = Rect2( 47, 0, 47, 67 )
 
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 7 )
-region = Rect2( 0, 0, 61, 36 )
+[sub_resource type="AtlasTexture" id=60]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 0, 74, 100 )
 
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 7 )
-region = Rect2( 61, 0, 61, 36 )
+[sub_resource type="AtlasTexture" id=61]
+atlas = ExtResource( 13 )
+region = Rect2( 74, 0, 74, 100 )
 
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 7 )
-region = Rect2( 122, 0, 61, 36 )
+[sub_resource type="AtlasTexture" id=62]
+atlas = ExtResource( 13 )
+region = Rect2( 148, 0, 74, 100 )
 
-[sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 7 )
-region = Rect2( 183, 0, 61, 36 )
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 86, 39 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 6 )
+region = Rect2( 86, 0, 86, 39 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 6 )
+region = Rect2( 172, 0, 86, 39 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 6 )
+region = Rect2( 258, 0, 86, 39 )
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -186,17 +174,29 @@ region = Rect2( 120, 0, 60, 55 )
 atlas = ExtResource( 12 )
 region = Rect2( 180, 0, 60, 55 )
 
-[sub_resource type="AtlasTexture" id=60]
-atlas = ExtResource( 13 )
-region = Rect2( 0, 0, 74, 100 )
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 61, 36 )
 
-[sub_resource type="AtlasTexture" id=61]
-atlas = ExtResource( 13 )
-region = Rect2( 74, 0, 74, 100 )
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 7 )
+region = Rect2( 61, 0, 61, 36 )
 
-[sub_resource type="AtlasTexture" id=62]
-atlas = ExtResource( 13 )
-region = Rect2( 148, 0, 74, 100 )
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 7 )
+region = Rect2( 122, 0, 61, 36 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 7 )
+region = Rect2( 183, 0, 61, 36 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 61, 40 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 8 )
+region = Rect2( 61, 0, 61, 40 )
 
 [sub_resource type="SpriteFrames" id=9]
 animations = [ {
@@ -215,16 +215,6 @@ animations = [ {
 "name": "Hurt",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 10 ), SubResource( 11 ) ],
-"loop": true,
-"name": "Crouch",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ) ],
-"loop": true,
-"name": "Swim",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
 "loop": true,
 "name": "Jump",
@@ -240,9 +230,14 @@ animations = [ {
 "name": "AirAttackB",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
+"frames": [ SubResource( 60 ), SubResource( 61 ), SubResource( 62 ) ],
 "loop": true,
-"name": "Crawl",
+"name": "AirAttackA",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ) ],
+"loop": true,
+"name": "Swim",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
@@ -255,9 +250,14 @@ animations = [ {
 "name": "Buff",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 60 ), SubResource( 61 ), SubResource( 62 ) ],
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
 "loop": true,
-"name": "AirAttackA",
+"name": "Crawl",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 10 ), SubResource( 11 ) ],
+"loop": true,
+"name": "Crouch",
 "speed": 5.0
 } ]
 

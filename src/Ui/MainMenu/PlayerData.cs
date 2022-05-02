@@ -362,6 +362,7 @@ public class PlayerData : Node
         playerStats.Exp = PlayerTotalPoints;
         playerStats.ChangeExp(0);
         playerStats.ChangeMaxHealth(PlayerHealth);
+        //change max energy here
         RefreshStatFinals();
 
 

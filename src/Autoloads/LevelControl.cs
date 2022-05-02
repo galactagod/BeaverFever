@@ -124,6 +124,10 @@ public class LevelControl : Node
         {
             PlayAudio(_musicPlayer, _sndEpicDeparture, -15, 1);
         }
+        else if (nameOfCurrentScene == "MountainLVL")
+        {
+            PlayAudio(_musicPlayer, _sndEternalExplorer, -15, 1);
+        }
 
 
     }
@@ -158,6 +162,10 @@ public class LevelControl : Node
         {
             LevelChange(GD.Load<PackedScene>("res://src/Levels/CountryLVL.tscn"));
         }
+        else if (nameOfCurrentScene == "MountainLVL")
+        {
+            LevelChange(GD.Load<PackedScene>("res://src/Levels/MountainLVL.tscn"));
+        }
     }
 
     public void changeBasedOnName(string nameOfChange)
@@ -181,6 +189,11 @@ public class LevelControl : Node
         else if (nameOfChange == "CountryLVL")
         {
             LevelChange(GD.Load<PackedScene>("res://src/Levels/CountryLVL.tscn"));
+        }
+
+        else if (nameOfChange == "MountainLVL")
+        {
+            LevelChange(GD.Load<PackedScene>("res://src/Levels/MountainLVL.tscn"));
         }
     }
 

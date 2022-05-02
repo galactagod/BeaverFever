@@ -889,7 +889,7 @@ position = Vector2( 4357, -523 )
 
 [node name="LevelTeleporter" parent="." instance=ExtResource( 18 )]
 position = Vector2( 5141, -939 )
-levelToGo = "res://src/Levels/Ending.tscn"
+levelToGo = "res://src/Levels/MountainLVL.tscn"
 
 [node name="ObjPlayer" parent="." instance=ExtResource( 6 )]
 position = Vector2( 80, -750 )
