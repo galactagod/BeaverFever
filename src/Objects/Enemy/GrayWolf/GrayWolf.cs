@@ -28,13 +28,25 @@ public class GrayWolf : EnemyMovementAct
 
 
         if (level == 0)
+        {
             Modulate = Color.Color8(255, 255, 255);
-        if(level == 1)
+            _exp = 200;
+        }
+        else if(level == 1)
+        {
             Modulate = Color.Color8(238, 86, 86);
+            _exp = 400;
+        }
         else if (level == 2)
+        {
             Modulate = Color.Color8(223, 175, 73);
+            _exp = 600;
+        }
         else if (level == 3)
+        {
             Modulate = Color.Color8(63, 225, 85);
+            _exp = 800;
+        }
 
 
         // start state

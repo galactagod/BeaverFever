@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public class SkillTree: Node2D {
 
@@ -108,10 +109,24 @@ public class SkillTree: Node2D {
   // private string b = "text";
 
   PlayerData playerData;
-    PlayerStats playerStats;
+  PlayerStats playerStats;
 
-  // Called when the node enters the scene tree for the first time.
-  public override void _Ready() {
+
+    private List<int> bubbleCostList = new List<int> { 500, 1000, 3000, -1};
+    private List<int> sliceCostList = new List<int> { 500, 1000, 3000, -1};
+    private List<int> crunchCostList = new List<int> { 1000, 2000, 4000, -1};
+
+    private List<int> aegisCostList = new List<int> { 1000, 1500, 2000, -1};
+    private List<int> accelerateCostList = new List<int> { 1000, 1500, 2000, -1};
+
+    private List<int> graceCostList = new List<int> { 1000, 2000, 3000, -1};
+    private List<int> regenerationCostList = new List<int> { 1500, 2500, 5000, -1};
+
+
+
+
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready() {
     GD.Print("Init Skill Tree");
 
     // strength 
@@ -195,8 +210,7 @@ public class SkillTree: Node2D {
         }
         playerData.bubbleBurstSkill++;
         playerData.skillBought("BubbleBurst", playerData.bubbleBurstSkill);
-        this.bubbleBurstLabel.Text = "Bubble Burst - Level " + playerData.bubbleBurstSkill;
-        ResetLabel();
+            ResetLabel();
     }
 
     
@@ -246,7 +260,6 @@ public class SkillTree: Node2D {
         }
         playerData.sliceSkill++;
         playerData.skillBought("Slice", playerData.sliceSkill);
-            this.sliceLabel.Text = "Slice - Level " + playerData.sliceSkill;
             ResetLabel();
     }
     }
@@ -296,8 +309,9 @@ public class SkillTree: Node2D {
         }
         playerData.crunchSkill++;   
         playerData.skillBought("Crunch", playerData.crunchSkill);
-        this.crunchLabel.Text = "Crunch - Level " + playerData.crunchSkill;
         ResetLabel();
+
+            
     }
 
     }
@@ -346,7 +360,6 @@ public class SkillTree: Node2D {
         }
         playerData.aegisSkill++;
         playerData.skillBought("Aegis", playerData.aegisSkill);
-        this.aegisLabel.Text = "Aegis - Level " + playerData.aegisSkill;
             ResetLabel();
     }
 
@@ -398,8 +411,7 @@ public class SkillTree: Node2D {
         }
         playerData.accelerateSkill++;
         playerData.skillBought("Accelerate", playerData.accelerateSkill);
-        this.accelerateLabel.Text = "Accelerate - Level " + playerData.accelerateSkill;
-        ResetLabel();
+            ResetLabel();
     }
     }
 
@@ -448,7 +460,6 @@ public class SkillTree: Node2D {
         }
         playerData.graceSkill++;
         playerData.skillBought("Grace", playerData.graceSkill);
-        this.graceLabel.Text = "Grace - Level " + playerData.graceSkill;
             ResetLabel();
     }
 
@@ -500,7 +511,6 @@ public class SkillTree: Node2D {
         }
       playerData.regenerationSkill++;
       playerData.skillBought("Regeneration", playerData.regenerationSkill);
-      this.regenerationLabel.Text = "Regeneration - Level " + playerData.regenerationSkill;
             ResetLabel();
     }
   }
@@ -616,13 +626,14 @@ public class SkillTree: Node2D {
       break;
     }
 
-    this.regenerationLabel.Text = "Regeneration - Level " + playerData.regenerationSkill;
-    this.graceLabel.Text = "Grace - Level " + playerData.graceSkill;
-    this.aegisLabel.Text = "Aegis - Level " + playerData.aegisSkill;
-    this.bubbleBurstLabel.Text = "Bubble Burst - Level " + playerData.bubbleBurstSkill;
-    this.sliceLabel.Text = "Slice - Level " + playerData.sliceSkill;
-    this.crunchLabel.Text = "Crunch - Level " + playerData.crunchSkill;
-    this.accelerateLabel.Text = "Accelerate - Level " + playerData.accelerateSkill;
+    
+    this.regenerationLabel.Text = "Regeneration - Level " + playerData.regenerationSkill + "Cost of next level: " + ((regenerationCostList[playerData.regenerationSkill] == -1) ? "Maxed" : regenerationCostList[playerData.regenerationSkill].ToString());
+    this.graceLabel.Text = "Grace - Level " + playerData.graceSkill + "Cost of next level: " + ((graceCostList[playerData.graceSkill] == -1) ? "Maxed" : graceCostList[playerData.graceSkill].ToString());
+    this.aegisLabel.Text = "Aegis - Level " + playerData.aegisSkill + "Cost of next level: " + ((aegisCostList[playerData.aegisSkill] == -1) ? "Maxed" : aegisCostList[playerData.aegisSkill].ToString());
+    this.bubbleBurstLabel.Text = "Bubble Burst - Level " + playerData.bubbleBurstSkill + "Cost of next level: " + ((bubbleCostList[playerData.bubbleBurstSkill] == -1) ? "Maxed" : bubbleCostList[playerData.bubbleBurstSkill].ToString());
+    this.sliceLabel.Text = "Slice - Level " + playerData.sliceSkill + "Cost of next level: " + ((sliceCostList[playerData.sliceSkill] == -1) ? "Maxed" : sliceCostList[playerData.sliceSkill].ToString());
+    this.crunchLabel.Text = "Crunch - Level " + playerData.crunchSkill + "Cost of next level: " + ((crunchCostList[playerData.crunchSkill] == -1) ? "Maxed" : crunchCostList[playerData.crunchSkill].ToString());
+    this.accelerateLabel.Text = "Accelerate - Level " + playerData.accelerateSkill + "Cost of next level: " + ((accelerateCostList[playerData.accelerateSkill] == -1) ? "Maxed" : accelerateCostList[playerData.accelerateSkill].ToString());
 
     }
 
@@ -630,6 +641,14 @@ public class SkillTree: Node2D {
     {
         Node label = GetNode("Menu/Vertical Container/Skill Points/VBoxContainer/RichTextLabel");
         label.Set("text", playerStats.Exp.ToString());
+
+        this.regenerationLabel.Text = "Regeneration - Level " + playerData.regenerationSkill + "Cost of next level: " + ((regenerationCostList[playerData.regenerationSkill] == -1) ? "Maxed" : regenerationCostList[playerData.regenerationSkill].ToString());
+        this.graceLabel.Text = "Grace - Level " + playerData.graceSkill + "Cost of next level: " + ((graceCostList[playerData.graceSkill] == -1) ? "Maxed" : graceCostList[playerData.graceSkill].ToString());
+        this.aegisLabel.Text = "Aegis - Level " + playerData.aegisSkill + "Cost of next level: " + ((aegisCostList[playerData.aegisSkill] == -1) ? "Maxed" : aegisCostList[playerData.aegisSkill].ToString());
+        this.bubbleBurstLabel.Text = "Bubble Burst - Level " + playerData.bubbleBurstSkill + "Cost of next level: " + ((bubbleCostList[playerData.bubbleBurstSkill] == -1) ? "Maxed" : bubbleCostList[playerData.bubbleBurstSkill].ToString());
+        this.sliceLabel.Text = "Slice - Level " + playerData.sliceSkill + "Cost of next level: " + ((sliceCostList[playerData.sliceSkill] == -1) ? "Maxed" : sliceCostList[playerData.sliceSkill].ToString());
+        this.crunchLabel.Text = "Crunch - Level " + playerData.crunchSkill + "Cost of next level: " + ((crunchCostList[playerData.crunchSkill] == -1) ? "Maxed" : crunchCostList[playerData.crunchSkill].ToString());
+        this.accelerateLabel.Text = "Accelerate - Level " + playerData.accelerateSkill + "Cost of next level: " + ((accelerateCostList[playerData.accelerateSkill] == -1) ? "Maxed" : accelerateCostList[playerData.accelerateSkill].ToString());
     }
 
   void changeBtnTexture(String texturePath, TextureButton textureButton) {

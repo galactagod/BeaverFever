@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Icon6.png-247583aad40e21e574a47fabd4f1b2af.stex"
+path="res://.import/Zoro's Katana.png-1186073b74095cb2f6fbac1d63a25ccf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Icon6.png"
-dest_files=[ "res://.import/Icon6.png-247583aad40e21e574a47fabd4f1b2af.stex" ]
+source_file="res://assets/Zoro's Katana.png"
+dest_files=[ "res://.import/Zoro's Katana.png-1186073b74095cb2f6fbac1d63a25ccf.stex" ]
 
 [params]
 
