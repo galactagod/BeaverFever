@@ -106,6 +106,7 @@ public class PlayerStats : Node
             //Add a death scene here
             //levelControl.changeLevel();
             _health = _maxHealth;
+            ChangeHealth(0);
             levelControl.playerDied();
         }
     }
