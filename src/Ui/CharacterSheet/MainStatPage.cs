@@ -435,6 +435,7 @@ public class MainStatPage : Control
 
         playerStats.ChangeExp(0);
         playerStats.ChangeMaxHealth(healthStatPoints);
+        //change max energy here
 
 
         attackStatPoints = 0;

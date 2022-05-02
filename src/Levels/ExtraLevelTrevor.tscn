@@ -476,6 +476,7 @@ position = Vector2( 6060, 112 )
 
 [node name="GrayWolf2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1945, -218 )
+level = 1
 
 [node name="GrayWolf3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 4933, -438 )

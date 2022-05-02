@@ -37,7 +37,8 @@ public static class DialogueManager
         "Equip items by clicking ESC and dragging and dropping the item into its equip slot.",
         "As we get closer to the mountain, madness consumes the animals, making them even stronger. Be extra careful.", //10
         "Bear dens ahead.",
-        "The evil of the forest leaks through to the animals. Different colored enemies are stronger. Be careful."
+        "The evil of the forest leaks through to the animals. Different colored enemies are stronger. Be careful.",
+        "The peak of the mountain surges with evil power. The animals are overcome with the evil."
     };
 
     //Put intro dialogue here

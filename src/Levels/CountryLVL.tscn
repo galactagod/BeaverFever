@@ -737,27 +737,34 @@ whichSet = "Misc"
 
 [node name="GrayWolf2" parent="." instance=ExtResource( 12 )]
 position = Vector2( 1234, -96 )
+level = 2
 
 [node name="GrayWolf3" parent="." instance=ExtResource( 12 )]
 position = Vector2( 1439, -223 )
+level = 2
 
 [node name="GrayWolf4" parent="." instance=ExtResource( 12 )]
 position = Vector2( 2877, -287 )
+level = 2
 
 [node name="GrayWolf5" parent="." instance=ExtResource( 12 )]
 position = Vector2( 3521, -352 )
 
 [node name="GrayWolf6" parent="." instance=ExtResource( 12 )]
 position = Vector2( 3878, -244 )
+level = 1
 
 [node name="BrownBear4" parent="." instance=ExtResource( 11 )]
 position = Vector2( 926, 321 )
+level = 1
 
 [node name="BrownBear5" parent="." instance=ExtResource( 11 )]
 position = Vector2( 2240, 414 )
+level = 2
 
 [node name="BrownBear6" parent="." instance=ExtResource( 11 )]
 position = Vector2( 2746, 414 )
+level = 1
 
 [node name="GoldCoin30" parent="." instance=ExtResource( 13 )]
 position = Vector2( 2387, -439 )
@@ -836,6 +843,7 @@ position = Vector2( 1211, 112 )
 
 [node name="Snake11" parent="." instance=ExtResource( 15 )]
 position = Vector2( 2943, 142 )
+level = 1
 
 [node name="Chest2" parent="." instance=ExtResource( 16 )]
 position = Vector2( 1871, 429 )
@@ -885,7 +893,7 @@ position = Vector2( 4357, -523 )
 
 [node name="LevelTeleporter" parent="." instance=ExtResource( 18 )]
 position = Vector2( 5141, -939 )
-levelToGo = "res://src/Levels/Ending.tscn"
+levelToGo = "res://src/Levels/MountainLVL.tscn"
 
 [node name="ObjPlayer" parent="." instance=ExtResource( 6 )]
 position = Vector2( 80, -750 )

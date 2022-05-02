@@ -612,19 +612,29 @@ public static class Global
             level = 2,
             health = 18,
             attack = 7,
-            defense = 5,
+            defense = 7,
             spAttack = 7,
-            spDefense = 5
+            spDefense = 7
         },
         new EnemyTemplate
         {
             name = "GrayWolf",
             level = 3,
-            health = 22,
+            health = 26,
             attack = 12,
-            defense = 5,
+            defense = 9,
             spAttack = 12,
-            spDefense = 5
+            spDefense = 9
+        },
+        new EnemyTemplate
+        {
+            name = "GrayWolf",
+            level = 4,
+            health = 34,
+            attack = 17,
+            defense = 12,
+            spAttack = 12,
+            spDefense = 12
         },
         new EnemyTemplate
         {
@@ -650,11 +660,21 @@ public static class Global
         {
             name = "Snake",
             level = 3,
-            health = 15,
-            attack = 11,
+            health = 12,
+            attack = 19,
             defense = 3,
-            spAttack = 11,
+            spAttack = 19,
             spDefense = 3
+        },
+        new EnemyTemplate
+        {
+            name = "Snake",
+            level = 4,
+            health = 15,
+            attack = 26,
+            defense = 4,
+            spAttack = 26,
+            spDefense = 4
         },
         new EnemyTemplate
         {
@@ -672,9 +692,9 @@ public static class Global
             level = 2,
             health = 30,
             attack = 20,
-            defense = 6,
+            defense = 8,
             spAttack = 15,
-            spDefense = 6
+            spDefense = 8
         },
         new EnemyTemplate
         {
@@ -682,9 +702,19 @@ public static class Global
             level = 3,
             health = 40,
             attack = 30,
-            defense = 8,
+            defense = 12,
             spAttack = 20,
-            spDefense = 8
+            spDefense = 12
+        },
+        new EnemyTemplate
+        {
+            name = "BrownBear",
+            level = 4,
+            health = 50,
+            attack = 40,
+            defense = 16,
+            spAttack = 20,
+            spDefense = 16
         }
     };
 }

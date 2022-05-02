@@ -288,22 +288,6 @@ position = Vector2( 282, 142 )
 [node name="GrayWolf2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 2695, -248 )
 
-[node name="ObjPlayer" parent="." instance=ExtResource( 1 )]
-position = Vector2( 722, 120 )
-
-[node name="Camera2D" parent="ObjPlayer" index="2"]
-limit_left = 0
-limit_right = 6250
-
-[node name="CollBase" parent="ObjPlayer" index="3"]
-position = Vector2( 4, -24 )
-
-[node name="StompDetector" parent="ObjPlayer" index="4"]
-position = Vector2( 0, -8 )
-
-[node name="CollStomp" parent="ObjPlayer/StompDetector" index="0"]
-position = Vector2( 4.5, 4 )
-
 [node name="Snake" parent="." instance=ExtResource( 7 )]
 position = Vector2( 2712, 24 )
 
@@ -556,6 +540,7 @@ position = Vector2( 3290, 128 )
 position = Vector2( 1630, -177 )
 
 [node name="BrownBear" parent="." instance=ExtResource( 12 )]
+modulate = Color( 0.247059, 0.882353, 0.333333, 1 )
 position = Vector2( 1904, -184 )
 
 [node name="LevelTeleporter" parent="." instance=ExtResource( 14 )]
@@ -571,10 +556,12 @@ id = 1
 [node name="Chest2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 5147, 136 )
 id = 2
+whichItem = 12
 
 [node name="SignPost6" parent="." instance=ExtResource( 15 )]
 position = Vector2( 3970, -115 )
 whichDialogue = 1
+whichSet = "Misc"
 
 [node name="SignPost9" parent="." instance=ExtResource( 15 )]
 position = Vector2( 5486, 123 )
@@ -589,14 +576,32 @@ whichSet = "Misc"
 [node name="SignPost8" parent="." instance=ExtResource( 15 )]
 position = Vector2( 3125, 123 )
 whichDialogue = 3
+whichSet = "Misc"
 
 [node name="SignPost7" parent="." instance=ExtResource( 15 )]
 position = Vector2( 940, 36 )
 whichDialogue = 2
+whichSet = "Misc"
 
 [node name="SignPost11" parent="." instance=ExtResource( 15 )]
 position = Vector2( 528, -356 )
 whichDialogue = 9
 whichSet = "Misc"
+
+[node name="ObjPlayer" parent="." instance=ExtResource( 1 )]
+position = Vector2( 722, 120 )
+
+[node name="Camera2D" parent="ObjPlayer" index="2"]
+limit_left = 0
+limit_right = 6250
+
+[node name="CollBase" parent="ObjPlayer" index="3"]
+position = Vector2( 4, -24 )
+
+[node name="StompDetector" parent="ObjPlayer" index="4"]
+position = Vector2( 0, -8 )
+
+[node name="CollStomp" parent="ObjPlayer/StompDetector" index="0"]
+position = Vector2( 4.5, 4 )
 
 [editable path="ObjPlayer"]

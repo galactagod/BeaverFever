@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://src/Assets/Backgrounds/Mountain/MountainCloudsD.png" type="Texture" id=1]
 [ext_resource path="res://src/Assets/Backgrounds/Mountain/Mountains.png" type="Texture" id=2]
@@ -10,6 +10,16 @@
 [ext_resource path="res://src/Assets/Backgrounds/sky backgroundB.png" type="Texture" id=8]
 [ext_resource path="res://src/Assets/Tiles/CountryUndergroundTs.png" type="Texture" id=9]
 [ext_resource path="res://src/Assets/Tiles/CountryTs.png" type="Texture" id=10]
+[ext_resource path="res://SignPost.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/Objects/Enemy/GrayWolf/GrayWolf.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/Objects/Items/Coins/GoldCoin.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/Objects/Enemy/BrownBear/BrownBear.tscn" type="PackedScene" id=14]
+[ext_resource path="res://src/Objects/Enemy/Snake/Snake.tscn" type="PackedScene" id=15]
+[ext_resource path="res://src/Objects/Items/Coins/SilverCoin.tscn" type="PackedScene" id=16]
+[ext_resource path="res://src/Objects/Items/Coins/CopperCoin.tscn" type="PackedScene" id=17]
+[ext_resource path="res://LevelTeleporter.tscn" type="PackedScene" id=18]
+[ext_resource path="res://NecessaryUIForLevelScene.tscn" type="PackedScene" id=19]
+[ext_resource path="res://src/Levels/LevelStart.cs" type="Script" id=20]
 
 [sub_resource type="ConvexPolygonShape2D" id=25]
 points = PoolVector2Array( 90, 60, 0, 60, 0, 0, 90, 0 )
@@ -1073,7 +1083,573 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 3/shapes = [  ]
 3/z_index = 0
 
-[node name="Level Template" type="Node2D"]
+[sub_resource type="Animation" id=38]
+resource_name = "AirAttackA"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "AirAttackA" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -18 ) ]
+}
+
+[sub_resource type="Animation" id=39]
+resource_name = "AirAttackB"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "AirAttackB" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -1 ) ]
+}
+
+[sub_resource type="Animation" id=40]
+resource_name = "AttackA"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "AttackA" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -10 ) ]
+}
+
+[sub_resource type="Animation" id=41]
+resource_name = "AttackB"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "AttackB" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 3 ) ]
+}
+
+[sub_resource type="Animation" id=42]
+resource_name = "Buff"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Buff" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 3 ) ]
+}
+
+[sub_resource type="Animation" id=43]
+resource_name = "Crawl"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 13 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Crawl" ]
+}
+
+[sub_resource type="Animation" id=44]
+resource_name = "Crouch"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 12 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Crouch" ]
+}
+
+[sub_resource type="Animation" id=45]
+resource_name = "Fall"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Jump" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 3, 4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -5 ) ]
+}
+
+[sub_resource type="Animation" id=46]
+resource_name = "Hurt"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Hurt" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 0, 0, 1, 1, 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -1 ) ]
+}
+
+[sub_resource type="Animation" id=47]
+resource_name = "Idle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 7 ) ]
+}
+
+[sub_resource type="Animation" id=48]
+resource_name = "Jump"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Jump" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -5 ) ]
+}
+
+[sub_resource type="Animation" id=49]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 13 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "AirAttackA" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=50]
+resource_name = "Swim"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Swim" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 7 ) ]
+}
+
+[sub_resource type="Animation" id=51]
+resource_name = "Walk"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.707285 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "Walk", "Walk" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 5 ) ]
+}
+
+[node name="MountainLVL" type="Node2D"]
+script = ExtResource( 20 )
+levelName = "MountainLVL"
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -1145,5 +1721,231 @@ collision_layer = 4
 collision_mask = 0
 format = 1
 
+[node name="SignPost11" parent="." instance=ExtResource( 11 )]
+position = Vector2( 217, -124 )
+whichDialogue = 13
+whichSet = "Misc"
+
+[node name="GrayWolf3" parent="." instance=ExtResource( 12 )]
+position = Vector2( 2470, -395 )
+level = 3
+
+[node name="GrayWolf4" parent="." instance=ExtResource( 12 )]
+position = Vector2( 2163, -842 )
+level = 2
+
+[node name="GrayWolf6" parent="." instance=ExtResource( 12 )]
+position = Vector2( 561, -372 )
+level = 3
+
+[node name="GrayWolf5" parent="." instance=ExtResource( 12 )]
+position = Vector2( 3052, -519 )
+level = 2
+
+[node name="GoldCoin30" parent="." instance=ExtResource( 13 )]
+position = Vector2( 2772, -653 )
+
+[node name="GoldCoin38" parent="." instance=ExtResource( 13 )]
+position = Vector2( 3500, -587 )
+
+[node name="GoldCoin40" parent="." instance=ExtResource( 13 )]
+position = Vector2( 4462, -638 )
+
+[node name="GoldCoin41" parent="." instance=ExtResource( 13 )]
+position = Vector2( 4518, -638 )
+
+[node name="GoldCoin42" parent="." instance=ExtResource( 13 )]
+position = Vector2( 4570, -638 )
+
+[node name="GoldCoin49" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1506, -777 )
+
+[node name="GoldCoin50" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1562, -777 )
+
+[node name="GoldCoin51" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1614, -777 )
+
+[node name="GoldCoin46" parent="." instance=ExtResource( 13 )]
+position = Vector2( 3407, -1029 )
+
+[node name="GoldCoin47" parent="." instance=ExtResource( 13 )]
+position = Vector2( 3463, -1029 )
+
+[node name="GoldCoin48" parent="." instance=ExtResource( 13 )]
+position = Vector2( 3515, -1029 )
+
+[node name="GoldCoin39" parent="." instance=ExtResource( 13 )]
+position = Vector2( 3773, -641 )
+
+[node name="GoldCoin31" parent="." instance=ExtResource( 13 )]
+position = Vector2( 2678, -742 )
+
+[node name="GoldCoin32" parent="." instance=ExtResource( 13 )]
+position = Vector2( 2593, -740 )
+
+[node name="GoldCoin33" parent="." instance=ExtResource( 13 )]
+position = Vector2( 2440, -948 )
+
+[node name="GoldCoin34" parent="." instance=ExtResource( 13 )]
+position = Vector2( 2529, -1012 )
+
+[node name="GoldCoin36" parent="." instance=ExtResource( 13 )]
+position = Vector2( 912, -285 )
+
+[node name="GoldCoin52" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1231, 170 )
+
+[node name="GoldCoin53" parent="." instance=ExtResource( 13 )]
+position = Vector2( 309, 481 )
+
+[node name="GoldCoin54" parent="." instance=ExtResource( 13 )]
+position = Vector2( 221, 671 )
+
+[node name="GoldCoin56" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1003, 957 )
+
+[node name="GoldCoin58" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1479, 1154 )
+
+[node name="GoldCoin59" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1450, 1273 )
+
+[node name="GoldCoin60" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1186, 1404 )
+
+[node name="GoldCoin61" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1145, 1404 )
+
+[node name="GoldCoin62" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1101, 1404 )
+
+[node name="GoldCoin63" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1058, 1404 )
+
+[node name="GoldCoin64" parent="." instance=ExtResource( 13 )]
+position = Vector2( 585, 1409 )
+
+[node name="GoldCoin65" parent="." instance=ExtResource( 13 )]
+position = Vector2( 530, 1411 )
+
+[node name="GoldCoin66" parent="." instance=ExtResource( 13 )]
+position = Vector2( 478, 1409 )
+
+[node name="GoldCoin55" parent="." instance=ExtResource( 13 )]
+position = Vector2( 224, 723 )
+
+[node name="GoldCoin57" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1478, 982 )
+
+[node name="GoldCoin37" parent="." instance=ExtResource( 13 )]
+position = Vector2( 286, -433 )
+
+[node name="BrownBear" parent="." instance=ExtResource( 14 )]
+modulate = Color( 0.247059, 0.882353, 0.333333, 1 )
+position = Vector2( 4131, -693 )
+level = 2
+
+[node name="BrownBear3" parent="." instance=ExtResource( 14 )]
+modulate = Color( 0.247059, 0.882353, 0.333333, 1 )
+position = Vector2( 754, 233 )
+level = 3
+
+[node name="BrownBear4" parent="." instance=ExtResource( 14 )]
+modulate = Color( 0.247059, 0.882353, 0.333333, 1 )
+position = Vector2( 739, 571 )
+level = 3
+
+[node name="BrownBear5" parent="." instance=ExtResource( 14 )]
+modulate = Color( 0.247059, 0.882353, 0.333333, 1 )
+position = Vector2( 215, 809 )
+level = 3
+
+[node name="BrownBear6" parent="." instance=ExtResource( 14 )]
+modulate = Color( 0.247059, 0.882353, 0.333333, 1 )
+position = Vector2( 783, 960 )
+level = 3
+
+[node name="BrownBear7" parent="." instance=ExtResource( 14 )]
+modulate = Color( 0.247059, 0.882353, 0.333333, 1 )
+position = Vector2( 743, 1407 )
+level = 3
+
+[node name="BrownBear2" parent="." instance=ExtResource( 14 )]
+modulate = Color( 0.247059, 0.882353, 0.333333, 1 )
+position = Vector2( 4158, -1205 )
+level = 3
+
+[node name="Snake7" parent="." instance=ExtResource( 15 )]
+position = Vector2( 3011, -1067 )
+level = 3
+
+[node name="SilverCoin3" parent="." instance=ExtResource( 16 )]
+position = Vector2( 1004, -217 )
+
+[node name="SilverCoin4" parent="." instance=ExtResource( 16 )]
+position = Vector2( 1450, 50 )
+
+[node name="SilverCoin5" parent="." instance=ExtResource( 16 )]
+position = Vector2( 131, 317 )
+
+[node name="SilverCoin6" parent="." instance=ExtResource( 16 )]
+position = Vector2( 39, 380 )
+
+[node name="SilverCoin7" parent="." instance=ExtResource( 16 )]
+position = Vector2( 130, 441 )
+
+[node name="CopperCoin6" parent="." instance=ExtResource( 17 )]
+position = Vector2( 1091, -159 )
+
+[node name="CopperCoin7" parent="." instance=ExtResource( 17 )]
+position = Vector2( 1513, -9 )
+
+[node name="GoldCoin43" parent="." instance=ExtResource( 13 )]
+position = Vector2( 57, -457 )
+
+[node name="GoldCoin44" parent="." instance=ExtResource( 13 )]
+position = Vector2( 113, -457 )
+
+[node name="GoldCoin45" parent="." instance=ExtResource( 13 )]
+position = Vector2( 165, -457 )
+
 [node name="ObjPlayer" parent="." instance=ExtResource( 6 )]
-position = Vector2( 59, -114 )
+position = Vector2( 100, -150 )
+
+[node name="AnimPlayer" parent="ObjPlayer" index="1"]
+anims/AirAttackA = SubResource( 38 )
+anims/AirAttackB = SubResource( 39 )
+anims/AttackA = SubResource( 40 )
+anims/AttackB = SubResource( 41 )
+anims/Buff = SubResource( 42 )
+anims/Crawl = SubResource( 43 )
+anims/Crouch = SubResource( 44 )
+anims/Fall = SubResource( 45 )
+anims/Hurt = SubResource( 46 )
+anims/Idle = SubResource( 47 )
+anims/Jump = SubResource( 48 )
+anims/RESET = SubResource( 49 )
+anims/Swim = SubResource( 50 )
+anims/Walk = SubResource( 51 )
+
+[node name="Camera2D" parent="ObjPlayer" index="2"]
+limit_left = 0
+limit_right = 6250
+
+[node name="CollBase" parent="ObjPlayer" index="3"]
+position = Vector2( 4, -24 )
+
+[node name="StompDetector" parent="ObjPlayer" index="4"]
+position = Vector2( 0, -8 )
+
+[node name="CollStomp" parent="ObjPlayer/StompDetector" index="0"]
+position = Vector2( 4.5, 4 )
+
+[node name="LevelTeleporter" parent="." instance=ExtResource( 18 )]
+position = Vector2( 182, 1397 )
+levelToGo = "res://src/Levels/Ending.tscn"
+
+[node name="CanvasLayer" parent="." instance=ExtResource( 19 )]
+
+[editable path="ObjPlayer"]
