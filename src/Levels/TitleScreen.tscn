@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/backgrounds/background.jpg" type="Texture" id=1]
 [ext_resource path="res://fonts/Hypeblox-L3YGZ.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://src/Levels/LevelStart.cs" type="Script" id=3]
+[ext_resource path="res://src/Levels/StartGame.cs" type="Script" id=4]
+[ext_resource path="res://src/Levels/QuitGame.cs" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 115
@@ -21,7 +24,9 @@ outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
-[node name="Node" type="Node"]
+[node name="Title Screen" type="Node"]
+script = ExtResource( 3 )
+levelName = "Title Screen"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 anchor_right = 1.0
@@ -50,6 +55,7 @@ margin_right = 1119.0
 margin_bottom = 517.0
 custom_fonts/font = SubResource( 2 )
 text = "Start Game"
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -61,6 +67,7 @@ margin_right = 1119.0
 margin_bottom = 605.0
 custom_fonts/font = SubResource( 3 )
 text = "Quit"
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

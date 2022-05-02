@@ -207,7 +207,7 @@ public class PlayerData : Node
             jsonToWrite.Add("StatPoints", "0");
             jsonToWrite.Add("Muny", "0");
             jsonToWrite.Add("CurrentHealth", "20");
-            jsonToWrite.Add("CurrentLevel", "Tutorial");
+            jsonToWrite.Add("CurrentLevel", "none");
             Godot.Collections.Array inventory = new Godot.Collections.Array();
             jsonToWrite.Add("inventory", inventory);
             Godot.Collections.Array skillsList = new Godot.Collections.Array();
