@@ -541,21 +541,19 @@ public class PlayerData : Node
 
     public void SettingSkillLevels(string skillName, int level)
     {
-        if (skillName == "Body Mod")
+        if (skillName == "Aegis")
             aegisSkill = level;
-        else if (skillName == "Attack Mod")
+        else if (skillName == "BubbleBurst")
             bubbleBurstSkill = level;
-        else if (skillName == "Rip Mod")
+        else if (skillName == "Slice")
             sliceSkill = level;
-        else if (skillName == "Sharp Mod")
+        else if (skillName == "Crunch")
             crunchSkill = level;
-        else if (skillName == "Boots Mod")
+        else if (skillName == "Accelerate")
             accelerateSkill = level;
-        else if (skillName == "Book Mod")
+        else if (skillName == "Grace")
             graceSkill = level;
-        else if (skillName == "Moon Mod")
-            regenerationSkill = level;
-        else if (skillName == "Leaf Mod")
+        else if (skillName == "Regeneration")
             regenerationSkill = level;
 
     }

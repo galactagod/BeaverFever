@@ -143,7 +143,7 @@ margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
 rect_pivot_offset = Vector2( 1535, 547 )
-hint_tooltip = "Shoots a water projectile towards target
+hint_tooltip = "Shoots a water projectile towards target. Scales with Special Attack.
 "
 texture_normal = ExtResource( 4 )
 expand = true
@@ -181,7 +181,7 @@ __meta__ = {
 margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
-hint_tooltip = "Beaver slices nearby opponent
+hint_tooltip = "Beaver slices nearby opponent. Scales with Attack.
 "
 texture_normal = ExtResource( 7 )
 expand = true
@@ -222,7 +222,7 @@ __meta__ = {
 margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
-hint_tooltip = "Beaver’s bite attack, 60pts damage "
+hint_tooltip = "Beaver’s bite attack. Scales with Attack."
 texture_normal = ExtResource( 3 )
 expand = true
 stretch_mode = 3

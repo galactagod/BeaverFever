@@ -22,9 +22,15 @@ public class PlayerAir : PlayerBaseStateMachine
     public override void OnStateUpdate(IPlayerStateMachine stateMachine, ObjPlayer owner)
     {
         owner.BaseMovementControl();
+
         if (owner.IsDamaged && owner.DamagedTimer == 0)
         {
             stateMachine.TransitionToState(owner.playerHurt);
+            return;
+        }
+        else if (owner.ActivateSkill())
+        {
+            stateMachine.TransitionToState(owner.playerSkill);
             return;
         }
 

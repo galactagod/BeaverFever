@@ -1,15 +1,16 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/Assets/OverWorldUi/Health.png" type="Texture" id=1]
 [ext_resource path="res://src/Assets/OverWorldUi/HpBar.png" type="Texture" id=2]
 [ext_resource path="res://src/Assets/OverWorldUi/EnergyBar.png" type="Texture" id=3]
 [ext_resource path="res://src/Assets/OverWorldUi/Energy.png" type="Texture" id=4]
-[ext_resource path="res://src/Assets/OverWorldUi/SkillBox.png" type="Texture" id=5]
+[ext_resource path="res://src/Assets/OverWorldUi/SkillBar.png" type="Texture" id=5]
 [ext_resource path="res://src/Assets/OverWorldUi/ExpBar.png" type="Texture" id=6]
 [ext_resource path="res://src/Assets/OverWorldUi/MunyBar.png" type="Texture" id=7]
 [ext_resource path="res://fonts/Roboto-Bold.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://src/Assets/OverWorldUi/Pearl.png" type="Texture" id=9]
 [ext_resource path="res://src/Assets/OverWorldUi/Copper Nugget.png" type="Texture" id=10]
+[ext_resource path="res://src/Assets/OverWorldUi/SkillBarCoolDown.png" type="Texture" id=11]
 
 [sub_resource type="CSharpScript" id=1]
 script/source = "using Godot;
@@ -30,7 +31,7 @@ public class PlayerUi : Node
 "
 
 [sub_resource type="DynamicFont" id=2]
-size = 25
+size = 21
 outline_size = 2
 outline_color = Color( 0.478431, 0.247059, 0.0431373, 1 )
 font_data = ExtResource( 8 )
@@ -86,9 +87,9 @@ __meta__ = {
 
 [node name="SkillA" type="TextureRect" parent="CanvasA"]
 margin_left = 8.0
-margin_top = 544.0
-margin_right = 77.0
-margin_bottom = 614.0
+margin_top = 576.0
+margin_right = 186.0
+margin_bottom = 646.0
 texture = ExtResource( 5 )
 __meta__ = {
 "_edit_lock_": true,
@@ -97,9 +98,9 @@ __meta__ = {
 
 [node name="SkillB" type="TextureRect" parent="CanvasA"]
 margin_left = 88.0
-margin_top = 600.0
-margin_right = 157.0
-margin_bottom = 670.0
+margin_top = 624.0
+margin_right = 266.0
+margin_bottom = 694.0
 texture = ExtResource( 5 )
 __meta__ = {
 "_edit_lock_": true,
@@ -108,9 +109,9 @@ __meta__ = {
 
 [node name="SkillC" type="TextureRect" parent="CanvasA"]
 margin_left = 8.0
-margin_top = 648.0
-margin_right = 77.0
-margin_bottom = 718.0
+margin_top = 672.0
+margin_right = 186.0
+margin_bottom = 742.0
 texture = ExtResource( 5 )
 __meta__ = {
 "_edit_lock_": true,
@@ -141,10 +142,11 @@ __meta__ = {
 
 [node name="MunyLegacy" type="Label" parent="CanvasA"]
 visible = false
-margin_left = 1107.0
-margin_top = 12.0
-margin_right = 1170.0
-margin_bottom = 43.0
+margin_left = 936.0
+margin_top = 24.0
+margin_right = 999.0
+margin_bottom = 55.0
+rect_pivot_offset = Vector2( -1120, -160 )
 custom_fonts/font = SubResource( 2 )
 text = "Muny"
 __meta__ = {
@@ -197,5 +199,88 @@ text = "0"
 align = 2
 __meta__ = {
 "_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="LblSkillA" type="Label" parent="CanvasA"]
+margin_left = 24.0
+margin_top = 579.0
+margin_right = 154.0
+margin_bottom = 610.0
+rect_pivot_offset = Vector2( -1120, -160 )
+custom_fonts/font = SubResource( 2 )
+text = "Regenerate"
+valign = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="LblSkillB" type="Label" parent="CanvasA"]
+margin_left = 104.0
+margin_top = 627.0
+margin_right = 234.0
+margin_bottom = 658.0
+rect_pivot_offset = Vector2( -1120, -160 )
+custom_fonts/font = SubResource( 2 )
+text = "Regenerate"
+valign = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="LblSkillC" type="Label" parent="CanvasA"]
+margin_left = 24.0
+margin_top = 675.0
+margin_right = 154.0
+margin_bottom = 706.0
+rect_pivot_offset = Vector2( -1120, -160 )
+custom_fonts/font = SubResource( 2 )
+text = "Regenerate"
+valign = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="CoolDownBarA" type="TextureProgress" parent="CanvasA"]
+margin_left = 9.0
+margin_top = 577.0
+margin_right = 195.0
+margin_bottom = 617.0
+step = 0.001
+value = 70.0
+texture_progress = ExtResource( 11 )
+texture_progress_offset = Vector2( 4, 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CoolDownBarB" type="TextureProgress" parent="CanvasA"]
+margin_left = 89.0
+margin_top = 625.0
+margin_right = 275.0
+margin_bottom = 665.0
+rect_pivot_offset = Vector2( 171, 12 )
+step = 0.001
+value = 100.0
+texture_progress = ExtResource( 11 )
+texture_progress_offset = Vector2( 4, 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CoolDownBarC" type="TextureProgress" parent="CanvasA"]
+margin_left = 9.0
+margin_top = 673.0
+margin_right = 195.0
+margin_bottom = 713.0
+rect_pivot_offset = Vector2( 171, 12 )
+step = 0.001
+value = 100.0
+texture_progress = ExtResource( 11 )
+texture_progress_offset = Vector2( 4, 3 )
+__meta__ = {
 "_edit_use_anchors_": false
 }
