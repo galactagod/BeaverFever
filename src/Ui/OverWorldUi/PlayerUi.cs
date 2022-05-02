@@ -20,6 +20,12 @@ public class PlayerUi : Node
     private TextureRect _ndSkillA;
     private TextureRect _ndSkillB;
     private TextureRect _ndSkillC;
+    private Label _lblSkillA;
+    private Label _lblSkillB;
+    private Label _lblSkillC;
+    private TextureProgress _coolDownBarA;
+    private TextureProgress _coolDownBarB;
+    private TextureProgress _coolDownBarC;
     private TextureRect _ndMunyBar;
     private TextureRect _ndExpBar;
     private TextureRect _ndMunyTexture;
@@ -40,6 +46,12 @@ public class PlayerUi : Node
         _ndSkillA = GetNode<TextureRect>("CanvasA/SkillA");
         _ndSkillB = GetNode<TextureRect>("CanvasA/SkillB");
         _ndSkillC = GetNode<TextureRect>("CanvasA/SkillC");
+        _lblSkillA = GetNode<Label>("CanvasA/LblSkillA");
+        _lblSkillB = GetNode<Label>("CanvasA/LblSkillB");
+        _lblSkillC = GetNode<Label>("CanvasA/LblSkillC");
+        _coolDownBarA = GetNode<TextureProgress>("CanvasA/CoolDownBarA");
+        _coolDownBarB = GetNode<TextureProgress>("CanvasA/CoolDownBarB");
+        _coolDownBarC = GetNode<TextureProgress>("CanvasA/CoolDownBarC");
         _ndMunyCount = GetNode<Label>("CanvasA/MunyCount");
         _ndExpCount = GetNode<Label>("CanvasA/ExpCount");
         _ndMunyBar = GetNode<TextureRect>("CanvasA/MunyBar");
@@ -82,6 +94,18 @@ public class PlayerUi : Node
     {
         _ndHpBar.Value = _ndPlayerStats.Health;
         _ndEnergyBar.Value = _ndPlayerStats.Energy;
+
+        _lblSkillA.Text = _ndPlayerStats.SkillNames[0];
+        _lblSkillB.Text = _ndPlayerStats.SkillNames[1];
+        _lblSkillC.Text = _ndPlayerStats.SkillNames[2];
+
+        _coolDownBarA.MaxValue = _ndPlayerStats.SkillMaxCoolDowns[0];
+        _coolDownBarB.MaxValue = _ndPlayerStats.SkillMaxCoolDowns[1];
+        _coolDownBarC.MaxValue = _ndPlayerStats.SkillMaxCoolDowns[2];
+
+        _coolDownBarA.Value = _ndPlayerStats.SkillCoolDowns[0];
+        _coolDownBarB.Value = _ndPlayerStats.SkillCoolDowns[1];
+        _coolDownBarC.Value = _ndPlayerStats.SkillCoolDowns[2];
     }
 
     public void OnHealthChange(float value)
@@ -154,6 +178,12 @@ public class PlayerUi : Node
         _ndSkillA.Hide();
         _ndSkillB.Hide();
         _ndSkillC.Hide();
+        _lblSkillA.Hide();
+        _lblSkillB.Hide();
+        _lblSkillC.Hide();
+        _coolDownBarA.Hide();
+        _coolDownBarB.Hide();
+        _coolDownBarC.Hide();
         _ndMunyCount.Hide();
         _ndExpCount.Hide();
         _ndMunyBar.Hide();
@@ -169,6 +199,12 @@ public class PlayerUi : Node
         _ndSkillA.Show();
         _ndSkillB.Show();
         _ndSkillC.Show();
+        _lblSkillA.Show();
+        _lblSkillB.Show();
+        _lblSkillC.Show();
+        _coolDownBarA.Show();
+        _coolDownBarB.Show();
+        _coolDownBarC.Show();
         _ndMunyCount.Show();
         _ndExpCount.Show();
         _ndMunyBar.Show();

@@ -20,11 +20,19 @@ public class GrayWolf : EnemyMovementAct
         _atkFrm = new int[] {3, 7};
         _attackRadius = new Vector2(55, 50);
 
-        EnemyTemplate temp = Global.enemyTemplates.Find(x => x.name == _enemyType);
+        EnemyTemplate temp = Global.enemyTemplates.FindAll(x => x.name == _enemyType)[level];
         _curattack = temp.attack;
         _curdefense = temp.defense;
         _curspAttack = temp.spAttack;
         _curspDefense = temp.spDefense;
+
+
+        if (level == 0)
+            Modulate = Color.Color8(255, 255, 255);
+        if(level == 1)
+            Modulate = Color.Color8(238, 86, 86);
+        else if (level == 2)
+            Modulate = Color.Color8(223, 175, 73);
 
 
         // start state

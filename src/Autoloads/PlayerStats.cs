@@ -11,6 +11,11 @@ public class PlayerStats : Node
     [Export] private float _maxEnergy = 10;
     [Export] private float _exp = 250;
     [Export] private float _muny = 0;
+    [Export] private string[] _skillNames = new string[3];
+    [Export] private int[] _skillTiers = new int[3];
+    [Export] private float[] _skillCoolDowns = new float[3];
+    [Export] private float[] _skillMaxCoolDowns = new float[3];
+    [Export] private float[] _skillEnergyUse = new float[3];
 
     public float _maxMuny = 99999999;
 
@@ -31,27 +36,116 @@ public class PlayerStats : Node
     public float Muny { get { return _muny; } set { _muny = value; } }
     public float MaxMuny { get { return _maxMuny; } set { _maxMuny = value; } }
     public Vector2 PlayerPos { get { return _playerpos; } set { _playerpos = value; } }
+    public string[] SkillNames { get { return _skillNames; } set { _skillNames = value; } }
+    public int[] SkillTiers { get { return _skillTiers; } set { _skillTiers = value; } }
+    public float[] SkillCoolDowns { get { return _skillCoolDowns; } set { _skillCoolDowns = value; } }
+    public float[] SkillMaxCoolDowns { get { return _skillMaxCoolDowns; } set { _skillMaxCoolDowns = value; } }
+    public float[] SkillEnergyUse { get { return _skillEnergyUse; } set { _skillEnergyUse = value; } }
 
-    private PlayerData playerData;
+    private PlayerData _ndplayerData;
     private LevelControl levelControl;
 
     public override void _Ready()
     {
-        playerData = GetNode<PlayerData>("/root/PlayerData");
+        _ndplayerData = GetNode<PlayerData>("/root/PlayerData");
 
         levelControl = GetNode<LevelControl>("/root/LevelControl");
-        Muny = playerData.Muny;
-        _health = playerData.currentHealth;
+        Muny = _ndplayerData.Muny;
+        _health = _ndplayerData.currentHealth;
     }
 
     public override void _Process(float delta)
     {
-        if(_health == 0)
+        
+        // update skills
+        for (int i = 0; i < 3; i++)
+        {
+            string name = "";
+            if (_ndplayerData.equipment.TryGetValue("Skill" + (i + 1), out var skill))
+            {
+                /*
+                switch (skill.name)
+                {
+                    case "Rip Mod": name = "Slice"; break;
+
+                    case "Attack Mod": name = "BubbleBurst"; break;
+
+                    case "Leaf Mod": name = "Regeneration"; break;
+
+                    case "Book Mod": name = "Grace"; break;
+
+                    case "Sharp Mod": name = "Crunch"; break;
+
+                    case "Boots Mod": name = "Accelerate"; break;
+
+                    case "Body Mod": name = "Aegis"; break;
+                }
+                */
+
+                _skillNames[i] = skill.name;
+                //_skillNames[i] = name;
+                _skillTiers[i] = skill.level;
+                SetSkillCoolDownEnergy(_skillNames[i]);
+            }
+            else
+            {
+                _skillNames[i] = name;
+                SetSkillCoolDownEnergy("");
+            }
+
+        }
+        
+
+        //_skills[0];
+
+        if (_health == 0)
         {
             //Add a death scene here
             //levelControl.changeLevel();
             _health = _maxHealth;
             levelControl.playerDied();
+        }
+    }
+
+
+    public void SetSkillCoolDownEnergy(string name)
+    {
+        int cooldown;
+        int energy = 0;
+
+        for (int i = 0; i < 3; i++)
+        {
+            cooldown = 100;
+            if (_skillNames[i] != "")
+            {
+                switch (name)
+                {
+                    case "Slice":
+                        cooldown = 30;
+                        energy = 2;
+                        break;
+                    case "Crunch": case "BubbleBurst":
+                        cooldown = 50;
+                        energy = 4;
+                        break;
+                    case "Aegis": case "Accelerate":
+                        cooldown = 100;
+                        energy = 5;
+                        break;
+                    case "Regeneration": case "Grace":
+                        cooldown = 0;
+                        energy = 0;
+                        break;
+                }
+
+                _skillMaxCoolDowns[i] = cooldown;
+                _skillEnergyUse[i] = energy;
+            }
+            else
+            {
+                _skillMaxCoolDowns[i] = cooldown;
+                _skillCoolDowns[i] = cooldown;
+            }
         }
     }
 
@@ -99,6 +193,17 @@ public class PlayerStats : Node
     {
         _energy += energy;
         _energy = Mathf.Clamp(_energy, 0, _maxEnergy);
+    }
+
+    public void ChangeCooldown(float value)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if(_skillNames[i] != "")
+            {
+                _skillCoolDowns[i] = Mathf.Clamp(_skillCoolDowns[i] - value, 0, _skillMaxCoolDowns[i]);
+            }
+        }
     }
 
     public void ChangeMoney(float money)

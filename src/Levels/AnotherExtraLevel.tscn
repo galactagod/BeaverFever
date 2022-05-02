@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://src/Objects/Player/ObjPlayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Assets/Tiles/Forest A ts.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://src/Objects/Items/Coins/GoldCoin.tscn" type="PackedScene" id=10]
 [ext_resource path="res://NecessaryUIForLevelScene.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/Objects/Chest/Chest.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/Objects/Enemy/GrayWolf/GrayWolf.tscn" type="PackedScene" id=13]
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
 points = PoolVector2Array( 0, 10, 90, 10, 90, 30, 0, 30 )
@@ -310,6 +311,7 @@ position = Vector2( 1481, 123 )
 
 [node name="BrownBear3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1721, 124 )
+level = 1
 
 [node name="BrownBear4" parent="." instance=ExtResource( 4 )]
 position = Vector2( 2099, -57 )
@@ -377,6 +379,15 @@ position = Vector2( 4114, 129 )
 [node name="GoldCoin26" parent="." instance=ExtResource( 10 )]
 position = Vector2( 4178, 130 )
 
+[node name="GoldCoin31" parent="." instance=ExtResource( 10 )]
+position = Vector2( 5205, 127 )
+
+[node name="GoldCoin32" parent="." instance=ExtResource( 10 )]
+position = Vector2( 5172, 127 )
+
+[node name="GoldCoin33" parent="." instance=ExtResource( 10 )]
+position = Vector2( 5236, 128 )
+
 [node name="GoldCoin30" parent="." instance=ExtResource( 10 )]
 position = Vector2( 4765, 13 )
 
@@ -397,5 +408,15 @@ levelToGo = "res://src/Levels/CountryLVL.tscn"
 position = Vector2( 4770, 136 )
 id = 7
 whichItem = 9
+
+[node name="GrayWolf3" parent="." instance=ExtResource( 13 )]
+position = Vector2( 4536, -85 )
+
+[node name="GrayWolf4" parent="." instance=ExtResource( 13 )]
+position = Vector2( 3788, 159 )
+level = 1
+
+[node name="GrayWolf5" parent="." instance=ExtResource( 13 )]
+position = Vector2( 3579, -83 )
 
 [editable path="ObjPlayer"]
