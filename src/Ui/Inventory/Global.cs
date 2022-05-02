@@ -625,14 +625,28 @@ public static class Global
         name = "Water Spirit Ring",
         texture = (Texture) GD.Load(assetRoute + "Water Spirit Ring.png"),
         scale = new Vector2(3,3),
-        amountOnStat = new List<string> {"12"},
+        amountOnStat = new List<string> {"10"},
         whichStat = new List<string> {"SpAttack"},
         operatorOnStat = new List<string> {"+"},
         equippable = true,
         equippedSlot = "none",
-        ableToBeEquippedSlot = "Weapon",
+        ableToBeEquippedSlot = "Talisman",
         type = "item",
         tooltip = "A ring bestowed to the water tribes by the gods themselves. Holds amazing bubble power."
+        },
+        //16
+        new PlayerData.item {
+        name = "Beaver Claw Amulet",
+        texture = (Texture) GD.Load(assetRoute + "Beaver Claw Amulet.png"),
+        scale = new Vector2(3,3),
+        amountOnStat = new List<string> {"10"},
+        whichStat = new List<string> {"Attack"},
+        operatorOnStat = new List<string> {"+"},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Necklace",
+        type = "item",
+        tooltip = "A beaver claw trinket left behind from a killed member of the tribe. The memories within the claw give you the will to fight."
         }
 
 

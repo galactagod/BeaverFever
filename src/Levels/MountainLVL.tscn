@@ -1746,6 +1746,9 @@ level = 2
 [node name="GoldCoin30" parent="." instance=ExtResource( 13 )]
 position = Vector2( 2772, -653 )
 
+[node name="GoldCoin35" parent="." instance=ExtResource( 13 )]
+position = Vector2( 2227, -348 )
+
 [node name="GoldCoin38" parent="." instance=ExtResource( 13 )]
 position = Vector2( 3500, -587 )
 
@@ -1958,5 +1961,10 @@ whichItem = 13
 position = Vector2( 68, -446 )
 id = 12
 whichItem = 14
+
+[node name="Chest6" parent="." instance=ExtResource( 21 )]
+position = Vector2( 1363, -725 )
+id = 12
+whichItem = 16
 
 [editable path="ObjPlayer"]
