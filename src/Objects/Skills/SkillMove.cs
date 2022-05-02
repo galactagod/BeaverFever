@@ -5,8 +5,6 @@ public class SkillMove : Node2D
 {
     protected float _power;
     protected string _type;
-    protected float _energy;
-    protected int _tier;
 
     protected Vector2 _userPos;
     protected Vector2 _targetPos;
@@ -15,6 +13,9 @@ public class SkillMove : Node2D
     protected ObjPlayer _player;
     protected EnemyMovementAct _enemy;
     protected Timer _timer;
+
+    // node reference
+    protected PlayerStats _ndPlayerStats;
 
 
     public SkillMove(ObjPlayer player, EnemyMovementAct enemy, string userType)
@@ -27,7 +28,8 @@ public class SkillMove : Node2D
 
     public override void _Ready()
     {
-        //Position = _userPos;
+        // acquire node references
+        _ndPlayerStats = GetNode<PlayerStats>("/root/PlayerStats");
 
         _timer = new Timer();
         AddChild(_timer);

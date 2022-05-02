@@ -250,7 +250,6 @@ margin_top = 577.0
 margin_right = 195.0
 margin_bottom = 617.0
 step = 0.001
-value = 70.0
 texture_progress = ExtResource( 11 )
 texture_progress_offset = Vector2( 4, 3 )
 __meta__ = {

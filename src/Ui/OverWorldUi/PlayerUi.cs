@@ -12,6 +12,8 @@ public class PlayerUi : Node
     private float _munyChange;
     private bool _isMuny = false;
     private float _maxMuny;
+    private float _energy;
+    private float _maxEnergy;
 
     // node reference
     private PlayerStats _ndPlayerStats;
@@ -67,6 +69,9 @@ public class PlayerUi : Node
         _ndPlayerStats.ExpChange += OnChangeExp;
         _ndPlayerStats.MoneyChange += OnChangeMoney;
         _ndPlayerStats.MaxHealthChange += OnChangeMaxHealth;
+        _ndPlayerStats.MaxEnergyChange += OnChangeMaxEnergy;
+        _ndPlayerStats.ReplenishHealthChange += OnChangeReplenishHealth;
+        _ndPlayerStats.ReplenishEnergyChange += OnChangeReplenishEnergy;
 
         _ndTween.Connect("tween_all_completed", this, nameof(OnAllTweenCompletion));
         _ndTween.Connect("tween_step", this, nameof(OnTweenStep));
@@ -79,6 +84,8 @@ public class PlayerUi : Node
         _maxMuny = _ndPlayerStats.MaxMuny;
         _exp = _ndPlayerStats.Exp;
         _expChange = _ndPlayerStats.Exp;
+        _energy = _ndPlayerStats.Energy;
+        _maxEnergy = _ndPlayerStats.MaxEnergy;
 
         _ndHpBar.MaxValue = _ndPlayerStats.MaxHealth;
         _ndHpBar.Value = _ndPlayerStats.Health;
@@ -92,8 +99,12 @@ public class PlayerUi : Node
 
     public override void _Process(float delta)
     {
+        /*
+        _ndHpBar.MaxValue = _ndPlayerStats.MaxHealth;
+        _ndEnergyBar.MaxValue = _ndPlayerStats.MaxEnergy;
         _ndHpBar.Value = _ndPlayerStats.Health;
         _ndEnergyBar.Value = _ndPlayerStats.Energy;
+        */
 
         _lblSkillA.Text = _ndPlayerStats.SkillNames[0];
         _lblSkillB.Text = _ndPlayerStats.SkillNames[1];
@@ -106,19 +117,53 @@ public class PlayerUi : Node
         _coolDownBarA.Value = _ndPlayerStats.SkillCoolDowns[0];
         _coolDownBarB.Value = _ndPlayerStats.SkillCoolDowns[1];
         _coolDownBarC.Value = _ndPlayerStats.SkillCoolDowns[2];
+
+        // dim the skills if able to be used if enough energy
+        _lblSkillA.Modulate = (_ndPlayerStats.SkillEnergyUse[0] > _ndPlayerStats.Energy) ? Color.Color8(100, 100, 100) : Color.Color8(255, 255, 255);
+        _lblSkillB.Modulate = (_ndPlayerStats.SkillEnergyUse[1] > _ndPlayerStats.Energy) ? Color.Color8(100, 100, 100) : Color.Color8(255, 255, 255);
+        _lblSkillC.Modulate = (_ndPlayerStats.SkillEnergyUse[2] > _ndPlayerStats.Energy) ? Color.Color8(100, 100, 100) : Color.Color8(255, 255, 255);
     }
 
     public void OnHealthChange(float value)
     {
+        _ndPlayerStats.HealthPause = true;
         TweenChange(_ndHpBar, "value", _health, _ndPlayerStats.Health);
         
         _health = _ndPlayerStats.Health;
         GD.Print("HEALTH texture SIGNAL");
     }
+
+    public void OnChangeReplenishHealth(float value)
+    {
+        _health = _ndPlayerStats.Health;
+        _ndHpBar.Value = _health;
+        GD.Print("Replenish HEALTH texture SIGNAL");
+    }
+
+    public void OnChangeEnergy(float value)
+    {
+        _ndPlayerStats.EnergyPause = true;
+        TweenChange(_ndEnergyBar, "value", _energy, _ndPlayerStats.Energy);
+
+        _energy = _ndPlayerStats.Energy;
+        GD.Print("Energy SIGNAL");
+    }
+
+    public void OnChangeReplenishEnergy(float value)
+    {
+        _energy = _ndPlayerStats.Energy;
+        _ndEnergyBar.Value = _energy;
+        //GD.Print("Replenish Energy SIGNAL");
+    }
+
     public void OnChangeMaxHealth(float value)
     {
         _ndHpBar.MaxValue = value;
-        
+    }
+
+    public void OnChangeMaxEnergy(float value)
+    {
+        _ndEnergyBar.MaxValue = value;
     }
 
     public void OnChangeMoney(float value)
@@ -130,10 +175,7 @@ public class PlayerUi : Node
         GD.Print("Money SIGNAL");
     }
 
-    public void OnChangeEnergy(float value)
-    {
-        GD.Print("Energy SIGNAL");
-    }
+
 
     public void OnChangeExp(float value)
     {
@@ -147,7 +189,7 @@ public class PlayerUi : Node
     public void TweenChange(Node objRef, string varName, float curValue, float newValue)
     {
         float valueChange = Math.Abs(curValue - newValue);
-
+        
         if (curValue > newValue)
             _ndTween.InterpolateProperty(objRef, varName, curValue, curValue - valueChange, 1, Tween.TransitionType.Sine, Tween.EaseType.Out);
         else
@@ -169,6 +211,8 @@ public class PlayerUi : Node
         //GD.Print("Tween Completed");
         _isExp = false;
         _isMuny = false;
+        _ndPlayerStats.EnergyPause = false;
+        _ndPlayerStats.HealthPause = false;
     }
 
     public void Hide()

@@ -44,12 +44,12 @@ public class GameControl : Node
 
         if (Input.IsActionJustPressed("key_5"))
         {
-            _ndPlayerStats.ChangeExtraHealth(1);
+            _ndPlayerStats.ChangeMaxEnergy(1);
         }
 
         if (Input.IsActionJustPressed("key_6"))
         {
-            _ndPlayerStats.ChangeExtraHealth(-1);
+            _ndPlayerStats.ChangeMaxEnergy(-1);
         }
     }
 }

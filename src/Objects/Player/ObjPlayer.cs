@@ -5,9 +5,11 @@ public class ObjPlayer : BaseMovementAct
 {
     // member vars
     private float _curattack = 2;
+    private float _curDmg = 0;
     private float _curdefense = 2;
     private float _curspAttack = 2;
     private float _curspDefense = 2;
+    private bool _isPhysical;
     private bool _isInAir = false;
     private float collBasePositionX;
     private float collStompPositionX;
@@ -53,13 +55,15 @@ public class ObjPlayer : BaseMovementAct
     public PlayerWalk playerWalk = new PlayerWalk();
 
     // getters and setters
-    public float CurDmg { get { return _curattack; } set { _curattack = value; } }
+    public float CurAttack { get { return _curattack; } set { _curattack = value; } }
+    public float CurDmg { get { return _curDmg; } set { _curDmg = value; } }
     public float CurDef { get { return _curdefense; } set { _curdefense = value; } }
     public float CurSpAttack { get { return _curspAttack; } set { _curspAttack = value; } }
     public float CurSpDefense { get { return _curspDefense; } set { _curspDefense = value; } }
     public Vector2 Velocity { get { return _velocity; } set { _velocity = value; } }
     public Vector2 Direction { get { return _direction; } set { _direction = value; } }
     public bool IsDamaged { get { return _isDamaged; } set { _isDamaged = value; } }
+    public bool IsPhysical { get { return _isPhysical; } set { _isPhysical = value; } }
 
     public EnemyMovementAct Attacker { get { return _enemyMovementAct; } set { _enemyMovementAct = value; } }
     public int DamagedTimer { get { return _damagedTimer; } set { _damagedTimer = value; } }
@@ -95,7 +99,7 @@ public class ObjPlayer : BaseMovementAct
         collStompPositionX = _ndCollStomp.Position.x;
         _ndPlayerStats.PlayerPos = Position;
 
-        CurDmg = _ndPlayerData.attackFinal + 2;
+        CurAttack = _ndPlayerData.attackFinal + 2;
         CurDef = _ndPlayerData.defenseFinal + 2;
         CurSpAttack = _ndPlayerData.spAttackFinal + 2;
         CurSpDefense = _ndPlayerData.spDefenseFinal + 2;
@@ -109,7 +113,7 @@ public class ObjPlayer : BaseMovementAct
         _ndPlayerStats.PlayerPos = Position;
         _timer++;
 
-        CurDmg = _ndPlayerData.attackFinal + 2;
+        CurAttack = _ndPlayerData.attackFinal + 2;
         CurDef = _ndPlayerData.defenseFinal + 2;
         CurSpAttack = _ndPlayerData.spAttackFinal + 2;
         CurSpDefense = _ndPlayerData.spDefenseFinal + 2;
@@ -133,7 +137,10 @@ public class ObjPlayer : BaseMovementAct
         }
 
         // energy naturally replenishes
-        _ndPlayerStats.ReplenishEnergy(0.002f);
+        if (!_ndPlayerStats.EnergyPause)
+        {
+            _ndPlayerStats.ChangeReplenishEnergy(0.005f);
+        }
 
         // naturally decrease cooldown
         _ndPlayerStats.ChangeCooldown(0.1f);
