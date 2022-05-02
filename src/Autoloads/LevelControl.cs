@@ -116,7 +116,7 @@ public class LevelControl : Node
             playerUi.Show();
         }
 
-        if (nameOfCurrentScene == "Tutorial" || nameOfCurrentScene == "LevelTemplate" || nameOfCurrentScene == "ExtraLevelTrevor")
+        if (nameOfCurrentScene == "Tutorial" || nameOfCurrentScene == "LevelTemplate" || nameOfCurrentScene == "ExtraLevelTrevor" || nameOfCurrentScene == "AnotherExtraLevelTrevor")
         {
             PlayAudio(_musicPlayer, _sndDreamFactory, -15, 1);
         }

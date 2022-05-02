@@ -306,6 +306,16 @@ position = Vector2( 2317, -117 )
 whichDialogue = 5
 whichSet = "Misc"
 
+[node name="SignPost7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 4901, -57 )
+whichDialogue = 14
+whichSet = "Misc"
+
+[node name="SignPost8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 3147, 125 )
+whichDialogue = 15
+whichSet = "Misc"
+
 [node name="BrownBear2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1481, 123 )
 level = 1

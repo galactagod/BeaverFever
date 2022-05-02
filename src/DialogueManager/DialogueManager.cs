@@ -29,7 +29,7 @@ public static class DialogueManager
         "There's a snake in my boot.",
         "Try left, then try right.",
         "Hit the gym to work on the vertical. Or...be a little crafty.",
-        "Bewear of bear",
+        "Bewear of bear. The animals are stubborn, they don't like to look up. Use the ramps to your advantage.",
         "Bear with the jumps", //5
         "You can equip different items in different slots. Hover over the item to see where you can equip it. Try the slots until it drops in.",
         "A little too far...try up",
@@ -38,7 +38,10 @@ public static class DialogueManager
         "As we get closer to the mountain, madness consumes the animals, making them even stronger. Be extra careful.", //10
         "Bear dens ahead.",
         "The evil of the forest leaks through to the animals. Different colored enemies are stronger. Be careful.",
-        "The peak of the mountain surges with evil power. The animals are overcome with the evil."
+        "The peak of the mountain surges with evil power. The animals are overcome with the evil.",
+        "My feet hurt.",
+        "Long walk.", //15
+        "Spiders are pesky creatures. Get up close and stomp them to reap your reward."
     };
 
     //Put intro dialogue here
