@@ -60,7 +60,7 @@ public class LevelControl : Node
 
     public override void _Process(float delta)
     {
-        if(nameOfCurrentScene != "Intro")
+        if (nameOfCurrentScene != "Intro" || nameOfCurrentScene != "Ending" || nameOfCurrentScene != "Title Screen")
         {
             if (Input.IsActionJustPressed("ui_menu"))
             {
@@ -107,7 +107,7 @@ public class LevelControl : Node
         nameOfCurrentScene = sceneName;
         rootPath = "/root/" + sceneName + "/CanvasLayer/Control/";
         controlPath = "/root/" + sceneName + "/CanvasLayer/Control";
-        if(nameOfCurrentScene == "Intro" || nameOfCurrentScene == "Ending")
+        if(nameOfCurrentScene == "Intro" || nameOfCurrentScene == "Ending" || nameOfCurrentScene == "Title Screen")
         {
             playerUi.Hide();
         }
@@ -155,6 +155,30 @@ public class LevelControl : Node
             LevelChange(GD.Load<PackedScene>("res://src/Levels/AnotherExtraLevel.tscn"));
         }
         else if (nameOfCurrentScene == "CountryLVL")
+        {
+            LevelChange(GD.Load<PackedScene>("res://src/Levels/CountryLVL.tscn"));
+        }
+    }
+
+    public void changeBasedOnName(string nameOfChange)
+    {
+        if (nameOfChange == "Tutorial")
+        {
+            LevelChange(GD.Load<PackedScene>("res://src/Levels/Tutorial.tscn"));
+        }
+        else if (nameOfChange == "LevelTemplate")
+        {
+            LevelChange(GD.Load<PackedScene>("res://src/Levels/LevelTemplate.tscn"));
+        }
+        else if (nameOfChange == "ExtraLevelTrevor")
+        {
+            LevelChange(GD.Load<PackedScene>("res://src/Levels/ExtraLevelTrevor.tscn"));
+        }
+        else if (nameOfChange == "AnotherExtraLevel")
+        {
+            LevelChange(GD.Load<PackedScene>("res://src/Levels/AnotherExtraLevel.tscn"));
+        }
+        else if (nameOfChange == "CountryLVL")
         {
             LevelChange(GD.Load<PackedScene>("res://src/Levels/CountryLVL.tscn"));
         }
