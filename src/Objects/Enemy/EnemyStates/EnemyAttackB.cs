@@ -32,7 +32,17 @@ public class EnemyAttackB : EnemyBaseStateMachine
         else if (!owner.UseSkill)
         {
             GD.Print("wander state");
-            stateMachine.TransitionToState(owner.enemyWander);
+            /*
+            if (owner.EnemyType == "Crow")
+            {
+                stateMachine.TransitionToState(owner.enemyReturn);
+            }
+            else
+            */
+            {
+                stateMachine.TransitionToState(owner.enemyWander);
+            }
+
         }
         
         // player will be damaged from the instantiated skill from state entrance

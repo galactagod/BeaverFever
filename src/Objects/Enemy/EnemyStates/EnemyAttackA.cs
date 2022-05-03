@@ -28,6 +28,7 @@ public class EnemyAttackA : EnemyBaseStateMachine
         {
             owner.NdObjPlayer.IsDamaged = true;
             owner.NdObjPlayer.Attacker = owner;
+            GD.Print("Crow Attack Player");
         }
 
         //GD.Print("Attack Frame = " + owner.NdSprEnemy.Frame);

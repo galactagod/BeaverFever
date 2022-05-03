@@ -10,6 +10,7 @@ public class EnemyMovementAct : KinematicBody2D
 
     [Export]
     public int level;
+    [Export] protected int _crowPlatformTime = 300;
 
     public float _gravity = 2000;
 
@@ -106,7 +107,11 @@ public class EnemyMovementAct : KinematicBody2D
 
     public override void _PhysicsProcess(float delta)
     {
-        _velocity.y += _gravity * delta;
+        if (_enemyType != "Crow")
+        {
+            _velocity.y += _gravity * delta;
+        }
+        
     }
 
     public void BaseMovementControl()
@@ -172,20 +177,46 @@ public class EnemyMovementAct : KinematicBody2D
     public bool EnemyReturn()
     {
         float dirX = 0;
+        //float dirY = 0;
         bool output;
         float returnRadius = 5;
-
-        if (_startPos.x + returnRadius > Position.x && _startPos.x - returnRadius < Position.x)
+        
+        /*
+        if (_enemyType == "Crow")
         {
-            output = true;
+            bool xRange = (_startPos.x + returnRadius > Position.x && _startPos.x - returnRadius < Position.x) ? true : false;
+            bool yRange = (_startPos.y + returnRadius > Position.y && _startPos.y - returnRadius < Position.y) ? true : false;
+
+            if (xRange && yRange)
+            {
+                output = true;
+            }
+            else
+            {
+                dirX = (_startPos.x > Position.x) ? 1 : -1;
+                dirY = (_startPos.y > Position.y) ? 1 : -1;
+                output = false;
+            }
+
+            _direction = new Vector2(dirX, dirY);
         }
         else
+        */
         {
-            dirX = (_startPos.x > Position.x ) ? 1 : -1;
-            output = false;
+            if (_startPos.x + returnRadius > Position.x && _startPos.x - returnRadius < Position.x)
+            {
+                output = true;
+            }
+            else
+            {
+                dirX = (_startPos.x > Position.x) ? 1 : -1;
+                output = false;
+            }
+
+            _direction = new Vector2(dirX, 0);
         }
 
-        _direction = new Vector2(dirX, 0);
+        
         return output;
     }
 

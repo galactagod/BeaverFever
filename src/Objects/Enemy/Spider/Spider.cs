@@ -24,6 +24,7 @@ public class Spider : EnemyMovementAct
         _skillA = "WebShot";
 
         EnemyTemplate temp = Global.enemyTemplates.FindAll(x => x.name == _enemyType)[level];
+        _health = temp.health;
         _curattack = temp.attack;
         _curdefense = temp.defense;
         _curspAttack = temp.spAttack;
@@ -31,13 +32,25 @@ public class Spider : EnemyMovementAct
 
 
         if (level == 0)
+        {
             Modulate = Color.Color8(255, 255, 255);
-        if (level == 1)
+            _exp = 100;
+        }
+        else if (level == 1)
+        {
             Modulate = Color.Color8(238, 86, 86);
+            _exp = 200;
+        }
         else if (level == 2)
+        {
             Modulate = Color.Color8(223, 175, 73);
+            _exp = 300;
+        }
         else if (level == 3)
+        {
             Modulate = Color.Color8(63, 225, 85);
+            _exp = 400;
+        }
 
 
         // start state
