@@ -28,6 +28,16 @@ public class ObjPlayer : BaseMovementAct
     private bool _useSkill = false;
     protected readonly Random _rnd = new Random();
 
+    private Vector2 _origSpeed = new Vector2(300, 600);
+    private int _speedCoolDown = 0;
+    private int _speedMaxCoolDown = 500;
+
+    private float _initDefense = 2;
+    private float _origCurDefense = 2;
+    private int _defCoolDown = 0;
+    private int _defMaxCoolDown = 700;
+
+
     // sound paths
     private AudioStreamSample _sndJump = (AudioStreamSample)GD.Load("res://src/Assets/Sounds/Movement/SndJumpA.wav");
     private AudioStreamSample _sndHurt = (AudioStreamSample)GD.Load("res://src/Assets/Sounds/Battle/SndCryAMod.wav");
@@ -60,6 +70,16 @@ public class ObjPlayer : BaseMovementAct
     public float CurDef { get { return _curdefense; } set { _curdefense = value; } }
     public float CurSpAttack { get { return _curspAttack; } set { _curspAttack = value; } }
     public float CurSpDefense { get { return _curspDefense; } set { _curspDefense = value; } }
+    public Vector2 Speed { get { return _speed; } set { _speed = value; } }
+    public Vector2 OrigSpeed { get { return _origSpeed; } set { _origSpeed = value; } }
+    public int SpeedCoolDown { get { return _speedCoolDown; } set { _speedCoolDown = value; } }
+    public int SpeedMaxCoolDown { get { return _speedMaxCoolDown; } set { _speedMaxCoolDown = value; } }
+
+    public float OrigCurDefense { get { return _origCurDefense; } set { _origCurDefense = value; } }
+    public float InitDefense { get { return _initDefense; } set { _initDefense = value; } }
+    public int DefCoolDown { get { return _defCoolDown; } set { _defCoolDown = value; } }
+    public int DefMaxCoolDown { get { return _defMaxCoolDown; } set { _defMaxCoolDown = value; } }
+
     public Vector2 Velocity { get { return _velocity; } set { _velocity = value; } }
     public Vector2 Direction { get { return _direction; } set { _direction = value; } }
     public bool IsDamaged { get { return _isDamaged; } set { _isDamaged = value; } }
@@ -100,7 +120,7 @@ public class ObjPlayer : BaseMovementAct
         _ndPlayerStats.PlayerPos = Position;
 
         CurAttack = _ndPlayerData.attackFinal + 2;
-        CurDef = _ndPlayerData.defenseFinal + 2;
+        CurDef = _ndPlayerData.defenseFinal + _initDefense;
         CurSpAttack = _ndPlayerData.spAttackFinal + 2;
         CurSpDefense = _ndPlayerData.spDefenseFinal + 2;
     }
@@ -114,7 +134,7 @@ public class ObjPlayer : BaseMovementAct
         _timer++;
 
         CurAttack = _ndPlayerData.attackFinal + 2;
-        CurDef = _ndPlayerData.defenseFinal + 2;
+        CurDef = _ndPlayerData.defenseFinal + _initDefense;
         CurSpAttack = _ndPlayerData.spAttackFinal + 2;
         CurSpDefense = _ndPlayerData.spDefenseFinal + 2;
 
@@ -142,8 +162,50 @@ public class ObjPlayer : BaseMovementAct
             _ndPlayerStats.ChangeReplenishEnergy(0.005f);
         }
 
+        // replenish health if regeration is on and set its cooldown to zero
+
+        bool extraMoney = false;
+
+        for (int i = 0; i < 3; i++)
+        {
+            if (_ndPlayerStats.SkillNames[i] == "Regeneration")
+            {
+                // check which regen tier and apply effect
+                switch (_ndPlayerStats.SkillTiers[i])
+                {
+                    case 1: _ndPlayerStats.ChangeReplenishHealth(0.002f); break;
+                    case 2: _ndPlayerStats.ChangeReplenishHealth(0.004f); break;
+                    case 3: _ndPlayerStats.ChangeReplenishHealth(0.006f); break;
+                }
+                // set cooldown to 0
+                //_ndPlayerStats.SkillCoolDowns[i] = 0;
+            }
+
+            if (_ndPlayerStats.SkillNames[i] == "Grace")
+            {
+                switch (_ndPlayerStats.SkillTiers[i])
+                {
+                    case 1: _ndPlayerStats.MoneyMultiplier = 1.5f; extraMoney = true; break;
+                    case 2: _ndPlayerStats.MoneyMultiplier = 2; extraMoney = true; break;
+                    case 3: _ndPlayerStats.MoneyMultiplier = 3; extraMoney = true; break;
+                }
+            }
+        }
+
+        if (extraMoney == false) _ndPlayerStats.MoneyMultiplier = 1;
+
+
         // naturally decrease cooldown
         _ndPlayerStats.ChangeCooldown(0.1f);
+
+        // speedcoolldown checker
+        _speedCoolDown = Mathf.Clamp(_speedCoolDown - 1, 0, _speedMaxCoolDown);
+        if (_speedCoolDown == 0) _speed =_origSpeed;
+
+
+        // defense checker
+        _defCoolDown = Mathf.Clamp(_defCoolDown - 1, 0, _defMaxCoolDown);
+        if (_defCoolDown == 0) _initDefense = _origCurDefense;
 
 
     }
@@ -229,6 +291,12 @@ public class ObjPlayer : BaseMovementAct
                 // reset cool down and change energy
                 _ndPlayerStats.SkillCoolDowns[skill - 1] = _ndPlayerStats.SkillMaxCoolDowns[skill - 1];
                 _ndPlayerStats.ChangeEnergy(-_ndPlayerStats.SkillEnergyUse[skill - 1]);
+            }
+
+            if (_curSkill == "Regeneration" || _curSkill == "Grace")
+            {
+                _useSkill = false;
+                return false;
             }
 
             return (skill != 0);

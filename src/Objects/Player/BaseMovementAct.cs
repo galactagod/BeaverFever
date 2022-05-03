@@ -9,6 +9,8 @@ public class BaseMovementAct : KinematicBody2D
 
     [Export] public Vector2 _speed = new Vector2(300.0f, 600.0f);
     [Export] public float _gravity = 2000;
+    
+
 
     protected Vector2 _velocity = new Vector2(0, 0);
     protected Vector2 _direction = new Vector2(0, 0);
