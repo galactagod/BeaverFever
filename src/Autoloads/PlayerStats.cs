@@ -17,6 +17,7 @@ public class PlayerStats : Node
     [Export] private float[] _skillEnergyUse = new float[3];
     private bool _energyPause = false;
     private bool _healthPause = false;
+    private float _moneyMultiplier = 1;
 
     public float _maxMuny = 99999999;
 
@@ -44,6 +45,7 @@ public class PlayerStats : Node
     public float[] SkillEnergyUse { get { return _skillEnergyUse; } set { _skillEnergyUse = value; } }
     public bool EnergyPause { get { return _energyPause; } set { _energyPause = value; } }
     public bool HealthPause { get { return _healthPause; } set { _healthPause = value; } }
+    public float MoneyMultiplier { get { return _moneyMultiplier; } set { _moneyMultiplier = value; } }
 
     private PlayerData _ndplayerData;
     private LevelControl levelControl;
@@ -114,7 +116,7 @@ public class PlayerStats : Node
 
     public void SetSkillCoolDownEnergy(string name, int index)
     {
-        int cooldown;
+        float cooldown;
         int energy = 0;
 
         cooldown = 100;
@@ -135,7 +137,7 @@ public class PlayerStats : Node
                     energy = 5;
                     break;
                 case "Regeneration": case "Grace":
-                    cooldown = 0;
+                    cooldown = 0.1f;
                     energy = 0;
                     break;
             }
@@ -206,14 +208,15 @@ public class PlayerStats : Node
             {
                 _skillCoolDowns[i] = Mathf.Clamp(_skillCoolDowns[i] - value, 0, _skillMaxCoolDowns[i]);
             }
+
         }
     }
 
     public void ChangeMoney(float money)
     {
-        _muny += money;
+        _muny += (money * _moneyMultiplier);
         _muny = Mathf.Clamp(_muny, 0, _maxMuny);
-        MoneyChange?.Invoke(money);
+        MoneyChange?.Invoke(money * _moneyMultiplier);
         GD.Print("Money = " + _muny);
     }
 

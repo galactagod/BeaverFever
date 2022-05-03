@@ -62,7 +62,7 @@ public class WebShot : SkillMove
         _moveMaxTime = 70;
 
         // movement info
-        _arcHeight = 400;
+        _arcHeight = 300;
         _userPos = _enemy.Position;
         _targetPos = _player.Position;
         _skillPos = Position;
@@ -112,7 +112,8 @@ public class WebShot : SkillMove
         // if were above the room clamp it down a bit
         if (userCenterPosY - _arcHeight < 0) _arcHeight = _arcMaxHeight;
         //_arcHeight = -400;
-        
+        if (_arcHeight > 200) _arcHeight = 200;
+
 
         // web moving sound should play twice
         //if (tempTimer % Math.Round((double)_moveMaxTime / 2) == 15) playsound(websound);
