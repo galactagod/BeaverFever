@@ -32,7 +32,7 @@ public class EnemyWander : EnemyBaseStateMachine
             stateMachine.TransitionToState(owner.enemyChase);
         }
         // Do range attack on player till detection is false and maintain attack if player jumps out of detection
-        else if (owner.EnemyRangeAttack())
+        else if (owner.EnemyRangeAttack() && owner.EnemyType == "Spider")
         {
             float dirX;
             dirX = (owner.NdObjPlayer.Position.x > owner.Position.x) ? 1 : -1;

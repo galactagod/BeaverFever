@@ -570,7 +570,7 @@ whichSet = "Misc"
 position = Vector2( 3863, -488 )
 
 [node name="ObjPlayer" parent="." instance=ExtResource( 1 )]
-position = Vector2( 722, 120 )
+position = Vector2( 901, 11 )
 
 [node name="Camera2D" parent="ObjPlayer" index="2"]
 limit_left = 0

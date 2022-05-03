@@ -18,6 +18,7 @@ public class GameControl : Node
         // original was 1024X600
     }
 
+    /*
     public override void _Process(float delta)
     {
         if (Input.IsActionJustPressed("key_1"))
@@ -52,4 +53,5 @@ public class GameControl : Node
             _ndPlayerStats.ChangeMaxEnergy(-1);
         }
     }
+    */
 }
