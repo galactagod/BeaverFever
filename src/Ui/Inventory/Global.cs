@@ -647,6 +647,20 @@ public static class Global
         ableToBeEquippedSlot = "Necklace",
         type = "item",
         tooltip = "A beaver claw trinket left behind from a killed member of the tribe. The memories within the claw give you the will to fight."
+        },
+        //17
+        new PlayerData.item {
+        name = "Snake Ring",
+        texture = (Texture) GD.Load(assetRoute + "Beaver Claw Amulet.png"),
+        scale = new Vector2(3,3),
+        amountOnStat = new List<string> {"3", "1", "4"},
+        whichStat = new List<string> {"Attack", "Defense", "SpAttack"},
+        operatorOnStat = new List<string> {"+", "+", "+"},
+        equippable = true,
+        equippedSlot = "none",
+        ableToBeEquippedSlot = "Talisman",
+        type = "item",
+        tooltip = "A ring forged of pure snake skin. Kinda gross."
         }
 
 

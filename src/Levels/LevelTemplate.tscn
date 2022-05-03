@@ -417,33 +417,6 @@ position = Vector2( 4182, -230 )
 [node name="GoldCoin20" parent="coins" instance=ExtResource( 9 )]
 position = Vector2( 4184, -191 )
 
-[node name="GoldCoin21" parent="coins" instance=ExtResource( 9 )]
-position = Vector2( 4429, -253 )
-
-[node name="GoldCoin22" parent="coins" instance=ExtResource( 9 )]
-position = Vector2( 4429, -215 )
-
-[node name="GoldCoin23" parent="coins" instance=ExtResource( 9 )]
-position = Vector2( 4431, -176 )
-
-[node name="GoldCoin24" parent="coins" instance=ExtResource( 9 )]
-position = Vector2( 4466, -254 )
-
-[node name="GoldCoin25" parent="coins" instance=ExtResource( 9 )]
-position = Vector2( 4466, -216 )
-
-[node name="GoldCoin26" parent="coins" instance=ExtResource( 9 )]
-position = Vector2( 4468, -177 )
-
-[node name="GoldCoin27" parent="coins" instance=ExtResource( 9 )]
-position = Vector2( 4501, -255 )
-
-[node name="GoldCoin28" parent="coins" instance=ExtResource( 9 )]
-position = Vector2( 4501, -217 )
-
-[node name="GoldCoin29" parent="coins" instance=ExtResource( 9 )]
-position = Vector2( 4503, -178 )
-
 [node name="GoldCoin30" parent="coins" instance=ExtResource( 9 )]
 position = Vector2( 4729, 76 )
 
@@ -552,6 +525,11 @@ id = 1
 position = Vector2( 5147, 136 )
 id = 2
 whichItem = 12
+
+[node name="Chest3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 4460, -164 )
+id = 14
+whichItem = 17
 
 [node name="SignPost6" parent="." instance=ExtResource( 15 )]
 position = Vector2( 3970, -115 )

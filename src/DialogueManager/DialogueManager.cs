@@ -41,7 +41,8 @@ public static class DialogueManager
         "The peak of the mountain surges with evil power. The animals are overcome with the evil.",
         "My feet hurt.",
         "Long walk.", //15
-        "Spiders are pesky creatures. Get up close and stomp them to reap your reward."
+        "Spiders are pesky creatures. Get up close and stomp them to reap your reward.",
+        "There are lots of strong enemies, be extra careful. Remember to use potions and level up."
     };
 
     //Put intro dialogue here
