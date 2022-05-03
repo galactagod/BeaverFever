@@ -651,7 +651,7 @@ public static class Global
         //17
         new PlayerData.item {
         name = "Snake Ring",
-        texture = (Texture) GD.Load(assetRoute + "Beaver Claw Amulet.png"),
+        texture = (Texture) GD.Load(assetRoute + "Snake Ring.png"),
         scale = new Vector2(3,3),
         amountOnStat = new List<string> {"3", "1", "4"},
         whichStat = new List<string> {"Attack", "Defense", "SpAttack"},
