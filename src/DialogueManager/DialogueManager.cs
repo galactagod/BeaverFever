@@ -42,7 +42,14 @@ public static class DialogueManager
         "My feet hurt.",
         "Long walk.", //15
         "Spiders are pesky creatures. Get up close and stomp them to reap your reward.",
-        "There are lots of strong enemies, be extra careful. Remember to use potions and level up."
+        "There are lots of strong enemies, be extra careful. Remember to use potions and level up.",
+        "This is the final frontier! You can hear the cries of your family? Are they still alive?",
+        "You can faintly hear the cries up above!",
+        "You're getting closer! The cries are so loud!", //20
+        "You got further away...the sounds died down.",
+        "The cries are getting louder.",
+        "The cries are heard up above, but faintly...",
+        "You can hitch a ride on crows to move through the map"
     };
 
     //Put intro dialogue here
@@ -53,7 +60,7 @@ public static class DialogueManager
 
     static List<string> endingDialogue = new List<string>
     {
-        "The beaver finally got his vengenance, and he is now at peace. Until a foe crosses his path again..."
+        "The beaver's family is alive! The rumors of the wolf eating them weren't true. But the wolf is still out there. Will we get our vengence?....More story coming soon."
     };
 
     //Allows remote access to boss dialogue

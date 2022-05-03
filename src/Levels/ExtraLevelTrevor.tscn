@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://src/Objects/Player/ObjPlayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Assets/Tiles/Forest A ts.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://SignPost.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/Levels/LevelStart.cs" type="Script" id=13]
 [ext_resource path="res://src/Objects/Chest/Chest.tscn" type="PackedScene" id=14]
+[ext_resource path="res://src/Objects/Enemy/Crow/Crow.tscn" type="PackedScene" id=15]
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
 points = PoolVector2Array( 0, 10, 90, 10, 90, 30, 0, 30 )
@@ -325,15 +326,6 @@ position = Vector2( 4095, -323 )
 [node name="GoldCoin17" parent="coins" instance=ExtResource( 9 )]
 position = Vector2( 4159, -322 )
 
-[node name="GoldCoin18" parent="coins" instance=ExtResource( 9 )]
-position = Vector2( 4659, -446 )
-
-[node name="GoldCoin19" parent="coins" instance=ExtResource( 9 )]
-position = Vector2( 4626, -446 )
-
-[node name="GoldCoin20" parent="coins" instance=ExtResource( 9 )]
-position = Vector2( 4690, -445 )
-
 [node name="GoldCoin21" parent="coins" instance=ExtResource( 9 )]
 position = Vector2( 5591, -352 )
 
@@ -489,6 +481,11 @@ levelToGo = "res://src/Levels/AnotherExtraLevel.tscn"
 position = Vector2( 3701, -175 )
 whichSet = "Misc"
 
+[node name="SignPost8" parent="." instance=ExtResource( 12 )]
+position = Vector2( 4662, -445 )
+whichDialogue = 24
+whichSet = "Misc"
+
 [node name="SignPost6" parent="." instance=ExtResource( 12 )]
 position = Vector2( 3011, -175 )
 whichDialogue = 6
@@ -518,5 +515,13 @@ whichItem = 8
 position = Vector2( 6952, -43 )
 id = 5
 whichItem = 11
+
+[node name="Crow" parent="." instance=ExtResource( 15 )]
+position = Vector2( 5866, -86 )
+_crowPlatformTime = 650
+
+[node name="Crow2" parent="." instance=ExtResource( 15 )]
+position = Vector2( 6826, 6 )
+_crowPlatformTime = 850
 
 [editable path="ObjPlayer"]

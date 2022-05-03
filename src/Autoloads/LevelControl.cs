@@ -128,6 +128,10 @@ public class LevelControl : Node
         {
             PlayAudio(_musicPlayer, _sndEternalExplorer, -15, 1);
         }
+        else if (nameOfCurrentScene == "Mountain-UndergroundLVL")
+        {
+            PlayAudio(_musicPlayer, _sndLargo, -15, 1);
+        }
 
 
     }
@@ -166,6 +170,10 @@ public class LevelControl : Node
         {
             LevelChange(GD.Load<PackedScene>("res://src/Levels/MountainLVL.tscn"));
         }
+        else if (nameOfCurrentScene == "Mountain-UndergroundLVL")
+        {
+            LevelChange(GD.Load<PackedScene>("res://src/Levels/Mountain-UndergroundLVL.tscn"));
+        }
     }
 
     public void replayFromBeginning()
@@ -199,6 +207,10 @@ public class LevelControl : Node
         else if (nameOfChange == "MountainLVL")
         {
             LevelChange(GD.Load<PackedScene>("res://src/Levels/MountainLVL.tscn"));
+        }
+        else if (nameOfChange == "Mountain-UndergroundLVL")
+        {
+            LevelChange(GD.Load<PackedScene>("res://src/Levels/Mountain-UndergroundLVL.tscn"));
         }
     }
 
