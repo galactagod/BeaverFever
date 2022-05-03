@@ -925,6 +925,16 @@ position = Vector2( 4357, -523 )
 position = Vector2( 5141, -939 )
 levelToGo = "res://src/Levels/MountainLVL.tscn"
 
+[node name="CanvasLayer" parent="." instance=ExtResource( 19 )]
+
+[node name="Spider" parent="." instance=ExtResource( 20 )]
+position = Vector2( 3744, -417 )
+level = 1
+
+[node name="Spider2" parent="." instance=ExtResource( 20 )]
+position = Vector2( 2556, -482 )
+level = 1
+
 [node name="ObjPlayer" parent="." instance=ExtResource( 6 )]
 position = Vector2( 80, -750 )
 
@@ -951,15 +961,5 @@ position = Vector2( 0, -8 )
 
 [node name="CollStomp" parent="ObjPlayer/StompDetector" index="0"]
 position = Vector2( 4.5, 4 )
-
-[node name="CanvasLayer" parent="." instance=ExtResource( 19 )]
-
-[node name="Spider" parent="." instance=ExtResource( 20 )]
-position = Vector2( 3744, -417 )
-level = 1
-
-[node name="Spider2" parent="." instance=ExtResource( 20 )]
-position = Vector2( 2556, -482 )
-level = 1
 
 [editable path="ObjPlayer"]

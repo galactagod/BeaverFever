@@ -48,7 +48,8 @@ public static class DialogueManager
         "You're getting closer! The cries are so loud!", //20
         "You got further away...the sounds died down.",
         "The cries are getting louder.",
-        "The cries are heard up above, but faintly..."
+        "The cries are heard up above, but faintly...",
+        "You can hitch a ride on crows to move through the map"
     };
 
     //Put intro dialogue here
