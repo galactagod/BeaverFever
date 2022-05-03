@@ -850,6 +850,10 @@ position = Vector2( 1211, 112 )
 position = Vector2( 2943, 142 )
 level = 1
 
+[node name="Snake12" parent="." instance=ExtResource( 15 )]
+position = Vector2( 1983, -258 )
+level = 2
+
 [node name="Chest2" parent="." instance=ExtResource( 16 )]
 position = Vector2( 1871, 429 )
 id = 8

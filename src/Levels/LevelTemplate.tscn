@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://src/Objects/Player/ObjPlayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Assets/Tiles/Forest A ts.png" type="Texture" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://src/Levels/LevelStart.cs" type="Script" id=13]
 [ext_resource path="res://LevelTeleporter.tscn" type="PackedScene" id=14]
 [ext_resource path="res://SignPost.tscn" type="PackedScene" id=15]
+[ext_resource path="res://src/Objects/Enemy/Spider/Spider.tscn" type="PackedScene" id=16]
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
 points = PoolVector2Array( 0, 10, 90, 10, 90, 30, 0, 30 )
@@ -416,33 +417,6 @@ position = Vector2( 4182, -230 )
 [node name="GoldCoin20" parent="coins" instance=ExtResource( 9 )]
 position = Vector2( 4184, -191 )
 
-[node name="GoldCoin21" parent="coins" instance=ExtResource( 9 )]
-position = Vector2( 4429, -253 )
-
-[node name="GoldCoin22" parent="coins" instance=ExtResource( 9 )]
-position = Vector2( 4429, -215 )
-
-[node name="GoldCoin23" parent="coins" instance=ExtResource( 9 )]
-position = Vector2( 4431, -176 )
-
-[node name="GoldCoin24" parent="coins" instance=ExtResource( 9 )]
-position = Vector2( 4466, -254 )
-
-[node name="GoldCoin25" parent="coins" instance=ExtResource( 9 )]
-position = Vector2( 4466, -216 )
-
-[node name="GoldCoin26" parent="coins" instance=ExtResource( 9 )]
-position = Vector2( 4468, -177 )
-
-[node name="GoldCoin27" parent="coins" instance=ExtResource( 9 )]
-position = Vector2( 4501, -255 )
-
-[node name="GoldCoin28" parent="coins" instance=ExtResource( 9 )]
-position = Vector2( 4501, -217 )
-
-[node name="GoldCoin29" parent="coins" instance=ExtResource( 9 )]
-position = Vector2( 4503, -178 )
-
 [node name="GoldCoin30" parent="coins" instance=ExtResource( 9 )]
 position = Vector2( 4729, 76 )
 
@@ -500,12 +474,6 @@ position = Vector2( 4860, 116 )
 [node name="GoldCoin60" parent="coins" instance=ExtResource( 9 )]
 position = Vector2( 3080, -410 )
 
-[node name="GoldCoin61" parent="coins" instance=ExtResource( 9 )]
-position = Vector2( 3868, -531 )
-
-[node name="GoldCoin62" parent="coins" instance=ExtResource( 9 )]
-position = Vector2( 3465, -472 )
-
 [node name="GoldCoin63" parent="coins" instance=ExtResource( 9 )]
 position = Vector2( 4270, -578 )
 
@@ -558,6 +526,11 @@ position = Vector2( 5147, 136 )
 id = 2
 whichItem = 12
 
+[node name="Chest3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 4460, -164 )
+id = 14
+whichItem = 17
+
 [node name="SignPost6" parent="." instance=ExtResource( 15 )]
 position = Vector2( 3970, -115 )
 whichDialogue = 1
@@ -578,6 +551,11 @@ position = Vector2( 3125, 123 )
 whichDialogue = 3
 whichSet = "Misc"
 
+[node name="SignPost12" parent="." instance=ExtResource( 15 )]
+position = Vector2( 3461, -445 )
+whichDialogue = 16
+whichSet = "Misc"
+
 [node name="SignPost7" parent="." instance=ExtResource( 15 )]
 position = Vector2( 940, 36 )
 whichDialogue = 2
@@ -587,6 +565,9 @@ whichSet = "Misc"
 position = Vector2( 528, -356 )
 whichDialogue = 9
 whichSet = "Misc"
+
+[node name="Spider" parent="." instance=ExtResource( 16 )]
+position = Vector2( 3863, -488 )
 
 [node name="ObjPlayer" parent="." instance=ExtResource( 1 )]
 position = Vector2( 901, 11 )

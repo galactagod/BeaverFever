@@ -1727,6 +1727,11 @@ position = Vector2( 217, -124 )
 whichDialogue = 13
 whichSet = "Misc"
 
+[node name="SignPost12" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1985, -305 )
+whichDialogue = 17
+whichSet = "Misc"
+
 [node name="GrayWolf3" parent="." instance=ExtResource( 12 )]
 position = Vector2( 2470, -395 )
 level = 3
@@ -1743,8 +1748,15 @@ level = 3
 position = Vector2( 3052, -519 )
 level = 2
 
+[node name="GrayWolf7" parent="." instance=ExtResource( 12 )]
+position = Vector2( 4119, -291 )
+level = 2
+
 [node name="GoldCoin30" parent="." instance=ExtResource( 13 )]
 position = Vector2( 2772, -653 )
+
+[node name="GoldCoin35" parent="." instance=ExtResource( 13 )]
+position = Vector2( 2227, -348 )
 
 [node name="GoldCoin38" parent="." instance=ExtResource( 13 )]
 position = Vector2( 3500, -587 )
@@ -1775,6 +1787,15 @@ position = Vector2( 3463, -1029 )
 
 [node name="GoldCoin48" parent="." instance=ExtResource( 13 )]
 position = Vector2( 3515, -1029 )
+
+[node name="GoldCoin67" parent="." instance=ExtResource( 13 )]
+position = Vector2( 4325, -311 )
+
+[node name="GoldCoin68" parent="." instance=ExtResource( 13 )]
+position = Vector2( 4381, -311 )
+
+[node name="GoldCoin69" parent="." instance=ExtResource( 13 )]
+position = Vector2( 4433, -311 )
 
 [node name="GoldCoin39" parent="." instance=ExtResource( 13 )]
 position = Vector2( 3773, -641 )
@@ -1847,6 +1868,11 @@ modulate = Color( 0.247059, 0.882353, 0.333333, 1 )
 position = Vector2( 4131, -693 )
 level = 2
 
+[node name="BrownBear8" parent="." instance=ExtResource( 14 )]
+modulate = Color( 0.247059, 0.882353, 0.333333, 1 )
+position = Vector2( 4615, -313 )
+level = 1
+
 [node name="BrownBear3" parent="." instance=ExtResource( 14 )]
 modulate = Color( 0.247059, 0.882353, 0.333333, 1 )
 position = Vector2( 754, 233 )
@@ -1881,6 +1907,10 @@ level = 3
 position = Vector2( 3011, -1067 )
 level = 3
 
+[node name="Snake8" parent="." instance=ExtResource( 15 )]
+position = Vector2( 3024, -301 )
+level = 3
+
 [node name="SilverCoin3" parent="." instance=ExtResource( 16 )]
 position = Vector2( 1004, -217 )
 
@@ -1898,6 +1928,24 @@ position = Vector2( 130, 441 )
 
 [node name="CopperCoin6" parent="." instance=ExtResource( 17 )]
 position = Vector2( 1091, -159 )
+
+[node name="GoldCoin70" parent="." instance=ExtResource( 13 )]
+position = Vector2( 3496, -309 )
+
+[node name="SilverCoin8" parent="." instance=ExtResource( 16 )]
+position = Vector2( 3453, -309 )
+
+[node name="CopperCoin8" parent="." instance=ExtResource( 17 )]
+position = Vector2( 3417, -310 )
+
+[node name="GoldCoin71" parent="." instance=ExtResource( 13 )]
+position = Vector2( 3907, -311 )
+
+[node name="SilverCoin9" parent="." instance=ExtResource( 16 )]
+position = Vector2( 3864, -311 )
+
+[node name="CopperCoin9" parent="." instance=ExtResource( 17 )]
+position = Vector2( 3828, -312 )
 
 [node name="CopperCoin7" parent="." instance=ExtResource( 17 )]
 position = Vector2( 1513, -9 )
@@ -1958,5 +2006,10 @@ whichItem = 13
 position = Vector2( 68, -446 )
 id = 12
 whichItem = 14
+
+[node name="Chest6" parent="." instance=ExtResource( 21 )]
+position = Vector2( 1363, -725 )
+id = 12
+whichItem = 16
 
 [editable path="ObjPlayer"]
