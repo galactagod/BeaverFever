@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://src/Assets/Backgrounds/sky backgroundB.png" type="Texture" id=1]
 [ext_resource path="res://src/Assets/Backgrounds/Country/CountryClouds.png" type="Texture" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://src/Objects/Items/Coins/SilverCoin.tscn" type="PackedScene" id=17]
 [ext_resource path="res://LevelTeleporter.tscn" type="PackedScene" id=18]
 [ext_resource path="res://NecessaryUIForLevelScene.tscn" type="PackedScene" id=19]
+[ext_resource path="res://src/Objects/Enemy/Spider/Spider.tscn" type="PackedScene" id=20]
 
 [sub_resource type="ConvexPolygonShape2D" id=25]
 points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
@@ -952,5 +953,13 @@ position = Vector2( 0, -8 )
 position = Vector2( 4.5, 4 )
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 19 )]
+
+[node name="Spider" parent="." instance=ExtResource( 20 )]
+position = Vector2( 3744, -417 )
+level = 1
+
+[node name="Spider2" parent="." instance=ExtResource( 20 )]
+position = Vector2( 2556, -482 )
+level = 1
 
 [editable path="ObjPlayer"]

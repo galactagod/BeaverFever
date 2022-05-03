@@ -1,9 +1,18 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=71 format=2]
 
+[ext_resource path="res://SignPost.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Objects/Enemy/GrayWolf/GrayWolf.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Assets/Tiles/MountainTs.png" type="Texture" id=3]
+[ext_resource path="res://src/Objects/Enemy/Snake/Snake.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Objects/Enemy/BrownBear/BrownBear.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Objects/Player/ObjPlayer.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/Objects/Items/Coins/CopperCoin.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/Objects/Items/Coins/GoldCoin.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/Assets/Tiles/CountryUndergroundTs.png" type="Texture" id=9]
 [ext_resource path="res://src/Assets/Tiles/CountryTs.png" type="Texture" id=10]
+[ext_resource path="res://src/Objects/Items/Coins/SilverCoin.tscn" type="PackedScene" id=11]
+[ext_resource path="res://LevelTeleporter.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/Objects/Enemy/Spider/Spider.tscn" type="PackedScene" id=13]
 [ext_resource path="res://NecessaryUIForLevelScene.tscn" type="PackedScene" id=19]
 [ext_resource path="res://src/Levels/LevelStart.cs" type="Script" id=20]
 
@@ -1913,9 +1922,9 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 5 ) ]
 }
 
-[node name="MountainLVL" type="Node2D"]
+[node name="Mountain-UndergroundLVL" type="Node2D"]
 script = ExtResource( 20 )
-levelName = "MountainLVL"
+levelName = "Mountain-UndergroundLVL"
 
 [node name="Background" type="TileMap" parent="."]
 tile_set = SubResource( 52 )
@@ -1943,6 +1952,203 @@ cell_y_sort = true
 collision_layer = 4
 collision_mask = 0
 format = 1
+
+[node name="CanvasLayer" parent="." instance=ExtResource( 19 )]
+
+[node name="SignPost5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 478, 1399 )
+whichDialogue = 17
+whichSet = "Misc"
+
+[node name="SignPost6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 815, 1399 )
+whichDialogue = 18
+whichSet = "Misc"
+
+[node name="SignPost7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 3900, 1459 )
+whichDialogue = 19
+whichSet = "Misc"
+
+[node name="SignPost11" parent="." instance=ExtResource( 1 )]
+position = Vector2( 5455, 1759 )
+whichDialogue = 23
+whichSet = "Misc"
+
+[node name="SignPost8" parent="." instance=ExtResource( 1 )]
+position = Vector2( 3528, 928 )
+whichDialogue = 20
+whichSet = "Misc"
+
+[node name="SignPost10" parent="." instance=ExtResource( 1 )]
+position = Vector2( 2385, 1139 )
+whichDialogue = 22
+whichSet = "Misc"
+
+[node name="SignPost9" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1906, 320 )
+whichDialogue = 21
+whichSet = "Misc"
+
+[node name="BrownBear3" parent="." instance=ExtResource( 5 )]
+modulate = Color( 0.247059, 0.882353, 0.333333, 1 )
+position = Vector2( 2754, 1057 )
+level = 3
+
+[node name="BrownBear7" parent="." instance=ExtResource( 5 )]
+modulate = Color( 0.247059, 0.882353, 0.333333, 1 )
+position = Vector2( 4924, 846 )
+level = 3
+
+[node name="BrownBear6" parent="." instance=ExtResource( 5 )]
+modulate = Color( 0.247059, 0.882353, 0.333333, 1 )
+position = Vector2( 2583, 301 )
+level = 2
+
+[node name="BrownBear5" parent="." instance=ExtResource( 5 )]
+modulate = Color( 0.247059, 0.882353, 0.333333, 1 )
+position = Vector2( 2190, 307 )
+level = 3
+
+[node name="BrownBear4" parent="." instance=ExtResource( 5 )]
+modulate = Color( 0.247059, 0.882353, 0.333333, 1 )
+position = Vector2( 3857, 1753 )
+level = 3
+
+[node name="GrayWolf3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2233, 1019 )
+level = 3
+
+[node name="GrayWolf7" parent="." instance=ExtResource( 2 )]
+position = Vector2( 4769, 875 )
+level = 3
+
+[node name="GrayWolf4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2868, 1640 )
+level = 3
+
+[node name="GrayWolf5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 3151, 1650 )
+level = 3
+
+[node name="GrayWolf6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 4221, 1770 )
+level = 3
+
+[node name="Snake8" parent="." instance=ExtResource( 4 )]
+position = Vector2( 3198, 805 )
+level = 3
+
+[node name="Snake9" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2881, 824 )
+level = 3
+
+[node name="GoldCoin36" parent="." instance=ExtResource( 8 )]
+position = Vector2( 2078, 1223 )
+
+[node name="GoldCoin40" parent="." instance=ExtResource( 8 )]
+position = Vector2( 2466, 1437 )
+
+[node name="GoldCoin41" parent="." instance=ExtResource( 8 )]
+position = Vector2( 2552, 1491 )
+
+[node name="GoldCoin42" parent="." instance=ExtResource( 8 )]
+position = Vector2( 2662, 1573 )
+
+[node name="GoldCoin37" parent="." instance=ExtResource( 8 )]
+position = Vector2( 2199, 1114 )
+
+[node name="SilverCoin3" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1957, 1285 )
+
+[node name="CopperCoin6" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1842, 1357 )
+
+[node name="GoldCoin38" parent="." instance=ExtResource( 8 )]
+position = Vector2( 3368, 958 )
+
+[node name="GoldCoin43" parent="." instance=ExtResource( 8 )]
+position = Vector2( 4189, 880 )
+
+[node name="GoldCoin44" parent="." instance=ExtResource( 8 )]
+position = Vector2( 4334, 940 )
+
+[node name="SilverCoin4" parent="." instance=ExtResource( 11 )]
+position = Vector2( 3225, 1004 )
+
+[node name="CopperCoin7" parent="." instance=ExtResource( 7 )]
+position = Vector2( 3110, 1076 )
+
+[node name="SilverCoin7" parent="." instance=ExtResource( 11 )]
+position = Vector2( 4248, 1565 )
+
+[node name="CopperCoin10" parent="." instance=ExtResource( 7 )]
+position = Vector2( 4104, 1490 )
+
+[node name="SilverCoin8" parent="." instance=ExtResource( 11 )]
+position = Vector2( 4913, 1757 )
+
+[node name="CopperCoin11" parent="." instance=ExtResource( 7 )]
+position = Vector2( 4875, 1755 )
+
+[node name="SilverCoin6" parent="." instance=ExtResource( 11 )]
+position = Vector2( 3550, 1524 )
+
+[node name="CopperCoin9" parent="." instance=ExtResource( 7 )]
+position = Vector2( 3435, 1596 )
+
+[node name="GoldCoin39" parent="." instance=ExtResource( 8 )]
+position = Vector2( 3609, 637 )
+
+[node name="GoldCoin45" parent="." instance=ExtResource( 8 )]
+position = Vector2( 3439, 575 )
+
+[node name="GoldCoin46" parent="." instance=ExtResource( 8 )]
+position = Vector2( 3341, 521 )
+
+[node name="GoldCoin47" parent="." instance=ExtResource( 8 )]
+position = Vector2( 3489, 459 )
+
+[node name="GoldCoin48" parent="." instance=ExtResource( 8 )]
+position = Vector2( 3346, 434 )
+
+[node name="GoldCoin49" parent="." instance=ExtResource( 8 )]
+position = Vector2( 3455, 368 )
+
+[node name="GoldCoin50" parent="." instance=ExtResource( 8 )]
+position = Vector2( 4677, 868 )
+
+[node name="GoldCoin51" parent="." instance=ExtResource( 8 )]
+position = Vector2( 4612, 868 )
+
+[node name="GoldCoin52" parent="." instance=ExtResource( 8 )]
+position = Vector2( 4644, 867 )
+
+[node name="SilverCoin5" parent="." instance=ExtResource( 11 )]
+position = Vector2( 3461, 666 )
+
+[node name="CopperCoin8" parent="." instance=ExtResource( 7 )]
+position = Vector2( 3313, 722 )
+
+[node name="LevelTeleporter" parent="." instance=ExtResource( 12 )]
+position = Vector2( 5455, 844 )
+levelToGo = "res://src/Levels/Ending.tscn"
+
+[node name="Spider2" parent="." instance=ExtResource( 13 )]
+position = Vector2( 3888, 871 )
+level = 1
+
+[node name="Spider4" parent="." instance=ExtResource( 13 )]
+position = Vector2( 4666, 1779 )
+level = 1
+
+[node name="Spider3" parent="." instance=ExtResource( 13 )]
+position = Vector2( 5248, 1772 )
+level = 2
+
+[node name="Spider5" parent="." instance=ExtResource( 13 )]
+position = Vector2( 5155, 879 )
+level = 3
 
 [node name="ObjPlayer" parent="." instance=ExtResource( 6 )]
 position = Vector2( 23, -3522 )
@@ -1975,7 +2181,5 @@ position = Vector2( 0, -8 )
 
 [node name="CollStomp" parent="ObjPlayer/StompDetector" index="0"]
 position = Vector2( 4.5, 4 )
-
-[node name="CanvasLayer" parent="." instance=ExtResource( 19 )]
 
 [editable path="ObjPlayer"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://src/Assets/Backgrounds/Mountain/MountainCloudsD.png" type="Texture" id=1]
 [ext_resource path="res://src/Assets/Backgrounds/Mountain/Mountains.png" type="Texture" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://NecessaryUIForLevelScene.tscn" type="PackedScene" id=19]
 [ext_resource path="res://src/Levels/LevelStart.cs" type="Script" id=20]
 [ext_resource path="res://src/Objects/Chest/Chest.tscn" type="PackedScene" id=21]
+[ext_resource path="res://src/Objects/Enemy/Spider/Spider.tscn" type="PackedScene" id=22]
 
 [sub_resource type="ConvexPolygonShape2D" id=25]
 points = PoolVector2Array( 90, 60, 0, 60, 0, 0, 90, 0 )
@@ -1780,13 +1781,13 @@ position = Vector2( 1562, -777 )
 position = Vector2( 1614, -777 )
 
 [node name="GoldCoin46" parent="." instance=ExtResource( 13 )]
-position = Vector2( 3407, -1029 )
+position = Vector2( 3340, -1027 )
 
 [node name="GoldCoin47" parent="." instance=ExtResource( 13 )]
-position = Vector2( 3463, -1029 )
+position = Vector2( 3376, -1029 )
 
 [node name="GoldCoin48" parent="." instance=ExtResource( 13 )]
-position = Vector2( 3515, -1029 )
+position = Vector2( 3412, -1029 )
 
 [node name="GoldCoin67" parent="." instance=ExtResource( 13 )]
 position = Vector2( 4325, -311 )
@@ -1993,7 +1994,7 @@ position = Vector2( 4.5, 4 )
 
 [node name="LevelTeleporter" parent="." instance=ExtResource( 18 )]
 position = Vector2( 182, 1397 )
-levelToGo = "res://src/Levels/Ending.tscn"
+levelToGo = "res://src/Levels/Mountain-UndergroundLVL.tscn"
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 19 )]
 
@@ -2011,5 +2012,9 @@ whichItem = 14
 position = Vector2( 1363, -725 )
 id = 12
 whichItem = 16
+
+[node name="Spider" parent="." instance=ExtResource( 22 )]
+position = Vector2( 3563, -1007 )
+level = 2
 
 [editable path="ObjPlayer"]
