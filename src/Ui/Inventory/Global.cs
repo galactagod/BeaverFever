@@ -381,7 +381,7 @@ public static class Global
         ableToBeEquippedSlot = "Skill",
         textureRoute = "res://assets/skills/body/aegis/Body Mod 1.png",
         type = "skill",
-        tooltip = "Boosts defense by 2."
+        tooltip = "Boosts defense by 20."
         },
         new PlayerData.item {
         name = "Aegis",
@@ -395,7 +395,7 @@ public static class Global
         ableToBeEquippedSlot = "Skill",
         textureRoute = "res://assets/skills/body/aegis/Body Mod 2.png",
         type = "skill",
-        tooltip = "Boosts defense by 4."
+        tooltip = "Boosts defense by 40."
         },
         new PlayerData.item {
         name = "Aegis",
@@ -409,7 +409,7 @@ public static class Global
         ableToBeEquippedSlot = "Skill",
         textureRoute = "res://assets/skills/body/aegis/Body Mod 3.png",
         type = "skill",
-        tooltip = "Boosts defense by 6."
+        tooltip = "Boosts defense by 60."
         }
     };
 
