@@ -673,7 +673,7 @@ public static class Global
         {
             name = "GrayWolf",
             level = 1,
-            health = 10,
+            health = 4,
             attack = 3,
             defense = 5,
             spAttack = 3,
@@ -714,7 +714,7 @@ public static class Global
             name = "Snake",
             level = 1,
             health = 6,
-            attack = 10,
+            attack = 8,
             defense = 1,
             spAttack = 7,
             spDefense = 1
