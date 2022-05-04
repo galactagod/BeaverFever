@@ -15,6 +15,12 @@ public class PlayerUi : Node
     private float _energy;
     private float _maxEnergy;
 
+    // premade buff textures
+    private Texture[] _sprBuff = new Texture[2];
+    private Texture _sprAegis = (Texture)GD.Load("res://src/Assets/Moves/AegisStatus.png");
+    private Texture _sprAccelerate = (Texture)GD.Load("res://src/Assets/Moves/AccelerateStatus.png");
+
+
     // node reference
     private PlayerStats _ndPlayerStats;
     public TextureProgress _ndHpBar;
@@ -35,6 +41,7 @@ public class PlayerUi : Node
     private Label _ndMunyCount;
     private Label _ndExpCount;
     private Tween _ndTween;
+    private TextureRect[] _ndSkillBuff = new TextureRect[2];
 
 
     public override void _Ready()
@@ -60,6 +67,10 @@ public class PlayerUi : Node
         _ndExpBar = GetNode<TextureRect>("CanvasA/ExpBar");
         _ndMunyTexture = GetNode<TextureRect>("CanvasA/MunyTexture");
         _ndExpTexture = GetNode<TextureRect>("CanvasA/ExpTexture");
+        _ndSkillBuff[0] = GetNode<TextureRect>("CanvasA/SkillBuffA");
+        _ndSkillBuff[1] = GetNode<TextureRect>("CanvasA/SkillBuffB");
+        _sprBuff[0] = _sprAegis;
+        _sprBuff[1] = _sprAccelerate;
         _ndTween = new Tween();
         AddChild(_ndTween);
 
@@ -122,6 +133,16 @@ public class PlayerUi : Node
         _lblSkillA.Modulate = (_ndPlayerStats.SkillEnergyUse[0] > _ndPlayerStats.Energy) ? Color.Color8(100, 100, 100) : Color.Color8(255, 255, 255);
         _lblSkillB.Modulate = (_ndPlayerStats.SkillEnergyUse[1] > _ndPlayerStats.Energy) ? Color.Color8(100, 100, 100) : Color.Color8(255, 255, 255);
         _lblSkillC.Modulate = (_ndPlayerStats.SkillEnergyUse[2] > _ndPlayerStats.Energy) ? Color.Color8(100, 100, 100) : Color.Color8(255, 255, 255);
+
+        for (int i = 0; i < 2; i++)
+        {
+            switch (_ndPlayerStats.StatBuffs[i])
+            {
+                case "Aegis": _ndSkillBuff[i].Texture = _sprBuff[0]; break;
+                case "Accelerate": _ndSkillBuff[i].Texture = _sprBuff[1]; break;
+                case "": _ndSkillBuff[i].Texture = null; break;
+            }
+        }
     }
 
     public void OnHealthChange(float value)
@@ -137,7 +158,7 @@ public class PlayerUi : Node
     {
         _health = _ndPlayerStats.Health;
         _ndHpBar.Value = _health;
-        GD.Print("Replenish HEALTH texture SIGNAL");
+        //GD.Print("Replenish HEALTH texture SIGNAL");
     }
 
     public void OnChangeEnergy(float value)
@@ -234,6 +255,8 @@ public class PlayerUi : Node
         _ndExpBar.Hide();
         _ndMunyTexture.Hide();
         _ndExpTexture.Hide();
+        _ndSkillBuff[0].Hide();
+        _ndSkillBuff[1].Hide();
     }
 
     public void Show()
@@ -255,5 +278,7 @@ public class PlayerUi : Node
         _ndExpBar.Show();
         _ndMunyTexture.Show();
         _ndExpTexture.Show();
+        _ndSkillBuff[0].Show();
+        _ndSkillBuff[1].Show();
     }
 }

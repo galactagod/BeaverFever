@@ -253,6 +253,7 @@ step = 0.001
 texture_progress = ExtResource( 11 )
 texture_progress_offset = Vector2( 4, 3 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -267,6 +268,7 @@ value = 100.0
 texture_progress = ExtResource( 11 )
 texture_progress_offset = Vector2( 4, 3 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -281,5 +283,26 @@ value = 100.0
 texture_progress = ExtResource( 11 )
 texture_progress_offset = Vector2( 4, 3 )
 __meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="SkillBuffA" type="TextureRect" parent="CanvasA"]
+margin_left = 328.0
+margin_top = 8.0
+margin_right = 360.0
+margin_bottom = 43.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="SkillBuffB" type="TextureRect" parent="CanvasA"]
+margin_left = 368.0
+margin_top = 8.0
+margin_right = 400.0
+margin_bottom = 43.0
+__meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }

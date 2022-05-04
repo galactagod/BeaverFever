@@ -18,6 +18,7 @@ public class PlayerStats : Node
     private bool _energyPause = false;
     private bool _healthPause = false;
     private float _moneyMultiplier = 1;
+    [Export] private string[] _statBuffs = new string[2];
 
     public float _maxMuny = 99999999;
 
@@ -46,12 +47,15 @@ public class PlayerStats : Node
     public bool EnergyPause { get { return _energyPause; } set { _energyPause = value; } }
     public bool HealthPause { get { return _healthPause; } set { _healthPause = value; } }
     public float MoneyMultiplier { get { return _moneyMultiplier; } set { _moneyMultiplier = value; } }
+    public string[] StatBuffs { get { return _statBuffs; } set { _statBuffs = value; } }
 
     private PlayerData _ndplayerData;
     private LevelControl levelControl;
 
     public override void _Ready()
     {
+        _statBuffs[0] = "";
+        _statBuffs[1] = "";
         _ndplayerData = GetNode<PlayerData>("/root/PlayerData");
 
         levelControl = GetNode<LevelControl>("/root/LevelControl");
@@ -68,25 +72,6 @@ public class PlayerStats : Node
             string name = "";
             if (_ndplayerData.equipment.TryGetValue("Skill" + (i + 1), out var skill))
             {
-                /*
-                switch (skill.name)
-                {
-                    case "Rip Mod": name = "Slice"; break;
-
-                    case "Attack Mod": name = "BubbleBurst"; break;
-
-                    case "Leaf Mod": name = "Regeneration"; break;
-
-                    case "Book Mod": name = "Grace"; break;
-
-                    case "Sharp Mod": name = "Crunch"; break;
-
-                    case "Boots Mod": name = "Accelerate"; break;
-
-                    case "Body Mod": name = "Aegis"; break;
-                }
-                */
-
                 _skillNames[i] = skill.name;
                 //_skillNames[i] = name;
                 _skillTiers[i] = skill.level;
@@ -100,9 +85,6 @@ public class PlayerStats : Node
 
         }
         
-
-        //_skills[0];
-
         if (_health == 0)
         {
             //Add a death scene here
@@ -133,7 +115,7 @@ public class PlayerStats : Node
                     energy = 4;
                     break;
                 case "Aegis": case "Accelerate":
-                    cooldown = 150;
+                    cooldown = 10; //150
                     energy = 5;
                     break;
                 case "Regeneration": case "Grace":
@@ -165,7 +147,7 @@ public class PlayerStats : Node
         _health += health;
         _health = Mathf.Clamp(_health, 0, _maxHealth);
         ReplenishHealthChange?.Invoke(_health);
-        GD.Print("health = " + _health);
+        //GD.Print("health = " + _health);
     }
 
     public void ChangeMaxHealth(float health)

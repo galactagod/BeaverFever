@@ -159,7 +159,7 @@ public class ObjPlayer : BaseMovementAct
         // energy naturally replenishes
         if (!_ndPlayerStats.EnergyPause)
         {
-            _ndPlayerStats.ChangeReplenishEnergy(0.005f);
+            _ndPlayerStats.ChangeReplenishEnergy(1.005f); //0.005f
         }
 
         // replenish health if regeration is on and set its cooldown to zero
@@ -168,7 +168,7 @@ public class ObjPlayer : BaseMovementAct
 
         for (int i = 0; i < 3; i++)
         {
-            if (_ndPlayerStats.SkillNames[i] == "Regeneration")
+            if (_ndPlayerStats.SkillNames[i] == "Regeneration" && !_isDamaged)
             {
                 // check which regen tier and apply effect
                 switch (_ndPlayerStats.SkillTiers[i])
@@ -200,14 +200,61 @@ public class ObjPlayer : BaseMovementAct
 
         // speedcoolldown checker
         _speedCoolDown = Mathf.Clamp(_speedCoolDown - 1, 0, _speedMaxCoolDown);
-        if (_speedCoolDown == 0) _speed =_origSpeed;
-
+        if (_speedCoolDown == 0)
+        {
+            _speed = _origSpeed;
+            StatBuffMod("Accelerate", "", "remove");
+        }
+        else
+        {
+            StatBuffMod("", "Accelerate", "add");
+        }
 
         // defense checker
         _defCoolDown = Mathf.Clamp(_defCoolDown - 1, 0, _defMaxCoolDown);
-        if (_defCoolDown == 0) _initDefense = _origCurDefense;
+        if (_defCoolDown == 0)
+        {
+            _initDefense = _origCurDefense;
+            StatBuffMod("Aegis", "", "remove");
+        }
+        else
+        {
+            StatBuffMod("", "Aegis", "add");
+        }
+    }
 
+    public void StatBuffMod(string check, string input, string type)
+    {
+        int open = -1;
+        bool isFound = false;
 
+        for (int i = 0; i < 2; i++)
+        {
+            if (type == "add")
+            {
+                // found a valid position
+                if (_ndPlayerStats.StatBuffs[i] == check && open == -1)
+                    open = i;
+
+                // check if were already in
+                if (_ndPlayerStats.StatBuffs[i] == input)
+                    isFound = true;
+            }
+
+            if (type == "remove")
+            {
+                if (_ndPlayerStats.StatBuffs[i] == check)
+                {
+                    _ndPlayerStats.StatBuffs[i] = input;
+                    break;
+                }
+            }
+        }
+
+        if (!isFound && open != -1 && type == "add")
+        {
+            _ndPlayerStats.StatBuffs[open] = input;
+        }
     }
 
     public void BaseMovementControl()
