@@ -284,7 +284,7 @@ tile_data = PoolIntArray( -4194097, 536870912, 0, -4063025, 536870912, 0, -39319
 position = Vector2( 1178, 151 )
 
 [node name="GrayWolf3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 282, 142 )
+position = Vector2( 537, 148 )
 
 [node name="GrayWolf2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 2695, -248 )
