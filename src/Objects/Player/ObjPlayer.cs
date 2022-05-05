@@ -159,7 +159,7 @@ public class ObjPlayer : BaseMovementAct
         // energy naturally replenishes
         if (!_ndPlayerStats.EnergyPause)
         {
-            _ndPlayerStats.ChangeReplenishEnergy(1.005f); //0.005f
+            _ndPlayerStats.ChangeReplenishEnergy(0.005f);
         }
 
         // replenish health if regeration is on and set its cooldown to zero
